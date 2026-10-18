@@ -1,0 +1,231 @@
+// Payments models.
+
+model PaymentMethod {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  type PAYMENT_METHOD_TYPE
+  display_name String
+  enabled Boolean @default(true)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentMethod_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_method_tenant_id")
+  back_Payment_method_id Payment[] @relation("Payment_method_id")
+  @@unique([tenant_id, id])
+  @@map("payment_method")
+  @@schema("commerce")
+}
+
+model PaymentProviderAccount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  provider String
+  merchant_reference String
+  secret_reference String
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentProviderAccount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_provider_account_tenant_id")
+  back_Payment_provider_account_id Payment[] @relation("Payment_provider_account_id")
+  back_PaymentAttempt_provider_account_id PaymentAttempt[] @relation("PaymentAttempt_provider_account_id")
+  back_PaymentWebhookEvent_provider_account_id PaymentWebhookEvent[] @relation("PaymentWebhookEvent_provider_account_id")
+  back_PaymentSettlement_provider_account_id PaymentSettlement[] @relation("PaymentSettlement_provider_account_id")
+  back_SellerPayoutAccount_provider_account_id SellerPayoutAccount[] @relation("SellerPayoutAccount_provider_account_id")
+  @@unique([tenant_id, id])
+  @@map("payment_provider_account")
+  @@schema("commerce")
+}
+
+model Payment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String? @db.Uuid
+  method_id String @db.Uuid
+  provider_account_id String? @db.Uuid
+  amount Decimal @db.Decimal(20,4)
+  currency String @db.VarChar(3)
+  status PAYMENT_STATUS @default(PENDING)
+  idempotency_key String
+  direction String @default("INBOUND")
+  COLLECTION_CHANNEL COLLECTION_CHANNEL @default(ONLINE)
+  COLLECTION_TIMING COLLECTION_TIMING @default(PREPAID)
+  received_at DateTime? @db.Timestamptz(6)
+  confirmed_amount Decimal @db.Decimal(20,4) @default(0)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Payment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_tenant_id")
+  ref_customer_id Customer? @relation("Payment_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_customer_id")
+  ref_method_id PaymentMethod @relation("Payment_method_id", fields: [tenant_id, method_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_method_id")
+  ref_provider_account_id PaymentProviderAccount? @relation("Payment_provider_account_id", fields: [tenant_id, provider_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_provider_account_id")
+  back_PaymentAttempt_payment_id PaymentAttempt[] @relation("PaymentAttempt_payment_id")
+  back_PaymentEvent_payment_id PaymentEvent[] @relation("PaymentEvent_payment_id")
+  back_PaymentAllocation_payment_id PaymentAllocation[] @relation("PaymentAllocation_payment_id")
+  back_Refund_payment_id Refund[] @relation("Refund_payment_id")
+  back_PaymentDispute_payment_id PaymentDispute[] @relation("PaymentDispute_payment_id")
+  back_CashMovement_payment_id CashMovement[] @relation("CashMovement_payment_id")
+  back_CodCollection_payment_id CodCollection[] @relation("CodCollection_payment_id")
+  back_PaymentSettlementItem_payment_id PaymentSettlementItem[] @relation("PaymentSettlementItem_payment_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, idempotency_key])
+  @@map("payment")
+  @@schema("commerce")
+}
+
+model PaymentAttempt {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  provider_transaction_reference String?
+  status String
+  failure_code String?
+  provider_account_id String @db.Uuid
+  provider_request_reference String
+  initiated_at DateTime @db.Timestamptz(6)
+  completed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentAttempt_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_attempt_tenant_id")
+  ref_payment_id Payment @relation("PaymentAttempt_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_attempt_payment_id")
+  ref_provider_account_id PaymentProviderAccount @relation("PaymentAttempt_provider_account_id", fields: [tenant_id, provider_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_attempt_provider_account_id")
+  back_PaymentEvent_attempt_id PaymentEvent[] @relation("PaymentEvent_attempt_id")
+  @@unique([tenant_id, id])
+  @@map("payment_attempt")
+  @@schema("commerce")
+}
+
+model PaymentEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  attempt_id String? @db.Uuid
+  event_type String
+  amount Decimal? @db.Decimal(20,4)
+  occurred_at DateTime @db.Timestamptz(6)
+  provider_event_reference String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_event_tenant_id")
+  ref_payment_id Payment @relation("PaymentEvent_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_event_payment_id")
+  ref_attempt_id PaymentAttempt? @relation("PaymentEvent_attempt_id", fields: [tenant_id, attempt_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_event_attempt_id")
+  @@unique([tenant_id, id])
+  @@map("payment_event")
+  @@schema("commerce")
+}
+
+model PaymentAllocation {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  invoice_id String @db.Uuid
+  allocated_amount Decimal @db.Decimal(20,4)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentAllocation_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_allocation_tenant_id")
+  ref_payment_id Payment @relation("PaymentAllocation_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_allocation_payment_id")
+  ref_invoice_id SalesInvoice @relation("PaymentAllocation_invoice_id", fields: [tenant_id, invoice_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_allocation_invoice_id")
+  back_RefundAllocation_payment_allocation_id RefundAllocation[] @relation("RefundAllocation_payment_allocation_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, payment_id, invoice_id])
+  @@map("payment_allocation")
+  @@schema("commerce")
+}
+
+model PaymentWebhookEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  provider_account_id String @db.Uuid
+  provider_event_id String
+  payload_hash String
+  verification_status String
+  processing_status String
+  tenant_id String @db.Uuid
+  received_at DateTime @db.Timestamptz(6)
+  processed_at DateTime? @db.Timestamptz(6)
+  payload_reference String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_provider_account_id PaymentProviderAccount @relation("PaymentWebhookEvent_provider_account_id", fields: [tenant_id, provider_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_webhook_event_provider_account_id")
+  ref_tenant_id Tenant @relation("PaymentWebhookEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_webhook_event_tenant_id")
+  @@unique([tenant_id, id])
+  @@unique([provider_account_id, provider_event_id])
+  @@map("payment_webhook_event")
+  @@schema("commerce")
+}
+
+model Refund {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  return_id String? @db.Uuid
+  amount Decimal @db.Decimal(20,4)
+  currency String @db.VarChar(3)
+  status REFUND_STATUS @default(REQUESTED)
+  idempotency_key String
+  reason String
+  approved_by String? @db.Uuid
+  completed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Refund_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_refund_tenant_id")
+  ref_payment_id Payment @relation("Refund_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_refund_payment_id")
+  ref_return_id ReturnRequest? @relation("Refund_return_id", fields: [tenant_id, return_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_refund_return_id")
+  ref_approved_by TenantMembership? @relation("Refund_approved_by", fields: [tenant_id, approved_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_refund_approved_by")
+  back_CashMovement_refund_id CashMovement[] @relation("CashMovement_refund_id")
+  back_PaymentSettlementItem_refund_id PaymentSettlementItem[] @relation("PaymentSettlementItem_refund_id")
+  back_RefundAttempt_refund_id RefundAttempt[] @relation("RefundAttempt_refund_id")
+  back_RefundAllocation_refund_id RefundAllocation[] @relation("RefundAllocation_refund_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, idempotency_key])
+  @@map("refund")
+  @@schema("commerce")
+}
+
+model PaymentDispute {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  provider_case_id String
+  amount Decimal @db.Decimal(20,4)
+  status String
+  reason String
+  response_due_at DateTime? @db.Timestamptz(6)
+  resolved_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentDispute_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_dispute_tenant_id")
+  ref_payment_id Payment @relation("PaymentDispute_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_dispute_payment_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, payment_id, provider_case_id])
+  @@map("payment_dispute")
+  @@schema("commerce")
+}
+
+model PaymentSettlement {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  provider_account_id String @db.Uuid
+  external_id String
+  currency String @db.VarChar(3)
+  gross_amount Decimal @db.Decimal(20,4) @default(0)
+  fee_amount Decimal @db.Decimal(20,4) @default(0)
+  net_amount Decimal @db.Decimal(20,4)
+  status String
+  settled_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PaymentSettlement_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_settlement_tenant_id")
+  ref_provider_account_id PaymentProviderAccount @relation("PaymentSettlement_provider_account_id", fields: [tenant_id, provider_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_payment_settlement_provider_account_id")
+  back_PaymentSettlementItem_settlement_id PaymentSettlementItem[] @relation("PaymentSettlementItem_settlement_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, provider_account_id, external_id])
+  @@map("payment_settlement")
+  @@schema("commerce")
+}

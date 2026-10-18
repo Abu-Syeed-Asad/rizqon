@@ -1,0 +1,136 @@
+// Shared PostgreSQL enums. Prisma identifiers are uppercase; @@map preserves existing database enum names.
+
+enum ROLE_CODE {
+  OWNER
+  CEO
+  MANAGER
+  BRANCH_MANAGER
+  PRODUCT_MANAGER
+  SECURITY
+  SELLER
+  ACCOUNTANT
+  SELLER_COMPANY_ADMIN
+  @@schema("commerce")
+  @@map("role_code")
+}
+
+enum PAYMENT_METHOD_TYPE {
+  CARD
+  MOBILE_FINANCIAL_SERVICE
+  BANK_TRANSFER
+  CASH
+  @@schema("commerce")
+  @@map("payment_method_type")
+}
+
+enum PAYMENT_STATUS {
+  PENDING
+  PROCESSING
+  AUTHORIZED
+  SUCCEEDED
+  FAILED
+  CANCELLED
+  @@schema("commerce")
+  @@map("payment_status")
+}
+
+enum REFUND_STATUS {
+  REQUESTED
+  APPROVED
+  PROCESSING
+  SUCCEEDED
+  FAILED
+  REJECTED
+  CANCELLED
+  @@schema("commerce")
+  @@map("refund_status")
+}
+
+enum ORDER_CHANNEL {
+  ONLINE_STORE
+  PHYSICAL_POS
+  SOCIAL_COMMERCE
+  MARKETPLACE
+  @@schema("commerce")
+  @@map("order_channel")
+}
+
+enum ORDER_STATUS {
+  DRAFT
+  PLACED
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  @@schema("commerce")
+  @@map("order_status")
+}
+
+enum COLLECTION_CHANNEL {
+  ONLINE
+  COUNTER
+  CARD_TERMINAL
+  COURIER
+  @@schema("commerce")
+  @@map("collection_channel")
+}
+
+enum COLLECTION_TIMING {
+  PREPAID
+  ON_PICKUP
+  ON_DELIVERY
+  ON_ACCOUNT
+  @@schema("commerce")
+  @@map("collection_timing")
+}
+
+enum CASH_SESSION_STATUS {
+  OPEN
+  CLOSED_PENDING_AUDIT
+  AUDITED_BALANCED
+  DISCREPANCY_FLAGGED
+  @@schema("commerce")
+  @@map("cash_session_status")
+}
+
+enum JOURNAL_STATUS {
+  DRAFT
+  POSTED
+  @@schema("commerce")
+  @@map("journal_status")
+}
+
+enum SCOPE_TYPE {
+  TENANT
+  BRANCH
+  DEPARTMENT
+  LOCATION
+  @@schema("commerce")
+  @@map("scope_type")
+}
+
+enum CASH_MOVEMENT_TYPE {
+  RECEIPT
+  REFUND
+  PAID_IN
+  PAID_OUT
+  DEPOSIT_OUT
+  @@schema("commerce")
+  @@map("cash_movement_type")
+}
+
+enum LEDGER_ACCOUNT_TYPE {
+  ASSET
+  LIABILITY
+  EQUITY
+  REVENUE
+  EXPENSE
+  @@schema("commerce")
+  @@map("ledger_account_type")
+}
+
+enum APPROVAL_DECISION_TYPE {
+  APPROVE
+  REJECT
+  @@schema("commerce")
+  @@map("approval_decision_type")
+}

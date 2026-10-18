@@ -1,0 +1,198 @@
+// Purchasing models.
+
+model Supplier {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  name String
+  payment_terms String
+  status String
+  email String?
+  phone String?
+  address_id String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Supplier_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_tenant_id")
+  ref_address_id Address? @relation("Supplier_address_id", fields: [tenant_id, address_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_address_id")
+  back_SupplierProduct_supplier_id SupplierProduct[] @relation("SupplierProduct_supplier_id")
+  back_PurchaseOrder_supplier_id PurchaseOrder[] @relation("PurchaseOrder_supplier_id")
+  back_GoodsReceipt_supplier_id GoodsReceipt[] @relation("GoodsReceipt_supplier_id")
+  back_SupplierInvoice_supplier_id SupplierInvoice[] @relation("SupplierInvoice_supplier_id")
+  back_ReorderPolicy_supplier_id ReorderPolicy[] @relation("ReorderPolicy_supplier_id")
+  back_Expense_supplier_id Expense[] @relation("Expense_supplier_id")
+  back_SupplierPayment_supplier_id SupplierPayment[] @relation("SupplierPayment_supplier_id")
+  @@unique([tenant_id, id])
+  @@map("supplier")
+  @@schema("commerce")
+}
+
+model SupplierProduct {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  supplier_id String @db.Uuid
+  variant_id String @db.Uuid
+  lead_time_days Int
+  minimum_order_quantity Decimal @db.Decimal(20,6)
+  supplier_sku String?
+  quoted_cost Decimal? @db.Decimal(20,4)
+  currency String? @db.VarChar(3)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupplierProduct_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_product_tenant_id")
+  ref_supplier_id Supplier @relation("SupplierProduct_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_product_supplier_id")
+  ref_variant_id ProductVariant @relation("SupplierProduct_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_product_variant_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, supplier_id, variant_id])
+  @@map("supplier_product")
+  @@schema("commerce")
+}
+
+model PurchaseOrder {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  supplier_id String @db.Uuid
+  destination_id String @db.Uuid
+  number String
+  currency String @db.VarChar(3)
+  status String
+  expected_at DateTime? @db.Timestamptz(6)
+  approved_by String? @db.Uuid
+  ordered_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PurchaseOrder_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_tenant_id")
+  ref_supplier_id Supplier @relation("PurchaseOrder_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_supplier_id")
+  ref_destination_id Location @relation("PurchaseOrder_destination_id", fields: [tenant_id, destination_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_destination_id")
+  ref_approved_by TenantMembership? @relation("PurchaseOrder_approved_by", fields: [tenant_id, approved_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_approved_by")
+  back_PurchaseOrderItem_purchase_order_id PurchaseOrderItem[] @relation("PurchaseOrderItem_purchase_order_id")
+  back_GoodsReceipt_purchase_order_id GoodsReceipt[] @relation("GoodsReceipt_purchase_order_id")
+  back_SupplierInvoice_purchase_order_id SupplierInvoice[] @relation("SupplierInvoice_purchase_order_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, number])
+  @@map("purchase_order")
+  @@schema("commerce")
+}
+
+model PurchaseOrderItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  purchase_order_id String @db.Uuid
+  variant_id String @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  unit_cost Decimal @db.Decimal(20,4)
+  tax_amount Decimal @db.Decimal(20,4) @default(0)
+  discount_amount Decimal @db.Decimal(20,4) @default(0)
+  line_total Decimal @db.Decimal(20,4)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PurchaseOrderItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_item_tenant_id")
+  ref_purchase_order_id PurchaseOrder @relation("PurchaseOrderItem_purchase_order_id", fields: [tenant_id, purchase_order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_item_purchase_order_id")
+  ref_variant_id ProductVariant @relation("PurchaseOrderItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_purchase_order_item_variant_id")
+  back_GoodsReceiptItem_po_item_id GoodsReceiptItem[] @relation("GoodsReceiptItem_po_item_id")
+  back_SupplierInvoiceItem_po_item_id SupplierInvoiceItem[] @relation("SupplierInvoiceItem_po_item_id")
+  @@unique([tenant_id, id])
+  @@map("purchase_order_item")
+  @@schema("commerce")
+}
+
+model GoodsReceipt {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  supplier_id String @db.Uuid
+  purchase_order_id String? @db.Uuid
+  location_id String @db.Uuid
+  received_at DateTime @db.Timestamptz(6)
+  status String
+  received_by String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("GoodsReceipt_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_tenant_id")
+  ref_supplier_id Supplier @relation("GoodsReceipt_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_supplier_id")
+  ref_purchase_order_id PurchaseOrder? @relation("GoodsReceipt_purchase_order_id", fields: [tenant_id, purchase_order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_purchase_order_id")
+  ref_location_id Location @relation("GoodsReceipt_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_location_id")
+  ref_received_by TenantMembership @relation("GoodsReceipt_received_by", fields: [tenant_id, received_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_received_by")
+  back_GoodsReceiptItem_receipt_id GoodsReceiptItem[] @relation("GoodsReceiptItem_receipt_id")
+  @@unique([tenant_id, id])
+  @@map("goods_receipt")
+  @@schema("commerce")
+}
+
+model GoodsReceiptItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  receipt_id String @db.Uuid
+  po_item_id String? @db.Uuid
+  variant_id String @db.Uuid
+  lot_id String? @db.Uuid
+  accepted_qty Decimal @db.Decimal(20,6)
+  rejected_qty Decimal @db.Decimal(20,6)
+  unit_cost Decimal @db.Decimal(20,4)
+  received_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("GoodsReceiptItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_item_tenant_id")
+  ref_receipt_id GoodsReceipt @relation("GoodsReceiptItem_receipt_id", fields: [tenant_id, receipt_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_item_receipt_id")
+  ref_po_item_id PurchaseOrderItem? @relation("GoodsReceiptItem_po_item_id", fields: [tenant_id, po_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_item_po_item_id")
+  ref_variant_id ProductVariant @relation("GoodsReceiptItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_item_variant_id")
+  ref_lot_id InventoryLot? @relation("GoodsReceiptItem_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_goods_receipt_item_lot_id")
+  back_InventoryCostLayer_receipt_item_id InventoryCostLayer[] @relation("InventoryCostLayer_receipt_item_id")
+  @@unique([tenant_id, id])
+  @@map("goods_receipt_item")
+  @@schema("commerce")
+}
+
+model SupplierInvoice {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  supplier_id String @db.Uuid
+  purchase_order_id String? @db.Uuid
+  number String
+  currency String @db.VarChar(3)
+  total Decimal @db.Decimal(20,4)
+  due_at DateTime @db.Timestamptz(6)
+  issued_at DateTime @db.Timestamptz(6)
+  status String
+  subtotal Decimal @db.Decimal(20,4)
+  tax_total Decimal @db.Decimal(20,4) @default(0)
+  discount_total Decimal @db.Decimal(20,4) @default(0)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupplierInvoice_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_tenant_id")
+  ref_supplier_id Supplier @relation("SupplierInvoice_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_supplier_id")
+  ref_purchase_order_id PurchaseOrder? @relation("SupplierInvoice_purchase_order_id", fields: [tenant_id, purchase_order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_purchase_order_id")
+  back_SupplierInvoiceItem_invoice_id SupplierInvoiceItem[] @relation("SupplierInvoiceItem_invoice_id")
+  back_SupplierPaymentAllocation_invoice_id SupplierPaymentAllocation[] @relation("SupplierPaymentAllocation_invoice_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, supplier_id, number])
+  @@map("supplier_invoice")
+  @@schema("commerce")
+}
+
+model SupplierInvoiceItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  invoice_id String @db.Uuid
+  po_item_id String? @db.Uuid
+  variant_id String? @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  unit_cost Decimal @db.Decimal(20,4)
+  description String
+  line_total Decimal @db.Decimal(20,4)
+  tax_amount Decimal @db.Decimal(20,4) @default(0)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupplierInvoiceItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_item_tenant_id")
+  ref_invoice_id SupplierInvoice @relation("SupplierInvoiceItem_invoice_id", fields: [tenant_id, invoice_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_item_invoice_id")
+  ref_po_item_id PurchaseOrderItem? @relation("SupplierInvoiceItem_po_item_id", fields: [tenant_id, po_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_item_po_item_id")
+  ref_variant_id ProductVariant? @relation("SupplierInvoiceItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_invoice_item_variant_id")
+  @@unique([tenant_id, id])
+  @@map("supplier_invoice_item")
+  @@schema("commerce")
+}

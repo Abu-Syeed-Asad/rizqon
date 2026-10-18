@@ -1,0 +1,323 @@
+// Business structure models.
+
+model Tenant {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String
+  status String
+  currency String @db.VarChar(3) @default("BDT")
+  timezone String @default("Asia/Dhaka")
+  legal_name String
+  slug String
+  default_locale String @default("en")
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  back_TenantSetting_tenant_id TenantSetting[] @relation("TenantSetting_tenant_id")
+  back_Branch_tenant_id Branch[] @relation("Branch_tenant_id")
+  back_Department_tenant_id Department[] @relation("Department_tenant_id")
+  back_Location_tenant_id Location[] @relation("Location_tenant_id")
+  back_Address_tenant_id Address[] @relation("Address_tenant_id")
+  back_BusinessRegistration_tenant_id BusinessRegistration[] @relation("BusinessRegistration_tenant_id")
+  back_DocumentSequence_tenant_id DocumentSequence[] @relation("DocumentSequence_tenant_id")
+  back_TenantMembership_tenant_id TenantMembership[] @relation("TenantMembership_tenant_id")
+  back_Role_tenant_id Role[] @relation("Role_tenant_id")
+  back_RolePermission_tenant_id RolePermission[] @relation("RolePermission_tenant_id")
+  back_AccessScope_tenant_id AccessScope[] @relation("AccessScope_tenant_id")
+  back_RoleAssignment_tenant_id RoleAssignment[] @relation("RoleAssignment_tenant_id")
+  back_Invitation_tenant_id Invitation[] @relation("Invitation_tenant_id")
+  back_EmployeeProfile_tenant_id EmployeeProfile[] @relation("EmployeeProfile_tenant_id")
+  back_EmployeeBranchAssignment_tenant_id EmployeeBranchAssignment[] @relation("EmployeeBranchAssignment_tenant_id")
+  back_WorkShift_tenant_id WorkShift[] @relation("WorkShift_tenant_id")
+  back_Task_tenant_id Task[] @relation("Task_tenant_id")
+  back_ApprovalPolicy_tenant_id ApprovalPolicy[] @relation("ApprovalPolicy_tenant_id")
+  back_ApprovalRequest_tenant_id ApprovalRequest[] @relation("ApprovalRequest_tenant_id")
+  back_Customer_tenant_id Customer[] @relation("Customer_tenant_id")
+  back_CustomerAddress_tenant_id CustomerAddress[] @relation("CustomerAddress_tenant_id")
+  back_CustomerConsent_tenant_id CustomerConsent[] @relation("CustomerConsent_tenant_id")
+  back_CustomerSegment_tenant_id CustomerSegment[] @relation("CustomerSegment_tenant_id")
+  back_CustomerSegmentMember_tenant_id CustomerSegmentMember[] @relation("CustomerSegmentMember_tenant_id")
+  back_CustomerCreditAccount_tenant_id CustomerCreditAccount[] @relation("CustomerCreditAccount_tenant_id")
+  back_Product_tenant_id Product[] @relation("Product_tenant_id")
+  back_ProductVariant_tenant_id ProductVariant[] @relation("ProductVariant_tenant_id")
+  back_Category_tenant_id Category[] @relation("Category_tenant_id")
+  back_ProductCategory_tenant_id ProductCategory[] @relation("ProductCategory_tenant_id")
+  back_Brand_tenant_id Brand[] @relation("Brand_tenant_id")
+  back_UnitOfMeasure_tenant_id UnitOfMeasure[] @relation("UnitOfMeasure_tenant_id")
+  back_ProductAttribute_tenant_id ProductAttribute[] @relation("ProductAttribute_tenant_id")
+  back_VariantAttributeValue_tenant_id VariantAttributeValue[] @relation("VariantAttributeValue_tenant_id")
+  back_ProductMedia_tenant_id ProductMedia[] @relation("ProductMedia_tenant_id")
+  back_PriceList_tenant_id PriceList[] @relation("PriceList_tenant_id")
+  back_PriceListItem_tenant_id PriceListItem[] @relation("PriceListItem_tenant_id")
+  back_Supplier_tenant_id Supplier[] @relation("Supplier_tenant_id")
+  back_SupplierProduct_tenant_id SupplierProduct[] @relation("SupplierProduct_tenant_id")
+  back_PurchaseOrder_tenant_id PurchaseOrder[] @relation("PurchaseOrder_tenant_id")
+  back_PurchaseOrderItem_tenant_id PurchaseOrderItem[] @relation("PurchaseOrderItem_tenant_id")
+  back_GoodsReceipt_tenant_id GoodsReceipt[] @relation("GoodsReceipt_tenant_id")
+  back_GoodsReceiptItem_tenant_id GoodsReceiptItem[] @relation("GoodsReceiptItem_tenant_id")
+  back_SupplierInvoice_tenant_id SupplierInvoice[] @relation("SupplierInvoice_tenant_id")
+  back_SupplierInvoiceItem_tenant_id SupplierInvoiceItem[] @relation("SupplierInvoiceItem_tenant_id")
+  back_InventoryBalance_tenant_id InventoryBalance[] @relation("InventoryBalance_tenant_id")
+  back_StockMovement_tenant_id StockMovement[] @relation("StockMovement_tenant_id")
+  back_StockReservation_tenant_id StockReservation[] @relation("StockReservation_tenant_id")
+  back_InventoryLot_tenant_id InventoryLot[] @relation("InventoryLot_tenant_id")
+  back_SerializedItem_tenant_id SerializedItem[] @relation("SerializedItem_tenant_id")
+  back_StockTransfer_tenant_id StockTransfer[] @relation("StockTransfer_tenant_id")
+  back_StockTransferItem_tenant_id StockTransferItem[] @relation("StockTransferItem_tenant_id")
+  back_StockCount_tenant_id StockCount[] @relation("StockCount_tenant_id")
+  back_StockCountItem_tenant_id StockCountItem[] @relation("StockCountItem_tenant_id")
+  back_ReorderPolicy_tenant_id ReorderPolicy[] @relation("ReorderPolicy_tenant_id")
+  back_Cart_tenant_id Cart[] @relation("Cart_tenant_id")
+  back_CartItem_tenant_id CartItem[] @relation("CartItem_tenant_id")
+  back_Order_tenant_id Order[] @relation("Order_tenant_id")
+  back_OrderItem_tenant_id OrderItem[] @relation("OrderItem_tenant_id")
+  back_OrderAddress_tenant_id OrderAddress[] @relation("OrderAddress_tenant_id")
+  back_OrderStatusEvent_tenant_id OrderStatusEvent[] @relation("OrderStatusEvent_tenant_id")
+  back_TaxRate_tenant_id TaxRate[] @relation("TaxRate_tenant_id")
+  back_OrderItemTax_tenant_id OrderItemTax[] @relation("OrderItemTax_tenant_id")
+  back_Promotion_tenant_id Promotion[] @relation("Promotion_tenant_id")
+  back_Coupon_tenant_id Coupon[] @relation("Coupon_tenant_id")
+  back_PromotionRedemption_tenant_id PromotionRedemption[] @relation("PromotionRedemption_tenant_id")
+  back_SalesInvoice_tenant_id SalesInvoice[] @relation("SalesInvoice_tenant_id")
+  back_PaymentMethod_tenant_id PaymentMethod[] @relation("PaymentMethod_tenant_id")
+  back_PaymentProviderAccount_tenant_id PaymentProviderAccount[] @relation("PaymentProviderAccount_tenant_id")
+  back_Payment_tenant_id Payment[] @relation("Payment_tenant_id")
+  back_PaymentAttempt_tenant_id PaymentAttempt[] @relation("PaymentAttempt_tenant_id")
+  back_PaymentEvent_tenant_id PaymentEvent[] @relation("PaymentEvent_tenant_id")
+  back_PaymentAllocation_tenant_id PaymentAllocation[] @relation("PaymentAllocation_tenant_id")
+  back_PaymentWebhookEvent_tenant_id PaymentWebhookEvent[] @relation("PaymentWebhookEvent_tenant_id")
+  back_Refund_tenant_id Refund[] @relation("Refund_tenant_id")
+  back_PaymentDispute_tenant_id PaymentDispute[] @relation("PaymentDispute_tenant_id")
+  back_PaymentSettlement_tenant_id PaymentSettlement[] @relation("PaymentSettlement_tenant_id")
+  back_PosTerminal_tenant_id PosTerminal[] @relation("PosTerminal_tenant_id")
+  back_CashDrawer_tenant_id CashDrawer[] @relation("CashDrawer_tenant_id")
+  back_CashSession_tenant_id CashSession[] @relation("CashSession_tenant_id")
+  back_CashMovement_tenant_id CashMovement[] @relation("CashMovement_tenant_id")
+  back_CashCount_tenant_id CashCount[] @relation("CashCount_tenant_id")
+  back_CashDeposit_tenant_id CashDeposit[] @relation("CashDeposit_tenant_id")
+  back_CodCollection_tenant_id CodCollection[] @relation("CodCollection_tenant_id")
+  back_CodRemittance_tenant_id CodRemittance[] @relation("CodRemittance_tenant_id")
+  back_LedgerAccount_tenant_id LedgerAccount[] @relation("LedgerAccount_tenant_id")
+  back_FiscalPeriod_tenant_id FiscalPeriod[] @relation("FiscalPeriod_tenant_id")
+  back_JournalEntry_tenant_id JournalEntry[] @relation("JournalEntry_tenant_id")
+  back_JournalLine_tenant_id JournalLine[] @relation("JournalLine_tenant_id")
+  back_BankAccount_tenant_id BankAccount[] @relation("BankAccount_tenant_id")
+  back_BankStatementLine_tenant_id BankStatementLine[] @relation("BankStatementLine_tenant_id")
+  back_ReconciliationMatch_tenant_id ReconciliationMatch[] @relation("ReconciliationMatch_tenant_id")
+  back_Expense_tenant_id Expense[] @relation("Expense_tenant_id")
+  back_SupplierPayment_tenant_id SupplierPayment[] @relation("SupplierPayment_tenant_id")
+  back_SupplierPaymentAllocation_tenant_id SupplierPaymentAllocation[] @relation("SupplierPaymentAllocation_tenant_id")
+  back_Carrier_tenant_id Carrier[] @relation("Carrier_tenant_id")
+  back_Shipment_tenant_id Shipment[] @relation("Shipment_tenant_id")
+  back_ShipmentItem_tenant_id ShipmentItem[] @relation("ShipmentItem_tenant_id")
+  back_ShipmentEvent_tenant_id ShipmentEvent[] @relation("ShipmentEvent_tenant_id")
+  back_DeliveryProof_tenant_id DeliveryProof[] @relation("DeliveryProof_tenant_id")
+  back_ReturnPolicy_tenant_id ReturnPolicy[] @relation("ReturnPolicy_tenant_id")
+  back_ReturnRequest_tenant_id ReturnRequest[] @relation("ReturnRequest_tenant_id")
+  back_ReturnItem_tenant_id ReturnItem[] @relation("ReturnItem_tenant_id")
+  back_ReturnInspection_tenant_id ReturnInspection[] @relation("ReturnInspection_tenant_id")
+  back_ReplacementLink_tenant_id ReplacementLink[] @relation("ReplacementLink_tenant_id")
+  back_NotificationTemplate_tenant_id NotificationTemplate[] @relation("NotificationTemplate_tenant_id")
+  back_Notification_tenant_id Notification[] @relation("Notification_tenant_id")
+  back_NotificationAttempt_tenant_id NotificationAttempt[] @relation("NotificationAttempt_tenant_id")
+  back_NotificationPreference_tenant_id NotificationPreference[] @relation("NotificationPreference_tenant_id")
+  back_SupportTicket_tenant_id SupportTicket[] @relation("SupportTicket_tenant_id")
+  back_SupportMessage_tenant_id SupportMessage[] @relation("SupportMessage_tenant_id")
+  back_AnalyticsJob_tenant_id AnalyticsJob[] @relation("AnalyticsJob_tenant_id")
+  back_ModelVersion_tenant_id ModelVersion[] @relation("ModelVersion_tenant_id")
+  back_DemandForecast_tenant_id DemandForecast[] @relation("DemandForecast_tenant_id")
+  back_BusinessInsight_tenant_id BusinessInsight[] @relation("BusinessInsight_tenant_id")
+  back_RecommendationDecision_tenant_id RecommendationDecision[] @relation("RecommendationDecision_tenant_id")
+  back_ReportJob_tenant_id ReportJob[] @relation("ReportJob_tenant_id")
+  back_AuditEvent_tenant_id AuditEvent[] @relation("AuditEvent_tenant_id")
+  back_SecurityEvent_tenant_id SecurityEvent[] @relation("SecurityEvent_tenant_id")
+  back_FileObject_tenant_id FileObject[] @relation("FileObject_tenant_id")
+  back_IdempotencyRecord_tenant_id IdempotencyRecord[] @relation("IdempotencyRecord_tenant_id")
+  back_OutboxEvent_tenant_id OutboxEvent[] @relation("OutboxEvent_tenant_id")
+  back_IntegrationConnection_tenant_id IntegrationConnection[] @relation("IntegrationConnection_tenant_id")
+  back_SellerCompany_tenant_id SellerCompany? @relation("SellerCompany_tenant_id")
+  back_CompanyOwnership_tenant_id CompanyOwnership[] @relation("CompanyOwnership_tenant_id")
+  back_CompanyVerification_tenant_id CompanyVerification[] @relation("CompanyVerification_tenant_id")
+  back_CompanyContact_tenant_id CompanyContact[] @relation("CompanyContact_tenant_id")
+  back_SellerAgreement_tenant_id SellerAgreement[] @relation("SellerAgreement_tenant_id")
+  back_SellerPayoutAccount_tenant_id SellerPayoutAccount[] @relation("SellerPayoutAccount_tenant_id")
+  back_MarketplaceListing_tenant_id MarketplaceListing[] @relation("MarketplaceListing_tenant_id")
+  back_CommissionRule_tenant_id CommissionRule[] @relation("CommissionRule_tenant_id")
+  back_SellerEarning_tenant_id SellerEarning[] @relation("SellerEarning_tenant_id")
+  back_SellerPayout_tenant_id SellerPayout[] @relation("SellerPayout_tenant_id")
+  back_SellerPayoutItem_tenant_id SellerPayoutItem[] @relation("SellerPayoutItem_tenant_id")
+  back_ApprovalStep_tenant_id ApprovalStep[] @relation("ApprovalStep_tenant_id")
+  back_ApprovalDecision_tenant_id ApprovalDecision[] @relation("ApprovalDecision_tenant_id")
+  back_PaymentSettlementItem_tenant_id PaymentSettlementItem[] @relation("PaymentSettlementItem_tenant_id")
+  back_RefundAttempt_tenant_id RefundAttempt[] @relation("RefundAttempt_tenant_id")
+  back_RefundAllocation_tenant_id RefundAllocation[] @relation("RefundAllocation_tenant_id")
+  back_DailySalesSnapshot_tenant_id DailySalesSnapshot[] @relation("DailySalesSnapshot_tenant_id")
+  back_InventoryCostLayer_tenant_id InventoryCostLayer[] @relation("InventoryCostLayer_tenant_id")
+  back_InventoryCostAllocation_tenant_id InventoryCostAllocation[] @relation("InventoryCostAllocation_tenant_id")
+  @@unique([slug])
+  @@map("tenant")
+  @@schema("commerce")
+}
+
+model TenantSetting {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  key String
+  value_json Json @db.JsonB
+  config_version Int @default(1)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("TenantSetting_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_tenant_setting_tenant_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, key])
+  @@map("tenant_setting")
+  @@schema("commerce")
+}
+
+model Branch {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  address_id String @db.Uuid
+  code String
+  name String
+  timezone String
+  phone String?
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Branch_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_branch_tenant_id")
+  ref_address_id Address @relation("Branch_address_id", fields: [tenant_id, address_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_branch_address_id")
+  back_Department_branch_id Department[] @relation("Department_branch_id")
+  back_Location_branch_id Location[] @relation("Location_branch_id")
+  back_DocumentSequence_branch_id DocumentSequence[] @relation("DocumentSequence_branch_id")
+  back_AccessScope_branch_id AccessScope[] @relation("AccessScope_branch_id")
+  back_EmployeeBranchAssignment_branch_id EmployeeBranchAssignment[] @relation("EmployeeBranchAssignment_branch_id")
+  back_WorkShift_branch_id WorkShift[] @relation("WorkShift_branch_id")
+  back_Task_branch_id Task[] @relation("Task_branch_id")
+  back_PriceList_branch_id PriceList[] @relation("PriceList_branch_id")
+  back_Cart_branch_id Cart[] @relation("Cart_branch_id")
+  back_Order_branch_id Order[] @relation("Order_branch_id")
+  back_PosTerminal_branch_id PosTerminal[] @relation("PosTerminal_branch_id")
+  back_CashDrawer_branch_id CashDrawer[] @relation("CashDrawer_branch_id")
+  back_CashDeposit_branch_id CashDeposit[] @relation("CashDeposit_branch_id")
+  back_JournalLine_branch_id JournalLine[] @relation("JournalLine_branch_id")
+  back_Expense_branch_id Expense[] @relation("Expense_branch_id")
+  back_BusinessInsight_branch_id BusinessInsight[] @relation("BusinessInsight_branch_id")
+  back_DailySalesSnapshot_branch_id DailySalesSnapshot[] @relation("DailySalesSnapshot_branch_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, code])
+  @@map("branch")
+  @@schema("commerce")
+}
+
+model Department {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String? @db.Uuid
+  parent_id String? @db.Uuid
+  name String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Department_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_department_tenant_id")
+  ref_branch_id Branch? @relation("Department_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_department_branch_id")
+  ref_parent_id Department? @relation("Department_parent_id", fields: [tenant_id, parent_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_department_parent_id")
+  back_Department_parent_id Department[] @relation("Department_parent_id")
+  back_AccessScope_department_id AccessScope[] @relation("AccessScope_department_id")
+  back_EmployeeProfile_department_id EmployeeProfile[] @relation("EmployeeProfile_department_id")
+  @@unique([tenant_id, id])
+  @@map("department")
+  @@schema("commerce")
+}
+
+model Location {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String @db.Uuid
+  parent_id String? @db.Uuid
+  type String
+  code String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Location_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_location_tenant_id")
+  ref_branch_id Branch @relation("Location_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_location_branch_id")
+  ref_parent_id Location? @relation("Location_parent_id", fields: [tenant_id, parent_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_location_parent_id")
+  back_Location_parent_id Location[] @relation("Location_parent_id")
+  back_AccessScope_location_id AccessScope[] @relation("AccessScope_location_id")
+  back_PurchaseOrder_destination_id PurchaseOrder[] @relation("PurchaseOrder_destination_id")
+  back_GoodsReceipt_location_id GoodsReceipt[] @relation("GoodsReceipt_location_id")
+  back_InventoryBalance_location_id InventoryBalance[] @relation("InventoryBalance_location_id")
+  back_StockMovement_location_id StockMovement[] @relation("StockMovement_location_id")
+  back_StockReservation_location_id StockReservation[] @relation("StockReservation_location_id")
+  back_SerializedItem_location_id SerializedItem[] @relation("SerializedItem_location_id")
+  back_StockTransfer_from_location_id StockTransfer[] @relation("StockTransfer_from_location_id")
+  back_StockTransfer_to_location_id StockTransfer[] @relation("StockTransfer_to_location_id")
+  back_StockCount_location_id StockCount[] @relation("StockCount_location_id")
+  back_ReorderPolicy_location_id ReorderPolicy[] @relation("ReorderPolicy_location_id")
+  back_Shipment_origin_id Shipment[] @relation("Shipment_origin_id")
+  back_ReturnInspection_location_id ReturnInspection[] @relation("ReturnInspection_location_id")
+  back_DemandForecast_location_id DemandForecast[] @relation("DemandForecast_location_id")
+  back_InventoryCostLayer_location_id InventoryCostLayer[] @relation("InventoryCostLayer_location_id")
+  @@unique([tenant_id, id])
+  @@map("location")
+  @@schema("commerce")
+}
+
+model Address {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  line1 String
+  city String
+  country String
+  line2 String?
+  region String?
+  postal_code String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Address_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_address_tenant_id")
+  back_Branch_address_id Branch[] @relation("Branch_address_id")
+  back_CustomerAddress_address_id CustomerAddress[] @relation("CustomerAddress_address_id")
+  back_Supplier_address_id Supplier[] @relation("Supplier_address_id")
+  @@unique([tenant_id, id])
+  @@map("address")
+  @@schema("commerce")
+}
+
+model BusinessRegistration {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  file_id String? @db.Uuid
+  type String
+  identifier String
+  expires_at DateTime @db.Timestamptz(6)
+  issuing_country String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("BusinessRegistration_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_business_registration_tenant_id")
+  ref_file_id FileObject? @relation("BusinessRegistration_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_business_registration_file_id")
+  @@unique([tenant_id, id])
+  @@map("business_registration")
+  @@schema("commerce")
+}
+
+model DocumentSequence {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String? @db.Uuid
+  document_type String
+  period String
+  next_number BigInt
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("DocumentSequence_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_document_sequence_tenant_id")
+  ref_branch_id Branch? @relation("DocumentSequence_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_document_sequence_branch_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, branch_id, document_type, period])
+  @@map("document_sequence")
+  @@schema("commerce")
+}

@@ -1,0 +1,184 @@
+// Cash POS and COD models.
+
+model PosTerminal {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String @db.Uuid
+  device_identifier String
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PosTerminal_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_pos_terminal_tenant_id")
+  ref_branch_id Branch @relation("PosTerminal_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_pos_terminal_branch_id")
+  back_CashDrawer_terminal_id CashDrawer[] @relation("CashDrawer_terminal_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, device_identifier])
+  @@map("pos_terminal")
+  @@schema("commerce")
+}
+
+model CashDrawer {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String @db.Uuid
+  terminal_id String? @db.Uuid
+  currency String @db.VarChar(3)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CashDrawer_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_drawer_tenant_id")
+  ref_branch_id Branch @relation("CashDrawer_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_drawer_branch_id")
+  ref_terminal_id PosTerminal? @relation("CashDrawer_terminal_id", fields: [tenant_id, terminal_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_drawer_terminal_id")
+  back_CashSession_drawer_id CashSession[] @relation("CashSession_drawer_id")
+  @@unique([tenant_id, id])
+  @@map("cash_drawer")
+  @@schema("commerce")
+}
+
+model CashSession {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  drawer_id String @db.Uuid
+  cashier_id String @db.Uuid
+  opening_float Decimal @db.Decimal(20,4)
+  expected_cash Decimal? @db.Decimal(20,4)
+  counted_cash Decimal? @db.Decimal(20,4)
+  variance Decimal? @db.Decimal(20,4)
+  status CASH_SESSION_STATUS @default(OPEN)
+  opened_at DateTime @db.Timestamptz(6)
+  closed_at DateTime? @db.Timestamptz(6)
+  audited_by String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CashSession_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_session_tenant_id")
+  ref_drawer_id CashDrawer @relation("CashSession_drawer_id", fields: [tenant_id, drawer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_session_drawer_id")
+  ref_cashier_id TenantMembership @relation("CashSession_cashier_id", fields: [tenant_id, cashier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_session_cashier_id")
+  ref_audited_by TenantMembership? @relation("CashSession_audited_by", fields: [tenant_id, audited_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_session_audited_by")
+  back_CashMovement_session_id CashMovement[] @relation("CashMovement_session_id")
+  back_CashCount_session_id CashCount[] @relation("CashCount_session_id")
+  back_CashDeposit_session_id CashDeposit[] @relation("CashDeposit_session_id")
+  back_SupplierPayment_cash_session_id SupplierPayment[] @relation("SupplierPayment_cash_session_id")
+  @@unique([tenant_id, id])
+  @@map("cash_session")
+  @@schema("commerce")
+}
+
+model CashMovement {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  session_id String @db.Uuid
+  payment_id String? @db.Uuid
+  refund_id String? @db.Uuid
+  type CASH_MOVEMENT_TYPE
+  amount Decimal @db.Decimal(20,4)
+  tendered_cash Decimal? @db.Decimal(20,4)
+  change_given Decimal? @db.Decimal(20,4)
+  reason String?
+  actor_id String @db.Uuid
+  occurred_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CashMovement_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_movement_tenant_id")
+  ref_session_id CashSession @relation("CashMovement_session_id", fields: [tenant_id, session_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_movement_session_id")
+  ref_payment_id Payment? @relation("CashMovement_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_movement_payment_id")
+  ref_refund_id Refund? @relation("CashMovement_refund_id", fields: [tenant_id, refund_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_movement_refund_id")
+  ref_actor_id TenantMembership @relation("CashMovement_actor_id", fields: [tenant_id, actor_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_movement_actor_id")
+  @@unique([tenant_id, id])
+  @@map("cash_movement")
+  @@schema("commerce")
+}
+
+model CashCount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  session_id String @db.Uuid
+  denomination Decimal @db.Decimal(20,4)
+  quantity Decimal @db.Decimal(20,6)
+  count_stage String
+  counted_at DateTime @db.Timestamptz(6)
+  counted_by String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CashCount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_count_tenant_id")
+  ref_session_id CashSession @relation("CashCount_session_id", fields: [tenant_id, session_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_count_session_id")
+  ref_counted_by TenantMembership @relation("CashCount_counted_by", fields: [tenant_id, counted_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_count_counted_by")
+  @@unique([tenant_id, id])
+  @@map("cash_count")
+  @@schema("commerce")
+}
+
+model CashDeposit {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String @db.Uuid
+  session_id String? @db.Uuid
+  bank_account_id String @db.Uuid
+  amount Decimal @db.Decimal(20,4)
+  currency String @db.VarChar(3)
+  status String
+  deposit_reference String
+  deposited_at DateTime? @db.Timestamptz(6)
+  verified_by String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CashDeposit_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_deposit_tenant_id")
+  ref_branch_id Branch @relation("CashDeposit_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_deposit_branch_id")
+  ref_session_id CashSession? @relation("CashDeposit_session_id", fields: [tenant_id, session_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_deposit_session_id")
+  ref_bank_account_id BankAccount @relation("CashDeposit_bank_account_id", fields: [tenant_id, bank_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_deposit_bank_account_id")
+  ref_verified_by TenantMembership? @relation("CashDeposit_verified_by", fields: [tenant_id, verified_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cash_deposit_verified_by")
+  @@unique([tenant_id, id])
+  @@map("cash_deposit")
+  @@schema("commerce")
+}
+
+model CodCollection {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  shipment_id String @db.Uuid
+  payment_id String? @db.Uuid
+  collector_reference String
+  amount_due Decimal @db.Decimal(20,4)
+  amount_collected Decimal @db.Decimal(20,4)
+  status String
+  currency String @db.VarChar(3)
+  collected_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CodCollection_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_collection_tenant_id")
+  ref_shipment_id Shipment @relation("CodCollection_shipment_id", fields: [tenant_id, shipment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_collection_shipment_id")
+  ref_payment_id Payment? @relation("CodCollection_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_collection_payment_id")
+  back_CodRemittance_collection_id CodRemittance[] @relation("CodRemittance_collection_id")
+  @@unique([tenant_id, id])
+  @@map("cod_collection")
+  @@schema("commerce")
+}
+
+model CodRemittance {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  collection_id String @db.Uuid
+  carrier_id String @db.Uuid
+  gross_amount Decimal @db.Decimal(20,4) @default(0)
+  fee_amount Decimal @db.Decimal(20,4) @default(0)
+  net_amount Decimal @db.Decimal(20,4)
+  status String
+  currency String @db.VarChar(3)
+  received_at DateTime? @db.Timestamptz(6)
+  settlement_reference String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CodRemittance_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_remittance_tenant_id")
+  ref_collection_id CodCollection @relation("CodRemittance_collection_id", fields: [tenant_id, collection_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_remittance_collection_id")
+  ref_carrier_id Carrier @relation("CodRemittance_carrier_id", fields: [tenant_id, carrier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cod_remittance_carrier_id")
+  @@unique([tenant_id, id])
+  @@map("cod_remittance")
+  @@schema("commerce")
+}

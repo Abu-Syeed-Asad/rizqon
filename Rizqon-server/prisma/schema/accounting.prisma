@@ -1,0 +1,227 @@
+// Accounting models.
+
+model LedgerAccount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  parent_id String? @db.Uuid
+  code String
+  name String
+  type LEDGER_ACCOUNT_TYPE
+  currency String? @db.VarChar(3)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("LedgerAccount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_ledger_account_tenant_id")
+  ref_parent_id LedgerAccount? @relation("LedgerAccount_parent_id", fields: [tenant_id, parent_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_ledger_account_parent_id")
+  back_LedgerAccount_parent_id LedgerAccount[] @relation("LedgerAccount_parent_id")
+  back_JournalLine_account_id JournalLine[] @relation("JournalLine_account_id")
+  back_BankAccount_ledger_account_id BankAccount[] @relation("BankAccount_ledger_account_id")
+  back_Expense_account_id Expense[] @relation("Expense_account_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, code])
+  @@map("ledger_account")
+  @@schema("commerce")
+}
+
+model FiscalPeriod {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  starts_on DateTime @db.Date
+  ends_on DateTime @db.Date
+  status String
+  closed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("FiscalPeriod_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_fiscal_period_tenant_id")
+  back_JournalEntry_period_id JournalEntry[] @relation("JournalEntry_period_id")
+  @@unique([tenant_id, id])
+  @@map("fiscal_period")
+  @@schema("commerce")
+}
+
+model JournalEntry {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  period_id String @db.Uuid
+  reversal_of_id String? @db.Uuid
+  number String
+  effective_date DateTime @db.Date
+  source_type String
+  source_id String
+  status JOURNAL_STATUS @default(DRAFT)
+  posted_by String? @db.Uuid
+  posted_at DateTime? @db.Timestamptz(6)
+  description String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("JournalEntry_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_entry_tenant_id")
+  ref_period_id FiscalPeriod @relation("JournalEntry_period_id", fields: [tenant_id, period_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_entry_period_id")
+  ref_reversal_of_id JournalEntry? @relation("JournalEntry_reversal_of_id", fields: [tenant_id, reversal_of_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_entry_reversal_of_id")
+  ref_posted_by TenantMembership? @relation("JournalEntry_posted_by", fields: [tenant_id, posted_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_entry_posted_by")
+  back_JournalEntry_reversal_of_id JournalEntry[] @relation("JournalEntry_reversal_of_id")
+  back_JournalLine_entry_id JournalLine[] @relation("JournalLine_entry_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, number])
+  @@map("journal_entry")
+  @@schema("commerce")
+}
+
+model JournalLine {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  entry_id String @db.Uuid
+  account_id String @db.Uuid
+  branch_id String? @db.Uuid
+  debit Decimal @db.Decimal(20,4) @default(0)
+  credit Decimal @db.Decimal(20,4) @default(0)
+  currency String @db.VarChar(3)
+  description String?
+  functional_currency String @db.VarChar(3)
+  functional_debit Decimal @db.Decimal(20,4) @default(0)
+  functional_credit Decimal @db.Decimal(20,4) @default(0)
+  exchange_rate Decimal @db.Decimal(24,12)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("JournalLine_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_line_tenant_id")
+  ref_entry_id JournalEntry @relation("JournalLine_entry_id", fields: [tenant_id, entry_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_line_entry_id")
+  ref_account_id LedgerAccount @relation("JournalLine_account_id", fields: [tenant_id, account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_line_account_id")
+  ref_branch_id Branch? @relation("JournalLine_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_journal_line_branch_id")
+  back_ReconciliationMatch_journal_line_id ReconciliationMatch[] @relation("ReconciliationMatch_journal_line_id")
+  @@unique([tenant_id, id])
+  @@map("journal_line")
+  @@schema("commerce")
+}
+
+model BankAccount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  ledger_account_id String @db.Uuid
+  masked_number String
+  currency String @db.VarChar(3)
+  status String
+  institution_name String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("BankAccount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_bank_account_tenant_id")
+  ref_ledger_account_id LedgerAccount @relation("BankAccount_ledger_account_id", fields: [tenant_id, ledger_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_bank_account_ledger_account_id")
+  back_CashDeposit_bank_account_id CashDeposit[] @relation("CashDeposit_bank_account_id")
+  back_BankStatementLine_bank_account_id BankStatementLine[] @relation("BankStatementLine_bank_account_id")
+  back_SupplierPayment_bank_account_id SupplierPayment[] @relation("SupplierPayment_bank_account_id")
+  @@unique([tenant_id, id])
+  @@map("bank_account")
+  @@schema("commerce")
+}
+
+model BankStatementLine {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  bank_account_id String @db.Uuid
+  external_reference String
+  transaction_date DateTime @db.Date
+  amount Decimal @db.Decimal(20,4)
+  description String?
+  import_batch_reference String
+  currency String @db.VarChar(3)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("BankStatementLine_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_bank_statement_line_tenant_id")
+  ref_bank_account_id BankAccount @relation("BankStatementLine_bank_account_id", fields: [tenant_id, bank_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_bank_statement_line_bank_account_id")
+  back_ReconciliationMatch_statement_line_id ReconciliationMatch[] @relation("ReconciliationMatch_statement_line_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, bank_account_id, external_reference])
+  @@map("bank_statement_line")
+  @@schema("commerce")
+}
+
+model ReconciliationMatch {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  statement_line_id String @db.Uuid
+  journal_line_id String @db.Uuid
+  matched_amount Decimal @db.Decimal(20,4)
+  matched_at DateTime @db.Timestamptz(6)
+  matched_by String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReconciliationMatch_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reconciliation_match_tenant_id")
+  ref_statement_line_id BankStatementLine @relation("ReconciliationMatch_statement_line_id", fields: [tenant_id, statement_line_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reconciliation_match_statement_line_id")
+  ref_journal_line_id JournalLine @relation("ReconciliationMatch_journal_line_id", fields: [tenant_id, journal_line_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reconciliation_match_journal_line_id")
+  ref_matched_by TenantMembership @relation("ReconciliationMatch_matched_by", fields: [tenant_id, matched_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reconciliation_match_matched_by")
+  @@unique([tenant_id, id])
+  @@map("reconciliation_match")
+  @@schema("commerce")
+}
+
+model Expense {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String? @db.Uuid
+  supplier_id String? @db.Uuid
+  account_id String @db.Uuid
+  file_id String? @db.Uuid
+  amount Decimal @db.Decimal(20,4)
+  tax_amount Decimal @db.Decimal(20,4) @default(0)
+  currency String @db.VarChar(3)
+  status String
+  incurred_at DateTime @db.Timestamptz(6)
+  description String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Expense_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_expense_tenant_id")
+  ref_branch_id Branch? @relation("Expense_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_expense_branch_id")
+  ref_supplier_id Supplier? @relation("Expense_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_expense_supplier_id")
+  ref_account_id LedgerAccount @relation("Expense_account_id", fields: [tenant_id, account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_expense_account_id")
+  ref_file_id FileObject? @relation("Expense_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_expense_file_id")
+  @@unique([tenant_id, id])
+  @@map("expense")
+  @@schema("commerce")
+}
+
+model SupplierPayment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  supplier_id String @db.Uuid
+  bank_account_id String? @db.Uuid
+  cash_session_id String? @db.Uuid
+  amount Decimal @db.Decimal(20,4)
+  currency String @db.VarChar(3)
+  status String
+  reference String?
+  paid_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupplierPayment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_tenant_id")
+  ref_supplier_id Supplier @relation("SupplierPayment_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_supplier_id")
+  ref_bank_account_id BankAccount? @relation("SupplierPayment_bank_account_id", fields: [tenant_id, bank_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_bank_account_id")
+  ref_cash_session_id CashSession? @relation("SupplierPayment_cash_session_id", fields: [tenant_id, cash_session_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_cash_session_id")
+  back_SupplierPaymentAllocation_payment_id SupplierPaymentAllocation[] @relation("SupplierPaymentAllocation_payment_id")
+  @@unique([tenant_id, id])
+  @@map("supplier_payment")
+  @@schema("commerce")
+}
+
+model SupplierPaymentAllocation {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  payment_id String @db.Uuid
+  invoice_id String @db.Uuid
+  allocated_amount Decimal @db.Decimal(20,4)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupplierPaymentAllocation_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_allocation_tenant_id")
+  ref_payment_id SupplierPayment @relation("SupplierPaymentAllocation_payment_id", fields: [tenant_id, payment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_allocation_payment_id")
+  ref_invoice_id SupplierInvoice @relation("SupplierPaymentAllocation_invoice_id", fields: [tenant_id, invoice_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_supplier_payment_allocation_invoice_id")
+  @@unique([tenant_id, id])
+  @@map("supplier_payment_allocation")
+  @@schema("commerce")
+}

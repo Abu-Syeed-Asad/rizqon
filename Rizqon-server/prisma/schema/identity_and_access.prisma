@@ -1,0 +1,316 @@
+// Identity and access models.
+
+model User {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email String
+  phone String?
+  name String @map("display_name")
+  status String @default("ACTIVE")
+  email_verified_at DateTime? @db.Timestamptz(6)
+  phone_verified_at DateTime? @db.Timestamptz(6)
+  last_login_at DateTime? @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  row_version Int @default(1)
+  emailVerified Boolean @default(false) @map("email_verified")
+  image String?
+  accounts Account[]
+  sessions Session[]
+  back_AuthIdentity_user_id AuthIdentity[] @relation("AuthIdentity_user_id")
+  back_Session_user_id LegacySession[] @relation("Session_user_id")
+  back_MfaFactor_user_id MfaFactor[] @relation("MfaFactor_user_id")
+  back_AuthChallenge_user_id AuthChallenge[] @relation("AuthChallenge_user_id")
+  back_TenantMembership_user_id TenantMembership[] @relation("TenantMembership_user_id")
+  back_Customer_linked_user_id Customer[] @relation("Customer_linked_user_id")
+  back_AuditEvent_actor_id AuditEvent[] @relation("AuditEvent_actor_id")
+  back_SecurityEvent_user_id SecurityEvent[] @relation("SecurityEvent_user_id")
+  back_FileObject_uploaded_by FileObject[] @relation("FileObject_uploaded_by")
+  back_CompanyOwnership_user_id CompanyOwnership[] @relation("CompanyOwnership_user_id")
+  back_CompanyVerification_reviewer_id CompanyVerification[] @relation("CompanyVerification_reviewer_id")
+  back_CompanyContact_user_id CompanyContact[] @relation("CompanyContact_user_id")
+  back_SellerAgreement_accepted_by SellerAgreement[] @relation("SellerAgreement_accepted_by")
+  back_CheckoutGroup_buyer_user_id CheckoutGroup[] @relation("CheckoutGroup_buyer_user_id")
+  @@unique([email])
+  @@unique([phone])
+  @@map("user")
+  @@schema("commerce")
+}
+
+model AuthIdentity {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id String @db.Uuid
+  provider String
+  provider_subject String
+  password_hash String?
+  last_authenticated_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_user_id User @relation("AuthIdentity_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_auth_identity_user_id")
+  @@unique([provider, provider_subject])
+  @@map("auth_identity")
+  @@schema("commerce")
+}
+
+model LegacySession {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id String @db.Uuid
+  token_hash String
+  expires_at DateTime @db.Timestamptz(6)
+  revoked_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_user_id User @relation("Session_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_session_user_id")
+  @@unique([token_hash])
+  @@map("session")
+  @@schema("commerce")
+}
+
+model MfaFactor {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id String @db.Uuid
+  type String
+  encrypted_secret String?
+  verified_at DateTime @db.Timestamptz(6)
+  public_key String?
+  last_used_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_user_id User @relation("MfaFactor_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_mfa_factor_user_id")
+  @@map("mfa_factor")
+  @@schema("commerce")
+}
+
+model AuthChallenge {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id String? @db.Uuid
+  purpose String
+  token_hash String
+  expires_at DateTime @db.Timestamptz(6)
+  consumed_at DateTime? @db.Timestamptz(6)
+  attempt_count Int @default(0)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_user_id User? @relation("AuthChallenge_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_auth_challenge_user_id")
+  @@unique([token_hash])
+  @@map("auth_challenge")
+  @@schema("commerce")
+}
+
+model TenantMembership {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  user_id String @db.Uuid
+  status String
+  employee_code String?
+  joined_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("TenantMembership_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_tenant_membership_tenant_id")
+  ref_user_id User @relation("TenantMembership_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_tenant_membership_user_id")
+  back_RoleAssignment_membership_id RoleAssignment[] @relation("RoleAssignment_membership_id")
+  back_EmployeeProfile_membership_id EmployeeProfile? @relation("EmployeeProfile_membership_id")
+  back_Task_assignee_id Task[] @relation("Task_assignee_id")
+  back_ApprovalRequest_requested_by ApprovalRequest[] @relation("ApprovalRequest_requested_by")
+  back_PurchaseOrder_approved_by PurchaseOrder[] @relation("PurchaseOrder_approved_by")
+  back_GoodsReceipt_received_by GoodsReceipt[] @relation("GoodsReceipt_received_by")
+  back_StockMovement_performed_by StockMovement[] @relation("StockMovement_performed_by")
+  back_StockCount_counted_by StockCount[] @relation("StockCount_counted_by")
+  back_StockCount_approved_by StockCount[] @relation("StockCount_approved_by")
+  back_Order_seller_id Order[] @relation("Order_seller_id")
+  back_OrderStatusEvent_actor_id OrderStatusEvent[] @relation("OrderStatusEvent_actor_id")
+  back_Refund_approved_by Refund[] @relation("Refund_approved_by")
+  back_CashSession_cashier_id CashSession[] @relation("CashSession_cashier_id")
+  back_CashSession_audited_by CashSession[] @relation("CashSession_audited_by")
+  back_CashMovement_actor_id CashMovement[] @relation("CashMovement_actor_id")
+  back_CashCount_counted_by CashCount[] @relation("CashCount_counted_by")
+  back_CashDeposit_verified_by CashDeposit[] @relation("CashDeposit_verified_by")
+  back_JournalEntry_posted_by JournalEntry[] @relation("JournalEntry_posted_by")
+  back_ReconciliationMatch_matched_by ReconciliationMatch[] @relation("ReconciliationMatch_matched_by")
+  back_Shipment_packed_by Shipment[] @relation("Shipment_packed_by")
+  back_ReturnRequest_approved_by ReturnRequest[] @relation("ReturnRequest_approved_by")
+  back_ReturnInspection_inspector_id ReturnInspection[] @relation("ReturnInspection_inspector_id")
+  back_Notification_membership_id Notification[] @relation("Notification_membership_id")
+  back_NotificationPreference_membership_id NotificationPreference[] @relation("NotificationPreference_membership_id")
+  back_SupportTicket_assigned_to SupportTicket[] @relation("SupportTicket_assigned_to")
+  back_RecommendationDecision_decided_by RecommendationDecision[] @relation("RecommendationDecision_decided_by")
+  back_ReportJob_requested_by ReportJob[] @relation("ReportJob_requested_by")
+  back_ApprovalDecision_decided_by ApprovalDecision[] @relation("ApprovalDecision_decided_by")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, user_id])
+  @@unique([tenant_id, employee_code])
+  @@map("tenant_membership")
+  @@schema("commerce")
+}
+
+model Role {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  code ROLE_CODE
+  name String
+  is_system_role Boolean @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Role_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_tenant_id")
+  back_RolePermission_role_id RolePermission[] @relation("RolePermission_role_id")
+  back_RoleAssignment_role_id RoleAssignment[] @relation("RoleAssignment_role_id")
+  back_Invitation_role_id Invitation[] @relation("Invitation_role_id")
+  back_ApprovalPolicy_required_role_id ApprovalPolicy[] @relation("ApprovalPolicy_required_role_id")
+  back_ApprovalStep_required_role_id ApprovalStep[] @relation("ApprovalStep_required_role_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, code])
+  @@map("role")
+  @@schema("commerce")
+}
+
+model Permission {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resource String
+  action String
+  code String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  back_RolePermission_permission_id RolePermission[] @relation("RolePermission_permission_id")
+  @@unique([code])
+  @@unique([resource, action])
+  @@map("permission")
+  @@schema("commerce")
+}
+
+model RolePermission {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  role_id String @db.Uuid
+  permission_id String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("RolePermission_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_permission_tenant_id")
+  ref_role_id Role @relation("RolePermission_role_id", fields: [tenant_id, role_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_permission_role_id")
+  ref_permission_id Permission @relation("RolePermission_permission_id", fields: [permission_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_permission_permission_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, role_id, permission_id])
+  @@map("role_permission")
+  @@schema("commerce")
+}
+
+model AccessScope {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String? @db.Uuid
+  department_id String? @db.Uuid
+  location_id String? @db.Uuid
+  type SCOPE_TYPE
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("AccessScope_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_access_scope_tenant_id")
+  ref_branch_id Branch? @relation("AccessScope_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_access_scope_branch_id")
+  ref_department_id Department? @relation("AccessScope_department_id", fields: [tenant_id, department_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_access_scope_department_id")
+  ref_location_id Location? @relation("AccessScope_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_access_scope_location_id")
+  back_RoleAssignment_scope_id RoleAssignment[] @relation("RoleAssignment_scope_id")
+  back_Invitation_scope_id Invitation[] @relation("Invitation_scope_id")
+  back_ApprovalPolicy_scope_id ApprovalPolicy[] @relation("ApprovalPolicy_scope_id")
+  @@unique([tenant_id, id])
+  @@map("access_scope")
+  @@schema("commerce")
+}
+
+model RoleAssignment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  membership_id String @db.Uuid
+  role_id String @db.Uuid
+  scope_id String @db.Uuid
+  valid_until DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("RoleAssignment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_assignment_tenant_id")
+  ref_membership_id TenantMembership @relation("RoleAssignment_membership_id", fields: [tenant_id, membership_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_assignment_membership_id")
+  ref_role_id Role @relation("RoleAssignment_role_id", fields: [tenant_id, role_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_assignment_role_id")
+  ref_scope_id AccessScope @relation("RoleAssignment_scope_id", fields: [tenant_id, scope_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_role_assignment_scope_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, membership_id, role_id, scope_id])
+  @@map("role_assignment")
+  @@schema("commerce")
+}
+
+model Invitation {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  role_id String @db.Uuid
+  scope_id String @db.Uuid
+  token_hash String
+  expires_at DateTime @db.Timestamptz(6)
+  email_or_phone String
+  accepted_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Invitation_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_invitation_tenant_id")
+  ref_role_id Role @relation("Invitation_role_id", fields: [tenant_id, role_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_invitation_role_id")
+  ref_scope_id AccessScope @relation("Invitation_scope_id", fields: [tenant_id, scope_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_invitation_scope_id")
+  @@unique([tenant_id, id])
+  @@unique([token_hash])
+  @@map("invitation")
+  @@schema("commerce")
+}
+
+model Session {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
+  token String @unique
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  ipAddress String? @map("ip_address")
+  userAgent String? @map("user_agent")
+  userId String @map("user_id") @db.Uuid
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  @@index([userId])
+  @@index([expiresAt])
+  // New physical table: previous token_hash sessions are not Better Auth sessions.
+  @@map("better_auth_session")
+  @@schema("commerce")
+}
+
+model Account {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId String @map("account_id")
+  providerId String @map("provider_id")
+  userId String @map("user_id") @db.Uuid
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  accessToken String? @map("access_token")
+  refreshToken String? @map("refresh_token")
+  idToken String? @map("id_token")
+  accessTokenExpiresAt DateTime? @map("access_token_expires_at") @db.Timestamptz(6)
+  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at") @db.Timestamptz(6)
+  scope String?
+  // Better Auth stores its password hash here; never store plaintext passwords.
+  password String?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  @@unique([providerId, accountId])
+  @@index([userId])
+  @@map("account")
+  @@schema("commerce")
+}
+
+model Verification {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  identifier String
+  value String
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  @@index([identifier])
+  @@index([expiresAt])
+  @@map("verification")
+  @@schema("commerce")
+}

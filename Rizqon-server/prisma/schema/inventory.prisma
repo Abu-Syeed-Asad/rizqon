@@ -1,0 +1,227 @@
+// Inventory models.
+
+model InventoryBalance {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  location_id String @db.Uuid
+  lot_id String? @db.Uuid
+  on_hand Decimal @db.Decimal(20,6) @default(0)
+  reserved Decimal @db.Decimal(20,6) @default(0)
+  version Int @default(1)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  ref_tenant_id Tenant @relation("InventoryBalance_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_balance_tenant_id")
+  ref_variant_id ProductVariant @relation("InventoryBalance_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_balance_variant_id")
+  ref_location_id Location @relation("InventoryBalance_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_balance_location_id")
+  ref_lot_id InventoryLot? @relation("InventoryBalance_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_balance_lot_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, variant_id, location_id, lot_id])
+  @@map("inventory_balance")
+  @@schema("commerce")
+}
+
+model StockMovement {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  location_id String @db.Uuid
+  lot_id String? @db.Uuid
+  quantity_delta Decimal @db.Decimal(20,6)
+  type String
+  source_type String
+  source_id String
+  occurred_at DateTime @db.Timestamptz(6)
+  performed_by String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockMovement_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_movement_tenant_id")
+  ref_variant_id ProductVariant @relation("StockMovement_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_movement_variant_id")
+  ref_location_id Location @relation("StockMovement_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_movement_location_id")
+  ref_lot_id InventoryLot? @relation("StockMovement_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_movement_lot_id")
+  ref_performed_by TenantMembership? @relation("StockMovement_performed_by", fields: [tenant_id, performed_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_movement_performed_by")
+  back_InventoryCostAllocation_movement_id InventoryCostAllocation[] @relation("InventoryCostAllocation_movement_id")
+  @@unique([tenant_id, id])
+  @@map("stock_movement")
+  @@schema("commerce")
+}
+
+model StockReservation {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_item_id String @db.Uuid
+  variant_id String @db.Uuid
+  location_id String @db.Uuid
+  lot_id String? @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  expires_at DateTime @db.Timestamptz(6)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockReservation_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_reservation_tenant_id")
+  ref_order_item_id OrderItem @relation("StockReservation_order_item_id", fields: [tenant_id, order_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_reservation_order_item_id")
+  ref_variant_id ProductVariant @relation("StockReservation_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_reservation_variant_id")
+  ref_location_id Location @relation("StockReservation_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_reservation_location_id")
+  ref_lot_id InventoryLot? @relation("StockReservation_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_reservation_lot_id")
+  @@unique([tenant_id, id])
+  @@map("stock_reservation")
+  @@schema("commerce")
+}
+
+model InventoryLot {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  lot_number String
+  expires_at DateTime? @db.Timestamptz(6)
+  unit_cost Decimal @db.Decimal(20,4)
+  manufactured_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("InventoryLot_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_lot_tenant_id")
+  ref_variant_id ProductVariant @relation("InventoryLot_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_inventory_lot_variant_id")
+  back_GoodsReceiptItem_lot_id GoodsReceiptItem[] @relation("GoodsReceiptItem_lot_id")
+  back_InventoryBalance_lot_id InventoryBalance[] @relation("InventoryBalance_lot_id")
+  back_StockMovement_lot_id StockMovement[] @relation("StockMovement_lot_id")
+  back_StockReservation_lot_id StockReservation[] @relation("StockReservation_lot_id")
+  back_SerializedItem_lot_id SerializedItem[] @relation("SerializedItem_lot_id")
+  back_StockTransferItem_lot_id StockTransferItem[] @relation("StockTransferItem_lot_id")
+  back_StockCountItem_lot_id StockCountItem[] @relation("StockCountItem_lot_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, variant_id, lot_number])
+  @@map("inventory_lot")
+  @@schema("commerce")
+}
+
+model SerializedItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  lot_id String? @db.Uuid
+  location_id String? @db.Uuid
+  serial_number String
+  status String
+  sold_order_item_id String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SerializedItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_serialized_item_tenant_id")
+  ref_variant_id ProductVariant @relation("SerializedItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_serialized_item_variant_id")
+  ref_lot_id InventoryLot? @relation("SerializedItem_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_serialized_item_lot_id")
+  ref_location_id Location? @relation("SerializedItem_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_serialized_item_location_id")
+  ref_sold_order_item_id OrderItem? @relation("SerializedItem_sold_order_item_id", fields: [tenant_id, sold_order_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_serialized_item_sold_order_item_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, variant_id, serial_number])
+  @@map("serialized_item")
+  @@schema("commerce")
+}
+
+model StockTransfer {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  from_location_id String @db.Uuid
+  to_location_id String @db.Uuid
+  status String
+  shipped_at DateTime @db.Timestamptz(6)
+  received_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockTransfer_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_tenant_id")
+  ref_from_location_id Location @relation("StockTransfer_from_location_id", fields: [tenant_id, from_location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_from_location_id")
+  ref_to_location_id Location @relation("StockTransfer_to_location_id", fields: [tenant_id, to_location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_to_location_id")
+  back_StockTransferItem_transfer_id StockTransferItem[] @relation("StockTransferItem_transfer_id")
+  @@unique([tenant_id, id])
+  @@map("stock_transfer")
+  @@schema("commerce")
+}
+
+model StockTransferItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  transfer_id String @db.Uuid
+  variant_id String @db.Uuid
+  lot_id String? @db.Uuid
+  requested_qty Decimal @db.Decimal(20,6)
+  shipped_qty Decimal @db.Decimal(20,6)
+  received_qty Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockTransferItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_item_tenant_id")
+  ref_transfer_id StockTransfer @relation("StockTransferItem_transfer_id", fields: [tenant_id, transfer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_item_transfer_id")
+  ref_variant_id ProductVariant @relation("StockTransferItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_item_variant_id")
+  ref_lot_id InventoryLot? @relation("StockTransferItem_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_transfer_item_lot_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, transfer_id, variant_id, lot_id])
+  @@map("stock_transfer_item")
+  @@schema("commerce")
+}
+
+model StockCount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  location_id String @db.Uuid
+  counted_by String @db.Uuid
+  status String
+  finalized_at DateTime? @db.Timestamptz(6)
+  approved_by String? @db.Uuid
+  started_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockCount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_tenant_id")
+  ref_location_id Location @relation("StockCount_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_location_id")
+  ref_counted_by TenantMembership @relation("StockCount_counted_by", fields: [tenant_id, counted_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_counted_by")
+  ref_approved_by TenantMembership? @relation("StockCount_approved_by", fields: [tenant_id, approved_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_approved_by")
+  back_StockCountItem_count_id StockCountItem[] @relation("StockCountItem_count_id")
+  @@unique([tenant_id, id])
+  @@map("stock_count")
+  @@schema("commerce")
+}
+
+model StockCountItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  count_id String @db.Uuid
+  variant_id String @db.Uuid
+  lot_id String? @db.Uuid
+  expected_qty Decimal @db.Decimal(20,6)
+  counted_qty Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("StockCountItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_item_tenant_id")
+  ref_count_id StockCount @relation("StockCountItem_count_id", fields: [tenant_id, count_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_item_count_id")
+  ref_variant_id ProductVariant @relation("StockCountItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_item_variant_id")
+  ref_lot_id InventoryLot? @relation("StockCountItem_lot_id", fields: [tenant_id, lot_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_stock_count_item_lot_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, count_id, variant_id, lot_id])
+  @@map("stock_count_item")
+  @@schema("commerce")
+}
+
+model ReorderPolicy {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  location_id String @db.Uuid
+  supplier_id String? @db.Uuid
+  minimum_qty Decimal @db.Decimal(20,6)
+  target_qty Decimal @db.Decimal(20,6)
+  safety_stock Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReorderPolicy_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reorder_policy_tenant_id")
+  ref_variant_id ProductVariant @relation("ReorderPolicy_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reorder_policy_variant_id")
+  ref_location_id Location @relation("ReorderPolicy_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reorder_policy_location_id")
+  ref_supplier_id Supplier? @relation("ReorderPolicy_supplier_id", fields: [tenant_id, supplier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reorder_policy_supplier_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, variant_id, location_id])
+  @@map("reorder_policy")
+  @@schema("commerce")
+}

@@ -1,0 +1,141 @@
+// Seller companies models.
+
+model SellerCompany {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  display_name String
+  legal_name String
+  slug String
+  onboarding_status String
+  verification_status String
+  description String?
+  website_url String?
+  support_email String?
+  support_phone String?
+  logo_file_id String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SellerCompany_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_company_tenant_id")
+  ref_logo_file_id FileObject? @relation("SellerCompany_logo_file_id", fields: [logo_file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_company_logo_file_id")
+  back_CompanyOwnership_company_id CompanyOwnership[] @relation("CompanyOwnership_company_id")
+  back_CompanyVerification_company_id CompanyVerification[] @relation("CompanyVerification_company_id")
+  back_CompanyContact_company_id CompanyContact[] @relation("CompanyContact_company_id")
+  back_SellerAgreement_company_id SellerAgreement[] @relation("SellerAgreement_company_id")
+  back_SellerPayoutAccount_company_id SellerPayoutAccount[] @relation("SellerPayoutAccount_company_id")
+  back_MarketplaceListing_company_id MarketplaceListing[] @relation("MarketplaceListing_company_id")
+  back_CommissionRule_company_id CommissionRule[] @relation("CommissionRule_company_id")
+  back_SellerEarning_company_id SellerEarning[] @relation("SellerEarning_company_id")
+  back_SellerPayout_company_id SellerPayout[] @relation("SellerPayout_company_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id])
+  @@unique([slug])
+  @@map("seller_company")
+  @@schema("commerce")
+}
+
+model CompanyOwnership {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id String @db.Uuid
+  user_id String @db.Uuid
+  ownership_percent Decimal @db.Decimal(9,6)
+  is_authorized_signatory Boolean @default(false)
+  valid_from DateTime @db.Timestamptz(6)
+  valid_until DateTime? @db.Timestamptz(6)
+  tenant_id String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_company_id SellerCompany @relation("CompanyOwnership_company_id", fields: [tenant_id, company_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_ownership_company_id")
+  ref_user_id User @relation("CompanyOwnership_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_ownership_user_id")
+  ref_tenant_id Tenant @relation("CompanyOwnership_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_ownership_tenant_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, company_id, user_id, valid_from])
+  @@map("company_ownership")
+  @@schema("commerce")
+}
+
+model CompanyVerification {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id String @db.Uuid
+  file_id String? @db.Uuid
+  reviewer_id String? @db.Uuid
+  check_type String
+  status String
+  reviewed_at DateTime? @db.Timestamptz(6)
+  tenant_id String @db.Uuid
+  review_notes String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_company_id SellerCompany @relation("CompanyVerification_company_id", fields: [tenant_id, company_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_verification_company_id")
+  ref_file_id FileObject? @relation("CompanyVerification_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_verification_file_id")
+  ref_reviewer_id User? @relation("CompanyVerification_reviewer_id", fields: [reviewer_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_verification_reviewer_id")
+  ref_tenant_id Tenant @relation("CompanyVerification_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_verification_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("company_verification")
+  @@schema("commerce")
+}
+
+model CompanyContact {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id String @db.Uuid
+  user_id String? @db.Uuid
+  type String
+  name String
+  email String
+  phone String
+  tenant_id String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_company_id SellerCompany @relation("CompanyContact_company_id", fields: [tenant_id, company_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_contact_company_id")
+  ref_user_id User? @relation("CompanyContact_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_contact_user_id")
+  ref_tenant_id Tenant @relation("CompanyContact_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_company_contact_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("company_contact")
+  @@schema("commerce")
+}
+
+model SellerAgreement {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id String @db.Uuid
+  file_id String? @db.Uuid
+  version Int @default(1)
+  accepted_by String @db.Uuid
+  accepted_at DateTime? @db.Timestamptz(6)
+  status String
+  tenant_id String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  ref_company_id SellerCompany @relation("SellerAgreement_company_id", fields: [tenant_id, company_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_agreement_company_id")
+  ref_file_id FileObject? @relation("SellerAgreement_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_agreement_file_id")
+  ref_accepted_by User @relation("SellerAgreement_accepted_by", fields: [accepted_by], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_agreement_accepted_by")
+  ref_tenant_id Tenant @relation("SellerAgreement_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_agreement_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("seller_agreement")
+  @@schema("commerce")
+}
+
+model SellerPayoutAccount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id String @db.Uuid
+  provider_account_id String? @db.Uuid
+  masked_destination String
+  secret_reference String
+  currency String @db.VarChar(3)
+  verification_status String
+  tenant_id String @db.Uuid
+  verified_at DateTime? @db.Timestamptz(6)
+  is_default Boolean @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_company_id SellerCompany @relation("SellerPayoutAccount_company_id", fields: [tenant_id, company_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_payout_account_company_id")
+  ref_provider_account_id PaymentProviderAccount? @relation("SellerPayoutAccount_provider_account_id", fields: [tenant_id, provider_account_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_payout_account_provider_account_id")
+  ref_tenant_id Tenant @relation("SellerPayoutAccount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_seller_payout_account_tenant_id")
+  back_SellerPayout_payout_account_id SellerPayout[] @relation("SellerPayout_payout_account_id")
+  @@unique([tenant_id, id])
+  @@map("seller_payout_account")
+  @@schema("commerce")
+}

@@ -1,0 +1,205 @@
+// Delivery and returns models.
+
+model Carrier {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  name String
+  integration_type String
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Carrier_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_carrier_tenant_id")
+  back_CodRemittance_carrier_id CodRemittance[] @relation("CodRemittance_carrier_id")
+  back_Shipment_carrier_id Shipment[] @relation("Shipment_carrier_id")
+  @@unique([tenant_id, id])
+  @@map("carrier")
+  @@schema("commerce")
+}
+
+model Shipment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  carrier_id String? @db.Uuid
+  origin_id String @db.Uuid
+  tracking_number String
+  status String
+  shipping_address_snapshot Json @db.JsonB
+  packed_by String? @db.Uuid
+  packed_at DateTime? @db.Timestamptz(6)
+  shipped_at DateTime? @db.Timestamptz(6)
+  delivered_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Shipment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_tenant_id")
+  ref_order_id Order @relation("Shipment_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_order_id")
+  ref_carrier_id Carrier? @relation("Shipment_carrier_id", fields: [tenant_id, carrier_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_carrier_id")
+  ref_origin_id Location @relation("Shipment_origin_id", fields: [tenant_id, origin_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_origin_id")
+  ref_packed_by TenantMembership? @relation("Shipment_packed_by", fields: [tenant_id, packed_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_packed_by")
+  back_CodCollection_shipment_id CodCollection[] @relation("CodCollection_shipment_id")
+  back_ShipmentItem_shipment_id ShipmentItem[] @relation("ShipmentItem_shipment_id")
+  back_ShipmentEvent_shipment_id ShipmentEvent[] @relation("ShipmentEvent_shipment_id")
+  back_DeliveryProof_shipment_id DeliveryProof[] @relation("DeliveryProof_shipment_id")
+  @@unique([tenant_id, id])
+  @@map("shipment")
+  @@schema("commerce")
+}
+
+model ShipmentItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  shipment_id String @db.Uuid
+  order_item_id String @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ShipmentItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_item_tenant_id")
+  ref_shipment_id Shipment @relation("ShipmentItem_shipment_id", fields: [tenant_id, shipment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_item_shipment_id")
+  ref_order_item_id OrderItem @relation("ShipmentItem_order_item_id", fields: [tenant_id, order_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_item_order_item_id")
+  @@unique([tenant_id, id])
+  @@map("shipment_item")
+  @@schema("commerce")
+}
+
+model ShipmentEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  shipment_id String @db.Uuid
+  external_event_id String?
+  status String
+  occurred_at DateTime @db.Timestamptz(6)
+  description String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ShipmentEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_event_tenant_id")
+  ref_shipment_id Shipment @relation("ShipmentEvent_shipment_id", fields: [tenant_id, shipment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_shipment_event_shipment_id")
+  @@unique([tenant_id, id])
+  @@map("shipment_event")
+  @@schema("commerce")
+}
+
+model DeliveryProof {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  shipment_id String @db.Uuid
+  file_id String? @db.Uuid
+  recipient_name String?
+  delivered_at DateTime @db.Timestamptz(6)
+  confirmation_reference String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("DeliveryProof_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_delivery_proof_tenant_id")
+  ref_shipment_id Shipment @relation("DeliveryProof_shipment_id", fields: [tenant_id, shipment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_delivery_proof_shipment_id")
+  ref_file_id FileObject? @relation("DeliveryProof_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_delivery_proof_file_id")
+  @@unique([tenant_id, id])
+  @@map("delivery_proof")
+  @@schema("commerce")
+}
+
+model ReturnPolicy {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  version Int @default(1)
+  eligibility_rules Json @db.JsonB
+  window_days String
+  effective_from String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  ref_tenant_id Tenant @relation("ReturnPolicy_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_policy_tenant_id")
+  back_ReturnRequest_policy_id ReturnRequest[] @relation("ReturnRequest_policy_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, version])
+  @@map("return_policy")
+  @@schema("commerce")
+}
+
+model ReturnRequest {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  customer_id String? @db.Uuid
+  policy_id String @db.Uuid
+  reason String
+  status String
+  requested_at DateTime @db.Timestamptz(6)
+  approved_by String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReturnRequest_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_request_tenant_id")
+  ref_order_id Order @relation("ReturnRequest_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_request_order_id")
+  ref_customer_id Customer? @relation("ReturnRequest_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_request_customer_id")
+  ref_policy_id ReturnPolicy @relation("ReturnRequest_policy_id", fields: [tenant_id, policy_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_request_policy_id")
+  ref_approved_by TenantMembership? @relation("ReturnRequest_approved_by", fields: [tenant_id, approved_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_request_approved_by")
+  back_Refund_return_id Refund[] @relation("Refund_return_id")
+  back_ReturnItem_request_id ReturnItem[] @relation("ReturnItem_request_id")
+  @@unique([tenant_id, id])
+  @@map("return_request")
+  @@schema("commerce")
+}
+
+model ReturnItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  request_id String @db.Uuid
+  order_item_id String @db.Uuid
+  requested_qty Decimal @db.Decimal(20,6)
+  received_qty Decimal @db.Decimal(20,6)
+  condition String
+  resolution String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReturnItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_item_tenant_id")
+  ref_request_id ReturnRequest @relation("ReturnItem_request_id", fields: [tenant_id, request_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_item_request_id")
+  ref_order_item_id OrderItem @relation("ReturnItem_order_item_id", fields: [tenant_id, order_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_item_order_item_id")
+  back_ReturnInspection_return_item_id ReturnInspection[] @relation("ReturnInspection_return_item_id")
+  back_ReplacementLink_return_item_id ReplacementLink[] @relation("ReplacementLink_return_item_id")
+  back_RefundAllocation_return_item_id RefundAllocation[] @relation("RefundAllocation_return_item_id")
+  @@unique([tenant_id, id])
+  @@map("return_item")
+  @@schema("commerce")
+}
+
+model ReturnInspection {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  return_item_id String @db.Uuid
+  inspector_id String @db.Uuid
+  location_id String @db.Uuid
+  disposition String
+  inspected_at DateTime @db.Timestamptz(6)
+  condition_notes String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReturnInspection_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_inspection_tenant_id")
+  ref_return_item_id ReturnItem @relation("ReturnInspection_return_item_id", fields: [tenant_id, return_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_inspection_return_item_id")
+  ref_inspector_id TenantMembership @relation("ReturnInspection_inspector_id", fields: [tenant_id, inspector_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_inspection_inspector_id")
+  ref_location_id Location @relation("ReturnInspection_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_return_inspection_location_id")
+  @@unique([tenant_id, id])
+  @@map("return_inspection")
+  @@schema("commerce")
+}
+
+model ReplacementLink {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  return_item_id String @db.Uuid
+  replacement_item_id String @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReplacementLink_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_replacement_link_tenant_id")
+  ref_return_item_id ReturnItem @relation("ReplacementLink_return_item_id", fields: [tenant_id, return_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_replacement_link_return_item_id")
+  ref_replacement_item_id OrderItem @relation("ReplacementLink_replacement_item_id", fields: [tenant_id, replacement_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_replacement_link_replacement_item_id")
+  @@unique([tenant_id, id])
+  @@map("replacement_link")
+  @@schema("commerce")
+}

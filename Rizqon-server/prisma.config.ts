@@ -1,23 +1,14 @@
-import { definePrismaConfig } from "prisma/config";
-import { defineConfig as ormConfig } from "@prisma/orm-postgres/config";
-import { defineConfig as composer } from "@prisma/composer/config";
-import { nodeBuild } from "@prisma/composer/node/control";
-import { prismaCloud, prismaState } from "@prisma/composer-prisma-cloud/control";
+import "dotenv/config";
+import { defineConfig, env } from "prisma/config";
 
-process.loadEnvFile();
+export default defineConfig({
+  schema: "prisma/schema",
 
-export default definePrismaConfig({
-  skills: {
-    agents: ["claude", "cursor", "agents", "devin"],
+  migrations: {
+    path: "prisma/migrations",
   },
-  orm: ormConfig({
-    contract: "./src/prisma/contract.prisma",
-    db: {
-      connection: process.env.DATABASE_URL!,
-    },
-  }),
-  composer: composer({
-    extensions: [prismaCloud({ region: "us-east-1" }), nodeBuild()],
-    state: prismaState(),
-  }),
+
+  datasource: {
+    url: env("DATABASE_URL"),
+  },
 });

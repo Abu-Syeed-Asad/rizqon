@@ -1,0 +1,125 @@
+// Employees and approvals models.
+
+model EmployeeProfile {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  membership_id String @db.Uuid
+  department_id String? @db.Uuid
+  job_title String
+  hire_date DateTime? @db.Date
+  employment_status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("EmployeeProfile_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_profile_tenant_id")
+  ref_membership_id TenantMembership @relation("EmployeeProfile_membership_id", fields: [tenant_id, membership_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_profile_membership_id")
+  ref_department_id Department? @relation("EmployeeProfile_department_id", fields: [tenant_id, department_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_profile_department_id")
+  back_EmployeeBranchAssignment_employee_id EmployeeBranchAssignment[] @relation("EmployeeBranchAssignment_employee_id")
+  back_WorkShift_employee_id WorkShift[] @relation("WorkShift_employee_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, membership_id])
+  @@map("employee_profile")
+  @@schema("commerce")
+}
+
+model EmployeeBranchAssignment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  employee_id String @db.Uuid
+  branch_id String @db.Uuid
+  starts_at DateTime @db.Timestamptz(6)
+  ends_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("EmployeeBranchAssignment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_branch_assignment_tenant_id")
+  ref_employee_id EmployeeProfile @relation("EmployeeBranchAssignment_employee_id", fields: [tenant_id, employee_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_branch_assignment_employee_id")
+  ref_branch_id Branch @relation("EmployeeBranchAssignment_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_employee_branch_assignment_branch_id")
+  @@unique([tenant_id, id])
+  @@map("employee_branch_assignment")
+  @@schema("commerce")
+}
+
+model WorkShift {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  employee_id String @db.Uuid
+  branch_id String @db.Uuid
+  scheduled_start DateTime @db.Timestamptz(6)
+  actual_start DateTime? @db.Timestamptz(6)
+  scheduled_end DateTime @db.Timestamptz(6)
+  actual_end DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("WorkShift_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_work_shift_tenant_id")
+  ref_employee_id EmployeeProfile @relation("WorkShift_employee_id", fields: [tenant_id, employee_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_work_shift_employee_id")
+  ref_branch_id Branch @relation("WorkShift_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_work_shift_branch_id")
+  @@unique([tenant_id, id])
+  @@map("work_shift")
+  @@schema("commerce")
+}
+
+model Task {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  assignee_id String @db.Uuid
+  branch_id String? @db.Uuid
+  title String
+  status String
+  due_at DateTime? @db.Timestamptz(6)
+  description String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Task_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_task_tenant_id")
+  ref_assignee_id TenantMembership @relation("Task_assignee_id", fields: [tenant_id, assignee_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_task_assignee_id")
+  ref_branch_id Branch? @relation("Task_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_task_branch_id")
+  @@unique([tenant_id, id])
+  @@map("task")
+  @@schema("commerce")
+}
+
+model ApprovalPolicy {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  scope_id String @db.Uuid
+  required_role_id String @db.Uuid
+  action_type String
+  threshold_amount Decimal? @db.Decimal(20,4)
+  currency String? @db.VarChar(3)
+  required_approvals Int @default(1)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ApprovalPolicy_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_policy_tenant_id")
+  ref_scope_id AccessScope @relation("ApprovalPolicy_scope_id", fields: [tenant_id, scope_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_policy_scope_id")
+  ref_required_role_id Role @relation("ApprovalPolicy_required_role_id", fields: [tenant_id, required_role_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_policy_required_role_id")
+  back_ApprovalRequest_policy_id ApprovalRequest[] @relation("ApprovalRequest_policy_id")
+  @@unique([tenant_id, id])
+  @@map("approval_policy")
+  @@schema("commerce")
+}
+
+model ApprovalRequest {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  policy_id String @db.Uuid
+  requested_by String @db.Uuid
+  resource_type String
+  resource_id String
+  status String
+  resource_version Int @default(1)
+  reason String?
+  completed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ApprovalRequest_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_request_tenant_id")
+  ref_policy_id ApprovalPolicy @relation("ApprovalRequest_policy_id", fields: [tenant_id, policy_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_request_policy_id")
+  ref_requested_by TenantMembership @relation("ApprovalRequest_requested_by", fields: [tenant_id, requested_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_approval_request_requested_by")
+  back_ApprovalStep_request_id ApprovalStep[] @relation("ApprovalStep_request_id")
+  @@unique([tenant_id, id])
+  @@map("approval_request")
+  @@schema("commerce")
+}

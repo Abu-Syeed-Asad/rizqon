@@ -1,0 +1,142 @@
+// Reliability and security models.
+
+model AuditEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String? @db.Uuid
+  actor_id String? @db.Uuid
+  action String
+  resource_type String
+  resource_id String
+  redacted_changes Json @db.JsonB
+  occurred_at DateTime @db.Timestamptz(6)
+  request_id String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant? @relation("AuditEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_audit_event_tenant_id")
+  ref_actor_id User? @relation("AuditEvent_actor_id", fields: [actor_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_audit_event_actor_id")
+  @@unique([tenant_id, id])
+  @@map("audit_event")
+  @@schema("commerce")
+}
+
+model SecurityEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String? @db.Uuid
+  user_id String? @db.Uuid
+  type String
+  severity String
+  occurred_at DateTime @db.Timestamptz(6)
+  ip_address String? @db.Inet
+  device_reference String?
+  description String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant? @relation("SecurityEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_security_event_tenant_id")
+  ref_user_id User? @relation("SecurityEvent_user_id", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_security_event_user_id")
+  @@unique([tenant_id, id])
+  @@map("security_event")
+  @@schema("commerce")
+}
+
+model FileObject {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String? @db.Uuid
+  uploaded_by String? @db.Uuid
+  storage_key String
+  content_type String
+  checksum String
+  scan_status String
+  size_bytes BigInt
+  retention_until String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant? @relation("FileObject_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_file_object_tenant_id")
+  ref_uploaded_by User? @relation("FileObject_uploaded_by", fields: [uploaded_by], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_file_object_uploaded_by")
+  back_BusinessRegistration_file_id BusinessRegistration[] @relation("BusinessRegistration_file_id")
+  back_ProductMedia_file_id ProductMedia[] @relation("ProductMedia_file_id")
+  back_Expense_file_id Expense[] @relation("Expense_file_id")
+  back_DeliveryProof_file_id DeliveryProof[] @relation("DeliveryProof_file_id")
+  back_SupportMessage_file_id SupportMessage[] @relation("SupportMessage_file_id")
+  back_ReportJob_file_id ReportJob[] @relation("ReportJob_file_id")
+  back_SellerCompany_logo_file_id SellerCompany[] @relation("SellerCompany_logo_file_id")
+  back_CompanyVerification_file_id CompanyVerification[] @relation("CompanyVerification_file_id")
+  back_SellerAgreement_file_id SellerAgreement[] @relation("SellerAgreement_file_id")
+  @@unique([tenant_id, id])
+  @@map("file_object")
+  @@schema("commerce")
+}
+
+model IdempotencyRecord {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  operation String
+  key String
+  request_hash String
+  status String
+  expires_at DateTime @db.Timestamptz(6)
+  response_reference String?
+  completed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("IdempotencyRecord_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_idempotency_record_tenant_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, operation, key])
+  @@map("idempotency_record")
+  @@schema("commerce")
+}
+
+model OutboxEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  aggregate_type String
+  aggregate_id String
+  event_type String
+  payload Json @db.JsonB
+  published_at DateTime? @db.Timestamptz(6)
+  occurred_at DateTime @db.Timestamptz(6)
+  attempt_count Int @default(0)
+  last_error String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("OutboxEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_outbox_event_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("outbox_event")
+  @@schema("commerce")
+}
+
+model InboxEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  consumer_name String
+  event_id String
+  status String
+  processed_at DateTime? @db.Timestamptz(6)
+  received_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  @@unique([consumer_name, event_id])
+  @@map("inbox_event")
+  @@schema("commerce")
+}
+
+model IntegrationConnection {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  type String
+  provider String
+  secret_reference String
+  status String
+  configuration Json @db.JsonB
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("IntegrationConnection_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_integration_connection_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("integration_connection")
+  @@schema("commerce")
+}

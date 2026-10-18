@@ -1,0 +1,122 @@
+// Customers models.
+
+model Customer {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  linked_user_id String? @db.Uuid
+  name String
+  phone String?
+  status String
+  customer_number String
+  email String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Customer_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_tenant_id")
+  ref_linked_user_id User? @relation("Customer_linked_user_id", fields: [linked_user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_linked_user_id")
+  back_CustomerAddress_customer_id CustomerAddress[] @relation("CustomerAddress_customer_id")
+  back_CustomerConsent_customer_id CustomerConsent[] @relation("CustomerConsent_customer_id")
+  back_CustomerSegmentMember_customer_id CustomerSegmentMember[] @relation("CustomerSegmentMember_customer_id")
+  back_CustomerCreditAccount_customer_id CustomerCreditAccount[] @relation("CustomerCreditAccount_customer_id")
+  back_Cart_customer_id Cart[] @relation("Cart_customer_id")
+  back_Order_customer_id Order[] @relation("Order_customer_id")
+  back_PromotionRedemption_customer_id PromotionRedemption[] @relation("PromotionRedemption_customer_id")
+  back_Payment_customer_id Payment[] @relation("Payment_customer_id")
+  back_ReturnRequest_customer_id ReturnRequest[] @relation("ReturnRequest_customer_id")
+  back_Notification_customer_id Notification[] @relation("Notification_customer_id")
+  back_NotificationPreference_customer_id NotificationPreference[] @relation("NotificationPreference_customer_id")
+  back_SupportTicket_customer_id SupportTicket[] @relation("SupportTicket_customer_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, customer_number])
+  @@map("customer")
+  @@schema("commerce")
+}
+
+model CustomerAddress {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String @db.Uuid
+  address_id String @db.Uuid
+  label String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CustomerAddress_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_address_tenant_id")
+  ref_customer_id Customer @relation("CustomerAddress_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_address_customer_id")
+  ref_address_id Address @relation("CustomerAddress_address_id", fields: [tenant_id, address_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_address_address_id")
+  @@unique([tenant_id, id])
+  @@map("customer_address")
+  @@schema("commerce")
+}
+
+model CustomerConsent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String @db.Uuid
+  purpose String
+  channel String
+  policy_version String
+  granted_at DateTime @db.Timestamptz(6)
+  withdrawn_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CustomerConsent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_consent_tenant_id")
+  ref_customer_id Customer @relation("CustomerConsent_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_consent_customer_id")
+  @@unique([tenant_id, id])
+  @@map("customer_consent")
+  @@schema("commerce")
+}
+
+model CustomerSegment {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  name String
+  definition_json Json @db.JsonB
+  segment_type String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CustomerSegment_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_segment_tenant_id")
+  back_CustomerSegmentMember_segment_id CustomerSegmentMember[] @relation("CustomerSegmentMember_segment_id")
+  back_PriceList_segment_id PriceList[] @relation("PriceList_segment_id")
+  @@unique([tenant_id, id])
+  @@map("customer_segment")
+  @@schema("commerce")
+}
+
+model CustomerSegmentMember {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  segment_id String @db.Uuid
+  customer_id String @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CustomerSegmentMember_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_segment_member_tenant_id")
+  ref_segment_id CustomerSegment @relation("CustomerSegmentMember_segment_id", fields: [tenant_id, segment_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_segment_member_segment_id")
+  ref_customer_id Customer @relation("CustomerSegmentMember_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_segment_member_customer_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, segment_id, customer_id])
+  @@map("customer_segment_member")
+  @@schema("commerce")
+}
+
+model CustomerCreditAccount {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String @db.Uuid
+  currency String @db.VarChar(3)
+  credit_limit Decimal @db.Decimal(20,4)
+  terms_days Int
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CustomerCreditAccount_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_credit_account_tenant_id")
+  ref_customer_id Customer @relation("CustomerCreditAccount_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_customer_credit_account_customer_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, customer_id, currency])
+  @@map("customer_credit_account")
+  @@schema("commerce")
+}

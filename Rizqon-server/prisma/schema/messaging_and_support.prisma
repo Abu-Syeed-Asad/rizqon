@@ -1,0 +1,124 @@
+// Messaging and support models.
+
+model NotificationTemplate {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  event_type String
+  channel String
+  locale String
+  version Int @default(1)
+  body String
+  subject String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  ref_tenant_id Tenant @relation("NotificationTemplate_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_template_tenant_id")
+  back_Notification_template_id Notification[] @relation("Notification_template_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, event_type, channel, locale, version])
+  @@map("notification_template")
+  @@schema("commerce")
+}
+
+model Notification {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  template_id String @db.Uuid
+  recipient_reference String
+  payload Json @db.JsonB
+  status String
+  channel String
+  scheduled_at DateTime? @db.Timestamptz(6)
+  customer_id String? @db.Uuid
+  membership_id String? @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Notification_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_tenant_id")
+  ref_template_id NotificationTemplate @relation("Notification_template_id", fields: [tenant_id, template_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_template_id")
+  ref_customer_id Customer? @relation("Notification_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_customer_id")
+  ref_membership_id TenantMembership? @relation("Notification_membership_id", fields: [tenant_id, membership_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_membership_id")
+  back_NotificationAttempt_notification_id NotificationAttempt[] @relation("NotificationAttempt_notification_id")
+  @@unique([tenant_id, id])
+  @@map("notification")
+  @@schema("commerce")
+}
+
+model NotificationAttempt {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  notification_id String @db.Uuid
+  provider_reference String?
+  attempted_at DateTime @db.Timestamptz(6)
+  status String
+  error_code String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("NotificationAttempt_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_attempt_tenant_id")
+  ref_notification_id Notification @relation("NotificationAttempt_notification_id", fields: [tenant_id, notification_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_attempt_notification_id")
+  @@unique([tenant_id, id])
+  @@map("notification_attempt")
+  @@schema("commerce")
+}
+
+model NotificationPreference {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String? @db.Uuid
+  membership_id String? @db.Uuid
+  channel String
+  purpose String
+  enabled Boolean @default(true)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("NotificationPreference_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_preference_tenant_id")
+  ref_customer_id Customer? @relation("NotificationPreference_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_preference_customer_id")
+  ref_membership_id TenantMembership? @relation("NotificationPreference_membership_id", fields: [tenant_id, membership_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_notification_preference_membership_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, customer_id, membership_id, channel, purpose])
+  @@map("notification_preference")
+  @@schema("commerce")
+}
+
+model SupportTicket {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String? @db.Uuid
+  order_id String? @db.Uuid
+  assigned_to String? @db.Uuid
+  subject String
+  status String
+  priority String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupportTicket_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_ticket_tenant_id")
+  ref_customer_id Customer? @relation("SupportTicket_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_ticket_customer_id")
+  ref_order_id Order? @relation("SupportTicket_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_ticket_order_id")
+  ref_assigned_to TenantMembership? @relation("SupportTicket_assigned_to", fields: [tenant_id, assigned_to], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_ticket_assigned_to")
+  back_SupportMessage_ticket_id SupportMessage[] @relation("SupportMessage_ticket_id")
+  @@unique([tenant_id, id])
+  @@map("support_ticket")
+  @@schema("commerce")
+}
+
+model SupportMessage {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  ticket_id String @db.Uuid
+  file_id String? @db.Uuid
+  sender_type String
+  sender_reference String
+  body String
+  sent_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SupportMessage_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_message_tenant_id")
+  ref_ticket_id SupportTicket @relation("SupportMessage_ticket_id", fields: [tenant_id, ticket_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_message_ticket_id")
+  ref_file_id FileObject? @relation("SupportMessage_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_support_message_file_id")
+  @@unique([tenant_id, id])
+  @@map("support_message")
+  @@schema("commerce")
+}

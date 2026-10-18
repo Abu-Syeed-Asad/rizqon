@@ -1,0 +1,125 @@
+// AI and reporting models.
+
+model AnalyticsJob {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  type String
+  data_cutoff DateTime @db.Timestamptz(6)
+  status String
+  started_at DateTime? @db.Timestamptz(6)
+  completed_at DateTime? @db.Timestamptz(6)
+  error_summary String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("AnalyticsJob_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_analytics_job_tenant_id")
+  @@unique([tenant_id, id])
+  @@map("analytics_job")
+  @@schema("commerce")
+}
+
+model ModelVersion {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String? @db.Uuid
+  name String
+  version Int @default(1)
+  artifact_reference String
+  training_data_reference String
+  metrics Json @db.JsonB
+  deployed_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  ref_tenant_id Tenant? @relation("ModelVersion_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_model_version_tenant_id")
+  back_DemandForecast_model_version_id DemandForecast[] @relation("DemandForecast_model_version_id")
+  back_BusinessInsight_model_version_id BusinessInsight[] @relation("BusinessInsight_model_version_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, name, version])
+  @@map("model_version")
+  @@schema("commerce")
+}
+
+model DemandForecast {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  variant_id String @db.Uuid
+  location_id String @db.Uuid
+  model_version_id String @db.Uuid
+  generated_at DateTime @db.Timestamptz(6)
+  forecast_date DateTime @db.Date
+  predicted_qty Decimal @db.Decimal(20,6)
+  lower_bound Decimal? @db.Decimal(20,6)
+  upper_bound Decimal? @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("DemandForecast_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_demand_forecast_tenant_id")
+  ref_variant_id ProductVariant @relation("DemandForecast_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_demand_forecast_variant_id")
+  ref_location_id Location @relation("DemandForecast_location_id", fields: [tenant_id, location_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_demand_forecast_location_id")
+  ref_model_version_id ModelVersion @relation("DemandForecast_model_version_id", fields: [model_version_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_demand_forecast_model_version_id")
+  @@unique([tenant_id, id])
+  @@map("demand_forecast")
+  @@schema("commerce")
+}
+
+model BusinessInsight {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String? @db.Uuid
+  model_version_id String? @db.Uuid
+  type String
+  evidence_reference String
+  explanation String
+  status String
+  generated_at DateTime @db.Timestamptz(6)
+  expires_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("BusinessInsight_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_business_insight_tenant_id")
+  ref_branch_id Branch? @relation("BusinessInsight_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_business_insight_branch_id")
+  ref_model_version_id ModelVersion? @relation("BusinessInsight_model_version_id", fields: [model_version_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_business_insight_model_version_id")
+  back_RecommendationDecision_insight_id RecommendationDecision[] @relation("RecommendationDecision_insight_id")
+  @@unique([tenant_id, id])
+  @@map("business_insight")
+  @@schema("commerce")
+}
+
+model RecommendationDecision {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  insight_id String @db.Uuid
+  decided_by String @db.Uuid
+  decision String
+  reason String?
+  decided_at DateTime @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("RecommendationDecision_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_recommendation_decision_tenant_id")
+  ref_insight_id BusinessInsight @relation("RecommendationDecision_insight_id", fields: [tenant_id, insight_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_recommendation_decision_insight_id")
+  ref_decided_by TenantMembership @relation("RecommendationDecision_decided_by", fields: [tenant_id, decided_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_recommendation_decision_decided_by")
+  @@unique([tenant_id, id])
+  @@map("recommendation_decision")
+  @@schema("commerce")
+}
+
+model ReportJob {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  requested_by String @db.Uuid
+  file_id String? @db.Uuid
+  type String
+  filters Json @db.JsonB
+  data_cutoff DateTime @db.Timestamptz(6)
+  status String
+  expires_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("ReportJob_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_report_job_tenant_id")
+  ref_requested_by TenantMembership @relation("ReportJob_requested_by", fields: [tenant_id, requested_by], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_report_job_requested_by")
+  ref_file_id FileObject? @relation("ReportJob_file_id", fields: [file_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_report_job_file_id")
+  @@unique([tenant_id, id])
+  @@map("report_job")
+  @@schema("commerce")
+}

@@ -1,0 +1,279 @@
+// Sales and taxes models.
+
+model Cart {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  customer_id String? @db.Uuid
+  branch_id String? @db.Uuid
+  guest_token_hash String?
+  currency String @db.VarChar(3)
+  expires_at DateTime @db.Timestamptz(6)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Cart_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_tenant_id")
+  ref_customer_id Customer? @relation("Cart_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_customer_id")
+  ref_branch_id Branch? @relation("Cart_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_branch_id")
+  back_CartItem_cart_id CartItem[] @relation("CartItem_cart_id")
+  @@unique([tenant_id, id])
+  @@map("cart")
+  @@schema("commerce")
+}
+
+model CartItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  cart_id String @db.Uuid
+  variant_id String @db.Uuid
+  quantity Decimal @db.Decimal(20,6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("CartItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_item_tenant_id")
+  ref_cart_id Cart @relation("CartItem_cart_id", fields: [tenant_id, cart_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_item_cart_id")
+  ref_variant_id ProductVariant @relation("CartItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cart_item_variant_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, cart_id, variant_id])
+  @@map("cart_item")
+  @@schema("commerce")
+}
+
+model Order {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  branch_id String @db.Uuid
+  customer_id String? @db.Uuid
+  checkout_group_id String? @db.Uuid
+  number String
+  channel ORDER_CHANNEL
+  currency String @db.VarChar(3)
+  status ORDER_STATUS @default(DRAFT)
+  grand_total Decimal @db.Decimal(20,4)
+  seller_id String? @db.Uuid
+  PAYMENT_STATUS String
+  fulfillment_status String
+  subtotal Decimal @db.Decimal(20,4)
+  discount_total Decimal @db.Decimal(20,4) @default(0)
+  tax_total Decimal @db.Decimal(20,4) @default(0)
+  shipping_total Decimal @db.Decimal(20,4) @default(0)
+  placed_at DateTime? @db.Timestamptz(6)
+  cancelled_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Order_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_tenant_id")
+  ref_branch_id Branch @relation("Order_branch_id", fields: [tenant_id, branch_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_branch_id")
+  ref_customer_id Customer? @relation("Order_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_customer_id")
+  ref_checkout_group_id CheckoutGroup? @relation("Order_checkout_group_id", fields: [checkout_group_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_checkout_group_id")
+  ref_seller_id TenantMembership? @relation("Order_seller_id", fields: [tenant_id, seller_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_seller_id")
+  back_OrderItem_order_id OrderItem[] @relation("OrderItem_order_id")
+  back_OrderAddress_order_id OrderAddress[] @relation("OrderAddress_order_id")
+  back_OrderStatusEvent_order_id OrderStatusEvent[] @relation("OrderStatusEvent_order_id")
+  back_PromotionRedemption_order_id PromotionRedemption[] @relation("PromotionRedemption_order_id")
+  back_SalesInvoice_order_id SalesInvoice[] @relation("SalesInvoice_order_id")
+  back_Shipment_order_id Shipment[] @relation("Shipment_order_id")
+  back_ReturnRequest_order_id ReturnRequest[] @relation("ReturnRequest_order_id")
+  back_SupportTicket_order_id SupportTicket[] @relation("SupportTicket_order_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, number])
+  @@map("order")
+  @@schema("commerce")
+}
+
+model OrderItem {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  variant_id String? @db.Uuid
+  sku_snapshot String
+  name_snapshot String
+  quantity Decimal @db.Decimal(20,6)
+  unit_price Decimal @db.Decimal(20,4)
+  tax_total Decimal @db.Decimal(20,4) @default(0)
+  line_total Decimal @db.Decimal(20,4)
+  discount_total Decimal @db.Decimal(20,4) @default(0)
+  cost_total Decimal? @db.Decimal(20,4)
+  fulfilled_quantity Decimal @db.Decimal(20,6) @default(0)
+  returned_quantity Decimal @db.Decimal(20,6) @default(0)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("OrderItem_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_tenant_id")
+  ref_order_id Order @relation("OrderItem_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_order_id")
+  ref_variant_id ProductVariant? @relation("OrderItem_variant_id", fields: [tenant_id, variant_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_variant_id")
+  back_StockReservation_order_item_id StockReservation[] @relation("StockReservation_order_item_id")
+  back_SerializedItem_sold_order_item_id SerializedItem[] @relation("SerializedItem_sold_order_item_id")
+  back_OrderItemTax_order_item_id OrderItemTax[] @relation("OrderItemTax_order_item_id")
+  back_ShipmentItem_order_item_id ShipmentItem[] @relation("ShipmentItem_order_item_id")
+  back_ReturnItem_order_item_id ReturnItem[] @relation("ReturnItem_order_item_id")
+  back_ReplacementLink_replacement_item_id ReplacementLink[] @relation("ReplacementLink_replacement_item_id")
+  back_SellerEarning_order_item_id SellerEarning[] @relation("SellerEarning_order_item_id")
+  @@unique([tenant_id, id])
+  @@map("order_item")
+  @@schema("commerce")
+}
+
+model OrderAddress {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  type String
+  address_snapshot Json @db.JsonB
+  recipient_name String
+  phone String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("OrderAddress_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_address_tenant_id")
+  ref_order_id Order @relation("OrderAddress_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_address_order_id")
+  @@unique([tenant_id, id])
+  @@map("order_address")
+  @@schema("commerce")
+}
+
+model OrderStatusEvent {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  from_status String
+  to_status String
+  occurred_at DateTime @db.Timestamptz(6)
+  actor_id String? @db.Uuid
+  reason String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("OrderStatusEvent_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_status_event_tenant_id")
+  ref_order_id Order @relation("OrderStatusEvent_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_status_event_order_id")
+  ref_actor_id TenantMembership? @relation("OrderStatusEvent_actor_id", fields: [tenant_id, actor_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_status_event_actor_id")
+  @@unique([tenant_id, id])
+  @@map("order_status_event")
+  @@schema("commerce")
+}
+
+model TaxRate {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  jurisdiction String
+  rate Decimal @db.Decimal(9,6)
+  valid_from DateTime @db.Timestamptz(6)
+  valid_until DateTime? @db.Timestamptz(6)
+  name String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("TaxRate_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_tax_rate_tenant_id")
+  back_OrderItemTax_tax_rate_id OrderItemTax[] @relation("OrderItemTax_tax_rate_id")
+  @@unique([tenant_id, id])
+  @@map("tax_rate")
+  @@schema("commerce")
+}
+
+model OrderItemTax {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_item_id String @db.Uuid
+  tax_rate_id String? @db.Uuid
+  rate_snapshot Decimal @db.Decimal(9,6)
+  taxable_amount String
+  tax_amount Decimal @db.Decimal(20,4) @default(0)
+  name_snapshot String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("OrderItemTax_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_tax_tenant_id")
+  ref_order_item_id OrderItem @relation("OrderItemTax_order_item_id", fields: [tenant_id, order_item_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_tax_order_item_id")
+  ref_tax_rate_id TaxRate? @relation("OrderItemTax_tax_rate_id", fields: [tenant_id, tax_rate_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_order_item_tax_tax_rate_id")
+  @@unique([tenant_id, id])
+  @@map("order_item_tax")
+  @@schema("commerce")
+}
+
+model Promotion {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  name String
+  type String
+  value String
+  eligibility_rules Json @db.JsonB
+  starts_at DateTime @db.Timestamptz(6)
+  ends_at DateTime @db.Timestamptz(6)
+  usage_limit Int?
+  currency String? @db.VarChar(3)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Promotion_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_tenant_id")
+  back_Coupon_promotion_id Coupon[] @relation("Coupon_promotion_id")
+  back_PromotionRedemption_promotion_id PromotionRedemption[] @relation("PromotionRedemption_promotion_id")
+  @@unique([tenant_id, id])
+  @@map("promotion")
+  @@schema("commerce")
+}
+
+model Coupon {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  promotion_id String @db.Uuid
+  code String
+  usage_limit Int?
+  per_customer_limit Int?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("Coupon_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_coupon_tenant_id")
+  ref_promotion_id Promotion @relation("Coupon_promotion_id", fields: [tenant_id, promotion_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_coupon_promotion_id")
+  back_PromotionRedemption_coupon_id PromotionRedemption[] @relation("PromotionRedemption_coupon_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, code])
+  @@map("coupon")
+  @@schema("commerce")
+}
+
+model PromotionRedemption {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  promotion_id String @db.Uuid
+  coupon_id String? @db.Uuid
+  order_id String @db.Uuid
+  customer_id String? @db.Uuid
+  discount_amount Decimal @db.Decimal(20,4) @default(0)
+  status String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("PromotionRedemption_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_redemption_tenant_id")
+  ref_promotion_id Promotion @relation("PromotionRedemption_promotion_id", fields: [tenant_id, promotion_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_redemption_promotion_id")
+  ref_coupon_id Coupon? @relation("PromotionRedemption_coupon_id", fields: [tenant_id, coupon_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_redemption_coupon_id")
+  ref_order_id Order @relation("PromotionRedemption_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_redemption_order_id")
+  ref_customer_id Customer? @relation("PromotionRedemption_customer_id", fields: [tenant_id, customer_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_promotion_redemption_customer_id")
+  @@unique([tenant_id, id])
+  @@map("promotion_redemption")
+  @@schema("commerce")
+}
+
+model SalesInvoice {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tenant_id String @db.Uuid
+  order_id String @db.Uuid
+  number String
+  currency String @db.VarChar(3)
+  totals_snapshot Json @db.JsonB
+  status String
+  issued_at DateTime @db.Timestamptz(6)
+  due_at DateTime? @db.Timestamptz(6)
+  total Decimal @db.Decimal(20,4)
+  cancelled_at DateTime? @db.Timestamptz(6)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  row_version Int @default(1)
+  ref_tenant_id Tenant @relation("SalesInvoice_tenant_id", fields: [tenant_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_sales_invoice_tenant_id")
+  ref_order_id Order @relation("SalesInvoice_order_id", fields: [tenant_id, order_id], references: [tenant_id, id], onDelete: Restrict, onUpdate: Restrict, map: "fk_sales_invoice_order_id")
+  back_PaymentAllocation_invoice_id PaymentAllocation[] @relation("PaymentAllocation_invoice_id")
+  @@unique([tenant_id, id])
+  @@unique([tenant_id, number])
+  @@map("sales_invoice")
+  @@schema("commerce")
+}
