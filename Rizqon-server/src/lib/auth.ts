@@ -1,46 +1,15 @@
-import "dotenv/config";
-
 import { randomUUID } from "node:crypto";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { emailOTP } from "better-auth/plugins";
-import { z } from "zod";
 
 import { prisma } from "./prisma.js";
 import { env } from "../config/env.js";
-
-export type MailSender = (mail: {
-  to: string;
-  subject: string;
-  text: string;
-}) => Promise<void>;
-
-const authEnvSchema = z.object({
-  BETTER_AUTH_SECRET:env.BETTER_AUTH_SECRET ,
-  BETTER_AUTH_URL: env.BETTER_AUTH_URL,
-  FRONTEND_ORIGIN: env.FRONTEND_ORIGIN,
-  GOOGLE_CLIENT_ID: env.
-  GOOGLE_CLIENT_SECRET: z.string().min(1),
-});
+import { sendOtpMail } from "../services/email.service.js";
 
 export function createAuth() {
-  const result = authEnvSchema.safeParse(process.env);
-
-  if (!result.success) {
-    const invalidFields = [
-      ...new Set(result.error.issues.map((issue) => issue.path.join("."))),
-    ];
-
-    throw new Error(
-      `Invalid authentication configuration: ${invalidFields.join(", ")}`,
-    );
-  }
-
-  const env = result.data;
-
   return betterAuth({
-    appName: "Product App",
-
+    appName: "RIZQON",
     secret: env.BETTER_AUTH_SECRET,
     baseURL: env.BETTER_AUTH_URL,
     basePath: "/api/auth",
@@ -57,6 +26,7 @@ export function createAuth() {
       },
     },
 
+    // ── Social providers ───────────────────────────────────────────────────
     socialProviders: {
       google: {
         clientId: env.GOOGLE_CLIENT_ID,
@@ -64,61 +34,42 @@ export function createAuth() {
       },
     },
 
+    //  Email & Password 
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,
-
-      minPasswordLength: 12,
+      minPasswordLength: 6,
       maxPasswordLength: 128,
-
       revokeSessionsOnPasswordReset: true,
-
-      // Password reset emails are handled by the OTP plugin.
     },
 
     emailVerification: {
       sendOnSignUp: true,
       autoSignInAfterVerification: false,
-
-      // The OTP plugin replaces verification links.
     },
 
+    // Plugins 
     plugins: [
       emailOTP({
+        // Replaces the built-in link-based email verification with OTP.
         overrideDefaultEmailVerification: true,
 
         otpLength: 6,
-        expiresIn: 300,
+        expiresIn: 300,        // 5 minutes
         allowedAttempts: 3,
         storeOTP: "hashed",
 
-        // Email/password registration remains available.
-        // This prevents automatic registration through OTP sign-in.
+        // Prevents automatic account creation via OTP sign-in;
+        // users must register through email/password first.
         disableSignUp: true,
 
         async sendVerificationOTP({ email, otp, type }) {
-          const subject =
-            type === "email-verification"
-              ? "Verify your email"
-              : type === "forget-password"
-                ? "Reset your password"
-                : "Your sign-in code";
-
-          await ({
-            to: email,
-            subject,
-            text: [
-              `Your verification code is: ${otp}`,
-              "",
-              "This code expires in 5 minutes.",
-              "Do not share this code with anyone.",
-              "If you did not request this code, ignore this email.",
-            ].join("\n"),
-          });
+          await sendOtpMail({ to: email, otp, type });
         },
       }),
     ],
 
+    // ── User model extras ─────────────────────────────────────────────────
     user: {
       additionalFields: {
         status: {

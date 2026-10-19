@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <title><%= subject %></title>
+  <style>
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+
+    /* Typography */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+
+    /* OTP digit boxes */
+    .otp-digit {
+      display: inline-block;
+      width: 48px;
+      height: 56px;
+      line-height: 56px;
+      margin: 0 4px;
+      border-radius: 10px;
+      background: #f0f4ff;
+      border: 2px solid #c7d3f5;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a2b6b;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; margin: auto !important; }
+      .otp-digit { width: 40px !important; height: 48px !important; line-height: 48px !important; font-size: 22px !important; margin: 0 3px !important; }
+    }
+  </style>
+</head>
+<body style="background-color: #f0f2f5; margin: 0; padding: 0;">
+
+  <!-- Preheader (hidden preview text) -->
+  <div style="display: none; max-height: 0; overflow: hidden;">
+    <%= otp %> is your <%= appName %> verification code. Expires in <%= expiresInMinutes %> minutes.
+    &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  </div>
+
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+    style="background-color: #f0f2f5;">
+    <tr>
+      <td style="padding: 32px 16px;">
+
+        <!-- Email container -->
+        <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0"
+          align="center" width="560"
+          style="max-width: 560px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #1a2b6b 0%, #2e47b8 100%); padding: 36px 40px; text-align: center;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td>
+                    <!-- Logo / Brand -->
+                    <h1 style="margin: 0; font-size: 28px; font-weight: 800; color: #ffffff; letter-spacing: 2px; text-transform: uppercase;">
+                      <%= appName %>
+                    </h1>
+                    <p style="margin: 6px 0 0; font-size: 13px; color: rgba(255,255,255,0.7); letter-spacing: 0.5px; text-transform: uppercase;">
+                      <%= subject %>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 40px 40px 32px;">
+
+              <!-- Greeting -->
+              <p style="margin: 0 0 8px; font-size: 22px; font-weight: 700; color: #111827;">
+                Hello<% if (typeof userName !== 'undefined' && userName) { %>, <%= userName %><% } %>!
+              </p>
+              <p style="margin: 0 0 28px; font-size: 15px; color: #6b7280; line-height: 1.6;">
+                <% if (type === 'email-verification') { %>
+                  Thanks for signing up. Please use the code below to verify your email address.
+                <% } else if (type === 'forget-password') { %>
+                  We received a request to reset your password. Use the code below to proceed.
+                <% } else { %>
+                  Use the code below to complete your sign-in.
+                <% } %>
+              </p>
+
+              <!-- OTP Section -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td style="text-align: center; padding: 28px 0; background: #f8faff; border-radius: 12px; border: 1px solid #e8eef9;">
+
+                    <p style="margin: 0 0 16px; font-size: 12px; font-weight: 600; color: #9ca3af; letter-spacing: 1.5px; text-transform: uppercase;">
+                      Verification Code
+                    </p>
+
+                    <!-- OTP Digits -->
+                    <div style="font-family: 'Courier New', Courier, monospace;">
+                      <% const digits = String(otp).split(''); %>
+                      <% digits.forEach(function(digit) { %>
+                        <span class="otp-digit" style="display: inline-block; width: 48px; height: 56px; line-height: 56px; margin: 0 4px; border-radius: 10px; background: #f0f4ff; border: 2px solid #c7d3f5; font-size: 28px; font-weight: 700; color: #1a2b6b; text-align: center;">
+                          <%= digit %>
+                        </span>
+                      <% }); %>
+                    </div>
+
+                    <!-- Expiry -->
+                    <p style="margin: 16px 0 0; font-size: 13px; color: #9ca3af;">
+                      ⏱ Expires in <strong style="color: #374151;"><%= expiresInMinutes %> minutes</strong>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Warning -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-top: 24px;">
+                <tr>
+                  <td style="padding: 16px 20px; background-color: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0;">
+                    <p style="margin: 0; font-size: 13px; color: #92400e; line-height: 1.6;">
+                      🔒 <strong>Never share this code</strong> with anyone — including <%= appName %> support.
+                      If you did not request this code, please ignore this email or
+                      <a href="<%= supportUrl %>" style="color: #b45309; text-decoration: underline;">contact support</a>.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Attempts warning -->
+              <p style="margin: 24px 0 0; font-size: 13px; color: #9ca3af; text-align: center; line-height: 1.6;">
+                This code is valid for <strong><%= allowedAttempts %> attempt<%= allowedAttempts !== 1 ? 's' : '' %></strong> only.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 0 40px;">
+              <hr style="border: none; border-top: 1px solid #f3f4f6; margin: 0;">
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 24px 40px 32px; text-align: center;">
+              <p style="margin: 0 0 8px; font-size: 12px; color: #9ca3af; line-height: 1.6;">
+                This email was sent to <a href="mailto:<%= recipientEmail %>" style="color: #6b7280; text-decoration: none;"><%= recipientEmail %></a>
+              </p>
+              <p style="margin: 0 0 16px; font-size: 12px; color: #d1d5db; line-height: 1.6;">
+                © <%= new Date().getFullYear() %> <%= appName %>. All rights reserved.
+              </p>
+              <% if (typeof companyAddress !== 'undefined' && companyAddress) { %>
+              <p style="margin: 0; font-size: 11px; color: #d1d5db;">
+                <%= companyAddress %>
+              </p>
+              <% } %>
+            </td>
+          </tr>
+
+          <!-- Bottom accent bar -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #1a2b6b 0%, #2e47b8 100%); height: 6px;"></td>
+          </tr>
+
+        </table>
+        <!-- /Email container -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+

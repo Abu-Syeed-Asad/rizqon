@@ -7,8 +7,8 @@ import { env } from "./config/env.js";
 import { createAuth } from "./lib/auth.js";
 // import { sendMail } from "./lib/email.js";
 
-// const auth = createAuth(sendMail);
 const auth = createAuth();
+
 
 export const app = express();
 
