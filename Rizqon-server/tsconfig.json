@@ -15,5 +15,5 @@
       "node"
     ]
   },
-  "include": ["app.ts", "server.ts", "src/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }

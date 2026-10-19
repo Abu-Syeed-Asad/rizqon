@@ -2,7 +2,7 @@ import { isBuiltin } from "node:module";
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
-  entry: { server: "server.ts" },
+  entry: { server: "src/server.ts" },
   platform: "node",
   target: "node22.18",
   format: "esm",
