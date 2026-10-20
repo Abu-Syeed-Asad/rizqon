@@ -27,15 +27,27 @@ export const errorHandler: ErrorRequestHandler = (
 
   res.setHeader("X-Request-ID", requestId);
 
+  if (
+    normalized.statusCode === StatusCodes.SERVICE_UNAVAILABLE ||
+    normalized.statusCode === StatusCodes.TOO_MANY_REQUESTS
+  ) {
+    res.setHeader("Retry-After", "5");
+  }
+
   if (normalized.statusCode >= StatusCodes.INTERNAL_SERVER_ERROR) {
-    
     console.error({
       event: "request_failed",
       requestId,
       method: req.method,
+      path: req.originalUrl,
       statusCode: normalized.statusCode,
       code: normalized.code,
       errorName: error instanceof Error ? error.name : "UnknownError",
+      prismaCode:
+        error instanceof Error && "code" in error && typeof error.code === "string"
+          ? error.code
+          : undefined,
+      stack: error instanceof Error ? error.stack : undefined,
     });
   }
 

@@ -43,7 +43,12 @@ app.get("/", (req:Request, res:Response) => {
 
 app.use((_req, _res, next) => {
   next(
-    new AppError(StatusCodes.NOT_FOUND,"ROUTE_NOT_FOUND"),
+    new AppError(
+      StatusCodes.NOT_FOUND,
+      "Route not found",
+      true,
+      "ROUTE_NOT_FOUND",
+    ),
   );
 });
 
