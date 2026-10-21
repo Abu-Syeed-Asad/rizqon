@@ -16,7 +16,17 @@ function createPrismaClient(): PrismaClient {
   if (!connectionString) {
     throw new Error("DATABASE_URL environment variable is not set");
   }
-  const pool = new Pool({ connectionString });
+
+  // pg currently treats sslmode=require as certificate verification, but its
+  // next major version will follow libpq's weaker meaning. Make the intended
+  // secure behavior explicit and silence the compatibility warning.
+  const databaseUrl = new URL(connectionString);
+  const sslMode = databaseUrl.searchParams.get("sslmode");
+  if (sslMode === "prefer" || sslMode === "require" || sslMode === "verify-ca") {
+    databaseUrl.searchParams.set("sslmode", "verify-full");
+  }
+
+  const pool = new Pool({ connectionString: databaseUrl.toString() });
   const adapter = new PrismaPg(pool);
   return new PrismaClient({ adapter });
 }

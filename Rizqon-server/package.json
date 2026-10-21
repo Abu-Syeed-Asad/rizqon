@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "pnpm run db:generate && tsdown",
-    "db:generate": "prisma generate",
+    "generate": "prisma generate",
     "db:validate": "prisma validate",
     "dev": "pnpm run db:generate && tsx watch src/server.ts",
     "migrate": "prisma migrate dev",

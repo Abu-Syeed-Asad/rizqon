@@ -9,6 +9,8 @@ export default defineConfig({
   },
 
   datasource: {
-    url: env("DATABASE_URL"),
+    // Schema operations should bypass Neon's PgBouncer pool. Application
+    // traffic continues to use the pooled DATABASE_URL in src/lib/prisma.ts.
+    url: process.env.DATABASE_URL_UNPOOLED ?? env("DATABASE_URL"),
   },
 });

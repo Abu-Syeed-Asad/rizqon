@@ -13,7 +13,14 @@ enum ROLE_CODE {
   @@schema("commerce")
   @@map("role_code")
 }
+enum USER_STATUS {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  DELETED
 
+  @@schema("commerce")
+}
 enum PAYMENT_METHOD_TYPE {
   CARD
   MOBILE_FINANCIAL_SERVICE

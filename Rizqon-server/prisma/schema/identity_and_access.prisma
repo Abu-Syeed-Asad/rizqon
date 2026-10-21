@@ -1,11 +1,9 @@
-// Identity and access models.
-
 model User {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   email String
   phone String?
   name String @map("display_name")
-  status String @default("ACTIVE")
+  status  USER_STATUS @default(ACTIVE)
   email_verified_at DateTime? @db.Timestamptz(6)
   phone_verified_at DateTime? @db.Timestamptz(6)
   last_login_at DateTime? @db.Timestamptz(6)
@@ -312,5 +310,18 @@ model Verification {
   @@index([identifier])
   @@index([expiresAt])
   @@map("verification")
+  @@schema("commerce")
+}
+
+// Better Auth JWT signing keys. Private keys are encrypted with the auth secret.
+model Jwks {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  publicKey String @map("public_key")
+  privateKey String @map("private_key")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  expiresAt DateTime? @map("expires_at") @db.Timestamptz(6)
+  alg String?
+  crv String?
+  @@map("jwks")
   @@schema("commerce")
 }

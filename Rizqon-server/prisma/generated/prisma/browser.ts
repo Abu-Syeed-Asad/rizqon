@@ -458,6 +458,11 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
+ * Model Jwks
+ * 
+ */
+export type Jwks = Prisma.JwksModel
+/**
  * Model InventoryBalance
  * 
  */

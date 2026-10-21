@@ -24,6 +24,16 @@ export const ROLE_CODE = {
 export type ROLE_CODE = (typeof ROLE_CODE)[keyof typeof ROLE_CODE]
 
 
+export const USER_STATUS = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  DELETED: 'DELETED'
+} as const
+
+export type USER_STATUS = (typeof USER_STATUS)[keyof typeof USER_STATUS]
+
+
 export const PAYMENT_METHOD_TYPE = {
   CARD: 'CARD',
   MOBILE_FINANCIAL_SERVICE: 'MOBILE_FINANCIAL_SERVICE',

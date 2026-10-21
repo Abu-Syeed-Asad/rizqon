@@ -78,8 +78,8 @@ async function start(): Promise<void> {
       return;
     }
 
-    server.listen(env.PORT,  () => {
-      console.info(`API listening on port http://localhost:/${env.PORT}`);
+    server.listen(env.PORT, () => {
+      console.info(`API listening at http://localhost:${env.PORT}`);
     });
   } catch {
     console.error("Application startup failed");

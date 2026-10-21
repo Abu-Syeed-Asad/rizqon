@@ -39,7 +39,7 @@ export type UserMinAggregateOutputType = {
   email: string | null
   phone: string | null
   name: string | null
-  status: string | null
+  status: $Enums.USER_STATUS | null
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -55,7 +55,7 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   phone: string | null
   name: string | null
-  status: string | null
+  status: $Enums.USER_STATUS | null
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -232,7 +232,7 @@ export type UserGroupByOutputType = {
   email: string
   phone: string | null
   name: string
-  status: string
+  status: $Enums.USER_STATUS
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -271,7 +271,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.StringFilter<"User"> | string
+  status?: Prisma.EnumUSER_STATUSFilter<"User"> | $Enums.USER_STATUS
   email_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -338,7 +338,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.StringFilter<"User"> | string
+  status?: Prisma.EnumUSER_STATUSFilter<"User"> | $Enums.USER_STATUS
   email_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -394,7 +394,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
-  status?: Prisma.StringWithAggregatesFilter<"User"> | string
+  status?: Prisma.EnumUSER_STATUSWithAggregatesFilter<"User"> | $Enums.USER_STATUS
   email_verified_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -410,7 +410,7 @@ export type UserCreateInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -442,7 +442,7 @@ export type UserUncheckedCreateInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -474,7 +474,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -506,7 +506,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -538,7 +538,7 @@ export type UserCreateManyInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -554,7 +554,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -570,7 +570,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -661,6 +661,10 @@ export type UserUpdateOneWithoutBack_Customer_linked_user_idNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_Customer_linked_user_idInput, Prisma.UserUpdateWithoutBack_Customer_linked_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput>
+}
+
+export type EnumUSER_STATUSFieldUpdateOperationsInput = {
+  set?: $Enums.USER_STATUS
 }
 
 export type UserCreateNestedOneWithoutBack_AuthIdentity_user_idInput = {
@@ -892,7 +896,7 @@ export type UserCreateWithoutBack_Customer_linked_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -923,7 +927,7 @@ export type UserUncheckedCreateWithoutBack_Customer_linked_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -970,7 +974,7 @@ export type UserUpdateWithoutBack_Customer_linked_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1001,7 +1005,7 @@ export type UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1032,7 +1036,7 @@ export type UserCreateWithoutBack_AuthIdentity_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1063,7 +1067,7 @@ export type UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1110,7 +1114,7 @@ export type UserUpdateWithoutBack_AuthIdentity_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1141,7 +1145,7 @@ export type UserUncheckedUpdateWithoutBack_AuthIdentity_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1172,7 +1176,7 @@ export type UserCreateWithoutBack_Session_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1203,7 +1207,7 @@ export type UserUncheckedCreateWithoutBack_Session_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1250,7 +1254,7 @@ export type UserUpdateWithoutBack_Session_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1281,7 +1285,7 @@ export type UserUncheckedUpdateWithoutBack_Session_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1312,7 +1316,7 @@ export type UserCreateWithoutBack_MfaFactor_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1343,7 +1347,7 @@ export type UserUncheckedCreateWithoutBack_MfaFactor_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1390,7 +1394,7 @@ export type UserUpdateWithoutBack_MfaFactor_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1421,7 +1425,7 @@ export type UserUncheckedUpdateWithoutBack_MfaFactor_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1452,7 +1456,7 @@ export type UserCreateWithoutBack_AuthChallenge_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1483,7 +1487,7 @@ export type UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1530,7 +1534,7 @@ export type UserUpdateWithoutBack_AuthChallenge_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1561,7 +1565,7 @@ export type UserUncheckedUpdateWithoutBack_AuthChallenge_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1592,7 +1596,7 @@ export type UserCreateWithoutBack_TenantMembership_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1623,7 +1627,7 @@ export type UserUncheckedCreateWithoutBack_TenantMembership_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1670,7 +1674,7 @@ export type UserUpdateWithoutBack_TenantMembership_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1701,7 +1705,7 @@ export type UserUncheckedUpdateWithoutBack_TenantMembership_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1732,7 +1736,7 @@ export type UserCreateWithoutSessionsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1763,7 +1767,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1810,7 +1814,7 @@ export type UserUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1841,7 +1845,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1872,7 +1876,7 @@ export type UserCreateWithoutAccountsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1903,7 +1907,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1950,7 +1954,7 @@ export type UserUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1981,7 +1985,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2012,7 +2016,7 @@ export type UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2043,7 +2047,7 @@ export type UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2090,7 +2094,7 @@ export type UserUpdateWithoutBack_CheckoutGroup_buyer_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2121,7 +2125,7 @@ export type UserUncheckedUpdateWithoutBack_CheckoutGroup_buyer_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2152,7 +2156,7 @@ export type UserCreateWithoutBack_AuditEvent_actor_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2183,7 +2187,7 @@ export type UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2230,7 +2234,7 @@ export type UserUpdateWithoutBack_AuditEvent_actor_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2261,7 +2265,7 @@ export type UserUncheckedUpdateWithoutBack_AuditEvent_actor_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2292,7 +2296,7 @@ export type UserCreateWithoutBack_SecurityEvent_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2323,7 +2327,7 @@ export type UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2370,7 +2374,7 @@ export type UserUpdateWithoutBack_SecurityEvent_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2401,7 +2405,7 @@ export type UserUncheckedUpdateWithoutBack_SecurityEvent_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2432,7 +2436,7 @@ export type UserCreateWithoutBack_FileObject_uploaded_byInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2463,7 +2467,7 @@ export type UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2510,7 +2514,7 @@ export type UserUpdateWithoutBack_FileObject_uploaded_byInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2541,7 +2545,7 @@ export type UserUncheckedUpdateWithoutBack_FileObject_uploaded_byInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2572,7 +2576,7 @@ export type UserCreateWithoutBack_CompanyOwnership_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2603,7 +2607,7 @@ export type UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2650,7 +2654,7 @@ export type UserUpdateWithoutBack_CompanyOwnership_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2681,7 +2685,7 @@ export type UserUncheckedUpdateWithoutBack_CompanyOwnership_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2712,7 +2716,7 @@ export type UserCreateWithoutBack_CompanyVerification_reviewer_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2743,7 +2747,7 @@ export type UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput 
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2790,7 +2794,7 @@ export type UserUpdateWithoutBack_CompanyVerification_reviewer_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2821,7 +2825,7 @@ export type UserUncheckedUpdateWithoutBack_CompanyVerification_reviewer_idInput 
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2852,7 +2856,7 @@ export type UserCreateWithoutBack_CompanyContact_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2883,7 +2887,7 @@ export type UserUncheckedCreateWithoutBack_CompanyContact_user_idInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -2930,7 +2934,7 @@ export type UserUpdateWithoutBack_CompanyContact_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2961,7 +2965,7 @@ export type UserUncheckedUpdateWithoutBack_CompanyContact_user_idInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2992,7 +2996,7 @@ export type UserCreateWithoutBack_SellerAgreement_accepted_byInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -3023,7 +3027,7 @@ export type UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput = {
   email: string
   phone?: string | null
   name: string
-  status?: string
+  status?: $Enums.USER_STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -3070,7 +3074,7 @@ export type UserUpdateWithoutBack_SellerAgreement_accepted_byInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3101,7 +3105,7 @@ export type UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3422,7 +3426,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     phone: string | null
     name: string
-    status: string
+    status: $Enums.USER_STATUS
     email_verified_at: Date | null
     phone_verified_at: Date | null
     last_login_at: Date | null
@@ -3874,7 +3878,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
-  readonly status: Prisma.FieldRef<"User", 'String'>
+  readonly status: Prisma.FieldRef<"User", 'USER_STATUS'>
   readonly email_verified_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly phone_verified_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly last_login_at: Prisma.FieldRef<"User", 'DateTime'>

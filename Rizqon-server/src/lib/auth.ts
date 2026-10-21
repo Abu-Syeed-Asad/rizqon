@@ -1,18 +1,19 @@
 import { randomUUID } from "node:crypto";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { emailOTP } from "better-auth/plugins";
+import { bearer, emailOTP, jwt } from "better-auth/plugins";
 
 import { prisma } from "./prisma.js";
 import { env } from "../config/env.js";
 import { sendOtpMail } from "../services/email.service.js";
+import { USER_STATUS } from "../../prisma/generated/prisma/enums.js";
 
 export function createAuth() {
   return betterAuth({
     appName: "RIZQON",
     secret: env.BETTER_AUTH_SECRET,
     baseURL: env.BETTER_AUTH_URL,
-    basePath: "/api/auth",
+    basePath: "/api/v1/auth",
 
     trustedOrigins: [env.FRONTEND_ORIGIN],
 
@@ -34,28 +35,46 @@ export function createAuth() {
       },
     },
 
-    //  Email & Password 
+    //  Email & Password
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,
-      minPasswordLength: 6,
+      minPasswordLength: 8,
       maxPasswordLength: 128,
       revokeSessionsOnPasswordReset: true,
     },
 
     emailVerification: {
       sendOnSignUp: true,
-      autoSignInAfterVerification: false,
+      // The OTP verification response creates the database session and sends
+      // Better Auth's signed, HttpOnly session cookie.
+      autoSignInAfterVerification: true,
     },
 
-    // Plugins 
+    // Plugins
     plugins: [
+      // Short-lived, asymmetric tokens for APIs and external services.
+      // Browser authentication continues to use Better Auth's secure session cookie.
+      jwt({
+        jwt: {
+          issuer: env.BETTER_AUTH_URL,
+          audience: "rizqon-api",
+          expirationTime: "15m",
+        },
+        jwks: {
+          rotationInterval: 60 * 60 * 24 * 30,
+          gracePeriod: 60 * 60 * 24 * 7,
+        },
+      }),
+      // Allows protected API routes to accept a Better Auth session token in
+      // Authorization: Bearer <session-token> when cookies are unavailable.
+      bearer(),
       emailOTP({
         // Replaces the built-in link-based email verification with OTP.
         overrideDefaultEmailVerification: true,
 
         otpLength: 6,
-        expiresIn: 300,        // 5 minutes
+        expiresIn: 300, // 5 minutes
         allowedAttempts: 3,
         storeOTP: "hashed",
 
@@ -72,11 +91,32 @@ export function createAuth() {
     // ── User model extras ─────────────────────────────────────────────────
     user: {
       additionalFields: {
-        status: {
+        email_verified_at: {
+          type: "date",
+          required: false,
+        },
+        phone_verified_at: {
+          type: "date",
+          required: false,
+        },
+        last_login_at: {
+          type: "date",
+          required: false,
+        },
+        row_version: {
+          type: "number",
+          required: false,
+        },
+
+        phone: {
           type: "string",
           required: false,
-          defaultValue: "ACTIVE",
           input: false,
+        },
+        status: {
+          type: "boolean",
+          required: true,
+          defaultValue: USER_STATUS.ACTIVE
         },
       },
     },
@@ -84,3 +124,7 @@ export function createAuth() {
 }
 
 export type Auth = ReturnType<typeof createAuth>;
+
+// A single instance prevents every importing module from creating its own
+// handler/plugin state.
+export const auth = createAuth();

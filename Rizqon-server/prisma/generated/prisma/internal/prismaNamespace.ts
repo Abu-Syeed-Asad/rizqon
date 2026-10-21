@@ -485,6 +485,7 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
+  Jwks: 'Jwks',
   InventoryBalance: 'InventoryBalance',
   StockMovement: 'StockMovement',
   StockReservation: 'StockReservation',
@@ -565,7 +566,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ledgerAccount" | "fiscalPeriod" | "journalEntry" | "journalLine" | "bankAccount" | "bankStatementLine" | "reconciliationMatch" | "expense" | "supplierPayment" | "supplierPaymentAllocation" | "analyticsJob" | "modelVersion" | "demandForecast" | "businessInsight" | "recommendationDecision" | "reportJob" | "tenant" | "tenantSetting" | "branch" | "department" | "location" | "address" | "businessRegistration" | "documentSequence" | "posTerminal" | "cashDrawer" | "cashSession" | "cashMovement" | "cashCount" | "cashDeposit" | "codCollection" | "codRemittance" | "product" | "productVariant" | "category" | "productCategory" | "brand" | "unitOfMeasure" | "productAttribute" | "variantAttributeValue" | "productMedia" | "priceList" | "priceListItem" | "customer" | "customerAddress" | "customerConsent" | "customerSegment" | "customerSegmentMember" | "customerCreditAccount" | "carrier" | "shipment" | "shipmentItem" | "shipmentEvent" | "deliveryProof" | "returnPolicy" | "returnRequest" | "returnItem" | "returnInspection" | "replacementLink" | "employeeProfile" | "employeeBranchAssignment" | "workShift" | "task" | "approvalPolicy" | "approvalRequest" | "approvalStep" | "approvalDecision" | "paymentSettlementItem" | "refundAttempt" | "refundAllocation" | "dailySalesSnapshot" | "inventoryCostLayer" | "inventoryCostAllocation" | "user" | "authIdentity" | "legacySession" | "mfaFactor" | "authChallenge" | "tenantMembership" | "role" | "permission" | "rolePermission" | "accessScope" | "roleAssignment" | "invitation" | "session" | "account" | "verification" | "inventoryBalance" | "stockMovement" | "stockReservation" | "inventoryLot" | "serializedItem" | "stockTransfer" | "stockTransferItem" | "stockCount" | "stockCountItem" | "reorderPolicy" | "marketplaceListing" | "checkoutGroup" | "commissionRule" | "sellerEarning" | "sellerPayout" | "sellerPayoutItem" | "notificationTemplate" | "notification" | "notificationAttempt" | "notificationPreference" | "supportTicket" | "supportMessage" | "paymentMethod" | "paymentProviderAccount" | "payment" | "paymentAttempt" | "paymentEvent" | "paymentAllocation" | "paymentWebhookEvent" | "refund" | "paymentDispute" | "paymentSettlement" | "supplier" | "supplierProduct" | "purchaseOrder" | "purchaseOrderItem" | "goodsReceipt" | "goodsReceiptItem" | "supplierInvoice" | "supplierInvoiceItem" | "auditEvent" | "securityEvent" | "fileObject" | "idempotencyRecord" | "outboxEvent" | "inboxEvent" | "integrationConnection" | "cart" | "cartItem" | "order" | "orderItem" | "orderAddress" | "orderStatusEvent" | "taxRate" | "orderItemTax" | "promotion" | "coupon" | "promotionRedemption" | "salesInvoice" | "sellerCompany" | "companyOwnership" | "companyVerification" | "companyContact" | "sellerAgreement" | "sellerPayoutAccount"
+    modelProps: "ledgerAccount" | "fiscalPeriod" | "journalEntry" | "journalLine" | "bankAccount" | "bankStatementLine" | "reconciliationMatch" | "expense" | "supplierPayment" | "supplierPaymentAllocation" | "analyticsJob" | "modelVersion" | "demandForecast" | "businessInsight" | "recommendationDecision" | "reportJob" | "tenant" | "tenantSetting" | "branch" | "department" | "location" | "address" | "businessRegistration" | "documentSequence" | "posTerminal" | "cashDrawer" | "cashSession" | "cashMovement" | "cashCount" | "cashDeposit" | "codCollection" | "codRemittance" | "product" | "productVariant" | "category" | "productCategory" | "brand" | "unitOfMeasure" | "productAttribute" | "variantAttributeValue" | "productMedia" | "priceList" | "priceListItem" | "customer" | "customerAddress" | "customerConsent" | "customerSegment" | "customerSegmentMember" | "customerCreditAccount" | "carrier" | "shipment" | "shipmentItem" | "shipmentEvent" | "deliveryProof" | "returnPolicy" | "returnRequest" | "returnItem" | "returnInspection" | "replacementLink" | "employeeProfile" | "employeeBranchAssignment" | "workShift" | "task" | "approvalPolicy" | "approvalRequest" | "approvalStep" | "approvalDecision" | "paymentSettlementItem" | "refundAttempt" | "refundAllocation" | "dailySalesSnapshot" | "inventoryCostLayer" | "inventoryCostAllocation" | "user" | "authIdentity" | "legacySession" | "mfaFactor" | "authChallenge" | "tenantMembership" | "role" | "permission" | "rolePermission" | "accessScope" | "roleAssignment" | "invitation" | "session" | "account" | "verification" | "jwks" | "inventoryBalance" | "stockMovement" | "stockReservation" | "inventoryLot" | "serializedItem" | "stockTransfer" | "stockTransferItem" | "stockCount" | "stockCountItem" | "reorderPolicy" | "marketplaceListing" | "checkoutGroup" | "commissionRule" | "sellerEarning" | "sellerPayout" | "sellerPayoutItem" | "notificationTemplate" | "notification" | "notificationAttempt" | "notificationPreference" | "supportTicket" | "supportMessage" | "paymentMethod" | "paymentProviderAccount" | "payment" | "paymentAttempt" | "paymentEvent" | "paymentAllocation" | "paymentWebhookEvent" | "refund" | "paymentDispute" | "paymentSettlement" | "supplier" | "supplierProduct" | "purchaseOrder" | "purchaseOrderItem" | "goodsReceipt" | "goodsReceiptItem" | "supplierInvoice" | "supplierInvoiceItem" | "auditEvent" | "securityEvent" | "fileObject" | "idempotencyRecord" | "outboxEvent" | "inboxEvent" | "integrationConnection" | "cart" | "cartItem" | "order" | "orderItem" | "orderAddress" | "orderStatusEvent" | "taxRate" | "orderItemTax" | "promotion" | "coupon" | "promotionRedemption" | "salesInvoice" | "sellerCompany" | "companyOwnership" | "companyVerification" | "companyContact" | "sellerAgreement" | "sellerPayoutAccount"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -7081,6 +7082,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Jwks: {
+      payload: Prisma.$JwksPayload<ExtArgs>
+      fields: Prisma.JwksFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.JwksFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.JwksFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        findFirst: {
+          args: Prisma.JwksFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.JwksFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        findMany: {
+          args: Prisma.JwksFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>[]
+        }
+        create: {
+          args: Prisma.JwksCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        createMany: {
+          args: Prisma.JwksCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.JwksCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>[]
+        }
+        delete: {
+          args: Prisma.JwksDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        update: {
+          args: Prisma.JwksUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        deleteMany: {
+          args: Prisma.JwksDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.JwksUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.JwksUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>[]
+        }
+        upsert: {
+          args: Prisma.JwksUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JwksPayload>
+        }
+        aggregate: {
+          args: Prisma.JwksAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateJwks>
+        }
+        groupBy: {
+          args: Prisma.JwksGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JwksGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.JwksCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JwksCountAggregateOutputType> | number
+        }
+      }
+    }
     InventoryBalance: {
       payload: Prisma.$InventoryBalancePayload<ExtArgs>
       fields: Prisma.InventoryBalanceFieldRefs
@@ -13364,6 +13439,19 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+export const JwksScalarFieldEnum = {
+  id: 'id',
+  publicKey: 'publicKey',
+  privateKey: 'privateKey',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
+  alg: 'alg',
+  crv: 'crv'
+} as const
+
+export type JwksScalarFieldEnum = (typeof JwksScalarFieldEnum)[keyof typeof JwksScalarFieldEnum]
+
+
 export const InventoryBalanceScalarFieldEnum = {
   id: 'id',
   tenant_id: 'tenant_id',
@@ -14722,6 +14810,20 @@ export type ListEnumAPPROVAL_DECISION_TYPEFieldRefInput<$PrismaModel> = FieldRef
 
 
 /**
+ * Reference to a field of type 'USER_STATUS'
+ */
+export type EnumUSER_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'USER_STATUS'>
+    
+
+
+/**
+ * Reference to a field of type 'USER_STATUS[]'
+ */
+export type ListEnumUSER_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'USER_STATUS[]'>
+    
+
+
+/**
  * Reference to a field of type 'ROLE_CODE'
  */
 export type EnumROLE_CODEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ROLE_CODE'>
@@ -15099,6 +15201,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
+  jwks?: Prisma.JwksOmit
   inventoryBalance?: Prisma.InventoryBalanceOmit
   stockMovement?: Prisma.StockMovementOmit
   stockReservation?: Prisma.StockReservationOmit
