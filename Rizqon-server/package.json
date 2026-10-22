@@ -7,10 +7,10 @@
     "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
   },
   "scripts": {
-    "build": "pnpm run db:generate && tsdown",
+    "build": "pnpm run generate && tsdown",
     "generate": "prisma generate",
     "db:validate": "prisma validate",
-    "dev": "pnpm run db:generate && tsx watch src/server.ts",
+    "dev": "pnpm run generate && tsx watch src/server.ts",
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "start": "node dist/server.mjs"

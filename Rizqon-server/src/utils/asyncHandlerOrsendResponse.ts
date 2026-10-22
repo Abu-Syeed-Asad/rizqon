@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import type { AsyncController } from "../type/asyncControler";
+import type { AsyncController } from "../type/asyncControlerOrApi_response.js";
 
 export const catchAsync = (fn: AsyncController): RequestHandler => {
   return (req, res, next): void => {

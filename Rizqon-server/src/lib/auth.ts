@@ -114,8 +114,9 @@ export function createAuth() {
           input: false,
         },
         status: {
-          type: "boolean",
+          type: "string",
           required: true,
+          input: false,
           defaultValue: USER_STATUS.ACTIVE
         },
       },

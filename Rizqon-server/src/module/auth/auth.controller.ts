@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { catchAsync } from "../../utils/asyncHandler.js";
+import { catchAsync } from "../../utils/asyncHandlerOrsendResponse.js";
 import type {
   ICreateUserPayload,
 } from "../../type/auth-type/auth.type.js";

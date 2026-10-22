@@ -13,8 +13,6 @@ const createUser = async (payload: ICreateUserPayload) => {
     throw new AppError(StatusCodes.BAD_REQUEST,`The Email is undefined`)
   }
 
-  const allUser = await prisma.user.findMany();
-  console.log(allUser)
   const isExistUserIn_Db = await prisma.user.findUnique({
     where: {
       email:payload.email
@@ -26,7 +24,7 @@ const createUser = async (payload: ICreateUserPayload) => {
       ` ${payload.email}  This email is already registered. Please sign in.`,
     );
   }
-  const sign_Up_User = auth.api.signUpEmail({
+  const sign_Up_User = await auth.api.signUpEmail({
     body: payload,
   })
   if (!sign_Up_User) {
