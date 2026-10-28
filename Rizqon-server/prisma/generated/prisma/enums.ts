@@ -9,7 +9,7 @@
 * 🟢 You can import this file directly.
 */
 
-export const ROLE_CODE = {
+export const USER_ROLE = {
   OWNER: 'OWNER',
   CEO: 'CEO',
   MANAGER: 'MANAGER',
@@ -18,20 +18,36 @@ export const ROLE_CODE = {
   SECURITY: 'SECURITY',
   SELLER: 'SELLER',
   ACCOUNTANT: 'ACCOUNTANT',
-  SELLER_COMPANY_ADMIN: 'SELLER_COMPANY_ADMIN'
+  SELLER_COMPANY_ADMIN: 'SELLER_COMPANY_ADMIN',
+  USER: 'USER'
 } as const
 
-export type ROLE_CODE = (typeof ROLE_CODE)[keyof typeof ROLE_CODE]
+export type USER_ROLE = (typeof USER_ROLE)[keyof typeof USER_ROLE]
 
 
-export const USER_STATUS = {
+export const SYSTEM_USER_ROLE = {
+  RIZQON_OWNER: 'RIZQON_OWNER',
+  RIZQON_CEO: 'RIZQON_CEO',
+  RIZQON_MANAGER: 'RIZQON_MANAGER',
+  RIZQON_BRANCH_MANAGER: 'RIZQON_BRANCH_MANAGER',
+  RIZQON_PRODUCT_MANAGER: 'RIZQON_PRODUCT_MANAGER',
+  RIZQON_OFFICE_STAFF: 'RIZQON_OFFICE_STAFF',
+  RIZQON_SELLER: 'RIZQON_SELLER',
+  RIZQON_ACCOUNTANT: 'RIZQON_ACCOUNTANT',
+  RIZQON_USER: 'RIZQON_USER'
+} as const
+
+export type SYSTEM_USER_ROLE = (typeof SYSTEM_USER_ROLE)[keyof typeof SYSTEM_USER_ROLE]
+
+
+export const STATUS = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE',
   SUSPENDED: 'SUSPENDED',
   DELETED: 'DELETED'
 } as const
 
-export type USER_STATUS = (typeof USER_STATUS)[keyof typeof USER_STATUS]
+export type STATUS = (typeof STATUS)[keyof typeof STATUS]
 
 
 export const PAYMENT_METHOD_TYPE = {

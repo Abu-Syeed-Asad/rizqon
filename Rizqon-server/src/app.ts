@@ -1,10 +1,10 @@
 import express, { type Request, type Response } from "express";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
-import { toNodeHandler } from "better-auth/node";
 
 import { env } from "./config/env.js";
-import { auth } from "./lib/auth.js";
+import { requireAuth } from "./middleware/requireAuth.js";
 import { AppError } from "./errors/App.error.js";
 import { StatusCodes } from "http-status-codes";
 import { errorHandler } from "./middleware/errorhandler.js";
@@ -20,16 +20,21 @@ app.use(
   cors({
     origin: env.FRONTEND_ORIGIN,
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
 
 app.use(express.json({ limit: "1mb" }));
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 
 
+app.get("/api/v1/me", requireAuth, (_req, res) => {
+  res.json({ user: res.locals.auth.user, profile: res.locals.profile });
+});
 app.use("/api/v1/", index_router);
-app.all("/api/v1/auth/*splat", toNodeHandler(auth));
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({

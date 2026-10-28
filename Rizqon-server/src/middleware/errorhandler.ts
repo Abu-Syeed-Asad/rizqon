@@ -1,5 +1,3 @@
-// src/middlewares/errorHandler.ts
-
 import { randomUUID } from "node:crypto";
 import type { ErrorRequestHandler } from "express";
 import { StatusCodes } from "http-status-codes";
@@ -19,7 +17,6 @@ export const errorHandler: ErrorRequestHandler = (
 
   const normalized = normalizeError(error);
 
-  // Reuse an ID assigned by your request middleware if present.
   const requestId =
     typeof res.locals.requestId === "string"
       ? res.locals.requestId

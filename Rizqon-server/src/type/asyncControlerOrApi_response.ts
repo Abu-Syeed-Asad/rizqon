@@ -9,5 +9,5 @@ export type IAsyncController = (
 export interface IApiResponse<T> {
   statusCode: number;
   message: string;
-  data: T;
+  data?: T;
 }

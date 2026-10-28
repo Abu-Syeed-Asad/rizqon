@@ -1,7 +1,9 @@
 # Authentication API
 
-Authentication is provided by Better Auth at `/api/v1/auth`. Request bodies are
-validated by Better Auth's Zod schemas. Browser requests should use
+Authentication is now provided by managed Neon Auth through `/api/v1/auth`.
+See [NEON_SETUP.md](NEON_SETUP.md) for the current route mapping and migration notes.
+Auth routes return Neon's native response shape, not the former custom envelope.
+Request bodies are validated by the managed service. Browser requests should use
 `credentials: "include"` so the HTTP-only session cookie is sent.
 
 ## Email and password
@@ -10,7 +12,7 @@ validated by Better Auth's Zod schemas. Browser requests should use
 | --- | --- | --- | --- |
 | Register | POST | `/api/v1/auth/create-user` (or `/api/v1/auth/sign-up/email`) | `{ "name", "email", "password" }` |
 | Verify email | POST | `/api/v1/auth/verify-email` | `{ "email", "otp" }` |
-| Sign in / login | POST | `/api/v1/auth/sign-in` (or `/api/v1/auth/sign-in/email`) | `{ "email", "password", "rememberMe"? }` |
+| Sign in / login | POST | `/api/v1/auth/sign-in/email` | `{ "email", "password", "rememberMe"? }` |
 | Sign out / logout | POST | `/api/v1/auth/sign-out` | none |
 | Current session | GET | `/api/v1/auth/get-session` | none |
 

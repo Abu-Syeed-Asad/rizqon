@@ -39,7 +39,8 @@ export type UserMinAggregateOutputType = {
   email: string | null
   phone: string | null
   name: string | null
-  status: $Enums.USER_STATUS | null
+  user_role: $Enums.SYSTEM_USER_ROLE | null
+  status: $Enums.STATUS | null
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -55,7 +56,8 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   phone: string | null
   name: string | null
-  status: $Enums.USER_STATUS | null
+  user_role: $Enums.SYSTEM_USER_ROLE | null
+  status: $Enums.STATUS | null
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -71,6 +73,7 @@ export type UserCountAggregateOutputType = {
   email: number
   phone: number
   name: number
+  user_role: number
   status: number
   email_verified_at: number
   phone_verified_at: number
@@ -97,6 +100,7 @@ export type UserMinAggregateInputType = {
   email?: true
   phone?: true
   name?: true
+  user_role?: true
   status?: true
   email_verified_at?: true
   phone_verified_at?: true
@@ -113,6 +117,7 @@ export type UserMaxAggregateInputType = {
   email?: true
   phone?: true
   name?: true
+  user_role?: true
   status?: true
   email_verified_at?: true
   phone_verified_at?: true
@@ -129,6 +134,7 @@ export type UserCountAggregateInputType = {
   email?: true
   phone?: true
   name?: true
+  user_role?: true
   status?: true
   email_verified_at?: true
   phone_verified_at?: true
@@ -232,7 +238,8 @@ export type UserGroupByOutputType = {
   email: string
   phone: string | null
   name: string
-  status: $Enums.USER_STATUS
+  user_role: $Enums.SYSTEM_USER_ROLE
+  status: $Enums.STATUS
   email_verified_at: Date | null
   phone_verified_at: Date | null
   last_login_at: Date | null
@@ -271,7 +278,8 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.EnumUSER_STATUSFilter<"User"> | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFilter<"User"> | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFilter<"User"> | $Enums.STATUS
   email_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -282,20 +290,6 @@ export type UserWhereInput = {
   image?: Prisma.StringNullableFilter<"User"> | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityListRelationFilter
-  back_Session_user_id?: Prisma.LegacySessionListRelationFilter
-  back_MfaFactor_user_id?: Prisma.MfaFactorListRelationFilter
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeListRelationFilter
-  back_TenantMembership_user_id?: Prisma.TenantMembershipListRelationFilter
-  back_Customer_linked_user_id?: Prisma.CustomerListRelationFilter
-  back_AuditEvent_actor_id?: Prisma.AuditEventListRelationFilter
-  back_SecurityEvent_user_id?: Prisma.SecurityEventListRelationFilter
-  back_FileObject_uploaded_by?: Prisma.FileObjectListRelationFilter
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipListRelationFilter
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationListRelationFilter
-  back_CompanyContact_user_id?: Prisma.CompanyContactListRelationFilter
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementListRelationFilter
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -303,6 +297,7 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
+  user_role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   email_verified_at?: Prisma.SortOrderInput | Prisma.SortOrder
   phone_verified_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -314,20 +309,6 @@ export type UserOrderByWithRelationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityOrderByRelationAggregateInput
-  back_Session_user_id?: Prisma.LegacySessionOrderByRelationAggregateInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorOrderByRelationAggregateInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeOrderByRelationAggregateInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipOrderByRelationAggregateInput
-  back_Customer_linked_user_id?: Prisma.CustomerOrderByRelationAggregateInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventOrderByRelationAggregateInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventOrderByRelationAggregateInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectOrderByRelationAggregateInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipOrderByRelationAggregateInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationOrderByRelationAggregateInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactOrderByRelationAggregateInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementOrderByRelationAggregateInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -338,7 +319,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.EnumUSER_STATUSFilter<"User"> | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFilter<"User"> | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFilter<"User"> | $Enums.STATUS
   email_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -349,20 +331,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   image?: Prisma.StringNullableFilter<"User"> | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityListRelationFilter
-  back_Session_user_id?: Prisma.LegacySessionListRelationFilter
-  back_MfaFactor_user_id?: Prisma.MfaFactorListRelationFilter
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeListRelationFilter
-  back_TenantMembership_user_id?: Prisma.TenantMembershipListRelationFilter
-  back_Customer_linked_user_id?: Prisma.CustomerListRelationFilter
-  back_AuditEvent_actor_id?: Prisma.AuditEventListRelationFilter
-  back_SecurityEvent_user_id?: Prisma.SecurityEventListRelationFilter
-  back_FileObject_uploaded_by?: Prisma.FileObjectListRelationFilter
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipListRelationFilter
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationListRelationFilter
-  back_CompanyContact_user_id?: Prisma.CompanyContactListRelationFilter
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementListRelationFilter
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -370,6 +338,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
+  user_role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   email_verified_at?: Prisma.SortOrderInput | Prisma.SortOrder
   phone_verified_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -394,7 +363,8 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
-  status?: Prisma.EnumUSER_STATUSWithAggregatesFilter<"User"> | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEWithAggregatesFilter<"User"> | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSWithAggregatesFilter<"User"> | $Enums.STATUS
   email_verified_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   phone_verified_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   last_login_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -410,7 +380,8 @@ export type UserCreateInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -421,20 +392,6 @@ export type UserCreateInput = {
   image?: string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -442,7 +399,8 @@ export type UserUncheckedCreateInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -453,20 +411,6 @@ export type UserUncheckedCreateInput = {
   image?: string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserUpdateInput = {
@@ -474,7 +418,8 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -485,20 +430,6 @@ export type UserUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -506,7 +437,8 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -517,20 +449,6 @@ export type UserUncheckedUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -538,7 +456,8 @@ export type UserCreateManyInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -554,7 +473,8 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -570,7 +490,8 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -581,16 +502,12 @@ export type UserUncheckedUpdateManyInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type UserNullableScalarRelationFilter = {
-  is?: Prisma.UserWhereInput | null
-  isNot?: Prisma.UserWhereInput | null
-}
-
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  user_role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   email_verified_at?: Prisma.SortOrder
   phone_verified_at?: Prisma.SortOrder
@@ -611,6 +528,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  user_role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   email_verified_at?: Prisma.SortOrder
   phone_verified_at?: Prisma.SortOrder
@@ -627,6 +545,7 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  user_role?: Prisma.SortOrder
   status?: Prisma.SortOrder
   email_verified_at?: Prisma.SortOrder
   phone_verified_at?: Prisma.SortOrder
@@ -647,96 +566,24 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type UserCreateNestedOneWithoutBack_Customer_linked_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Customer_linked_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_Customer_linked_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
+export type EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput = {
+  set?: $Enums.SYSTEM_USER_ROLE
 }
 
-export type UserUpdateOneWithoutBack_Customer_linked_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Customer_linked_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_Customer_linked_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_Customer_linked_user_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_Customer_linked_user_idInput, Prisma.UserUpdateWithoutBack_Customer_linked_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput>
+export type EnumSTATUSFieldUpdateOperationsInput = {
+  set?: $Enums.STATUS
 }
 
-export type EnumUSER_STATUSFieldUpdateOperationsInput = {
-  set?: $Enums.USER_STATUS
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
-export type UserCreateNestedOneWithoutBack_AuthIdentity_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuthIdentity_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_AuthIdentity_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuthIdentity_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_AuthIdentity_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_AuthIdentity_user_idInput, Prisma.UserUpdateWithoutBack_AuthIdentity_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_AuthIdentity_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_Session_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_Session_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Session_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_Session_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_Session_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_Session_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Session_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_Session_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_Session_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_Session_user_idInput, Prisma.UserUpdateWithoutBack_Session_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_Session_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_MfaFactor_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedCreateWithoutBack_MfaFactor_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_MfaFactor_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_MfaFactor_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedCreateWithoutBack_MfaFactor_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_MfaFactor_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_MfaFactor_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_MfaFactor_user_idInput, Prisma.UserUpdateWithoutBack_MfaFactor_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_MfaFactor_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_AuthChallenge_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuthChallenge_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_AuthChallenge_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuthChallenge_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_AuthChallenge_user_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_AuthChallenge_user_idInput, Prisma.UserUpdateWithoutBack_AuthChallenge_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_AuthChallenge_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_TenantMembership_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_TenantMembership_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_TenantMembership_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_TenantMembership_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_TenantMembership_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_TenantMembership_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_TenantMembership_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_TenantMembership_user_idInput, Prisma.UserUpdateWithoutBack_TenantMembership_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_TenantMembership_user_idInput>
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type UserCreateNestedOneWithoutSessionsInput = {
@@ -767,976 +614,13 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAccountsInput, Prisma.UserUpdateWithoutAccountsInput>, Prisma.UserUncheckedUpdateWithoutAccountsInput>
 }
 
-export type UserCreateNestedOneWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CheckoutGroup_buyer_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_CheckoutGroup_buyer_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CheckoutGroup_buyer_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_CheckoutGroup_buyer_user_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUpdateWithoutBack_CheckoutGroup_buyer_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_CheckoutGroup_buyer_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_AuditEvent_actor_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuditEvent_actor_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_AuditEvent_actor_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_AuditEvent_actor_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_AuditEvent_actor_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_AuditEvent_actor_idInput, Prisma.UserUpdateWithoutBack_AuditEvent_actor_idInput>, Prisma.UserUncheckedUpdateWithoutBack_AuditEvent_actor_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_SecurityEvent_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_SecurityEvent_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_SecurityEvent_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_SecurityEvent_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_SecurityEvent_user_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_SecurityEvent_user_idInput, Prisma.UserUpdateWithoutBack_SecurityEvent_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_SecurityEvent_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_FileObject_uploaded_byInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_FileObject_uploaded_byInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_FileObject_uploaded_byNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_FileObject_uploaded_byInput
-  upsert?: Prisma.UserUpsertWithoutBack_FileObject_uploaded_byInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_FileObject_uploaded_byInput, Prisma.UserUpdateWithoutBack_FileObject_uploaded_byInput>, Prisma.UserUncheckedUpdateWithoutBack_FileObject_uploaded_byInput>
-}
-
-export type UserCreateNestedOneWithoutBack_CompanyOwnership_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyOwnership_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_CompanyOwnership_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyOwnership_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_CompanyOwnership_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUpdateWithoutBack_CompanyOwnership_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_CompanyOwnership_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_CompanyVerification_reviewer_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyVerification_reviewer_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_CompanyVerification_reviewer_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyVerification_reviewer_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_CompanyVerification_reviewer_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUpdateWithoutBack_CompanyVerification_reviewer_idInput>, Prisma.UserUncheckedUpdateWithoutBack_CompanyVerification_reviewer_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_CompanyContact_user_idInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyContact_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyContact_user_idInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutBack_CompanyContact_user_idNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyContact_user_idInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_CompanyContact_user_idInput
-  upsert?: Prisma.UserUpsertWithoutBack_CompanyContact_user_idInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_CompanyContact_user_idInput, Prisma.UserUpdateWithoutBack_CompanyContact_user_idInput>, Prisma.UserUncheckedUpdateWithoutBack_CompanyContact_user_idInput>
-}
-
-export type UserCreateNestedOneWithoutBack_SellerAgreement_accepted_byInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_SellerAgreement_accepted_byInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBack_SellerAgreement_accepted_byNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBack_SellerAgreement_accepted_byInput
-  upsert?: Prisma.UserUpsertWithoutBack_SellerAgreement_accepted_byInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUpdateWithoutBack_SellerAgreement_accepted_byInput>, Prisma.UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput>
-}
-
-export type UserCreateWithoutBack_Customer_linked_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_Customer_linked_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_Customer_linked_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Customer_linked_user_idInput>
-}
-
-export type UserUpsertWithoutBack_Customer_linked_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Customer_linked_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_Customer_linked_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_Customer_linked_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput>
-}
-
-export type UserUpdateWithoutBack_Customer_linked_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_Customer_linked_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_AuthIdentity_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_AuthIdentity_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput>
-}
-
-export type UserUpsertWithoutBack_AuthIdentity_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuthIdentity_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthIdentity_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_AuthIdentity_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuthIdentity_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuthIdentity_user_idInput>
-}
-
-export type UserUpdateWithoutBack_AuthIdentity_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_AuthIdentity_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_Session_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_Session_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_Session_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_Session_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Session_user_idInput>
-}
-
-export type UserUpsertWithoutBack_Session_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_Session_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_Session_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_Session_user_idInput, Prisma.UserUncheckedCreateWithoutBack_Session_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_Session_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_Session_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_Session_user_idInput>
-}
-
-export type UserUpdateWithoutBack_Session_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_Session_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_MfaFactor_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_MfaFactor_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_MfaFactor_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedCreateWithoutBack_MfaFactor_user_idInput>
-}
-
-export type UserUpsertWithoutBack_MfaFactor_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_MfaFactor_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedCreateWithoutBack_MfaFactor_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_MfaFactor_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_MfaFactor_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_MfaFactor_user_idInput>
-}
-
-export type UserUpdateWithoutBack_MfaFactor_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_MfaFactor_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_AuthChallenge_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_AuthChallenge_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput>
-}
-
-export type UserUpsertWithoutBack_AuthChallenge_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuthChallenge_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedCreateWithoutBack_AuthChallenge_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_AuthChallenge_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuthChallenge_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuthChallenge_user_idInput>
-}
-
-export type UserUpdateWithoutBack_AuthChallenge_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_AuthChallenge_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_TenantMembership_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_TenantMembership_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_TenantMembership_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_TenantMembership_user_idInput>
-}
-
-export type UserUpsertWithoutBack_TenantMembership_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_TenantMembership_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_TenantMembership_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_TenantMembership_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_TenantMembership_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_TenantMembership_user_idInput>
-}
-
-export type UserUpdateWithoutBack_TenantMembership_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_TenantMembership_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
 export type UserCreateWithoutSessionsInput = {
   id?: string
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1746,20 +630,6 @@ export type UserCreateWithoutSessionsInput = {
   emailVerified?: boolean
   image?: string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1767,7 +637,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1777,20 +648,6 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   emailVerified?: boolean
   image?: string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1814,7 +671,8 @@ export type UserUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1824,20 +682,6 @@ export type UserUpdateWithoutSessionsInput = {
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1845,7 +689,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1855,20 +700,6 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -1876,7 +707,8 @@ export type UserCreateWithoutAccountsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1886,20 +718,6 @@ export type UserCreateWithoutAccountsInput = {
   emailVerified?: boolean
   image?: string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -1907,7 +725,8 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   email: string
   phone?: string | null
   name: string
-  status?: $Enums.USER_STATUS
+  user_role?: $Enums.SYSTEM_USER_ROLE
+  status?: $Enums.STATUS
   email_verified_at?: Date | string | null
   phone_verified_at?: Date | string | null
   last_login_at?: Date | string | null
@@ -1917,20 +736,6 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   emailVerified?: boolean
   image?: string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -1954,7 +759,8 @@ export type UserUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1964,20 +770,6 @@ export type UserUpdateWithoutAccountsInput = {
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -1985,7 +777,8 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
+  user_role?: Prisma.EnumSYSTEM_USER_ROLEFieldUpdateOperationsInput | $Enums.SYSTEM_USER_ROLE
+  status?: Prisma.EnumSTATUSFieldUpdateOperationsInput | $Enums.STATUS
   email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1995,1140 +788,6 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-}
-
-export type UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-}
-
-export type UserCreateOrConnectWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput>
-}
-
-export type UserUpsertWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CheckoutGroup_buyer_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CheckoutGroup_buyer_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_CheckoutGroup_buyer_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CheckoutGroup_buyer_user_idInput>
-}
-
-export type UserUpdateWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_CheckoutGroup_buyer_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-}
-
-export type UserCreateWithoutBack_AuditEvent_actor_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_AuditEvent_actor_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput>
-}
-
-export type UserUpsertWithoutBack_AuditEvent_actor_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuditEvent_actor_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedCreateWithoutBack_AuditEvent_actor_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_AuditEvent_actor_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_AuditEvent_actor_idInput, Prisma.UserUncheckedUpdateWithoutBack_AuditEvent_actor_idInput>
-}
-
-export type UserUpdateWithoutBack_AuditEvent_actor_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_AuditEvent_actor_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_SecurityEvent_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_SecurityEvent_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput>
-}
-
-export type UserUpsertWithoutBack_SecurityEvent_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_SecurityEvent_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedCreateWithoutBack_SecurityEvent_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_SecurityEvent_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_SecurityEvent_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_SecurityEvent_user_idInput>
-}
-
-export type UserUpdateWithoutBack_SecurityEvent_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_SecurityEvent_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_FileObject_uploaded_byInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_FileObject_uploaded_byInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput>
-}
-
-export type UserUpsertWithoutBack_FileObject_uploaded_byInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedUpdateWithoutBack_FileObject_uploaded_byInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedCreateWithoutBack_FileObject_uploaded_byInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_FileObject_uploaded_byInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_FileObject_uploaded_byInput, Prisma.UserUncheckedUpdateWithoutBack_FileObject_uploaded_byInput>
-}
-
-export type UserUpdateWithoutBack_FileObject_uploaded_byInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_FileObject_uploaded_byInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_CompanyOwnership_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_CompanyOwnership_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput>
-}
-
-export type UserUpsertWithoutBack_CompanyOwnership_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyOwnership_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyOwnership_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_CompanyOwnership_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyOwnership_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyOwnership_user_idInput>
-}
-
-export type UserUpdateWithoutBack_CompanyOwnership_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_CompanyOwnership_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_CompanyVerification_reviewer_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_CompanyVerification_reviewer_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput>
-}
-
-export type UserUpsertWithoutBack_CompanyVerification_reviewer_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyVerification_reviewer_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyVerification_reviewer_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_CompanyVerification_reviewer_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyVerification_reviewer_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyVerification_reviewer_idInput>
-}
-
-export type UserUpdateWithoutBack_CompanyVerification_reviewer_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_CompanyVerification_reviewer_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_CompanyContact_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_CompanyContact_user_idInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedCreateNestedManyWithoutRef_accepted_byInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_CompanyContact_user_idInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyContact_user_idInput>
-}
-
-export type UserUpsertWithoutBack_CompanyContact_user_idInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyContact_user_idInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedCreateWithoutBack_CompanyContact_user_idInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_CompanyContact_user_idInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_CompanyContact_user_idInput, Prisma.UserUncheckedUpdateWithoutBack_CompanyContact_user_idInput>
-}
-
-export type UserUpdateWithoutBack_CompanyContact_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_CompanyContact_user_idInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_SellerAgreement_accepted_by?: Prisma.SellerAgreementUncheckedUpdateManyWithoutRef_accepted_byNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserCreateWithoutBack_SellerAgreement_accepted_byInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactCreateNestedManyWithoutRef_user_idInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  name: string
-  status?: $Enums.USER_STATUS
-  email_verified_at?: Date | string | null
-  phone_verified_at?: Date | string | null
-  last_login_at?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  row_version?: number
-  emailVerified?: boolean
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedCreateNestedManyWithoutRef_linked_user_idInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedCreateNestedManyWithoutRef_actor_idInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedCreateNestedManyWithoutRef_uploaded_byInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedCreateNestedManyWithoutRef_reviewer_idInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedCreateNestedManyWithoutRef_user_idInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedCreateNestedManyWithoutRef_buyer_user_idInput
-}
-
-export type UserCreateOrConnectWithoutBack_SellerAgreement_accepted_byInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput>
-}
-
-export type UserUpsertWithoutBack_SellerAgreement_accepted_byInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedCreateWithoutBack_SellerAgreement_accepted_byInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBack_SellerAgreement_accepted_byInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBack_SellerAgreement_accepted_byInput, Prisma.UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput>
-}
-
-export type UserUpdateWithoutBack_SellerAgreement_accepted_byInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUpdateManyWithoutRef_user_idNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUpdateManyWithoutRef_buyer_user_idNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUSER_STATUSFieldUpdateOperationsInput | $Enums.USER_STATUS
-  email_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  phone_verified_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  last_login_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  row_version?: Prisma.IntFieldUpdateOperationsInput | number
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  back_AuthIdentity_user_id?: Prisma.AuthIdentityUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Session_user_id?: Prisma.LegacySessionUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_MfaFactor_user_id?: Prisma.MfaFactorUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_AuthChallenge_user_id?: Prisma.AuthChallengeUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_TenantMembership_user_id?: Prisma.TenantMembershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_Customer_linked_user_id?: Prisma.CustomerUncheckedUpdateManyWithoutRef_linked_user_idNestedInput
-  back_AuditEvent_actor_id?: Prisma.AuditEventUncheckedUpdateManyWithoutRef_actor_idNestedInput
-  back_SecurityEvent_user_id?: Prisma.SecurityEventUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_FileObject_uploaded_by?: Prisma.FileObjectUncheckedUpdateManyWithoutRef_uploaded_byNestedInput
-  back_CompanyOwnership_user_id?: Prisma.CompanyOwnershipUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CompanyVerification_reviewer_id?: Prisma.CompanyVerificationUncheckedUpdateManyWithoutRef_reviewer_idNestedInput
-  back_CompanyContact_user_id?: Prisma.CompanyContactUncheckedUpdateManyWithoutRef_user_idNestedInput
-  back_CheckoutGroup_buyer_user_id?: Prisma.CheckoutGroupUncheckedUpdateManyWithoutRef_buyer_user_idNestedInput
 }
 
 
@@ -3139,39 +798,11 @@ export type UserUncheckedUpdateWithoutBack_SellerAgreement_accepted_byInput = {
 export type UserCountOutputType = {
   accounts: number
   sessions: number
-  back_AuthIdentity_user_id: number
-  back_Session_user_id: number
-  back_MfaFactor_user_id: number
-  back_AuthChallenge_user_id: number
-  back_TenantMembership_user_id: number
-  back_Customer_linked_user_id: number
-  back_AuditEvent_actor_id: number
-  back_SecurityEvent_user_id: number
-  back_FileObject_uploaded_by: number
-  back_CompanyOwnership_user_id: number
-  back_CompanyVerification_reviewer_id: number
-  back_CompanyContact_user_id: number
-  back_SellerAgreement_accepted_by: number
-  back_CheckoutGroup_buyer_user_id: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-  back_AuthIdentity_user_id?: boolean | UserCountOutputTypeCountBack_AuthIdentity_user_idArgs
-  back_Session_user_id?: boolean | UserCountOutputTypeCountBack_Session_user_idArgs
-  back_MfaFactor_user_id?: boolean | UserCountOutputTypeCountBack_MfaFactor_user_idArgs
-  back_AuthChallenge_user_id?: boolean | UserCountOutputTypeCountBack_AuthChallenge_user_idArgs
-  back_TenantMembership_user_id?: boolean | UserCountOutputTypeCountBack_TenantMembership_user_idArgs
-  back_Customer_linked_user_id?: boolean | UserCountOutputTypeCountBack_Customer_linked_user_idArgs
-  back_AuditEvent_actor_id?: boolean | UserCountOutputTypeCountBack_AuditEvent_actor_idArgs
-  back_SecurityEvent_user_id?: boolean | UserCountOutputTypeCountBack_SecurityEvent_user_idArgs
-  back_FileObject_uploaded_by?: boolean | UserCountOutputTypeCountBack_FileObject_uploaded_byArgs
-  back_CompanyOwnership_user_id?: boolean | UserCountOutputTypeCountBack_CompanyOwnership_user_idArgs
-  back_CompanyVerification_reviewer_id?: boolean | UserCountOutputTypeCountBack_CompanyVerification_reviewer_idArgs
-  back_CompanyContact_user_id?: boolean | UserCountOutputTypeCountBack_CompanyContact_user_idArgs
-  back_SellerAgreement_accepted_by?: boolean | UserCountOutputTypeCountBack_SellerAgreement_accepted_byArgs
-  back_CheckoutGroup_buyer_user_id?: boolean | UserCountOutputTypeCountBack_CheckoutGroup_buyer_user_idArgs
 }
 
 /**
@@ -3198,110 +829,13 @@ export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.SessionWhereInput
 }
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_AuthIdentity_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AuthIdentityWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_Session_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LegacySessionWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_MfaFactor_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MfaFactorWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_AuthChallenge_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AuthChallengeWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_TenantMembership_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TenantMembershipWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_Customer_linked_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CustomerWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_AuditEvent_actor_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AuditEventWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_SecurityEvent_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SecurityEventWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_FileObject_uploaded_byArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.FileObjectWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_CompanyOwnership_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CompanyOwnershipWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_CompanyVerification_reviewer_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CompanyVerificationWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_CompanyContact_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CompanyContactWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_SellerAgreement_accepted_byArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SellerAgreementWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBack_CheckoutGroup_buyer_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CheckoutGroupWhereInput
-}
-
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
   phone?: boolean
   name?: boolean
+  user_role?: boolean
   status?: boolean
   email_verified_at?: boolean
   phone_verified_at?: boolean
@@ -3313,20 +847,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   image?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
-  back_AuthIdentity_user_id?: boolean | Prisma.User$back_AuthIdentity_user_idArgs<ExtArgs>
-  back_Session_user_id?: boolean | Prisma.User$back_Session_user_idArgs<ExtArgs>
-  back_MfaFactor_user_id?: boolean | Prisma.User$back_MfaFactor_user_idArgs<ExtArgs>
-  back_AuthChallenge_user_id?: boolean | Prisma.User$back_AuthChallenge_user_idArgs<ExtArgs>
-  back_TenantMembership_user_id?: boolean | Prisma.User$back_TenantMembership_user_idArgs<ExtArgs>
-  back_Customer_linked_user_id?: boolean | Prisma.User$back_Customer_linked_user_idArgs<ExtArgs>
-  back_AuditEvent_actor_id?: boolean | Prisma.User$back_AuditEvent_actor_idArgs<ExtArgs>
-  back_SecurityEvent_user_id?: boolean | Prisma.User$back_SecurityEvent_user_idArgs<ExtArgs>
-  back_FileObject_uploaded_by?: boolean | Prisma.User$back_FileObject_uploaded_byArgs<ExtArgs>
-  back_CompanyOwnership_user_id?: boolean | Prisma.User$back_CompanyOwnership_user_idArgs<ExtArgs>
-  back_CompanyVerification_reviewer_id?: boolean | Prisma.User$back_CompanyVerification_reviewer_idArgs<ExtArgs>
-  back_CompanyContact_user_id?: boolean | Prisma.User$back_CompanyContact_user_idArgs<ExtArgs>
-  back_SellerAgreement_accepted_by?: boolean | Prisma.User$back_SellerAgreement_accepted_byArgs<ExtArgs>
-  back_CheckoutGroup_buyer_user_id?: boolean | Prisma.User$back_CheckoutGroup_buyer_user_idArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3335,6 +855,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   phone?: boolean
   name?: boolean
+  user_role?: boolean
   status?: boolean
   email_verified_at?: boolean
   phone_verified_at?: boolean
@@ -3351,6 +872,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   phone?: boolean
   name?: boolean
+  user_role?: boolean
   status?: boolean
   email_verified_at?: boolean
   phone_verified_at?: boolean
@@ -3367,6 +889,7 @@ export type UserSelectScalar = {
   email?: boolean
   phone?: boolean
   name?: boolean
+  user_role?: boolean
   status?: boolean
   email_verified_at?: boolean
   phone_verified_at?: boolean
@@ -3378,24 +901,10 @@ export type UserSelectScalar = {
   image?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "name" | "status" | "email_verified_at" | "phone_verified_at" | "last_login_at" | "createdAt" | "updatedAt" | "row_version" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "name" | "user_role" | "status" | "email_verified_at" | "phone_verified_at" | "last_login_at" | "createdAt" | "updatedAt" | "row_version" | "emailVerified" | "image", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
-  back_AuthIdentity_user_id?: boolean | Prisma.User$back_AuthIdentity_user_idArgs<ExtArgs>
-  back_Session_user_id?: boolean | Prisma.User$back_Session_user_idArgs<ExtArgs>
-  back_MfaFactor_user_id?: boolean | Prisma.User$back_MfaFactor_user_idArgs<ExtArgs>
-  back_AuthChallenge_user_id?: boolean | Prisma.User$back_AuthChallenge_user_idArgs<ExtArgs>
-  back_TenantMembership_user_id?: boolean | Prisma.User$back_TenantMembership_user_idArgs<ExtArgs>
-  back_Customer_linked_user_id?: boolean | Prisma.User$back_Customer_linked_user_idArgs<ExtArgs>
-  back_AuditEvent_actor_id?: boolean | Prisma.User$back_AuditEvent_actor_idArgs<ExtArgs>
-  back_SecurityEvent_user_id?: boolean | Prisma.User$back_SecurityEvent_user_idArgs<ExtArgs>
-  back_FileObject_uploaded_by?: boolean | Prisma.User$back_FileObject_uploaded_byArgs<ExtArgs>
-  back_CompanyOwnership_user_id?: boolean | Prisma.User$back_CompanyOwnership_user_idArgs<ExtArgs>
-  back_CompanyVerification_reviewer_id?: boolean | Prisma.User$back_CompanyVerification_reviewer_idArgs<ExtArgs>
-  back_CompanyContact_user_id?: boolean | Prisma.User$back_CompanyContact_user_idArgs<ExtArgs>
-  back_SellerAgreement_accepted_by?: boolean | Prisma.User$back_SellerAgreement_accepted_byArgs<ExtArgs>
-  back_CheckoutGroup_buyer_user_id?: boolean | Prisma.User$back_CheckoutGroup_buyer_user_idArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3406,27 +915,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     sessions: Prisma.$SessionPayload<ExtArgs>[]
-    back_AuthIdentity_user_id: Prisma.$AuthIdentityPayload<ExtArgs>[]
-    back_Session_user_id: Prisma.$LegacySessionPayload<ExtArgs>[]
-    back_MfaFactor_user_id: Prisma.$MfaFactorPayload<ExtArgs>[]
-    back_AuthChallenge_user_id: Prisma.$AuthChallengePayload<ExtArgs>[]
-    back_TenantMembership_user_id: Prisma.$TenantMembershipPayload<ExtArgs>[]
-    back_Customer_linked_user_id: Prisma.$CustomerPayload<ExtArgs>[]
-    back_AuditEvent_actor_id: Prisma.$AuditEventPayload<ExtArgs>[]
-    back_SecurityEvent_user_id: Prisma.$SecurityEventPayload<ExtArgs>[]
-    back_FileObject_uploaded_by: Prisma.$FileObjectPayload<ExtArgs>[]
-    back_CompanyOwnership_user_id: Prisma.$CompanyOwnershipPayload<ExtArgs>[]
-    back_CompanyVerification_reviewer_id: Prisma.$CompanyVerificationPayload<ExtArgs>[]
-    back_CompanyContact_user_id: Prisma.$CompanyContactPayload<ExtArgs>[]
-    back_SellerAgreement_accepted_by: Prisma.$SellerAgreementPayload<ExtArgs>[]
-    back_CheckoutGroup_buyer_user_id: Prisma.$CheckoutGroupPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
     phone: string | null
     name: string
-    status: $Enums.USER_STATUS
+    user_role: $Enums.SYSTEM_USER_ROLE
+    status: $Enums.STATUS
     email_verified_at: Date | null
     phone_verified_at: Date | null
     last_login_at: Date | null
@@ -3831,20 +1327,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_AuthIdentity_user_id<T extends Prisma.User$back_AuthIdentity_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_AuthIdentity_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuthIdentityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_Session_user_id<T extends Prisma.User$back_Session_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_Session_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LegacySessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_MfaFactor_user_id<T extends Prisma.User$back_MfaFactor_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_MfaFactor_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MfaFactorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_AuthChallenge_user_id<T extends Prisma.User$back_AuthChallenge_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_AuthChallenge_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuthChallengePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_TenantMembership_user_id<T extends Prisma.User$back_TenantMembership_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_TenantMembership_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TenantMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_Customer_linked_user_id<T extends Prisma.User$back_Customer_linked_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_Customer_linked_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_AuditEvent_actor_id<T extends Prisma.User$back_AuditEvent_actor_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_AuditEvent_actor_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_SecurityEvent_user_id<T extends Prisma.User$back_SecurityEvent_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_SecurityEvent_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SecurityEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_FileObject_uploaded_by<T extends Prisma.User$back_FileObject_uploaded_byArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_FileObject_uploaded_byArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FileObjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_CompanyOwnership_user_id<T extends Prisma.User$back_CompanyOwnership_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_CompanyOwnership_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyOwnershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_CompanyVerification_reviewer_id<T extends Prisma.User$back_CompanyVerification_reviewer_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_CompanyVerification_reviewer_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyVerificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_CompanyContact_user_id<T extends Prisma.User$back_CompanyContact_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_CompanyContact_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_SellerAgreement_accepted_by<T extends Prisma.User$back_SellerAgreement_accepted_byArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_SellerAgreement_accepted_byArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SellerAgreementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  back_CheckoutGroup_buyer_user_id<T extends Prisma.User$back_CheckoutGroup_buyer_user_idArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$back_CheckoutGroup_buyer_user_idArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CheckoutGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3878,7 +1360,8 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
-  readonly status: Prisma.FieldRef<"User", 'USER_STATUS'>
+  readonly user_role: Prisma.FieldRef<"User", 'SYSTEM_USER_ROLE'>
+  readonly status: Prisma.FieldRef<"User", 'STATUS'>
   readonly email_verified_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly phone_verified_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly last_login_at: Prisma.FieldRef<"User", 'DateTime'>
@@ -4325,342 +1808,6 @@ export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
-}
-
-/**
- * User.back_AuthIdentity_user_id
- */
-export type User$back_AuthIdentity_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the AuthIdentity
-   */
-  select?: Prisma.AuthIdentitySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the AuthIdentity
-   */
-  omit?: Prisma.AuthIdentityOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AuthIdentityInclude<ExtArgs> | null
-  where?: Prisma.AuthIdentityWhereInput
-  orderBy?: Prisma.AuthIdentityOrderByWithRelationInput | Prisma.AuthIdentityOrderByWithRelationInput[]
-  cursor?: Prisma.AuthIdentityWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AuthIdentityScalarFieldEnum | Prisma.AuthIdentityScalarFieldEnum[]
-}
-
-/**
- * User.back_Session_user_id
- */
-export type User$back_Session_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the LegacySession
-   */
-  select?: Prisma.LegacySessionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the LegacySession
-   */
-  omit?: Prisma.LegacySessionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.LegacySessionInclude<ExtArgs> | null
-  where?: Prisma.LegacySessionWhereInput
-  orderBy?: Prisma.LegacySessionOrderByWithRelationInput | Prisma.LegacySessionOrderByWithRelationInput[]
-  cursor?: Prisma.LegacySessionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.LegacySessionScalarFieldEnum | Prisma.LegacySessionScalarFieldEnum[]
-}
-
-/**
- * User.back_MfaFactor_user_id
- */
-export type User$back_MfaFactor_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the MfaFactor
-   */
-  select?: Prisma.MfaFactorSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the MfaFactor
-   */
-  omit?: Prisma.MfaFactorOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MfaFactorInclude<ExtArgs> | null
-  where?: Prisma.MfaFactorWhereInput
-  orderBy?: Prisma.MfaFactorOrderByWithRelationInput | Prisma.MfaFactorOrderByWithRelationInput[]
-  cursor?: Prisma.MfaFactorWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MfaFactorScalarFieldEnum | Prisma.MfaFactorScalarFieldEnum[]
-}
-
-/**
- * User.back_AuthChallenge_user_id
- */
-export type User$back_AuthChallenge_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the AuthChallenge
-   */
-  select?: Prisma.AuthChallengeSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the AuthChallenge
-   */
-  omit?: Prisma.AuthChallengeOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AuthChallengeInclude<ExtArgs> | null
-  where?: Prisma.AuthChallengeWhereInput
-  orderBy?: Prisma.AuthChallengeOrderByWithRelationInput | Prisma.AuthChallengeOrderByWithRelationInput[]
-  cursor?: Prisma.AuthChallengeWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AuthChallengeScalarFieldEnum | Prisma.AuthChallengeScalarFieldEnum[]
-}
-
-/**
- * User.back_TenantMembership_user_id
- */
-export type User$back_TenantMembership_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the TenantMembership
-   */
-  select?: Prisma.TenantMembershipSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the TenantMembership
-   */
-  omit?: Prisma.TenantMembershipOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.TenantMembershipInclude<ExtArgs> | null
-  where?: Prisma.TenantMembershipWhereInput
-  orderBy?: Prisma.TenantMembershipOrderByWithRelationInput | Prisma.TenantMembershipOrderByWithRelationInput[]
-  cursor?: Prisma.TenantMembershipWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.TenantMembershipScalarFieldEnum | Prisma.TenantMembershipScalarFieldEnum[]
-}
-
-/**
- * User.back_Customer_linked_user_id
- */
-export type User$back_Customer_linked_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Customer
-   */
-  select?: Prisma.CustomerSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Customer
-   */
-  omit?: Prisma.CustomerOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CustomerInclude<ExtArgs> | null
-  where?: Prisma.CustomerWhereInput
-  orderBy?: Prisma.CustomerOrderByWithRelationInput | Prisma.CustomerOrderByWithRelationInput[]
-  cursor?: Prisma.CustomerWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CustomerScalarFieldEnum | Prisma.CustomerScalarFieldEnum[]
-}
-
-/**
- * User.back_AuditEvent_actor_id
- */
-export type User$back_AuditEvent_actor_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the AuditEvent
-   */
-  select?: Prisma.AuditEventSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the AuditEvent
-   */
-  omit?: Prisma.AuditEventOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AuditEventInclude<ExtArgs> | null
-  where?: Prisma.AuditEventWhereInput
-  orderBy?: Prisma.AuditEventOrderByWithRelationInput | Prisma.AuditEventOrderByWithRelationInput[]
-  cursor?: Prisma.AuditEventWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AuditEventScalarFieldEnum | Prisma.AuditEventScalarFieldEnum[]
-}
-
-/**
- * User.back_SecurityEvent_user_id
- */
-export type User$back_SecurityEvent_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SecurityEvent
-   */
-  select?: Prisma.SecurityEventSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SecurityEvent
-   */
-  omit?: Prisma.SecurityEventOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SecurityEventInclude<ExtArgs> | null
-  where?: Prisma.SecurityEventWhereInput
-  orderBy?: Prisma.SecurityEventOrderByWithRelationInput | Prisma.SecurityEventOrderByWithRelationInput[]
-  cursor?: Prisma.SecurityEventWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SecurityEventScalarFieldEnum | Prisma.SecurityEventScalarFieldEnum[]
-}
-
-/**
- * User.back_FileObject_uploaded_by
- */
-export type User$back_FileObject_uploaded_byArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the FileObject
-   */
-  select?: Prisma.FileObjectSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the FileObject
-   */
-  omit?: Prisma.FileObjectOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.FileObjectInclude<ExtArgs> | null
-  where?: Prisma.FileObjectWhereInput
-  orderBy?: Prisma.FileObjectOrderByWithRelationInput | Prisma.FileObjectOrderByWithRelationInput[]
-  cursor?: Prisma.FileObjectWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.FileObjectScalarFieldEnum | Prisma.FileObjectScalarFieldEnum[]
-}
-
-/**
- * User.back_CompanyOwnership_user_id
- */
-export type User$back_CompanyOwnership_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CompanyOwnership
-   */
-  select?: Prisma.CompanyOwnershipSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CompanyOwnership
-   */
-  omit?: Prisma.CompanyOwnershipOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CompanyOwnershipInclude<ExtArgs> | null
-  where?: Prisma.CompanyOwnershipWhereInput
-  orderBy?: Prisma.CompanyOwnershipOrderByWithRelationInput | Prisma.CompanyOwnershipOrderByWithRelationInput[]
-  cursor?: Prisma.CompanyOwnershipWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CompanyOwnershipScalarFieldEnum | Prisma.CompanyOwnershipScalarFieldEnum[]
-}
-
-/**
- * User.back_CompanyVerification_reviewer_id
- */
-export type User$back_CompanyVerification_reviewer_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CompanyVerification
-   */
-  select?: Prisma.CompanyVerificationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CompanyVerification
-   */
-  omit?: Prisma.CompanyVerificationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CompanyVerificationInclude<ExtArgs> | null
-  where?: Prisma.CompanyVerificationWhereInput
-  orderBy?: Prisma.CompanyVerificationOrderByWithRelationInput | Prisma.CompanyVerificationOrderByWithRelationInput[]
-  cursor?: Prisma.CompanyVerificationWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CompanyVerificationScalarFieldEnum | Prisma.CompanyVerificationScalarFieldEnum[]
-}
-
-/**
- * User.back_CompanyContact_user_id
- */
-export type User$back_CompanyContact_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CompanyContact
-   */
-  select?: Prisma.CompanyContactSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CompanyContact
-   */
-  omit?: Prisma.CompanyContactOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CompanyContactInclude<ExtArgs> | null
-  where?: Prisma.CompanyContactWhereInput
-  orderBy?: Prisma.CompanyContactOrderByWithRelationInput | Prisma.CompanyContactOrderByWithRelationInput[]
-  cursor?: Prisma.CompanyContactWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CompanyContactScalarFieldEnum | Prisma.CompanyContactScalarFieldEnum[]
-}
-
-/**
- * User.back_SellerAgreement_accepted_by
- */
-export type User$back_SellerAgreement_accepted_byArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SellerAgreement
-   */
-  select?: Prisma.SellerAgreementSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SellerAgreement
-   */
-  omit?: Prisma.SellerAgreementOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SellerAgreementInclude<ExtArgs> | null
-  where?: Prisma.SellerAgreementWhereInput
-  orderBy?: Prisma.SellerAgreementOrderByWithRelationInput | Prisma.SellerAgreementOrderByWithRelationInput[]
-  cursor?: Prisma.SellerAgreementWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SellerAgreementScalarFieldEnum | Prisma.SellerAgreementScalarFieldEnum[]
-}
-
-/**
- * User.back_CheckoutGroup_buyer_user_id
- */
-export type User$back_CheckoutGroup_buyer_user_idArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CheckoutGroup
-   */
-  select?: Prisma.CheckoutGroupSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CheckoutGroup
-   */
-  omit?: Prisma.CheckoutGroupOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CheckoutGroupInclude<ExtArgs> | null
-  where?: Prisma.CheckoutGroupWhereInput
-  orderBy?: Prisma.CheckoutGroupOrderByWithRelationInput | Prisma.CheckoutGroupOrderByWithRelationInput[]
-  cursor?: Prisma.CheckoutGroupWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CheckoutGroupScalarFieldEnum | Prisma.CheckoutGroupScalarFieldEnum[]
 }
 
 /**

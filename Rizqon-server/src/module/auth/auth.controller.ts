@@ -29,8 +29,18 @@ const verifyEmailWithOtp = catchAsync(async (req: Request, res: Response) => {
     data: response,
   });
 });
+const sendVerificationOtp = catchAsync(async (req: Request, res: Response) => {
+  const email = req.body?.email;
+  const response = await authService.sendVerificationOtpInEmail(email);
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "Verification OTP sent. Please check your email.",
+    data: response,
+  });
+});
 
 export const authController = {
   createUser,
   verifyEmailWithOtp,
+  sendVerificationOtp,
 };

@@ -1,8 +1,8 @@
 import "dotenv/config";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
 export default defineConfig({
-  schema: "prisma/schema",
+  schema: "prisma",
 
   migrations: {
     path: "prisma/migrations",
@@ -11,6 +11,8 @@ export default defineConfig({
   datasource: {
     // Schema operations should bypass Neon's PgBouncer pool. Application
     // traffic continues to use the pooled DATABASE_URL in src/lib/prisma.ts.
-    url: process.env.DATABASE_URL_UNPOOLED ?? env("DATABASE_URL"),
+    // Client generation can run without a database connection. Database
+    // commands still require a configured URL.
+    url: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL,
   },
 });

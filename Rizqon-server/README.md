@@ -1,36 +1,14 @@
-# rizqon-server
+﻿# Rizqon server
 
-A minimal minimal app with Prisma 8 and Prisma Composer.
+Express backend with Prisma/PostgreSQL and managed Neon Auth.
+See [NEON_SETUP.md](NEON_SETUP.md) for project configuration, auth routes,
+environment variables, migration notes, and end-to-end testing.
 
-## Run locally
-
-```bash
-pnpm run dev:composer
+```powershell
+npm.cmd run build
+npm.cmd start
 ```
 
-This builds the app and starts it with Composer. PostgreSQL projects get a local Prisma Postgres database and apply the committed migrations automatically.
-
-## Deploy
-
-```bash
-pnpm run deploy
-```
-
-The deploy script builds the framework output, provisions Prisma Postgres when selected, applies migrations, and deploys the app to Prisma Compute.
-
-The starter users are inserted idempotently from `src/prisma/seed.ts` on the first database query through the Composer service binding.
-
-
-## Prisma
-
-- Contract: `src/prisma/contract.prisma`
-- Prisma and Composer config: `prisma.config.ts`
-- Composer app: `module.ts` and `service.ts`
-
-After changing the contract, run:
-
-```bash
-pnpm run contract:emit
-```
-
-To use the framework's development server directly, run `pnpm run dev`. This direct mode requires `DATABASE_URL`.
+The server starts at http://localhost:5000 by default. `neon deploy` provisions
+backend services and pulls environment variables; deploy the Express process
+on a Node.js host separately. For development, use `pnpm.cmd run dev`.

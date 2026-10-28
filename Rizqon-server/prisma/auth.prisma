@@ -1,0 +1,88 @@
+// Signing keys used by Better Auth's JWT plugin.
+model Jwks {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  publicKey  String    @map("public_key")
+  privateKey String    @map("private_key")
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  expiresAt  DateTime? @map("expires_at") @db.Timestamptz(6)
+  alg        String?
+  crv        String?
+
+  @@map("jwks")
+  @@schema("commerce")
+}
+
+model User {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email String
+  phone String?
+  name String @map("display_name")
+  user_role SYSTEM_USER_ROLE @default(RIZQON_USER)
+  status  STATUS @default(ACTIVE)
+  email_verified_at DateTime? @db.Timestamptz(6)
+  phone_verified_at DateTime? @db.Timestamptz(6)
+  last_login_at DateTime? @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  row_version Int @default(1)
+  emailVerified Boolean @default(false) @map("email_verified")
+  image String?
+  accounts Account[]
+  sessions Session[]
+  @@unique([email])
+  @@unique([phone])
+  @@map("user")
+  @@schema("commerce")
+}
+model Session {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
+  token String @unique
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  ipAddress String? @map("ip_address")
+  userAgent String? @map("user_agent")
+  userId String @map("user_id") @db.Uuid
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  @@index([userId])
+  @@index([expiresAt])
+  // New physical table: previous token_hash sessions are not Better Auth sessions.
+  @@map("better_auth_session")
+  @@schema("commerce")
+}
+
+model Account {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId String @map("account_id")
+  providerId String @map("provider_id")
+  userId String @map("user_id") @db.Uuid
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  accessToken String? @map("access_token")
+  refreshToken String? @map("refresh_token")
+  idToken String? @map("id_token")
+  accessTokenExpiresAt DateTime? @map("access_token_expires_at") @db.Timestamptz(6)
+  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at") @db.Timestamptz(6)
+  scope String?
+  password String?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  @@unique([providerId, accountId])
+  @@index([userId])
+  @@map("account")
+  @@schema("commerce")
+}
+
+model Verification {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  identifier String
+  value String
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  @@index([identifier])
+  @@index([expiresAt])
+  @@map("verification")
+  @@schema("commerce")
+}
+
+

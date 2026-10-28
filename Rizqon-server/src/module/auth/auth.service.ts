@@ -1,6 +1,6 @@
 import type {
   ICreateUserPayload,
-  IverifyEmailOtp,
+  IVerifyEmailPayload,
 } from "../../type/auth-type/auth.type.js";
 import { auth } from "../../lib/auth.js";
 import { prisma } from "../../lib/prisma.js";
@@ -41,7 +41,7 @@ const createUser = async (payload: ICreateUserPayload) => {
   return response;
 };
 
-const verifyEmailWithOtp = async (payload: IverifyEmailOtp) => {
+const verifyEmailWithOtp = async (payload: IVerifyEmailPayload) => {
   const email = payload.email.trim().toLowerCase();
 
   const existingUser = await prisma.user.findUnique({
@@ -79,7 +79,22 @@ const verifyEmailWithOtp = async (payload: IverifyEmailOtp) => {
   return result;
 };
 
+const sendVerificationOtpInEmail = async (email: unknown) => {
+  if (typeof email !== "string" || !email.trim()) {
+    throw new AppError(StatusCodes.BAD_REQUEST, "Email is required.");
+  }
+
+  return auth.api.sendVerificationOTP({
+    body: {
+      email: email.trim().toLowerCase(),
+      type: "email-verification",
+    },
+  });
+};
+
+
 export const authService = {
   createUser,
   verifyEmailWithOtp,
+  sendVerificationOtpInEmail,
 };
