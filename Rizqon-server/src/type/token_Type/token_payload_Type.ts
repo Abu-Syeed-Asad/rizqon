@@ -1,6 +1,11 @@
-export interface ITokenPayload <T>  {
+export interface ITokenPayload {
   name: string;
   email: string;
   id: string;
-  data?:[T]
+  role: string;
+  emailVerified: boolean;
+  createdAt: string;
+  updatedAt: string;
+  phone?:string;
+ 
 } 

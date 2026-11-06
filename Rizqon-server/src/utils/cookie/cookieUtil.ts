@@ -36,7 +36,7 @@ const ACCESS_COOKIE_OPTIONS: CookieOptions = {
 
 const REFRESH_COOKIE_OPTIONS: CookieOptions = {
   ...BASE_COOKIE_OPTIONS,
-  path: "/api/v1/auth/refresh",
+  path: "/",
   maxAge: COOKIE_MAX_AGE.REFRESH_TOKEN,
 };
 const SESSION_COOKIE_OPTIONS: CookieOptions = {
@@ -57,7 +57,7 @@ const SESSION_COOKIE_OPTIONS: CookieOptions = {
  const clearCookie = (
   res: Response,
   name: string,
-  options: CookieOptions,
+  options?: CookieOptions,
 ): void => {
   const {  ...clearOptions } = options;
 

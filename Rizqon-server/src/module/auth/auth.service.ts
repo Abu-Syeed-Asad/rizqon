@@ -1,5 +1,6 @@
 import type {
   ICreateUserPayload,
+  ISignInPayload,
   IVerifyEmailPayload,
 } from "../../type/auth-type/auth.type.js";
 import { auth } from "../../lib/auth.js";
@@ -7,6 +8,11 @@ import { prisma } from "../../lib/prisma.js";
 import { AppError } from "../../errors/App.error.js";
 import { StatusCodes } from "http-status-codes";
 import { env } from "../../config/env.js";
+import { STATUS } from "../../../prisma/generated/prisma/enums.js";
+import { tokenUtilitis } from "../../utils/token/tokenUtilitis.js";
+import type { ITokenPayload } from "../../type/token_Type/token_payload_Type.js";
+import { cookieUtills } from "../../utils/cookie/cookieUtil.js";
+import type { Response } from "express";
 
 const createUser = async (payload: ICreateUserPayload) => {
   if (!payload.email) {
@@ -41,7 +47,7 @@ const createUser = async (payload: ICreateUserPayload) => {
   return response;
 };
 
-const verifyEmailWithOtp = async (payload: IVerifyEmailPayload) => {
+const verifyEmailWithOtp = async (payload: IVerifyEmailPayload,res:Response) => {
   const email = payload.email.trim().toLowerCase();
 
   const existingUser = await prisma.user.findUnique({
@@ -65,18 +71,46 @@ const verifyEmailWithOtp = async (payload: IVerifyEmailPayload) => {
       "Email is already verified. Please sign in.",
     );
   }
-  const result = await auth.api.verifyEmailOTP({
+  const user = await auth.api.verifyEmailOTP({
     body: {
       email,
       otp: payload.otp,
     },
   });
 
-  if (!result.status) {
+  if (!user.user.emailVerified) {
     throw new AppError(StatusCodes.BAD_REQUEST, "Email verification failed.");
   }
+    const tokenPayload: ITokenPayload = {
+      name: user?.user?.name,
+      email: user?.user?.email,
+      id: user?.user?.id,
+      role: user?.user?.user_role as string,
+      emailVerified: user?.user?.emailVerified,
+      createdAt: user?.user?.createdAt.toISOString(),
+      updatedAt: user?.user?.updatedAt.toISOString(),
+      phone: user?.user?.phone as string,
+    };
+    const accessToken = tokenUtilitis.createToken(
+      tokenPayload,
+      env.JWT_ACCESS_TOKEN_SECRET as string,
+      env.JWT_ACCESS_TOKEN_EXPIRE_TIME,
+    );
+    const refreshToken = tokenUtilitis.createToken(
+      tokenPayload,
+      env.JWT_REFRESH_TOKEN_SECRET as string,
+      env.JWT_REFRESH_TOKEN_EXPIRE_TIME,
+    );
+    // set token in cookie
+  const sessionToken = user?.token as string;
+    cookieUtills.setAuthCookies(res, accessToken, refreshToken, sessionToken);
 
-  return result;
+
+  return {
+    accessToken,
+    refreshToken,
+    user,
+  };
 };
 
 const sendVerificationOtpInEmail = async (email: unknown) => {
@@ -92,9 +126,75 @@ const sendVerificationOtpInEmail = async (email: unknown) => {
   });
 };
 
+const signInUser = async (payload:ISignInPayload,res:Response) => {
+  if (!payload.email) {
+    throw new AppError(StatusCodes.BAD_REQUEST, `The Email is undefined`);
+  }
+  const email = payload.email.trim().toLowerCase();
+    const isExistUserIn_Db = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+  if (!isExistUserIn_Db) {
+    throw new AppError(StatusCodes.NOT_FOUND, "Your Email and Password NOt Found In Data-Base please signup again");
+  };
+  if (!isExistUserIn_Db.emailVerified) {
+    throw new AppError(StatusCodes.BAD_REQUEST, "your account not verified please verify your account");
+  }
+  if (isExistUserIn_Db.status ===STATUS.DELETED) {
+    throw new AppError(StatusCodes.FORBIDDEN, "Your account is deleted ");
+  }
+  const user = await auth.api.signInEmail({
+    body:payload
+  })
+  if (!user) {
+    throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, "server error");
+  };
+
+  const tokenPayload: ITokenPayload = {
+    name: user?.user?.name,
+    email: user?.user?.email,
+    id: user?.user?.id, 
+    role: user?.user?.user_role as string,
+    emailVerified: user?.user?.emailVerified ,
+    createdAt: user?.user?.createdAt.toISOString() ,
+    updatedAt: user?.user?.updatedAt.toISOString(),
+    phone: user?.user?.phone as string,
+  }
+const accessToken = tokenUtilitis.createToken(tokenPayload, env.JWT_ACCESS_TOKEN_SECRET as string, env.JWT_ACCESS_TOKEN_EXPIRE_TIME);
+  const refreshToken = tokenUtilitis.createToken(tokenPayload, env.JWT_REFRESH_TOKEN_SECRET as string, env.JWT_REFRESH_TOKEN_EXPIRE_TIME);
+  // set token in cookie 
+  const sessionToken = user?.token;
+  cookieUtills.setAuthCookies(res,accessToken,refreshToken,sessionToken);
+
+  return {
+    accessToken,
+    refreshToken,
+    user
+  };
+} 
+
+
+const signOutUser = async (res: Response) => { 
+  const signOutUser = await auth.api.signOut({
+    headers: {
+      Authorization: `Bearer ${res.locals.sessionToken}`,
+    }
+  });
+  if(!signOutUser){
+    throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, "sign out failed please try again");
+  }
+  cookieUtills.clearAuthCookies(res);
+  return {
+    redirectUrl: `${env.FRONTEND_ORIGIN}/auth/signin`
+  };
+}
 
 export const authService = {
   createUser,
   verifyEmailWithOtp,
   sendVerificationOtpInEmail,
+  signInUser,
+  signOutUser
 };

@@ -14,5 +14,4 @@ export interface IVerifyEmailPayload {
 export interface ISignInPayload {
   email: string;
   password: string;
-  rememberMe?: boolean;
 }

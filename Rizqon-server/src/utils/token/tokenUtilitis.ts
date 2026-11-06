@@ -6,8 +6,8 @@ import jwt, {
 import type { ITokenPayload } from "../../type/token_Type/token_payload_Type";
 import { env } from "../../config/env";
 
-const createToken = <T extends object>(
-  payload: ITokenPayload<T>,
+const createToken = (
+  payload: ITokenPayload,
   secret: string,
   time: SignOptions["expiresIn"] = "1d",
 ): string => {
