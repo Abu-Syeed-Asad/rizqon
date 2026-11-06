@@ -71,6 +71,10 @@ const getCookie = (req: Request, name: string): string | null => {
 };
 
 // Authentication helpers
+const setSessionCookie = (res: Response, sessionToken: string): void => {
+  setCookie(res, COOKIE_NAMES.SESSION_TOKEN, sessionToken, SESSION_COOKIE_OPTIONS);
+};
+
 export const setAuthCookies = (
   res: Response,
   accessToken: string,
@@ -113,6 +117,7 @@ export const setAuthCookies = (
 };
 
 export const cookieUtills = {
+  setSessionCookie,
   setAuthCookies,
   clearAuthCookies,
   getAccessToken,

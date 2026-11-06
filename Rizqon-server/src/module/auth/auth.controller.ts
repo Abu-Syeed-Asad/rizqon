@@ -1,4 +1,7 @@
 import type { Request, Response } from "express";
+import { fromNodeHeaders } from "better-auth/node";
+import { authHeaders } from "../../utils/authHeaders.js";
+import { cookieUtills } from "../../utils/cookie/cookieUtil.js";
 import {
   catchAsync,
   send_Response,
@@ -9,8 +12,7 @@ import type {
 } from "../../type/auth-type/auth.type";
 import { authService } from "./auth.service";
 import { StatusCodes } from "http-status-codes";
-import { cookieUtills } from "../../utils/cookie/cookieUtil";
-
+import { AppError } from "../../errors/App.error";
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const payload: ICreateUserPayload = req.body;
   const response = await authService.createUser(payload);
@@ -55,22 +57,118 @@ const signOutUser = catchAsync(async (req: Request, res: Response) => {
     data:response
   })  
 })
+const getSessionUser = catchAsync(async (req: Request, res: Response) => {
+  const response = await authService.getSessionUser(authHeaders(req));
+  res.setHeader("Cache-Control", "no-store");
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "Session user retrieved successfully",
+    data: response
+  });
+});
+const resetPasswordWithOtp = catchAsync(async (req: Request, res: Response) => {
+  const { email, otp, newPassword } = req.body;
+  const response = await authService.resetPasswordWithOtp(email, otp, newPassword); 
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "Password reset successfully. Please sign in with your new password.",
+    data: response,
+  });
+});
+const forgotPassword = catchAsync(async (req: Request, res: Response) => {
+  const { email } = req.body;
+  const response = await authService.forgotPassword(email); 
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "OTP sent successfully. Please check your email.",
+    data: response,
+  });
+}); 
+const changePassword = catchAsync(async (req: Request, res: Response) => {
+
+  const { currentPassword, newPassword } = req.body ?? {};
+  if (typeof currentPassword !== "string" || !currentPassword ||
+      typeof newPassword !== "string" || !newPassword) {
+    throw new AppError(StatusCodes.BAD_REQUEST, "Current password and new password are required.");
+  } 
+  const headers = fromNodeHeaders(req.headers);
+  const sessionToken = cookieUtills.getCookie(req, "sessionToken");
+  if (!headers.has("authorization") && sessionToken) {
+    headers.set("authorization", `Bearer ${sessionToken}`);
+  }
+  const response = await authService.changePassword(res,headers, currentPassword, newPassword);
+  if (response.token) {
+    cookieUtills.setSessionCookie(res, response.token);
+  }
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "Password changed successfully.",
+    data: response,
+  });
+}); 
+const signInWithGoogleAccount = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await authService.signInWithGoogleAccount(
+      fromNodeHeaders(req.headers),
+    );
+
+    for (const cookie of result.cookies) {
+      res.append("Set-Cookie", cookie);
+    }
+    res.setHeader("Cache-Control", "no-store");
+    res.redirect(303, result.url);
+  },
+);
+
+const completeGoogleSignIn = catchAsync(async (req: Request, res: Response) => {
+  const result = await authService.completeGoogleSignIn(
+    authHeaders(req),
+    res,
+    
+  );
+
+  for (const cookie of result.cookies) {
+    res.append("Set-Cookie", cookie);
+  }
+
+  cookieUtills.setSessionCookie(res, result.sessionToken);
+
+  res.setHeader("Cache-Control", "no-store");
+
+  send_Response(res, {
+    statusCode: StatusCodes.OK,
+    message: "Google sign-in completed successfully.",
+    data: result.user,
+  });
+});
+
+const googleSignInError = (_req: Request, res: Response) => {
+  res.status(StatusCodes.BAD_REQUEST).json({
+    success: false,
+    message: "Google sign-in could not be completed. Please try again.",
+  });
+};
+
+
+
 
 export const authController = {
   createUser,
   verifyEmailWithOtp,
   sendVerificationOtp,
   signInUser,
-  signOutUser
+  signOutUser,
+  getSessionUser,
+  resetPasswordWithOtp,
+  forgotPassword, 
+  changePassword,
+  signInWithGoogleAccount,
+  completeGoogleSignIn,
+  googleSignInError,  
 };
 
 // #	Method	Endpoint	কাজ
 
-// 5	POST	/sign-out	Logout
-// 6	GET	/get-session	Current logged-in user ও session
-// 7	POST	/email-otp/request-password-reset	Forgot password OTP পাঠানো
-// 8	POST	/email-otp/reset-password	OTP দিয়ে নতুন password set
-// 9	POST	/change-password	Logged-in user-এর password change
 // 10	POST	/revoke-session	নির্দিষ্ট session logout
 // 11	GET	/list-sessions	User-এর active sessions দেখা
 // 12	POST	/revoke-other-sessions
