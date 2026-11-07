@@ -1,0 +1,20 @@
+model AuditLog {
+  id         String    @id @default(cuid())
+  businessId String
+  action     AUDIT_LOG_TYPE  // what happened
+  entityType ENTITY_TYPE  // where the action happened
+  entityId   String
+  before     Json?
+  after      Json?
+  requestId  String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt()
+  business   Business  @relation("AuditLog_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  actorId    String?
+  actor      Employee? @relation("AuditLog_actor", fields: [businessId, actorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@index([businessId])
+  @@index([businessId, actorId])
+  @@schema("commerce")
+}

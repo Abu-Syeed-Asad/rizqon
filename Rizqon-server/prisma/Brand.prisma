@@ -1,0 +1,14 @@
+model Brand {
+  id            String    @id @default(cuid())
+  businessId    String
+  brand_name    String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt()
+  business      Business  @relation("Brand_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  product_brand Product[] @relation("Product_brand")
+
+  @@unique([businessId, id])
+  @@unique([businessId, brand_name])
+  @@index([businessId])
+  @@schema("commerce")
+}

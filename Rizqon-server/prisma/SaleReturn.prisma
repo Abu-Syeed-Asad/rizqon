@@ -1,0 +1,27 @@
+model SaleReturn {
+  id                    String       @id @default(cuid())
+  businessId            String
+  returnNumber          String
+  idempotencyKey        String
+  status                SALE_RETURN_STATUS @default(REQUESTED)
+  reason                String
+  totalAmount           Decimal      @db.Decimal(18, 2)
+  processedAt           DateTime?
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt()
+  business              Business     @relation("SaleReturn_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  saleId                String
+  sale                  Sale         @relation("SaleReturn_sale", fields: [businessId, saleId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  processorId           String
+  processor             Employee     @relation("SaleReturn_processor", fields: [businessId, processorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  returnItem_saleReturn ReturnItem[] @relation("ReturnItem_saleReturn")
+  refund_saleReturn     Refund[]     @relation("Refund_saleReturn")
+
+  @@unique([businessId, id])
+  @@unique([businessId, returnNumber])
+  @@unique([businessId, idempotencyKey])
+  @@index([businessId])
+  @@index([businessId, saleId])
+  @@index([businessId, processorId])
+  @@schema("commerce")
+}

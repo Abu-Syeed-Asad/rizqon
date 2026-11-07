@@ -1,0 +1,42 @@
+model Sale {
+  id                      String       @id @default(cuid())
+  businessId              String
+  invoiceNumber           String
+  idempotencyKey          String  //একই checkout request বারবার এলে যেন একাধিক sale তৈরি না হয়।
+  requestHash             String
+  status                  SALE_STATUS   @default(DRAFT)
+  customerNameSnapshot    String?
+  customerAddressSnapshot String?
+  sellerNameSnapshot      String
+  sellerAddressSnapshot   String?
+  currency                String       @default("BDT")
+  subtotal                Decimal      @db.Decimal(18, 2)
+  discountTotal           Decimal      @default(0) @db.Decimal(18, 2)
+  taxTotal                Decimal      @default(0) @db.Decimal(18, 2)
+  grandTotal              Decimal      @db.Decimal(18, 2)
+  completedAt             DateTime?
+  createdAt               DateTime     @default(now())
+  updatedAt               DateTime     @updatedAt()
+  business                Business     @relation("Sale_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  branchId                String
+  branch                  Branch       @relation("Sale_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  customerId              String?
+  customer                Customer?    @relation("Sale_customer", fields: [businessId, customerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  cashierId               String
+  cashier                 Employee     @relation("Sale_cashier", fields: [businessId, cashierId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  cartId                  String?
+  cart                    Cart?        @relation("Sale_cart", fields: [businessId, cartId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  saleItem_sale           SaleItem[]   @relation("SaleItem_sale")
+  payment_sale            Payment[]    @relation("Payment_sale")
+  saleReturn_sale         SaleReturn[] @relation("SaleReturn_sale")
+
+  @@unique([businessId, id])
+  @@unique([businessId, invoiceNumber])
+  @@unique([businessId, idempotencyKey])
+  @@unique([businessId, cartId])
+  @@index([businessId])
+  @@index([businessId, branchId])
+  @@index([businessId, customerId])
+  @@index([businessId, cashierId])
+  @@schema("commerce")
+}

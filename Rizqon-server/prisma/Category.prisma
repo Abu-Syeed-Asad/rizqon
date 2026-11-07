@@ -1,0 +1,21 @@
+model Category {
+  id               String     @id @default(cuid())
+  businessId       String
+  name             String
+  category_slug    String     //mobile-phone, home-appliances, fashion, etc.
+  description      String?
+  isActive         Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt()
+  business         Business   @relation("Category_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  parentId         String?
+  parent           Category?  @relation("Category_parent", fields: [businessId, parentId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  category_parent  Category[] @relation("Category_parent")
+  product_category Product[]  @relation("Product_category")
+
+  @@unique([businessId, id])
+  @@unique([businessId, category_slug])
+  @@index([businessId])
+  @@index([businessId, parentId])
+  @@schema("commerce")
+}

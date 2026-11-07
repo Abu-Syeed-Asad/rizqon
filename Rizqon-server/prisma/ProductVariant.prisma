@@ -1,0 +1,31 @@
+model ProductVariant {
+  id                String               @id @default(cuid())
+  businessId        String
+  sku               String // stock identification code from business branch
+  barcode           String? // barcode for scanning  manufacturer barcode
+  size              String?
+  color             String?
+  attributes        Json? // ram storage memory etc
+  sellingPrice      Decimal              @db.Decimal(18, 2)
+  costPrice         Decimal              @default(0) @db.Decimal(18, 2)
+  isActive          Boolean              @default(true)
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt()
+  business          Business             @relation("ProductVariant_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  productId         String
+  product           Product              @relation("ProductVariant_product", fields: [businessId, productId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  agreementId       String?
+  agreement         CommissionAgreement? @relation("ProductVariant_agreement", fields: [businessId, agreementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  inventory_variant Inventory[]          @relation("Inventory_variant")
+  cartItem_variant  CartItem[]           @relation("CartItem_variant")
+  saleItem_variant  SaleItem[]           @relation("SaleItem_variant")
+  purchaseItem_variant PurchaseItem[]    @relation("PurchaseItem_variant")
+
+  @@unique([businessId, id])
+  @@unique([businessId, sku])
+  @@unique([businessId, barcode])
+  @@index([businessId])
+  @@index([businessId, productId])
+  @@index([businessId, agreementId])
+  @@schema("commerce")
+}

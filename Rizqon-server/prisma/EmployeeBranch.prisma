@@ -1,0 +1,18 @@
+model EmployeeBranch {
+  id         String   @id @default(cuid())
+  businessId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt()
+  business   Business @relation("EmployeeBranch_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  employeeId String
+  employee   Employee @relation("EmployeeBranch_employee", fields: [businessId, employeeId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  branchId   String
+  branch     Branch   @relation("EmployeeBranch_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, employeeId, branchId])
+  @@index([businessId])
+  @@index([businessId, employeeId])
+  @@index([businessId, branchId])
+  @@schema("commerce")
+}

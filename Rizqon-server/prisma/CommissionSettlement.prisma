@@ -1,0 +1,24 @@
+model CommissionSettlement {
+  id                         String            @id @default(cuid())
+  businessId                 String
+  settlement_reference       String          @unique // like CS-2023-0001, CS-2023-0002, etc.
+  settlement_status          COMMISSION_SETTLEMENT_STATUS  @default(DRAFT)
+  amount                     Decimal           @db.Decimal(18, 2)
+  finalizedAt                DateTime?
+  createdAt                  DateTime          @default(now())
+  updatedAt                  DateTime          @updatedAt()
+  business                   Business          @relation("CommissionSettlement_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  payment_settlement         Payment[]         @relation("Payment_settlement")
+  commissionEntry_settlement CommissionEntry[] @relation("CommissionEntry_settlement")
+  partnerId                  String
+  partner                    Partner           @relation("CommissionSettlement_partner", fields: [businessId, partnerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creatorId                  String
+  creator                    Employee          @relation("CommissionSettlement_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, settlement_reference])
+  @@index([businessId])
+  @@index([businessId, partnerId])
+  @@index([businessId, creatorId])
+  @@schema("commerce")
+}

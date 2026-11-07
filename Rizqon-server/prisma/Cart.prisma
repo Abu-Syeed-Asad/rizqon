@@ -1,0 +1,24 @@
+model Cart {
+  id            String     @id @default(cuid())
+  businessId    String
+  status        CART_STATUS @default(ACTIVE)
+  expiresAt     DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt()
+  business      Business   @relation("Cart_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  branchId      String
+  branch        Branch     @relation("Cart_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  customerId    String?
+  customer      Customer?  @relation("Cart_customer", fields: [businessId, customerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creatorId     String
+  creator       Employee   @relation("Cart_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  cartItem_cart CartItem[] @relation("CartItem_cart")
+  sale_cart     Sale?      @relation("Sale_cart")
+
+  @@unique([businessId, id])
+  @@index([businessId])
+  @@index([businessId, branchId])
+  @@index([businessId, customerId])
+  @@index([businessId, creatorId])
+  @@schema("commerce")
+}

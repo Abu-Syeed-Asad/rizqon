@@ -1,0 +1,23 @@
+model ReturnItem {
+  id                         String            @id @default(cuid())
+  businessId                 String
+  quantity                   Decimal           @db.Decimal(18, 3)
+  refundAmount               Decimal           @db.Decimal(18, 2)
+  commissionReversal         Decimal           @default(0) @db.Decimal(18, 2)
+  restock                    Boolean           @default(true)
+  createdAt                  DateTime          @default(now())
+  updatedAt                  DateTime          @updatedAt()
+  business                   Business          @relation("ReturnItem_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  saleReturnId               String
+  saleReturn                 SaleReturn        @relation("ReturnItem_saleReturn", fields: [businessId, saleReturnId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  saleItemId                 String
+  saleItem                   SaleItem          @relation("ReturnItem_saleItem", fields: [businessId, saleItemId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  commissionEntry_returnItem CommissionEntry[] @relation("CommissionEntry_returnItem")
+
+  @@unique([businessId, id])
+  @@unique([businessId, saleReturnId, saleItemId])
+  @@index([businessId])
+  @@index([businessId, saleReturnId])
+  @@index([businessId, saleItemId])
+  @@schema("commerce")
+}

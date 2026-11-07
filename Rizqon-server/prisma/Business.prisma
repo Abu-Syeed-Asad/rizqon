@@ -1,0 +1,46 @@
+model Business {
+  id                            String                 @id @default(cuid())
+  name                          String
+  business_slug                String                 @unique   // Unique slug for the business, used in URLs and other references like rahim-electronics
+  legalName                     String?
+  registrationNumber            String?  // like trade license number, company registration number, etc.
+  taxIdentificationNumber       String?  // like VAT number, TIN, etc.
+  phone                         String?
+  email                         String?
+  address                       String?
+  currency                      String                 @default("BDT")
+  status                        BUSINESS_STATUS         @default(ACTIVE)
+  createdAt                     DateTime               @default(now())
+  updatedAt                     DateTime               @updatedAt()
+  auditLog_business             AuditLog[]             @relation("AuditLog_business")
+  branch_business               Branch[]               @relation("Branch_business")
+  brand_business                Brand[]                @relation("Brand_business")
+  cart_business                 Cart[]                 @relation("Cart_business")
+  cartItem_business             CartItem[]             @relation("CartItem_business")
+  category_business             Category[]             @relation("Category_business")
+  commissionAgreement_business  CommissionAgreement[]  @relation("CommissionAgreement_business")
+  commissionEntry_business      CommissionEntry[]      @relation("CommissionEntry_business")
+  commissionSettlement_business CommissionSettlement[] @relation("CommissionSettlement_business")
+  customer_business             Customer[]             @relation("Customer_business")
+  employee_business             Employee[]             @relation("Employee_business")
+  employeeBranch_business       EmployeeBranch[]       @relation("EmployeeBranch_business")
+  expense_business              Expense[]              @relation("Expense_business")
+  inventory_business            Inventory[]            @relation("Inventory_business")
+  notification_business         Notification[]         @relation("Notification_business")
+  outboxEvent_business          OutboxEvent[]          @relation("OutboxEvent_business")
+  partner_business              Partner[]              @relation("Partner_business")
+  payment_business              Payment[]              @relation("Payment_business")
+  paymentEvent_business         PaymentEvent[]         @relation("PaymentEvent_business")
+  product_business              Product[]              @relation("Product_business")
+  productVariant_business       ProductVariant[]       @relation("ProductVariant_business")
+  purchase_business             Purchase[]             @relation("Purchase_business")
+  purchaseItem_business         PurchaseItem[]          @relation("PurchaseItem_business")
+  refund_business               Refund[]               @relation("Refund_business")
+  returnItem_business           ReturnItem[]           @relation("ReturnItem_business")
+  sale_business                 Sale[]                 @relation("Sale_business")
+  saleItem_business             SaleItem[]             @relation("SaleItem_business")
+  saleReturn_business           SaleReturn[]           @relation("SaleReturn_business")
+  stockMovement_business        StockMovement[]        @relation("StockMovement_business")
+  partner_linkedBusiness        Partner[]              @relation("Partner_linkedBusiness")
+  @@schema("commerce")
+}

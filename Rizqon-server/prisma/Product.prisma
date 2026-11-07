@@ -1,0 +1,25 @@
+model Product {
+  id                     String           @id @default(cuid())
+  businessId             String
+  name                   String
+  slug                   String  // unique slug for the product, used in URLs like cotton-t-shirt, leather-wallet, etc.
+  description            String?
+  unit                   String           @default("piece") // unit of measurement for the product, like piece, kg, liter, etc.
+  price                  Decimal          @db.Decimal(18, 2)
+  isActive               Boolean          @default(true)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt()
+  business               Business         @relation("Product_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  categoryId             String
+  category               Category         @relation("Product_category", fields: [businessId, categoryId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  brandId                String?
+  brand                  Brand?           @relation("Product_brand", fields: [businessId, brandId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  productVariant_product ProductVariant[] @relation("ProductVariant_product")
+
+  @@unique([businessId, id])
+  @@unique([businessId, slug])
+  @@index([businessId])
+  @@index([businessId, categoryId])
+  @@index([businessId, brandId])
+  @@schema("commerce")
+}

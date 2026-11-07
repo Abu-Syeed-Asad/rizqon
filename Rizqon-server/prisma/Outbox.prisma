@@ -1,0 +1,21 @@
+model OutboxEvent {
+  id          String    @id @default(cuid())
+  businessId  String
+  eventKey    String
+  type        String
+  payload     Json
+  attempts    Int       @default(0)
+  availableAt DateTime  @default(now())
+  lockedUntil DateTime?
+  processedAt DateTime?
+  lastError   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt()
+  business    Business  @relation("OutboxEvent_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, eventKey])
+  @@index([processedAt, availableAt])
+  @@index([businessId])
+  @@schema("commerce")
+}

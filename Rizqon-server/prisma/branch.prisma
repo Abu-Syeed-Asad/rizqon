@@ -1,0 +1,23 @@
+model Branch {
+  id                    String           @id @default(cuid())
+  businessId            String
+  name                  String
+  branch_code           String  // Unique code for the branch within the business like "BR001", "BR002", etc.
+  address               String?
+  phone                 String?
+  isActive              Boolean          @default(true)
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt()
+  business              Business         @relation("Branch_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  employeeBranch_branch EmployeeBranch[] @relation("EmployeeBranch_branch")
+  inventory_branch      Inventory[]      @relation("Inventory_branch")
+  cart_branch           Cart[]           @relation("Cart_branch")
+  sale_branch           Sale[]           @relation("Sale_branch")
+  purchase_branch       Purchase[]       @relation("Purchase_branch")
+  expense_branch        Expense[]        @relation("Expense_branch")
+
+  @@unique([businessId, id])
+  @@unique([businessId, branch_code])
+  @@index([businessId])
+  @@schema("commerce")
+}

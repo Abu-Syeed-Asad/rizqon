@@ -1,0 +1,32 @@
+model SaleItem {
+  id                       String               @id @default(cuid())
+  businessId               String
+  productName              String
+  sku                      String
+  quantity                 Decimal              @db.Decimal(18, 3)
+  unitPrice                Decimal              @db.Decimal(18, 2)
+  unitCost                 Decimal              @db.Decimal(18, 2)
+  discountAmount           Decimal              @default(0) @db.Decimal(18, 2)
+  taxAmount                Decimal              @default(0) @db.Decimal(18, 2)
+  lineTotal                Decimal              @db.Decimal(18, 2)
+  commissionPercent        Decimal              @default(0) @db.Decimal(5, 2)
+  commissionAmount         Decimal              @default(0) @db.Decimal(18, 2)
+  createdAt                DateTime             @default(now())
+  updatedAt                DateTime             @updatedAt()
+  business                 Business             @relation("SaleItem_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  saleId                   String
+  sale                     Sale                 @relation("SaleItem_sale", fields: [businessId, saleId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  variantId                String
+  variant                  ProductVariant       @relation("SaleItem_variant", fields: [businessId, variantId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  agreementId              String?
+  agreement                CommissionAgreement? @relation("SaleItem_agreement", fields: [businessId, agreementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  returnItem_saleItem      ReturnItem[]         @relation("ReturnItem_saleItem")
+  commissionEntry_saleItem CommissionEntry[]    @relation("CommissionEntry_saleItem")
+
+  @@unique([businessId, id])
+  @@index([businessId])
+  @@index([businessId, saleId])
+  @@index([businessId, variantId])
+  @@index([businessId, agreementId])
+  @@schema("commerce")
+}

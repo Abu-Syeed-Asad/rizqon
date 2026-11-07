@@ -1,0 +1,22 @@
+model Partner {
+  id                           String                 @id @default(cuid())
+  businessId                   String
+  name                         String
+  phone                        String
+  email                        String
+  address                      String
+  kind                         PARTNER_KIND
+  createdAt                    DateTime               @default(now())
+  updatedAt                    DateTime               @updatedAt()
+  business                     Business               @relation("Partner_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  linkedBusinessId             String?
+  linkedBusiness               Business?              @relation("Partner_linkedBusiness", fields: [linkedBusinessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  commissionAgreement_partner  CommissionAgreement[]  @relation("CommissionAgreement_partner")
+  purchase_supplier            Purchase[]             @relation("Purchase_supplier")
+  commissionSettlement_partner CommissionSettlement[] @relation("CommissionSettlement_partner")
+
+  @@unique([businessId, id])
+  @@index([businessId])
+  @@index([linkedBusinessId])
+  @@schema("commerce")
+}

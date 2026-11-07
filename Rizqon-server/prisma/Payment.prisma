@@ -1,0 +1,40 @@
+model Payment {
+  id                   String                @id @default(cuid())
+  businessId           String
+  direction            PAYMENT_DIRECTION
+  method               PAYMENT_METHOD
+  status               PAYMENT_STATUS         @default(PENDING)
+  amount               Decimal               @db.Decimal(18, 2)
+  currency             String                @default("BDT")
+  provider             String?
+  providerReference    String?
+  idempotencyKey       String
+  paidAt               DateTime?
+  note                 String?
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt()
+  business             Business              @relation("Payment_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  saleId               String?
+  sale                 Sale?                 @relation("Payment_sale", fields: [businessId, saleId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  purchaseId           String?
+  purchase             Purchase?             @relation("Payment_purchase", fields: [businessId, purchaseId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  expenseId            String?
+  expense              Expense?              @relation("Payment_expense", fields: [businessId, expenseId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  settlementId         String?
+  settlement           CommissionSettlement? @relation("Payment_settlement", fields: [businessId, settlementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  recorderId           String?
+  recorder             Employee?             @relation("Payment_recorder", fields: [businessId, recorderId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  paymentEvent_payment PaymentEvent[]        @relation("PaymentEvent_payment")
+  refund_payment       Refund[]              @relation("Refund_payment")
+
+  @@unique([businessId, id])
+  @@unique([businessId, idempotencyKey])
+  @@unique([provider, providerReference])
+  @@index([businessId])
+  @@index([businessId, saleId])
+  @@index([businessId, purchaseId])
+  @@index([businessId, expenseId])
+  @@index([businessId, settlementId])
+  @@index([businessId, recorderId])
+  @@schema("commerce")
+}

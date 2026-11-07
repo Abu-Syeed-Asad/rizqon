@@ -1,0 +1,19 @@
+// first customer of a business is the business itself. So, when a business is created, a customer is also created with the same name as the business name. This customer is used for all the sales and returns made by the business itself. The business can also create other customers for its own sales and returns. The customer model has a unique constraint on the combination of businessId and id, so that a customer can only belong to one business. The customer model also has a relation to the business model, so that we can easily fetch the business details of a customer.
+
+model Customer {
+  id            String   @id @default(cuid())
+  businessId    String
+  name          String
+  phone         String
+  email         String?
+  address       String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt()
+  business      Business @relation("Customer_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  cart_customer Cart[]   @relation("Cart_customer")
+  sale_customer Sale[]   @relation("Sale_customer")
+
+  @@unique([businessId, id])
+  @@index([businessId])
+  @@schema("commerce")
+}

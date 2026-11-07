@@ -1,0 +1,32 @@
+// how much commission is earned by the business for a particular sale or return. This is calculated based on the commission agreement that is in effect at the time of the sale or return. The commission amount is calculated as follows: commissionAmount = grossBase * (commissionPercent / 100). The partnerPayable is the amount that is payable to the partner after deducting the commission amount from the gross base. The partnerPayable is calculated as follows: partnerPayable = grossBase - commissionAmount.
+
+model CommissionEntry {
+  id               String                @id @default(cuid())
+  businessId       String
+  eventKey         String   @unique // dublecate  eranoro jonno use kora hobe, jate ekta sale item er jonno ekadhik commission entry create kora jay, jodi sale item er jonno ekadhik commission agreement thake. eventKey = saleItemId + agreementId
+  eventType        COMMISSION_EVENT_TYPE  // SALE or RETURN
+  grossBase        Decimal               @db.Decimal(18, 2)  //after discount, before tax
+  commissionPercent Decimal               @db.Decimal(5, 2)
+  commissionAmount Decimal               @db.Decimal(18, 2)
+  partnerPayable   Decimal               @db.Decimal(18, 2)
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt()
+  business         Business              @relation("CommissionEntry_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  agreementId      String
+  agreement        CommissionAgreement   @relation("CommissionEntry_agreement", fields: [businessId, agreementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  saleItemId       String
+  saleItem         SaleItem              @relation("CommissionEntry_saleItem", fields: [businessId, saleItemId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  returnItemId     String?
+  returnItem       ReturnItem?           @relation("CommissionEntry_returnItem", fields: [businessId, returnItemId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  settlementId     String?
+  settlement       CommissionSettlement? @relation("CommissionEntry_settlement", fields: [businessId, settlementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, eventKey])
+  @@index([businessId])
+  @@index([businessId, agreementId])
+  @@index([businessId, saleItemId])
+  @@index([businessId, returnItemId])
+  @@index([businessId, settlementId])
+  @@schema("commerce")
+}

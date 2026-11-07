@@ -1,0 +1,23 @@
+// age payment event gula process hoise kina check korar jonno, amra payment event gula ke hash kore store korbo. jodi same hash er event ashe, tahole seta process kora hobe na. eta mainly duplicate event handle korar jonno use hobe. jodi kono payment event process kora hoy, tahole processedAt field e current timestamp set kora hobe.
+model PaymentEvent {
+  id              String    @id @default(cuid())
+  businessId      String
+  provider        String
+  providerEventId String
+  payloadHash     String
+  processedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt()
+  business        Business  @relation("PaymentEvent_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  paymentId       String?
+  payment         Payment?  @relation("PaymentEvent_payment", fields: [businessId, paymentId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  refundId        String?
+  refund          Refund?   @relation("PaymentEvent_refund", fields: [businessId, refundId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([provider, providerEventId])
+  @@index([businessId])
+  @@index([businessId, paymentId])
+  @@index([businessId, refundId])
+  @@schema("commerce")
+}

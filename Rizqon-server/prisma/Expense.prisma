@@ -1,0 +1,30 @@
+// Company cost, including salary. Purchase payments remain attached to Purchase, not duplicate expenses.
+model Expense {
+  id              String          @id @default(cuid())
+  businessId      String
+  category        COMPANY_EXPENSE_TYPE
+  amount          Decimal         @db.Decimal(18, 2)
+  currency        String          @default("BDT")
+  description     String
+  incurredAt      DateTime        @default(now())
+  salaryPeriod    String?
+  receiptUrl      String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt()
+  business        Business        @relation("Expense_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  payment_expense Payment[]       @relation("Payment_expense")
+  branchId        String?
+  branch          Branch?         @relation("Expense_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  employeeId      String?
+  employee        Employee?       @relation("Expense_employee", fields: [businessId, employeeId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creatorId       String
+  creator         Employee        @relation("Expense_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, employeeId, salaryPeriod])
+  @@index([businessId])
+  @@index([businessId, branchId])
+  @@index([businessId, employeeId])
+  @@index([businessId, creatorId])
+  @@schema("commerce")
+}

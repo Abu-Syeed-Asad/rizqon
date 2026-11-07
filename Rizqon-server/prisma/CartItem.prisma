@@ -1,0 +1,19 @@
+model CartItem {
+  id         String         @id @default(cuid())
+  businessId String
+  quantity   Decimal        @db.Decimal(18, 3)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt()
+  business   Business       @relation("CartItem_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  cartId     String
+  cart       Cart           @relation("CartItem_cart", fields: [businessId, cartId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  variantId  String
+  variant    ProductVariant @relation("CartItem_variant", fields: [businessId, variantId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([businessId, id])
+  @@unique([businessId, cartId, variantId])
+  @@index([businessId])
+  @@index([businessId, cartId])
+  @@index([businessId, variantId])
+  @@schema("commerce")
+}

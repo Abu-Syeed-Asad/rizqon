@@ -1,0 +1,37 @@
+model Employee {
+  id                           String                 @id @default(cuid())
+  businessId                   String
+  employeeCode                 String
+  name                         String
+  phone                        String
+  jobTitle                     EMPLOYEE_JOB_TITLE
+  email                        String?
+  baseSalary                   Decimal                @default(0) @db.Decimal(18, 2)
+  joinedAt                     DateTime               @default(now())
+  isActive                     Boolean                @default(true)
+  createdAt                    DateTime               @default(now())
+  updatedAt                    DateTime               @updatedAt()
+  business                     Business               @relation("Employee_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  roleId                       String
+  userId                       String?
+  user                         User?                  @relation("Employee_user", fields: [userId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  employeeBranch_employee      EmployeeBranch[]       @relation("EmployeeBranch_employee")
+  stockMovement_actor          StockMovement[]        @relation("StockMovement_actor")
+  cart_creator                 Cart[]                 @relation("Cart_creator")
+  sale_cashier                 Sale[]                 @relation("Sale_cashier")
+  purchase_creator             Purchase[]             @relation("Purchase_creator")
+  payment_recorder             Payment[]              @relation("Payment_recorder")
+  saleReturn_processor         SaleReturn[]           @relation("SaleReturn_processor")
+  expense_employee             Expense[]              @relation("Expense_employee")
+  expense_creator              Expense[]              @relation("Expense_creator")
+  commissionSettlement_creator CommissionSettlement[] @relation("CommissionSettlement_creator")
+  auditLog_actor               AuditLog[]             @relation("AuditLog_actor")
+
+  @@unique([businessId, id])
+  @@unique([businessId, employeeCode])
+  @@unique([businessId, userId])
+  @@index([businessId])
+  @@index([businessId, roleId])
+  @@index([userId])
+  @@schema("commerce")
+}

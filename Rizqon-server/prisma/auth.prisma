@@ -29,6 +29,8 @@ model User {
   image String?
   accounts Account[]
   sessions Session[]
+  employees Employee[] @relation("Employee_user")
+  notifications Notification[] @relation("Notification_recipient")
   @@unique([email])
   @@unique([phone])
   @@map("user")
@@ -84,5 +86,3 @@ model Verification {
   @@map("verification")
   @@schema("commerce")
 }
-
-
