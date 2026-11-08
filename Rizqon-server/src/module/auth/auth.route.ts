@@ -2,6 +2,7 @@
 import { authController } from "./auth.controller.js";
 import { validateBody } from "../../middleware/validateBody.js";
 import { authValidation } from "./auth.validation.js";
+import auth_Checker from "../../middleware/auth_Check.js";
 
 const router = Router();
 
@@ -24,6 +25,8 @@ authController.signInWithGoogleAccount);
 router.get("/complete-google-sign-in", authController.completeGoogleSignIn);
 router.post("/complete-google-sign-in", validateBody(authValidation.completeGoogleSignIn), authController.completeGoogleSignIn);
 router.get("/google-sign-in-error", authController.googleSignInError);  
+
+router.get("/me",auth_Checker(),authController.getProfile)
 
 
 export const authRouter: Router = router;

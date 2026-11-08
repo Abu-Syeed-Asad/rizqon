@@ -119,7 +119,6 @@ const signInWithGoogleAccount = catchAsync(
     res.redirect(303, result.url);
   },
 );
-
 const completeGoogleSignIn = catchAsync(async (req: Request, res: Response) => {
   const result = await authService.completeGoogleSignIn(
     authHeaders(req),
@@ -141,14 +140,21 @@ const completeGoogleSignIn = catchAsync(async (req: Request, res: Response) => {
     data: result.user,
   });
 });
-
 const googleSignInError = (_req: Request, res: Response) => {
   res.status(StatusCodes.BAD_REQUEST).json({
     success: false,
     message: "Google sign-in could not be completed. Please try again.",
   });
 };
+const getProfile = catchAsync(async (req: Request, res: Response) => {
+  const user = res.locals.user;
+  send_Response(res, {
+    message: "your profile information ",
+    statusCode: StatusCodes.OK,
+    data:user
+  })
 
+})
 
 
 
@@ -165,6 +171,7 @@ export const authController = {
   signInWithGoogleAccount,
   completeGoogleSignIn,
   googleSignInError,  
+  getProfile,
 };
 
 // #	Method	Endpoint	কাজ

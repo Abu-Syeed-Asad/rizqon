@@ -13,7 +13,7 @@ model Employee {
   updatedAt                    DateTime               @updatedAt()
   business                     Business               @relation("Employee_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
   roleId                       String
-  userId                       String?
+  userId                       String?                @db.Uuid
   user                         User?                  @relation("Employee_user", fields: [userId], references: [id], onDelete: Restrict, onUpdate: NoAction)
   employeeBranch_employee      EmployeeBranch[]       @relation("EmployeeBranch_employee")
   stockMovement_actor          StockMovement[]        @relation("StockMovement_actor")
