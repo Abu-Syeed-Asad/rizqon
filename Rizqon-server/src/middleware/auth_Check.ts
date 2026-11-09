@@ -15,13 +15,12 @@ const auth_Checker = (...allowedRoles: string[]) => {
           success: false,
           message: "Authorization header missing"
         });
-        return;
       }
-      const token = authorizationHeader.split(" ")[1];
+      const token = /^Bearer ([^\s]+)$/i.exec(authorizationHeader)?.[1];
       if (!token) {
         return res.status(401).json({
           success: false,
-          message: "Token missing"
+          message: "A Bearer access token is required"
         });
       }
       const decod = jwt.verify(token, env.JWT_ACCESS_TOKEN_SECRET as string) as ITokenPayload;

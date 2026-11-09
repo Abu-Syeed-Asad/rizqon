@@ -1,10 +1,11 @@
-import type { RequestHandler, Response } from "express";
+import type { NextFunction, Request, RequestHandler, Response } from "express";
 import type {
-  IAsyncController,
   IApiResponse,
 } from "../type/asyncControlerOrApi_response";
 
-export const catchAsync = (fn: IAsyncController): RequestHandler => {
+export const catchAsync = <Params = Request["params"]>(
+  fn: (req: Request<Params>, res: Response, next: NextFunction) => Promise<unknown>,
+): RequestHandler<Params> => {
   return (req, res, next): void => {
     Promise.resolve()
       .then(() => fn(req, res, next))
