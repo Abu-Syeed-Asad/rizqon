@@ -6,7 +6,7 @@ import cors from "cors";
 import helmet from "helmet";
 
 import { env } from "./config/env.js";
-import { requireAuth } from "./middleware/requireAuth.js";
+
 import { AppError } from "./errors/App.error.js";
 import { StatusCodes } from "http-status-codes";
 import { errorHandler } from "./middleware/errorhandler.js";
@@ -36,9 +36,7 @@ app.use(cookieParser())
 app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 
 
-app.get("/api/v1/me", requireAuth, (_req, res) => {
-  res.json({ user: res.locals.auth.user, profile: res.locals.profile });
-});
+
 app.use("/api/v1/", index_router);
 
 app.get("/", (req: Request, res: Response) => {
