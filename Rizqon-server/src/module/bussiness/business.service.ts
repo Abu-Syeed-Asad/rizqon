@@ -28,10 +28,33 @@ const createBusiness = async (payload: ICreateBusiness, user:User) => {
     );
   }
   try {
-    const business = await prisma.business.create({
+    const firstBusiness = await prisma.$transaction(async (tx) => {
+       const business = await tx.business.create({
       data: payload
+       })
+      if (!business) {
+        throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, "business creation failde please try again ");
+      }
+      const branch = await tx.branch.create({
+        data: {
+          businessId: business.id,
+          name: "Main Branch",
+          branch_code: "BR00",
+          address: business.address,
+          phone: business.phone,
+        },
+        include: {
+          business: true,
+        },
+      });
+      return {
+        branch
+        
+      }
+   
     });
-    return business;
+    return firstBusiness
+    
   } catch (error :any) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -122,6 +145,9 @@ const searchBusiness = async (query: ISearchBusiness) => {
       ],
     },
     orderBy: [{ createdAt: "desc" }, { id: "asc" }],
+    include: {
+      branch_business:true
+    }
   });
 };
 
