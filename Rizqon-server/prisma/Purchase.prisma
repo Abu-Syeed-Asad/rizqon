@@ -15,7 +15,7 @@ model Purchase {
   supplierId            String
   supplier              Partner        @relation("Purchase_supplier", fields: [businessId, supplierId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   creatorId             String
-  creator               Employee       @relation("Purchase_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creator               Employee       @relation("Purchase_creator", fields: [businessId, creatorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   purchaseItem_purchase PurchaseItem[] @relation("PurchaseItem_purchase")
   payment_purchase      Payment[]      @relation("Payment_purchase")
 

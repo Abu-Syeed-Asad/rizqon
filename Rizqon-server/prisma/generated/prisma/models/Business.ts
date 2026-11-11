@@ -26,48 +26,48 @@ export type AggregateBusiness = {
 
 export type BusinessMinAggregateOutputType = {
   id: string | null
-  name: string | null
+  Business_name: string | null
   business_slug: string | null
   legalName: string | null
   registrationNumber: string | null
   taxIdentificationNumber: string | null
-  phone: string | null
-  email: string | null
-  address: string | null
+  Business_phone: string | null
+  Business_email: string | null
+  Business_Main_address: string | null
   currency: string | null
-  status: $Enums.BUSINESS_STATUS | null
+  Business_status: $Enums.BUSINESS_STATUS | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type BusinessMaxAggregateOutputType = {
   id: string | null
-  name: string | null
+  Business_name: string | null
   business_slug: string | null
   legalName: string | null
   registrationNumber: string | null
   taxIdentificationNumber: string | null
-  phone: string | null
-  email: string | null
-  address: string | null
+  Business_phone: string | null
+  Business_email: string | null
+  Business_Main_address: string | null
   currency: string | null
-  status: $Enums.BUSINESS_STATUS | null
+  Business_status: $Enums.BUSINESS_STATUS | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type BusinessCountAggregateOutputType = {
   id: number
-  name: number
+  Business_name: number
   business_slug: number
   legalName: number
   registrationNumber: number
   taxIdentificationNumber: number
-  phone: number
-  email: number
-  address: number
+  Business_phone: number
+  Business_email: number
+  Business_Main_address: number
   currency: number
-  status: number
+  Business_status: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -76,48 +76,48 @@ export type BusinessCountAggregateOutputType = {
 
 export type BusinessMinAggregateInputType = {
   id?: true
-  name?: true
+  Business_name?: true
   business_slug?: true
   legalName?: true
   registrationNumber?: true
   taxIdentificationNumber?: true
-  phone?: true
-  email?: true
-  address?: true
+  Business_phone?: true
+  Business_email?: true
+  Business_Main_address?: true
   currency?: true
-  status?: true
+  Business_status?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type BusinessMaxAggregateInputType = {
   id?: true
-  name?: true
+  Business_name?: true
   business_slug?: true
   legalName?: true
   registrationNumber?: true
   taxIdentificationNumber?: true
-  phone?: true
-  email?: true
-  address?: true
+  Business_phone?: true
+  Business_email?: true
+  Business_Main_address?: true
   currency?: true
-  status?: true
+  Business_status?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type BusinessCountAggregateInputType = {
   id?: true
-  name?: true
+  Business_name?: true
   business_slug?: true
   legalName?: true
   registrationNumber?: true
   taxIdentificationNumber?: true
-  phone?: true
-  email?: true
-  address?: true
+  Business_phone?: true
+  Business_email?: true
+  Business_Main_address?: true
   currency?: true
-  status?: true
+  Business_status?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -197,16 +197,16 @@ export type BusinessGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type BusinessGroupByOutputType = {
   id: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName: string | null
   registrationNumber: string | null
   taxIdentificationNumber: string | null
-  phone: string | null
-  email: string | null
-  address: string | null
+  Business_phone: string | null
+  Business_email: string | null
+  Business_Main_address: string | null
   currency: string
-  status: $Enums.BUSINESS_STATUS
+  Business_status: $Enums.BUSINESS_STATUS
   createdAt: Date
   updatedAt: Date
   _count: BusinessCountAggregateOutputType | null
@@ -234,16 +234,16 @@ export type BusinessWhereInput = {
   OR?: Prisma.BusinessWhereInput[]
   NOT?: Prisma.BusinessWhereInput | Prisma.BusinessWhereInput[]
   id?: Prisma.StringFilter<"Business"> | string
-  name?: Prisma.StringFilter<"Business"> | string
+  Business_name?: Prisma.StringFilter<"Business"> | string
   business_slug?: Prisma.StringFilter<"Business"> | string
   legalName?: Prisma.StringNullableFilter<"Business"> | string | null
   registrationNumber?: Prisma.StringNullableFilter<"Business"> | string | null
   taxIdentificationNumber?: Prisma.StringNullableFilter<"Business"> | string | null
-  phone?: Prisma.StringNullableFilter<"Business"> | string | null
-  email?: Prisma.StringNullableFilter<"Business"> | string | null
-  address?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_phone?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_email?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_Main_address?: Prisma.StringNullableFilter<"Business"> | string | null
   currency?: Prisma.StringFilter<"Business"> | string
-  status?: Prisma.EnumBUSINESS_STATUSFilter<"Business"> | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFilter<"Business"> | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   auditLog_business?: Prisma.AuditLogListRelationFilter
@@ -280,16 +280,16 @@ export type BusinessWhereInput = {
 
 export type BusinessOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  Business_name?: Prisma.SortOrder
   business_slug?: Prisma.SortOrder
   legalName?: Prisma.SortOrderInput | Prisma.SortOrder
   registrationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   taxIdentificationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_email?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_Main_address?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  Business_status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   auditLog_business?: Prisma.AuditLogOrderByRelationAggregateInput
@@ -330,15 +330,15 @@ export type BusinessWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.BusinessWhereInput | Prisma.BusinessWhereInput[]
   OR?: Prisma.BusinessWhereInput[]
   NOT?: Prisma.BusinessWhereInput | Prisma.BusinessWhereInput[]
-  name?: Prisma.StringFilter<"Business"> | string
+  Business_name?: Prisma.StringFilter<"Business"> | string
   legalName?: Prisma.StringNullableFilter<"Business"> | string | null
   registrationNumber?: Prisma.StringNullableFilter<"Business"> | string | null
   taxIdentificationNumber?: Prisma.StringNullableFilter<"Business"> | string | null
-  phone?: Prisma.StringNullableFilter<"Business"> | string | null
-  email?: Prisma.StringNullableFilter<"Business"> | string | null
-  address?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_phone?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_email?: Prisma.StringNullableFilter<"Business"> | string | null
+  Business_Main_address?: Prisma.StringNullableFilter<"Business"> | string | null
   currency?: Prisma.StringFilter<"Business"> | string
-  status?: Prisma.EnumBUSINESS_STATUSFilter<"Business"> | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFilter<"Business"> | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   auditLog_business?: Prisma.AuditLogListRelationFilter
@@ -375,16 +375,16 @@ export type BusinessWhereUniqueInput = Prisma.AtLeast<{
 
 export type BusinessOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  Business_name?: Prisma.SortOrder
   business_slug?: Prisma.SortOrder
   legalName?: Prisma.SortOrderInput | Prisma.SortOrder
   registrationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   taxIdentificationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_email?: Prisma.SortOrderInput | Prisma.SortOrder
+  Business_Main_address?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  Business_status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BusinessCountOrderByAggregateInput
@@ -397,32 +397,32 @@ export type BusinessScalarWhereWithAggregatesInput = {
   OR?: Prisma.BusinessScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BusinessScalarWhereWithAggregatesInput | Prisma.BusinessScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Business"> | string
-  name?: Prisma.StringWithAggregatesFilter<"Business"> | string
+  Business_name?: Prisma.StringWithAggregatesFilter<"Business"> | string
   business_slug?: Prisma.StringWithAggregatesFilter<"Business"> | string
   legalName?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
   registrationNumber?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
   taxIdentificationNumber?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
-  phone?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
-  email?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
-  address?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
+  Business_phone?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
+  Business_email?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
+  Business_Main_address?: Prisma.StringNullableWithAggregatesFilter<"Business"> | string | null
   currency?: Prisma.StringWithAggregatesFilter<"Business"> | string
-  status?: Prisma.EnumBUSINESS_STATUSWithAggregatesFilter<"Business"> | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSWithAggregatesFilter<"Business"> | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Business"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Business"> | Date | string
 }
 
 export type BusinessCreateInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -459,16 +459,16 @@ export type BusinessCreateInput = {
 
 export type BusinessUncheckedCreateInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -505,16 +505,16 @@ export type BusinessUncheckedCreateInput = {
 
 export type BusinessUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -551,16 +551,16 @@ export type BusinessUpdateInput = {
 
 export type BusinessUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -597,48 +597,48 @@ export type BusinessUncheckedUpdateInput = {
 
 export type BusinessCreateManyInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type BusinessUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BusinessUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -650,48 +650,48 @@ export type BusinessScalarRelationFilter = {
 
 export type BusinessCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  Business_name?: Prisma.SortOrder
   business_slug?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   registrationNumber?: Prisma.SortOrder
   taxIdentificationNumber?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  address?: Prisma.SortOrder
+  Business_phone?: Prisma.SortOrder
+  Business_email?: Prisma.SortOrder
+  Business_Main_address?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  Business_status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type BusinessMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  Business_name?: Prisma.SortOrder
   business_slug?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   registrationNumber?: Prisma.SortOrder
   taxIdentificationNumber?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  address?: Prisma.SortOrder
+  Business_phone?: Prisma.SortOrder
+  Business_email?: Prisma.SortOrder
+  Business_Main_address?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  Business_status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type BusinessMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  Business_name?: Prisma.SortOrder
   business_slug?: Prisma.SortOrder
   legalName?: Prisma.SortOrder
   registrationNumber?: Prisma.SortOrder
   taxIdentificationNumber?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  address?: Prisma.SortOrder
+  Business_phone?: Prisma.SortOrder
+  Business_email?: Prisma.SortOrder
+  Business_Main_address?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  Business_status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -721,6 +721,20 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type EnumBUSINESS_STATUSFieldUpdateOperationsInput = {
   set?: $Enums.BUSINESS_STATUS
+}
+
+export type BusinessCreateNestedOneWithoutEmployee_businessInput = {
+  create?: Prisma.XOR<Prisma.BusinessCreateWithoutEmployee_businessInput, Prisma.BusinessUncheckedCreateWithoutEmployee_businessInput>
+  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutEmployee_businessInput
+  connect?: Prisma.BusinessWhereUniqueInput
+}
+
+export type BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput = {
+  create?: Prisma.XOR<Prisma.BusinessCreateWithoutEmployee_businessInput, Prisma.BusinessUncheckedCreateWithoutEmployee_businessInput>
+  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutEmployee_businessInput
+  upsert?: Prisma.BusinessUpsertWithoutEmployee_businessInput
+  connect?: Prisma.BusinessWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BusinessUpdateToOneWithWhereWithoutEmployee_businessInput, Prisma.BusinessUpdateWithoutEmployee_businessInput>, Prisma.BusinessUncheckedUpdateWithoutEmployee_businessInput>
 }
 
 export type BusinessCreateNestedOneWithoutCart_businessInput = {
@@ -819,20 +833,6 @@ export type BusinessUpdateOneRequiredWithoutCustomer_businessNestedInput = {
   upsert?: Prisma.BusinessUpsertWithoutCustomer_businessInput
   connect?: Prisma.BusinessWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BusinessUpdateToOneWithWhereWithoutCustomer_businessInput, Prisma.BusinessUpdateWithoutCustomer_businessInput>, Prisma.BusinessUncheckedUpdateWithoutCustomer_businessInput>
-}
-
-export type BusinessCreateNestedOneWithoutEmployee_businessInput = {
-  create?: Prisma.XOR<Prisma.BusinessCreateWithoutEmployee_businessInput, Prisma.BusinessUncheckedCreateWithoutEmployee_businessInput>
-  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutEmployee_businessInput
-  connect?: Prisma.BusinessWhereUniqueInput
-}
-
-export type BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput = {
-  create?: Prisma.XOR<Prisma.BusinessCreateWithoutEmployee_businessInput, Prisma.BusinessUncheckedCreateWithoutEmployee_businessInput>
-  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutEmployee_businessInput
-  upsert?: Prisma.BusinessUpsertWithoutEmployee_businessInput
-  connect?: Prisma.BusinessWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BusinessUpdateToOneWithWhereWithoutEmployee_businessInput, Prisma.BusinessUpdateWithoutEmployee_businessInput>, Prisma.BusinessUncheckedUpdateWithoutEmployee_businessInput>
 }
 
 export type BusinessCreateNestedOneWithoutEmployeeBranch_businessInput = {
@@ -1133,16 +1133,16 @@ export type BusinessUpdateOneRequiredWithoutBranch_businessNestedInput = {
 
 export type BusinessCreateWithoutBrand_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -1178,16 +1178,16 @@ export type BusinessCreateWithoutBrand_businessInput = {
 
 export type BusinessUncheckedCreateWithoutBrand_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -1239,16 +1239,16 @@ export type BusinessUpdateToOneWithWhereWithoutBrand_businessInput = {
 
 export type BusinessUpdateWithoutBrand_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -1284,16 +1284,16 @@ export type BusinessUpdateWithoutBrand_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutBrand_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -1305,1378 +1305,6 @@ export type BusinessUncheckedUpdateWithoutBrand_businessInput = {
   commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
   commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
   customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCart_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCart_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCart_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCart_businessInput, Prisma.BusinessUncheckedCreateWithoutCart_businessInput>
-}
-
-export type BusinessUpsertWithoutCart_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCart_businessInput, Prisma.BusinessUncheckedUpdateWithoutCart_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCart_businessInput, Prisma.BusinessUncheckedCreateWithoutCart_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCart_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCart_businessInput, Prisma.BusinessUncheckedUpdateWithoutCart_businessInput>
-}
-
-export type BusinessUpdateWithoutCart_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCart_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCartItem_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCartItem_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCartItem_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCartItem_businessInput, Prisma.BusinessUncheckedCreateWithoutCartItem_businessInput>
-}
-
-export type BusinessUpsertWithoutCartItem_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCartItem_businessInput, Prisma.BusinessUncheckedUpdateWithoutCartItem_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCartItem_businessInput, Prisma.BusinessUncheckedCreateWithoutCartItem_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCartItem_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCartItem_businessInput, Prisma.BusinessUncheckedUpdateWithoutCartItem_businessInput>
-}
-
-export type BusinessUpdateWithoutCartItem_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCartItem_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCategory_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCategory_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCategory_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCategory_businessInput, Prisma.BusinessUncheckedCreateWithoutCategory_businessInput>
-}
-
-export type BusinessUpsertWithoutCategory_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCategory_businessInput, Prisma.BusinessUncheckedUpdateWithoutCategory_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCategory_businessInput, Prisma.BusinessUncheckedCreateWithoutCategory_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCategory_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCategory_businessInput, Prisma.BusinessUncheckedUpdateWithoutCategory_businessInput>
-}
-
-export type BusinessUpdateWithoutCategory_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCategory_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCommissionAgreement_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCommissionAgreement_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCommissionAgreement_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionAgreement_businessInput>
-}
-
-export type BusinessUpsertWithoutCommissionAgreement_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionAgreement_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCommissionAgreement_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput>
-}
-
-export type BusinessUpdateWithoutCommissionAgreement_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCommissionEntry_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCommissionEntry_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCommissionEntry_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionEntry_businessInput>
-}
-
-export type BusinessUpsertWithoutCommissionEntry_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionEntry_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionEntry_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCommissionEntry_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionEntry_businessInput>
-}
-
-export type BusinessUpdateWithoutCommissionEntry_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCommissionEntry_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCommissionSettlement_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCommissionSettlement_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCommissionSettlement_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionSettlement_businessInput>
-}
-
-export type BusinessUpsertWithoutCommissionSettlement_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionSettlement_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCommissionSettlement_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput>
-}
-
-export type BusinessUpdateWithoutCommissionSettlement_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessCreateWithoutCustomer_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessUncheckedCreateWithoutCustomer_businessInput = {
-  id?: string
-  name: string
-  business_slug: string
-  legalName?: string | null
-  registrationNumber?: string | null
-  taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
-  currency?: string
-  status?: $Enums.BUSINESS_STATUS
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
-  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
-  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
-  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
-  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
-  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
-  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
-  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
-  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
-  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
-  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
-  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
-  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
-  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
-  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
-  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
-  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
-  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
-  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
-  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
-  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
-  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
-  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
-  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
-  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
-  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
-}
-
-export type BusinessCreateOrConnectWithoutCustomer_businessInput = {
-  where: Prisma.BusinessWhereUniqueInput
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCustomer_businessInput, Prisma.BusinessUncheckedCreateWithoutCustomer_businessInput>
-}
-
-export type BusinessUpsertWithoutCustomer_businessInput = {
-  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCustomer_businessInput, Prisma.BusinessUncheckedUpdateWithoutCustomer_businessInput>
-  create: Prisma.XOR<Prisma.BusinessCreateWithoutCustomer_businessInput, Prisma.BusinessUncheckedCreateWithoutCustomer_businessInput>
-  where?: Prisma.BusinessWhereInput
-}
-
-export type BusinessUpdateToOneWithWhereWithoutCustomer_businessInput = {
-  where?: Prisma.BusinessWhereInput
-  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCustomer_businessInput, Prisma.BusinessUncheckedUpdateWithoutCustomer_businessInput>
-}
-
-export type BusinessUpdateWithoutCustomer_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
-  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
-  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
-  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
-  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
-  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
-  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
-  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
-  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
-  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
-  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
-  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
-  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
-  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
-  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
-  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
-  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
-  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
-  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
-  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
-  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
-}
-
-export type BusinessUncheckedUpdateWithoutCustomer_businessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
-  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
-  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
-  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
-  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
-  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
-  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
-  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
   employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
   employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
   expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
@@ -2701,16 +1329,16 @@ export type BusinessUncheckedUpdateWithoutCustomer_businessInput = {
 
 export type BusinessCreateWithoutEmployee_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -2746,16 +1374,16 @@ export type BusinessCreateWithoutEmployee_businessInput = {
 
 export type BusinessUncheckedCreateWithoutEmployee_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -2807,16 +1435,16 @@ export type BusinessUpdateToOneWithWhereWithoutEmployee_businessInput = {
 
 export type BusinessUpdateWithoutEmployee_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -2852,16 +1480,16 @@ export type BusinessUpdateWithoutEmployee_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutEmployee_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -2895,18 +1523,1390 @@ export type BusinessUncheckedUpdateWithoutEmployee_businessInput = {
   partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
 }
 
-export type BusinessCreateWithoutEmployeeBranch_businessInput = {
+export type BusinessCreateWithoutCart_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCart_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCart_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCart_businessInput, Prisma.BusinessUncheckedCreateWithoutCart_businessInput>
+}
+
+export type BusinessUpsertWithoutCart_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCart_businessInput, Prisma.BusinessUncheckedUpdateWithoutCart_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCart_businessInput, Prisma.BusinessUncheckedCreateWithoutCart_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCart_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCart_businessInput, Prisma.BusinessUncheckedUpdateWithoutCart_businessInput>
+}
+
+export type BusinessUpdateWithoutCart_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCart_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCartItem_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCartItem_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCartItem_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCartItem_businessInput, Prisma.BusinessUncheckedCreateWithoutCartItem_businessInput>
+}
+
+export type BusinessUpsertWithoutCartItem_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCartItem_businessInput, Prisma.BusinessUncheckedUpdateWithoutCartItem_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCartItem_businessInput, Prisma.BusinessUncheckedCreateWithoutCartItem_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCartItem_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCartItem_businessInput, Prisma.BusinessUncheckedUpdateWithoutCartItem_businessInput>
+}
+
+export type BusinessUpdateWithoutCartItem_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCartItem_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCategory_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCategory_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCategory_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCategory_businessInput, Prisma.BusinessUncheckedCreateWithoutCategory_businessInput>
+}
+
+export type BusinessUpsertWithoutCategory_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCategory_businessInput, Prisma.BusinessUncheckedUpdateWithoutCategory_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCategory_businessInput, Prisma.BusinessUncheckedCreateWithoutCategory_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCategory_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCategory_businessInput, Prisma.BusinessUncheckedUpdateWithoutCategory_businessInput>
+}
+
+export type BusinessUpdateWithoutCategory_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCategory_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCommissionAgreement_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCommissionAgreement_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCommissionAgreement_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionAgreement_businessInput>
+}
+
+export type BusinessUpsertWithoutCommissionAgreement_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionAgreement_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCommissionAgreement_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionAgreement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput>
+}
+
+export type BusinessUpdateWithoutCommissionAgreement_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCommissionAgreement_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCommissionEntry_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCommissionEntry_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCommissionEntry_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionEntry_businessInput>
+}
+
+export type BusinessUpsertWithoutCommissionEntry_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionEntry_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionEntry_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCommissionEntry_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionEntry_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionEntry_businessInput>
+}
+
+export type BusinessUpdateWithoutCommissionEntry_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCommissionEntry_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCommissionSettlement_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCommissionSettlement_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  customer_business?: Prisma.CustomerUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCommissionSettlement_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionSettlement_businessInput>
+}
+
+export type BusinessUpsertWithoutCommissionSettlement_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedCreateWithoutCommissionSettlement_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCommissionSettlement_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCommissionSettlement_businessInput, Prisma.BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput>
+}
+
+export type BusinessUpdateWithoutCommissionSettlement_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCommissionSettlement_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  customer_business?: Prisma.CustomerUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutCustomer_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutCustomer_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
+  branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
+  brand_business?: Prisma.BrandUncheckedCreateNestedManyWithoutBusinessInput
+  cart_business?: Prisma.CartUncheckedCreateNestedManyWithoutBusinessInput
+  cartItem_business?: Prisma.CartItemUncheckedCreateNestedManyWithoutBusinessInput
+  category_business?: Prisma.CategoryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedCreateNestedManyWithoutBusinessInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutBusinessInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedCreateNestedManyWithoutBusinessInput
+  employee_business?: Prisma.EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutBusinessInput
+  expense_business?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBusinessInput
+  inventory_business?: Prisma.InventoryUncheckedCreateNestedManyWithoutBusinessInput
+  notification_business?: Prisma.NotificationUncheckedCreateNestedManyWithoutBusinessInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedCreateNestedManyWithoutBusinessInput
+  partner_business?: Prisma.PartnerUncheckedCreateNestedManyWithoutBusinessInput
+  payment_business?: Prisma.PaymentUncheckedCreateNestedManyWithoutBusinessInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutBusinessInput
+  product_business?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  productVariant_business?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutBusinessInput
+  purchase_business?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBusinessInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutBusinessInput
+  refund_business?: Prisma.RefundUncheckedCreateNestedManyWithoutBusinessInput
+  returnItem_business?: Prisma.ReturnItemUncheckedCreateNestedManyWithoutBusinessInput
+  sale_business?: Prisma.SaleUncheckedCreateNestedManyWithoutBusinessInput
+  saleItem_business?: Prisma.SaleItemUncheckedCreateNestedManyWithoutBusinessInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBusinessInput
+  stockMovement_business?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBusinessInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedCreateNestedManyWithoutLinkedBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutCustomer_businessInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCustomer_businessInput, Prisma.BusinessUncheckedCreateWithoutCustomer_businessInput>
+}
+
+export type BusinessUpsertWithoutCustomer_businessInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutCustomer_businessInput, Prisma.BusinessUncheckedUpdateWithoutCustomer_businessInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutCustomer_businessInput, Prisma.BusinessUncheckedCreateWithoutCustomer_businessInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutCustomer_businessInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutCustomer_businessInput, Prisma.BusinessUncheckedUpdateWithoutCustomer_businessInput>
+}
+
+export type BusinessUpdateWithoutCustomer_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutCustomer_businessInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  business_slug?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
+  branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
+  brand_business?: Prisma.BrandUncheckedUpdateManyWithoutBusinessNestedInput
+  cart_business?: Prisma.CartUncheckedUpdateManyWithoutBusinessNestedInput
+  cartItem_business?: Prisma.CartItemUncheckedUpdateManyWithoutBusinessNestedInput
+  category_business?: Prisma.CategoryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionAgreement_business?: Prisma.CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionEntry_business?: Prisma.CommissionEntryUncheckedUpdateManyWithoutBusinessNestedInput
+  commissionSettlement_business?: Prisma.CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput
+  employee_business?: Prisma.EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  employeeBranch_business?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutBusinessNestedInput
+  expense_business?: Prisma.ExpenseUncheckedUpdateManyWithoutBusinessNestedInput
+  inventory_business?: Prisma.InventoryUncheckedUpdateManyWithoutBusinessNestedInput
+  notification_business?: Prisma.NotificationUncheckedUpdateManyWithoutBusinessNestedInput
+  outboxEvent_business?: Prisma.OutboxEventUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_business?: Prisma.PartnerUncheckedUpdateManyWithoutBusinessNestedInput
+  payment_business?: Prisma.PaymentUncheckedUpdateManyWithoutBusinessNestedInput
+  paymentEvent_business?: Prisma.PaymentEventUncheckedUpdateManyWithoutBusinessNestedInput
+  product_business?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  productVariant_business?: Prisma.ProductVariantUncheckedUpdateManyWithoutBusinessNestedInput
+  purchase_business?: Prisma.PurchaseUncheckedUpdateManyWithoutBusinessNestedInput
+  purchaseItem_business?: Prisma.PurchaseItemUncheckedUpdateManyWithoutBusinessNestedInput
+  refund_business?: Prisma.RefundUncheckedUpdateManyWithoutBusinessNestedInput
+  returnItem_business?: Prisma.ReturnItemUncheckedUpdateManyWithoutBusinessNestedInput
+  sale_business?: Prisma.SaleUncheckedUpdateManyWithoutBusinessNestedInput
+  saleItem_business?: Prisma.SaleItemUncheckedUpdateManyWithoutBusinessNestedInput
+  saleReturn_business?: Prisma.SaleReturnUncheckedUpdateManyWithoutBusinessNestedInput
+  stockMovement_business?: Prisma.StockMovementUncheckedUpdateManyWithoutBusinessNestedInput
+  partner_linkedBusiness?: Prisma.PartnerUncheckedUpdateManyWithoutLinkedBusinessNestedInput
+}
+
+export type BusinessCreateWithoutEmployeeBranch_businessInput = {
+  id?: string
+  Business_name: string
+  business_slug: string
+  legalName?: string | null
+  registrationNumber?: string | null
+  taxIdentificationNumber?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
+  currency?: string
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -2942,16 +2942,16 @@ export type BusinessCreateWithoutEmployeeBranch_businessInput = {
 
 export type BusinessUncheckedCreateWithoutEmployeeBranch_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3003,16 +3003,16 @@ export type BusinessUpdateToOneWithWhereWithoutEmployeeBranch_businessInput = {
 
 export type BusinessUpdateWithoutEmployeeBranch_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -3048,16 +3048,16 @@ export type BusinessUpdateWithoutEmployeeBranch_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutEmployeeBranch_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -3093,16 +3093,16 @@ export type BusinessUncheckedUpdateWithoutEmployeeBranch_businessInput = {
 
 export type BusinessCreateWithoutExpense_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -3138,16 +3138,16 @@ export type BusinessCreateWithoutExpense_businessInput = {
 
 export type BusinessUncheckedCreateWithoutExpense_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3199,16 +3199,16 @@ export type BusinessUpdateToOneWithWhereWithoutExpense_businessInput = {
 
 export type BusinessUpdateWithoutExpense_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -3244,16 +3244,16 @@ export type BusinessUpdateWithoutExpense_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutExpense_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -3289,16 +3289,16 @@ export type BusinessUncheckedUpdateWithoutExpense_businessInput = {
 
 export type BusinessCreateWithoutInventory_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -3334,16 +3334,16 @@ export type BusinessCreateWithoutInventory_businessInput = {
 
 export type BusinessUncheckedCreateWithoutInventory_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3395,16 +3395,16 @@ export type BusinessUpdateToOneWithWhereWithoutInventory_businessInput = {
 
 export type BusinessUpdateWithoutInventory_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -3440,16 +3440,16 @@ export type BusinessUpdateWithoutInventory_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutInventory_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -3485,16 +3485,16 @@ export type BusinessUncheckedUpdateWithoutInventory_businessInput = {
 
 export type BusinessCreateWithoutNotification_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -3530,16 +3530,16 @@ export type BusinessCreateWithoutNotification_businessInput = {
 
 export type BusinessUncheckedCreateWithoutNotification_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3591,16 +3591,16 @@ export type BusinessUpdateToOneWithWhereWithoutNotification_businessInput = {
 
 export type BusinessUpdateWithoutNotification_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -3636,16 +3636,16 @@ export type BusinessUpdateWithoutNotification_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutNotification_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -3681,16 +3681,16 @@ export type BusinessUncheckedUpdateWithoutNotification_businessInput = {
 
 export type BusinessCreateWithoutOutboxEvent_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -3726,16 +3726,16 @@ export type BusinessCreateWithoutOutboxEvent_businessInput = {
 
 export type BusinessUncheckedCreateWithoutOutboxEvent_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3787,16 +3787,16 @@ export type BusinessUpdateToOneWithWhereWithoutOutboxEvent_businessInput = {
 
 export type BusinessUpdateWithoutOutboxEvent_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -3832,16 +3832,16 @@ export type BusinessUpdateWithoutOutboxEvent_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutOutboxEvent_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -3877,16 +3877,16 @@ export type BusinessUncheckedUpdateWithoutOutboxEvent_businessInput = {
 
 export type BusinessCreateWithoutPartner_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -3922,16 +3922,16 @@ export type BusinessCreateWithoutPartner_businessInput = {
 
 export type BusinessUncheckedCreateWithoutPartner_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -3972,16 +3972,16 @@ export type BusinessCreateOrConnectWithoutPartner_businessInput = {
 
 export type BusinessCreateWithoutPartner_linkedBusinessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -4017,16 +4017,16 @@ export type BusinessCreateWithoutPartner_linkedBusinessInput = {
 
 export type BusinessUncheckedCreateWithoutPartner_linkedBusinessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -4078,16 +4078,16 @@ export type BusinessUpdateToOneWithWhereWithoutPartner_businessInput = {
 
 export type BusinessUpdateWithoutPartner_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -4123,16 +4123,16 @@ export type BusinessUpdateWithoutPartner_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutPartner_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4179,16 +4179,16 @@ export type BusinessUpdateToOneWithWhereWithoutPartner_linkedBusinessInput = {
 
 export type BusinessUpdateWithoutPartner_linkedBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -4224,16 +4224,16 @@ export type BusinessUpdateWithoutPartner_linkedBusinessInput = {
 
 export type BusinessUncheckedUpdateWithoutPartner_linkedBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4269,16 +4269,16 @@ export type BusinessUncheckedUpdateWithoutPartner_linkedBusinessInput = {
 
 export type BusinessCreateWithoutPayment_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -4314,16 +4314,16 @@ export type BusinessCreateWithoutPayment_businessInput = {
 
 export type BusinessUncheckedCreateWithoutPayment_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -4375,16 +4375,16 @@ export type BusinessUpdateToOneWithWhereWithoutPayment_businessInput = {
 
 export type BusinessUpdateWithoutPayment_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -4420,16 +4420,16 @@ export type BusinessUpdateWithoutPayment_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutPayment_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4465,16 +4465,16 @@ export type BusinessUncheckedUpdateWithoutPayment_businessInput = {
 
 export type BusinessCreateWithoutPaymentEvent_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -4510,16 +4510,16 @@ export type BusinessCreateWithoutPaymentEvent_businessInput = {
 
 export type BusinessUncheckedCreateWithoutPaymentEvent_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -4571,16 +4571,16 @@ export type BusinessUpdateToOneWithWhereWithoutPaymentEvent_businessInput = {
 
 export type BusinessUpdateWithoutPaymentEvent_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -4616,16 +4616,16 @@ export type BusinessUpdateWithoutPaymentEvent_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutPaymentEvent_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4661,16 +4661,16 @@ export type BusinessUncheckedUpdateWithoutPaymentEvent_businessInput = {
 
 export type BusinessCreateWithoutProduct_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -4706,16 +4706,16 @@ export type BusinessCreateWithoutProduct_businessInput = {
 
 export type BusinessUncheckedCreateWithoutProduct_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -4767,16 +4767,16 @@ export type BusinessUpdateToOneWithWhereWithoutProduct_businessInput = {
 
 export type BusinessUpdateWithoutProduct_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -4812,16 +4812,16 @@ export type BusinessUpdateWithoutProduct_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutProduct_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4857,16 +4857,16 @@ export type BusinessUncheckedUpdateWithoutProduct_businessInput = {
 
 export type BusinessCreateWithoutProductVariant_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -4902,16 +4902,16 @@ export type BusinessCreateWithoutProductVariant_businessInput = {
 
 export type BusinessUncheckedCreateWithoutProductVariant_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -4963,16 +4963,16 @@ export type BusinessUpdateToOneWithWhereWithoutProductVariant_businessInput = {
 
 export type BusinessUpdateWithoutProductVariant_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5008,16 +5008,16 @@ export type BusinessUpdateWithoutProductVariant_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutProductVariant_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -5053,16 +5053,16 @@ export type BusinessUncheckedUpdateWithoutProductVariant_businessInput = {
 
 export type BusinessCreateWithoutPurchase_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -5098,16 +5098,16 @@ export type BusinessCreateWithoutPurchase_businessInput = {
 
 export type BusinessUncheckedCreateWithoutPurchase_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -5159,16 +5159,16 @@ export type BusinessUpdateToOneWithWhereWithoutPurchase_businessInput = {
 
 export type BusinessUpdateWithoutPurchase_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5204,16 +5204,16 @@ export type BusinessUpdateWithoutPurchase_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutPurchase_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -5249,16 +5249,16 @@ export type BusinessUncheckedUpdateWithoutPurchase_businessInput = {
 
 export type BusinessCreateWithoutPurchaseItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -5294,16 +5294,16 @@ export type BusinessCreateWithoutPurchaseItem_businessInput = {
 
 export type BusinessUncheckedCreateWithoutPurchaseItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -5355,16 +5355,16 @@ export type BusinessUpdateToOneWithWhereWithoutPurchaseItem_businessInput = {
 
 export type BusinessUpdateWithoutPurchaseItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5400,16 +5400,16 @@ export type BusinessUpdateWithoutPurchaseItem_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutPurchaseItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -5445,16 +5445,16 @@ export type BusinessUncheckedUpdateWithoutPurchaseItem_businessInput = {
 
 export type BusinessCreateWithoutRefund_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -5490,16 +5490,16 @@ export type BusinessCreateWithoutRefund_businessInput = {
 
 export type BusinessUncheckedCreateWithoutRefund_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -5551,16 +5551,16 @@ export type BusinessUpdateToOneWithWhereWithoutRefund_businessInput = {
 
 export type BusinessUpdateWithoutRefund_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5596,16 +5596,16 @@ export type BusinessUpdateWithoutRefund_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutRefund_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -5641,16 +5641,16 @@ export type BusinessUncheckedUpdateWithoutRefund_businessInput = {
 
 export type BusinessCreateWithoutReturnItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -5686,16 +5686,16 @@ export type BusinessCreateWithoutReturnItem_businessInput = {
 
 export type BusinessUncheckedCreateWithoutReturnItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -5747,16 +5747,16 @@ export type BusinessUpdateToOneWithWhereWithoutReturnItem_businessInput = {
 
 export type BusinessUpdateWithoutReturnItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5792,16 +5792,16 @@ export type BusinessUpdateWithoutReturnItem_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutReturnItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -5837,16 +5837,16 @@ export type BusinessUncheckedUpdateWithoutReturnItem_businessInput = {
 
 export type BusinessCreateWithoutSale_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -5882,16 +5882,16 @@ export type BusinessCreateWithoutSale_businessInput = {
 
 export type BusinessUncheckedCreateWithoutSale_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -5943,16 +5943,16 @@ export type BusinessUpdateToOneWithWhereWithoutSale_businessInput = {
 
 export type BusinessUpdateWithoutSale_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -5988,16 +5988,16 @@ export type BusinessUpdateWithoutSale_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutSale_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -6033,16 +6033,16 @@ export type BusinessUncheckedUpdateWithoutSale_businessInput = {
 
 export type BusinessCreateWithoutSaleItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -6078,16 +6078,16 @@ export type BusinessCreateWithoutSaleItem_businessInput = {
 
 export type BusinessUncheckedCreateWithoutSaleItem_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -6139,16 +6139,16 @@ export type BusinessUpdateToOneWithWhereWithoutSaleItem_businessInput = {
 
 export type BusinessUpdateWithoutSaleItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -6184,16 +6184,16 @@ export type BusinessUpdateWithoutSaleItem_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutSaleItem_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -6229,16 +6229,16 @@ export type BusinessUncheckedUpdateWithoutSaleItem_businessInput = {
 
 export type BusinessCreateWithoutSaleReturn_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -6274,16 +6274,16 @@ export type BusinessCreateWithoutSaleReturn_businessInput = {
 
 export type BusinessUncheckedCreateWithoutSaleReturn_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -6335,16 +6335,16 @@ export type BusinessUpdateToOneWithWhereWithoutSaleReturn_businessInput = {
 
 export type BusinessUpdateWithoutSaleReturn_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -6380,16 +6380,16 @@ export type BusinessUpdateWithoutSaleReturn_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutSaleReturn_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -6425,16 +6425,16 @@ export type BusinessUncheckedUpdateWithoutSaleReturn_businessInput = {
 
 export type BusinessCreateWithoutStockMovement_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -6470,16 +6470,16 @@ export type BusinessCreateWithoutStockMovement_businessInput = {
 
 export type BusinessUncheckedCreateWithoutStockMovement_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -6531,16 +6531,16 @@ export type BusinessUpdateToOneWithWhereWithoutStockMovement_businessInput = {
 
 export type BusinessUpdateWithoutStockMovement_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -6576,16 +6576,16 @@ export type BusinessUpdateWithoutStockMovement_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutStockMovement_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -6621,16 +6621,16 @@ export type BusinessUncheckedUpdateWithoutStockMovement_businessInput = {
 
 export type BusinessCreateWithoutAuditLog_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   branch_business?: Prisma.BranchCreateNestedManyWithoutBusinessInput
@@ -6666,16 +6666,16 @@ export type BusinessCreateWithoutAuditLog_businessInput = {
 
 export type BusinessUncheckedCreateWithoutAuditLog_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   branch_business?: Prisma.BranchUncheckedCreateNestedManyWithoutBusinessInput
@@ -6727,16 +6727,16 @@ export type BusinessUpdateToOneWithWhereWithoutAuditLog_businessInput = {
 
 export type BusinessUpdateWithoutAuditLog_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branch_business?: Prisma.BranchUpdateManyWithoutBusinessNestedInput
@@ -6772,16 +6772,16 @@ export type BusinessUpdateWithoutAuditLog_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutAuditLog_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branch_business?: Prisma.BranchUncheckedUpdateManyWithoutBusinessNestedInput
@@ -6817,16 +6817,16 @@ export type BusinessUncheckedUpdateWithoutAuditLog_businessInput = {
 
 export type BusinessCreateWithoutBranch_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogCreateNestedManyWithoutBusinessInput
@@ -6862,16 +6862,16 @@ export type BusinessCreateWithoutBranch_businessInput = {
 
 export type BusinessUncheckedCreateWithoutBranch_businessInput = {
   id?: string
-  name: string
+  Business_name: string
   business_slug: string
   legalName?: string | null
   registrationNumber?: string | null
   taxIdentificationNumber?: string | null
-  phone?: string | null
-  email?: string | null
-  address?: string | null
+  Business_phone?: string | null
+  Business_email?: string | null
+  Business_Main_address?: string | null
   currency?: string
-  status?: $Enums.BUSINESS_STATUS
+  Business_status?: $Enums.BUSINESS_STATUS
   createdAt?: Date | string
   updatedAt?: Date | string
   auditLog_business?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBusinessInput
@@ -6923,16 +6923,16 @@ export type BusinessUpdateToOneWithWhereWithoutBranch_businessInput = {
 
 export type BusinessUpdateWithoutBranch_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUpdateManyWithoutBusinessNestedInput
@@ -6968,16 +6968,16 @@ export type BusinessUpdateWithoutBranch_businessInput = {
 
 export type BusinessUncheckedUpdateWithoutBranch_businessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  Business_name?: Prisma.StringFieldUpdateOperationsInput | string
   business_slug?: Prisma.StringFieldUpdateOperationsInput | string
   legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   taxIdentificationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Business_Main_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
+  Business_status?: Prisma.EnumBUSINESS_STATUSFieldUpdateOperationsInput | $Enums.BUSINESS_STATUS
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   auditLog_business?: Prisma.AuditLogUncheckedUpdateManyWithoutBusinessNestedInput
@@ -7305,16 +7305,16 @@ export type BusinessCountOutputTypeCountPartner_linkedBusinessArgs<ExtArgs exten
 
 export type BusinessSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
+  Business_name?: boolean
   business_slug?: boolean
   legalName?: boolean
   registrationNumber?: boolean
   taxIdentificationNumber?: boolean
-  phone?: boolean
-  email?: boolean
-  address?: boolean
+  Business_phone?: boolean
+  Business_email?: boolean
+  Business_Main_address?: boolean
   currency?: boolean
-  status?: boolean
+  Business_status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   auditLog_business?: boolean | Prisma.Business$auditLog_businessArgs<ExtArgs>
@@ -7352,53 +7352,53 @@ export type BusinessSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type BusinessSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
+  Business_name?: boolean
   business_slug?: boolean
   legalName?: boolean
   registrationNumber?: boolean
   taxIdentificationNumber?: boolean
-  phone?: boolean
-  email?: boolean
-  address?: boolean
+  Business_phone?: boolean
+  Business_email?: boolean
+  Business_Main_address?: boolean
   currency?: boolean
-  status?: boolean
+  Business_status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["business"]>
 
 export type BusinessSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
+  Business_name?: boolean
   business_slug?: boolean
   legalName?: boolean
   registrationNumber?: boolean
   taxIdentificationNumber?: boolean
-  phone?: boolean
-  email?: boolean
-  address?: boolean
+  Business_phone?: boolean
+  Business_email?: boolean
+  Business_Main_address?: boolean
   currency?: boolean
-  status?: boolean
+  Business_status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["business"]>
 
 export type BusinessSelectScalar = {
   id?: boolean
-  name?: boolean
+  Business_name?: boolean
   business_slug?: boolean
   legalName?: boolean
   registrationNumber?: boolean
   taxIdentificationNumber?: boolean
-  phone?: boolean
-  email?: boolean
-  address?: boolean
+  Business_phone?: boolean
+  Business_email?: boolean
+  Business_Main_address?: boolean
   currency?: boolean
-  status?: boolean
+  Business_status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BusinessOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "business_slug" | "legalName" | "registrationNumber" | "taxIdentificationNumber" | "phone" | "email" | "address" | "currency" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["business"]>
+export type BusinessOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "Business_name" | "business_slug" | "legalName" | "registrationNumber" | "taxIdentificationNumber" | "Business_phone" | "Business_email" | "Business_Main_address" | "currency" | "Business_status" | "createdAt" | "updatedAt", ExtArgs["result"]["business"]>
 export type BusinessInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   auditLog_business?: boolean | Prisma.Business$auditLog_businessArgs<ExtArgs>
   branch_business?: boolean | Prisma.Business$branch_businessArgs<ExtArgs>
@@ -7471,16 +7471,16 @@ export type $BusinessPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    name: string
+    Business_name: string
     business_slug: string
     legalName: string | null
     registrationNumber: string | null
     taxIdentificationNumber: string | null
-    phone: string | null
-    email: string | null
-    address: string | null
+    Business_phone: string | null
+    Business_email: string | null
+    Business_Main_address: string | null
     currency: string
-    status: $Enums.BUSINESS_STATUS
+    Business_status: $Enums.BUSINESS_STATUS
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["business"]>
@@ -7937,16 +7937,16 @@ export interface Prisma__BusinessClient<T, Null = never, ExtArgs extends runtime
  */
 export interface BusinessFieldRefs {
   readonly id: Prisma.FieldRef<"Business", 'String'>
-  readonly name: Prisma.FieldRef<"Business", 'String'>
+  readonly Business_name: Prisma.FieldRef<"Business", 'String'>
   readonly business_slug: Prisma.FieldRef<"Business", 'String'>
   readonly legalName: Prisma.FieldRef<"Business", 'String'>
   readonly registrationNumber: Prisma.FieldRef<"Business", 'String'>
   readonly taxIdentificationNumber: Prisma.FieldRef<"Business", 'String'>
-  readonly phone: Prisma.FieldRef<"Business", 'String'>
-  readonly email: Prisma.FieldRef<"Business", 'String'>
-  readonly address: Prisma.FieldRef<"Business", 'String'>
+  readonly Business_phone: Prisma.FieldRef<"Business", 'String'>
+  readonly Business_email: Prisma.FieldRef<"Business", 'String'>
+  readonly Business_Main_address: Prisma.FieldRef<"Business", 'String'>
   readonly currency: Prisma.FieldRef<"Business", 'String'>
-  readonly status: Prisma.FieldRef<"Business", 'BUSINESS_STATUS'>
+  readonly Business_status: Prisma.FieldRef<"Business", 'BUSINESS_STATUS'>
   readonly createdAt: Prisma.FieldRef<"Business", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Business", 'DateTime'>
 }

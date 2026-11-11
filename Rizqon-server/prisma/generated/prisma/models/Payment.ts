@@ -763,48 +763,6 @@ export type PaymentUncheckedUpdateManyWithoutBusinessNestedInput = {
   deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
 }
 
-export type PaymentCreateNestedManyWithoutSettlementInput = {
-  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
-  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
-  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
-  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-}
-
-export type PaymentUncheckedCreateNestedManyWithoutSettlementInput = {
-  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
-  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
-  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
-  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-}
-
-export type PaymentUpdateManyWithoutSettlementNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
-  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
-  upsert?: Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput[]
-  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
-  set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  update?: Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput[]
-  updateMany?: Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput | Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput[]
-  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
-}
-
-export type PaymentUncheckedUpdateManyWithoutSettlementNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
-  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
-  upsert?: Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput[]
-  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
-  set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
-  update?: Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput[]
-  updateMany?: Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput | Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput[]
-  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
-}
-
 export type PaymentCreateNestedManyWithoutRecorderInput = {
   create?: Prisma.XOR<Prisma.PaymentCreateWithoutRecorderInput, Prisma.PaymentUncheckedCreateWithoutRecorderInput> | Prisma.PaymentCreateWithoutRecorderInput[] | Prisma.PaymentUncheckedCreateWithoutRecorderInput[]
   connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutRecorderInput | Prisma.PaymentCreateOrConnectWithoutRecorderInput[]
@@ -844,6 +802,48 @@ export type PaymentUncheckedUpdateManyWithoutRecorderNestedInput = {
   connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
   update?: Prisma.PaymentUpdateWithWhereUniqueWithoutRecorderInput | Prisma.PaymentUpdateWithWhereUniqueWithoutRecorderInput[]
   updateMany?: Prisma.PaymentUpdateManyWithWhereWithoutRecorderInput | Prisma.PaymentUpdateManyWithWhereWithoutRecorderInput[]
+  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
+}
+
+export type PaymentCreateNestedManyWithoutSettlementInput = {
+  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
+  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
+  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
+  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+}
+
+export type PaymentUncheckedCreateNestedManyWithoutSettlementInput = {
+  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
+  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
+  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
+  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+}
+
+export type PaymentUpdateManyWithoutSettlementNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
+  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
+  upsert?: Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput[]
+  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
+  set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  update?: Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput[]
+  updateMany?: Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput | Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput[]
+  deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
+}
+
+export type PaymentUncheckedUpdateManyWithoutSettlementNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput> | Prisma.PaymentCreateWithoutSettlementInput[] | Prisma.PaymentUncheckedCreateWithoutSettlementInput[]
+  connectOrCreate?: Prisma.PaymentCreateOrConnectWithoutSettlementInput | Prisma.PaymentCreateOrConnectWithoutSettlementInput[]
+  upsert?: Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpsertWithWhereUniqueWithoutSettlementInput[]
+  createMany?: Prisma.PaymentCreateManySettlementInputEnvelope
+  set?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  disconnect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  delete?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  connect?: Prisma.PaymentWhereUniqueInput | Prisma.PaymentWhereUniqueInput[]
+  update?: Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput | Prisma.PaymentUpdateWithWhereUniqueWithoutSettlementInput[]
+  updateMany?: Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput | Prisma.PaymentUpdateManyWithWhereWithoutSettlementInput[]
   deleteMany?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
 }
 
@@ -1112,77 +1112,6 @@ export type PaymentScalarWhereInput = {
   recorderId?: Prisma.StringNullableFilter<"Payment"> | string | null
 }
 
-export type PaymentCreateWithoutSettlementInput = {
-  id?: string
-  direction: $Enums.PAYMENT_DIRECTION
-  method: $Enums.PAYMENT_METHOD
-  status?: $Enums.PAYMENT_STATUS
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: string
-  provider?: string | null
-  providerReference?: string | null
-  idempotencyKey: string
-  paidAt?: Date | string | null
-  note?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  business: Prisma.BusinessCreateNestedOneWithoutPayment_businessInput
-  sale?: Prisma.SaleCreateNestedOneWithoutPayment_saleInput
-  purchase?: Prisma.PurchaseCreateNestedOneWithoutPayment_purchaseInput
-  expense?: Prisma.ExpenseCreateNestedOneWithoutPayment_expenseInput
-  recorder?: Prisma.EmployeeCreateNestedOneWithoutPayment_recorderInput
-  paymentEvent_payment?: Prisma.PaymentEventCreateNestedManyWithoutPaymentInput
-  refund_payment?: Prisma.RefundCreateNestedManyWithoutPaymentInput
-}
-
-export type PaymentUncheckedCreateWithoutSettlementInput = {
-  id?: string
-  direction: $Enums.PAYMENT_DIRECTION
-  method: $Enums.PAYMENT_METHOD
-  status?: $Enums.PAYMENT_STATUS
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: string
-  provider?: string | null
-  providerReference?: string | null
-  idempotencyKey: string
-  paidAt?: Date | string | null
-  note?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  saleId?: string | null
-  purchaseId?: string | null
-  expenseId?: string | null
-  recorderId?: string | null
-  paymentEvent_payment?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutPaymentInput
-  refund_payment?: Prisma.RefundUncheckedCreateNestedManyWithoutPaymentInput
-}
-
-export type PaymentCreateOrConnectWithoutSettlementInput = {
-  where: Prisma.PaymentWhereUniqueInput
-  create: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput>
-}
-
-export type PaymentCreateManySettlementInputEnvelope = {
-  data: Prisma.PaymentCreateManySettlementInput | Prisma.PaymentCreateManySettlementInput[]
-  skipDuplicates?: boolean
-}
-
-export type PaymentUpsertWithWhereUniqueWithoutSettlementInput = {
-  where: Prisma.PaymentWhereUniqueInput
-  update: Prisma.XOR<Prisma.PaymentUpdateWithoutSettlementInput, Prisma.PaymentUncheckedUpdateWithoutSettlementInput>
-  create: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput>
-}
-
-export type PaymentUpdateWithWhereUniqueWithoutSettlementInput = {
-  where: Prisma.PaymentWhereUniqueInput
-  data: Prisma.XOR<Prisma.PaymentUpdateWithoutSettlementInput, Prisma.PaymentUncheckedUpdateWithoutSettlementInput>
-}
-
-export type PaymentUpdateManyWithWhereWithoutSettlementInput = {
-  where: Prisma.PaymentScalarWhereInput
-  data: Prisma.XOR<Prisma.PaymentUpdateManyMutationInput, Prisma.PaymentUncheckedUpdateManyWithoutSettlementInput>
-}
-
 export type PaymentCreateWithoutRecorderInput = {
   id?: string
   direction: $Enums.PAYMENT_DIRECTION
@@ -1252,6 +1181,77 @@ export type PaymentUpdateWithWhereUniqueWithoutRecorderInput = {
 export type PaymentUpdateManyWithWhereWithoutRecorderInput = {
   where: Prisma.PaymentScalarWhereInput
   data: Prisma.XOR<Prisma.PaymentUpdateManyMutationInput, Prisma.PaymentUncheckedUpdateManyWithoutRecorderInput>
+}
+
+export type PaymentCreateWithoutSettlementInput = {
+  id?: string
+  direction: $Enums.PAYMENT_DIRECTION
+  method: $Enums.PAYMENT_METHOD
+  status?: $Enums.PAYMENT_STATUS
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  provider?: string | null
+  providerReference?: string | null
+  idempotencyKey: string
+  paidAt?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  business: Prisma.BusinessCreateNestedOneWithoutPayment_businessInput
+  sale?: Prisma.SaleCreateNestedOneWithoutPayment_saleInput
+  purchase?: Prisma.PurchaseCreateNestedOneWithoutPayment_purchaseInput
+  expense?: Prisma.ExpenseCreateNestedOneWithoutPayment_expenseInput
+  recorder?: Prisma.EmployeeCreateNestedOneWithoutPayment_recorderInput
+  paymentEvent_payment?: Prisma.PaymentEventCreateNestedManyWithoutPaymentInput
+  refund_payment?: Prisma.RefundCreateNestedManyWithoutPaymentInput
+}
+
+export type PaymentUncheckedCreateWithoutSettlementInput = {
+  id?: string
+  direction: $Enums.PAYMENT_DIRECTION
+  method: $Enums.PAYMENT_METHOD
+  status?: $Enums.PAYMENT_STATUS
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  provider?: string | null
+  providerReference?: string | null
+  idempotencyKey: string
+  paidAt?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  saleId?: string | null
+  purchaseId?: string | null
+  expenseId?: string | null
+  recorderId?: string | null
+  paymentEvent_payment?: Prisma.PaymentEventUncheckedCreateNestedManyWithoutPaymentInput
+  refund_payment?: Prisma.RefundUncheckedCreateNestedManyWithoutPaymentInput
+}
+
+export type PaymentCreateOrConnectWithoutSettlementInput = {
+  where: Prisma.PaymentWhereUniqueInput
+  create: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput>
+}
+
+export type PaymentCreateManySettlementInputEnvelope = {
+  data: Prisma.PaymentCreateManySettlementInput | Prisma.PaymentCreateManySettlementInput[]
+  skipDuplicates?: boolean
+}
+
+export type PaymentUpsertWithWhereUniqueWithoutSettlementInput = {
+  where: Prisma.PaymentWhereUniqueInput
+  update: Prisma.XOR<Prisma.PaymentUpdateWithoutSettlementInput, Prisma.PaymentUncheckedUpdateWithoutSettlementInput>
+  create: Prisma.XOR<Prisma.PaymentCreateWithoutSettlementInput, Prisma.PaymentUncheckedCreateWithoutSettlementInput>
+}
+
+export type PaymentUpdateWithWhereUniqueWithoutSettlementInput = {
+  where: Prisma.PaymentWhereUniqueInput
+  data: Prisma.XOR<Prisma.PaymentUpdateWithoutSettlementInput, Prisma.PaymentUncheckedUpdateWithoutSettlementInput>
+}
+
+export type PaymentUpdateManyWithWhereWithoutSettlementInput = {
+  where: Prisma.PaymentScalarWhereInput
+  data: Prisma.XOR<Prisma.PaymentUpdateManyMutationInput, Prisma.PaymentUncheckedUpdateManyWithoutSettlementInput>
 }
 
 export type PaymentCreateWithoutExpenseInput = {
@@ -1771,91 +1771,6 @@ export type PaymentUncheckedUpdateManyWithoutBusinessInput = {
   recorderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type PaymentCreateManySettlementInput = {
-  id?: string
-  direction: $Enums.PAYMENT_DIRECTION
-  method: $Enums.PAYMENT_METHOD
-  status?: $Enums.PAYMENT_STATUS
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: string
-  provider?: string | null
-  providerReference?: string | null
-  idempotencyKey: string
-  paidAt?: Date | string | null
-  note?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  saleId?: string | null
-  purchaseId?: string | null
-  expenseId?: string | null
-  recorderId?: string | null
-}
-
-export type PaymentUpdateWithoutSettlementInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
-  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
-  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
-  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  business?: Prisma.BusinessUpdateOneRequiredWithoutPayment_businessNestedInput
-  sale?: Prisma.SaleUpdateOneWithoutPayment_saleNestedInput
-  purchase?: Prisma.PurchaseUpdateOneWithoutPayment_purchaseNestedInput
-  expense?: Prisma.ExpenseUpdateOneWithoutPayment_expenseNestedInput
-  recorder?: Prisma.EmployeeUpdateOneWithoutPayment_recorderNestedInput
-  paymentEvent_payment?: Prisma.PaymentEventUpdateManyWithoutPaymentNestedInput
-  refund_payment?: Prisma.RefundUpdateManyWithoutPaymentNestedInput
-}
-
-export type PaymentUncheckedUpdateWithoutSettlementInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
-  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
-  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
-  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  saleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  recorderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  paymentEvent_payment?: Prisma.PaymentEventUncheckedUpdateManyWithoutPaymentNestedInput
-  refund_payment?: Prisma.RefundUncheckedUpdateManyWithoutPaymentNestedInput
-}
-
-export type PaymentUncheckedUpdateManyWithoutSettlementInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
-  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
-  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
-  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  saleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  recorderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
 export type PaymentCreateManyRecorderInput = {
   id?: string
   direction: $Enums.PAYMENT_DIRECTION
@@ -1939,6 +1854,91 @@ export type PaymentUncheckedUpdateManyWithoutRecorderInput = {
   purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   settlementId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type PaymentCreateManySettlementInput = {
+  id?: string
+  direction: $Enums.PAYMENT_DIRECTION
+  method: $Enums.PAYMENT_METHOD
+  status?: $Enums.PAYMENT_STATUS
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  provider?: string | null
+  providerReference?: string | null
+  idempotencyKey: string
+  paidAt?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  saleId?: string | null
+  purchaseId?: string | null
+  expenseId?: string | null
+  recorderId?: string | null
+}
+
+export type PaymentUpdateWithoutSettlementInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
+  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
+  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  business?: Prisma.BusinessUpdateOneRequiredWithoutPayment_businessNestedInput
+  sale?: Prisma.SaleUpdateOneWithoutPayment_saleNestedInput
+  purchase?: Prisma.PurchaseUpdateOneWithoutPayment_purchaseNestedInput
+  expense?: Prisma.ExpenseUpdateOneWithoutPayment_expenseNestedInput
+  recorder?: Prisma.EmployeeUpdateOneWithoutPayment_recorderNestedInput
+  paymentEvent_payment?: Prisma.PaymentEventUpdateManyWithoutPaymentNestedInput
+  refund_payment?: Prisma.RefundUpdateManyWithoutPaymentNestedInput
+}
+
+export type PaymentUncheckedUpdateWithoutSettlementInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
+  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
+  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  saleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recorderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentEvent_payment?: Prisma.PaymentEventUncheckedUpdateManyWithoutPaymentNestedInput
+  refund_payment?: Prisma.RefundUncheckedUpdateManyWithoutPaymentNestedInput
+}
+
+export type PaymentUncheckedUpdateManyWithoutSettlementInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  direction?: Prisma.EnumPAYMENT_DIRECTIONFieldUpdateOperationsInput | $Enums.PAYMENT_DIRECTION
+  method?: Prisma.EnumPAYMENT_METHODFieldUpdateOperationsInput | $Enums.PAYMENT_METHOD
+  status?: Prisma.EnumPAYMENT_STATUSFieldUpdateOperationsInput | $Enums.PAYMENT_STATUS
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  saleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  purchaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recorderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PaymentCreateManyExpenseInput = {

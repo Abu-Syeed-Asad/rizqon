@@ -13,7 +13,7 @@ model StockMovement {
   inventoryId String
   inventory   Inventory         @relation("StockMovement_inventory", fields: [businessId, inventoryId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   actorId     String
-  actor       Employee          @relation("StockMovement_actor", fields: [businessId, actorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  actor       Employee          @relation("StockMovement_actor", fields: [businessId, actorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
 
   @@unique([businessId, id])
   @@unique([businessId, eventKey])

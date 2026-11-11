@@ -13,7 +13,7 @@ model SaleReturn {
   saleId                String
   sale                  Sale         @relation("SaleReturn_sale", fields: [businessId, saleId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   processorId           String
-  processor             Employee     @relation("SaleReturn_processor", fields: [businessId, processorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  processor             Employee     @relation("SaleReturn_processor", fields: [businessId, processorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   returnItem_saleReturn ReturnItem[] @relation("ReturnItem_saleReturn")
   refund_saleReturn     Refund[]     @relation("Refund_saleReturn")
 

@@ -1,15 +1,15 @@
 model Business {
   id                            String                 @id @default(cuid())
-  name                          String
+  Business_name                          String @map("name")
   business_slug                String                 @unique   // Unique slug for the business, used in URLs and other references like rahim-electronics
   legalName                     String?
   registrationNumber            String?  // like trade license number, company registration number, etc.
   taxIdentificationNumber       String?  // like VAT number, TIN, etc.
-  phone                         String?
-  email                         String?
-  address                       String?
+  Business_phone                         String? @map("phone")
+  Business_email                         String? @map("email")
+  Business_Main_address                       String? @map("address")
   currency                      String                 @default("BDT")
-  status                        BUSINESS_STATUS         @default(ACTIVE)
+  Business_status                        BUSINESS_STATUS         @default(ACTIVE) @map("status")
   createdAt                     DateTime               @default(now())
   updatedAt                     DateTime               @updatedAt()
   auditLog_business             AuditLog[]             @relation("AuditLog_business")

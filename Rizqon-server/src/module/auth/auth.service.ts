@@ -142,10 +142,8 @@ const signInUser = async (payload: ISignInPayload, res: Response) => {
     );
   }
   if (!isExistUserIn_Db.emailVerified) {
-    throw new AppError(
-      StatusCodes.BAD_REQUEST,
-      "your account not verified please verify your account",
-    );
+   return {data: isExistUserIn_Db,
+    redirectUrl: `${env.FRONTEND_ORIGIN}/auth/verify-email`,}
   }
   if (isExistUserIn_Db.status === STATUS.DELETED) {
     throw new AppError(StatusCodes.FORBIDDEN, "Your account is deleted ");

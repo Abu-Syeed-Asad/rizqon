@@ -23,7 +23,7 @@ model Sale {
   customerId              String?
   customer                Customer?    @relation("Sale_customer", fields: [businessId, customerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   cashierId               String
-  cashier                 Employee     @relation("Sale_cashier", fields: [businessId, cashierId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  cashier                 Employee     @relation("Sale_cashier", fields: [businessId, cashierId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   cartId                  String?
   cart                    Cart?        @relation("Sale_cart", fields: [businessId, cartId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   saleItem_sale           SaleItem[]   @relation("SaleItem_sale")

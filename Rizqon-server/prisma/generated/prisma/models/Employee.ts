@@ -27,122 +27,116 @@ export type AggregateEmployee = {
 }
 
 export type EmployeeAvgAggregateOutputType = {
-  baseSalary: runtime.Decimal | null
+  Employee_baseSalary: runtime.Decimal | null
 }
 
 export type EmployeeSumAggregateOutputType = {
-  baseSalary: runtime.Decimal | null
+  Employee_baseSalary: runtime.Decimal | null
 }
 
 export type EmployeeMinAggregateOutputType = {
-  id: string | null
+  Employee_id: string | null
   businessId: string | null
   employeeCode: string | null
-  name: string | null
-  phone: string | null
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE | null
-  email: string | null
-  baseSalary: runtime.Decimal | null
+  Employee_name: string | null
+  Employee_phone: string | null
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE | null
+  Employee_email: string | null
+  Employee_baseSalary: runtime.Decimal | null
   joinedAt: Date | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  roleId: string | null
   userId: string | null
 }
 
 export type EmployeeMaxAggregateOutputType = {
-  id: string | null
+  Employee_id: string | null
   businessId: string | null
   employeeCode: string | null
-  name: string | null
-  phone: string | null
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE | null
-  email: string | null
-  baseSalary: runtime.Decimal | null
+  Employee_name: string | null
+  Employee_phone: string | null
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE | null
+  Employee_email: string | null
+  Employee_baseSalary: runtime.Decimal | null
   joinedAt: Date | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  roleId: string | null
   userId: string | null
 }
 
 export type EmployeeCountAggregateOutputType = {
-  id: number
+  Employee_id: number
   businessId: number
   employeeCode: number
-  name: number
-  phone: number
-  jobTitle: number
-  email: number
-  baseSalary: number
+  Employee_name: number
+  Employee_phone: number
+  Employee_jobTitle: number
+  Employee_email: number
+  Employee_baseSalary: number
   joinedAt: number
   isActive: number
   createdAt: number
   updatedAt: number
-  roleId: number
   userId: number
   _all: number
 }
 
 
 export type EmployeeAvgAggregateInputType = {
-  baseSalary?: true
+  Employee_baseSalary?: true
 }
 
 export type EmployeeSumAggregateInputType = {
-  baseSalary?: true
+  Employee_baseSalary?: true
 }
 
 export type EmployeeMinAggregateInputType = {
-  id?: true
+  Employee_id?: true
   businessId?: true
   employeeCode?: true
-  name?: true
-  phone?: true
-  jobTitle?: true
-  email?: true
-  baseSalary?: true
+  Employee_name?: true
+  Employee_phone?: true
+  Employee_jobTitle?: true
+  Employee_email?: true
+  Employee_baseSalary?: true
   joinedAt?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  roleId?: true
   userId?: true
 }
 
 export type EmployeeMaxAggregateInputType = {
-  id?: true
+  Employee_id?: true
   businessId?: true
   employeeCode?: true
-  name?: true
-  phone?: true
-  jobTitle?: true
-  email?: true
-  baseSalary?: true
+  Employee_name?: true
+  Employee_phone?: true
+  Employee_jobTitle?: true
+  Employee_email?: true
+  Employee_baseSalary?: true
   joinedAt?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  roleId?: true
   userId?: true
 }
 
 export type EmployeeCountAggregateInputType = {
-  id?: true
+  Employee_id?: true
   businessId?: true
   employeeCode?: true
-  name?: true
-  phone?: true
-  jobTitle?: true
-  email?: true
-  baseSalary?: true
+  Employee_name?: true
+  Employee_phone?: true
+  Employee_jobTitle?: true
+  Employee_email?: true
+  Employee_baseSalary?: true
   joinedAt?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
-  roleId?: true
   userId?: true
   _all?: true
 }
@@ -234,19 +228,18 @@ export type EmployeeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 export type EmployeeGroupByOutputType = {
-  id: string
+  Employee_id: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email: string | null
-  baseSalary: runtime.Decimal
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email: string | null
+  Employee_baseSalary: runtime.Decimal
   joinedAt: Date
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  roleId: string
   userId: string | null
   _count: EmployeeCountAggregateOutputType | null
   _avg: EmployeeAvgAggregateOutputType | null
@@ -274,19 +267,18 @@ export type EmployeeWhereInput = {
   AND?: Prisma.EmployeeWhereInput | Prisma.EmployeeWhereInput[]
   OR?: Prisma.EmployeeWhereInput[]
   NOT?: Prisma.EmployeeWhereInput | Prisma.EmployeeWhereInput[]
-  id?: Prisma.StringFilter<"Employee"> | string
+  Employee_id?: Prisma.StringFilter<"Employee"> | string
   businessId?: Prisma.StringFilter<"Employee"> | string
   employeeCode?: Prisma.StringFilter<"Employee"> | string
-  name?: Prisma.StringFilter<"Employee"> | string
-  phone?: Prisma.StringFilter<"Employee"> | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.StringNullableFilter<"Employee"> | string | null
-  baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFilter<"Employee"> | string
+  Employee_phone?: Prisma.StringFilter<"Employee"> | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.StringNullableFilter<"Employee"> | string | null
+  Employee_baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   isActive?: Prisma.BoolFilter<"Employee"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
-  roleId?: Prisma.StringFilter<"Employee"> | string
   userId?: Prisma.UuidNullableFilter<"Employee"> | string | null
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -304,19 +296,18 @@ export type EmployeeWhereInput = {
 }
 
 export type EmployeeOrderByWithRelationInput = {
-  id?: Prisma.SortOrder
+  Employee_id?: Prisma.SortOrder
   businessId?: Prisma.SortOrder
   employeeCode?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  jobTitle?: Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseSalary?: Prisma.SortOrder
+  Employee_name?: Prisma.SortOrder
+  Employee_phone?: Prisma.SortOrder
+  Employee_jobTitle?: Prisma.SortOrder
+  Employee_email?: Prisma.SortOrderInput | Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  roleId?: Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
   business?: Prisma.BusinessOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
@@ -334,8 +325,8 @@ export type EmployeeOrderByWithRelationInput = {
 }
 
 export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
-  id?: string
-  businessId_id?: Prisma.EmployeeBusinessIdIdCompoundUniqueInput
+  Employee_id?: string
+  businessId_Employee_id?: Prisma.EmployeeBusinessIdEmployee_idCompoundUniqueInput
   businessId_employeeCode?: Prisma.EmployeeBusinessIdEmployeeCodeCompoundUniqueInput
   businessId_userId?: Prisma.EmployeeBusinessIdUserIdCompoundUniqueInput
   AND?: Prisma.EmployeeWhereInput | Prisma.EmployeeWhereInput[]
@@ -343,16 +334,15 @@ export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.EmployeeWhereInput | Prisma.EmployeeWhereInput[]
   businessId?: Prisma.StringFilter<"Employee"> | string
   employeeCode?: Prisma.StringFilter<"Employee"> | string
-  name?: Prisma.StringFilter<"Employee"> | string
-  phone?: Prisma.StringFilter<"Employee"> | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.StringNullableFilter<"Employee"> | string | null
-  baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFilter<"Employee"> | string
+  Employee_phone?: Prisma.StringFilter<"Employee"> | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.StringNullableFilter<"Employee"> | string | null
+  Employee_baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   isActive?: Prisma.BoolFilter<"Employee"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
-  roleId?: Prisma.StringFilter<"Employee"> | string
   userId?: Prisma.UuidNullableFilter<"Employee"> | string | null
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -367,22 +357,21 @@ export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
   expense_creator?: Prisma.ExpenseListRelationFilter
   commissionSettlement_creator?: Prisma.CommissionSettlementListRelationFilter
   auditLog_actor?: Prisma.AuditLogListRelationFilter
-}, "id" | "businessId_id" | "businessId_employeeCode" | "businessId_userId">
+}, "Employee_id" | "businessId_Employee_id" | "businessId_employeeCode" | "businessId_userId">
 
 export type EmployeeOrderByWithAggregationInput = {
-  id?: Prisma.SortOrder
+  Employee_id?: Prisma.SortOrder
   businessId?: Prisma.SortOrder
   employeeCode?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  jobTitle?: Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseSalary?: Prisma.SortOrder
+  Employee_name?: Prisma.SortOrder
+  Employee_phone?: Prisma.SortOrder
+  Employee_jobTitle?: Prisma.SortOrder
+  Employee_email?: Prisma.SortOrderInput | Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  roleId?: Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EmployeeCountOrderByAggregateInput
   _avg?: Prisma.EmployeeAvgOrderByAggregateInput
@@ -395,35 +384,33 @@ export type EmployeeScalarWhereWithAggregatesInput = {
   AND?: Prisma.EmployeeScalarWhereWithAggregatesInput | Prisma.EmployeeScalarWhereWithAggregatesInput[]
   OR?: Prisma.EmployeeScalarWhereWithAggregatesInput[]
   NOT?: Prisma.EmployeeScalarWhereWithAggregatesInput | Prisma.EmployeeScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"Employee"> | string
+  Employee_id?: Prisma.StringWithAggregatesFilter<"Employee"> | string
   businessId?: Prisma.StringWithAggregatesFilter<"Employee"> | string
   employeeCode?: Prisma.StringWithAggregatesFilter<"Employee"> | string
-  name?: Prisma.StringWithAggregatesFilter<"Employee"> | string
-  phone?: Prisma.StringWithAggregatesFilter<"Employee"> | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEWithAggregatesFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.StringNullableWithAggregatesFilter<"Employee"> | string | null
-  baseSalary?: Prisma.DecimalWithAggregatesFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringWithAggregatesFilter<"Employee"> | string
+  Employee_phone?: Prisma.StringWithAggregatesFilter<"Employee"> | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEWithAggregatesFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.StringNullableWithAggregatesFilter<"Employee"> | string | null
+  Employee_baseSalary?: Prisma.DecimalWithAggregatesFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeWithAggregatesFilter<"Employee"> | Date | string
   isActive?: Prisma.BoolWithAggregatesFilter<"Employee"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Employee"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Employee"> | Date | string
-  roleId?: Prisma.StringWithAggregatesFilter<"Employee"> | string
   userId?: Prisma.UuidNullableWithAggregatesFilter<"Employee"> | string | null
 }
 
 export type EmployeeCreateInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -440,19 +427,18 @@ export type EmployeeCreateInput = {
 }
 
 export type EmployeeUncheckedCreateInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -468,18 +454,17 @@ export type EmployeeUncheckedCreateInput = {
 }
 
 export type EmployeeUpdateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -496,19 +481,18 @@ export type EmployeeUpdateInput = {
 }
 
 export type EmployeeUncheckedUpdateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -524,51 +508,48 @@ export type EmployeeUncheckedUpdateInput = {
 }
 
 export type EmployeeCreateManyInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
 }
 
 export type EmployeeUpdateManyMutationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type EmployeeUncheckedUpdateManyInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -582,14 +563,9 @@ export type EmployeeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type EmployeeScalarRelationFilter = {
-  is?: Prisma.EmployeeWhereInput
-  isNot?: Prisma.EmployeeWhereInput
-}
-
-export type EmployeeBusinessIdIdCompoundUniqueInput = {
+export type EmployeeBusinessIdEmployee_idCompoundUniqueInput = {
   businessId: string
-  id: string
+  Employee_id: string
 }
 
 export type EmployeeBusinessIdEmployeeCodeCompoundUniqueInput = {
@@ -603,62 +579,64 @@ export type EmployeeBusinessIdUserIdCompoundUniqueInput = {
 }
 
 export type EmployeeCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  Employee_id?: Prisma.SortOrder
   businessId?: Prisma.SortOrder
   employeeCode?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  jobTitle?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  baseSalary?: Prisma.SortOrder
+  Employee_name?: Prisma.SortOrder
+  Employee_phone?: Prisma.SortOrder
+  Employee_jobTitle?: Prisma.SortOrder
+  Employee_email?: Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  roleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
 export type EmployeeAvgOrderByAggregateInput = {
-  baseSalary?: Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
 }
 
 export type EmployeeMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  Employee_id?: Prisma.SortOrder
   businessId?: Prisma.SortOrder
   employeeCode?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  jobTitle?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  baseSalary?: Prisma.SortOrder
+  Employee_name?: Prisma.SortOrder
+  Employee_phone?: Prisma.SortOrder
+  Employee_jobTitle?: Prisma.SortOrder
+  Employee_email?: Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  roleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
 export type EmployeeMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  Employee_id?: Prisma.SortOrder
   businessId?: Prisma.SortOrder
   employeeCode?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
-  jobTitle?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  baseSalary?: Prisma.SortOrder
+  Employee_name?: Prisma.SortOrder
+  Employee_phone?: Prisma.SortOrder
+  Employee_jobTitle?: Prisma.SortOrder
+  Employee_email?: Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  roleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
 export type EmployeeSumOrderByAggregateInput = {
-  baseSalary?: Prisma.SortOrder
+  Employee_baseSalary?: Prisma.SortOrder
+}
+
+export type EmployeeScalarRelationFilter = {
+  is?: Prisma.EmployeeWhereInput
+  isNot?: Prisma.EmployeeWhereInput
 }
 
 export type EmployeeNullableScalarRelationFilter = {
@@ -708,6 +686,22 @@ export type EmployeeUncheckedUpdateManyWithoutBusinessNestedInput = {
   deleteMany?: Prisma.EmployeeScalarWhereInput | Prisma.EmployeeScalarWhereInput[]
 }
 
+export type EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput = {
+  set?: $Enums.EMPLOYEE_JOB_TITLE
+}
+
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type EmployeeCreateNestedOneWithoutCart_creatorInput = {
   create?: Prisma.XOR<Prisma.EmployeeCreateWithoutCart_creatorInput, Prisma.EmployeeUncheckedCreateWithoutCart_creatorInput>
   connectOrCreate?: Prisma.EmployeeCreateOrConnectWithoutCart_creatorInput
@@ -734,10 +728,6 @@ export type EmployeeUpdateOneRequiredWithoutCommissionSettlement_creatorNestedIn
   upsert?: Prisma.EmployeeUpsertWithoutCommissionSettlement_creatorInput
   connect?: Prisma.EmployeeWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.EmployeeUpdateToOneWithWhereWithoutCommissionSettlement_creatorInput, Prisma.EmployeeUpdateWithoutCommissionSettlement_creatorInput>, Prisma.EmployeeUncheckedUpdateWithoutCommissionSettlement_creatorInput>
-}
-
-export type EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput = {
-  set?: $Enums.EMPLOYEE_JOB_TITLE
 }
 
 export type EmployeeCreateNestedOneWithoutEmployeeBranch_employeeInput = {
@@ -915,18 +905,17 @@ export type EmployeeUncheckedUpdateManyWithoutUserNestedInput = {
 }
 
 export type EmployeeCreateWithoutBusinessInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementCreateNestedManyWithoutActorInput
@@ -942,18 +931,17 @@ export type EmployeeCreateWithoutBusinessInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutBusinessInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -998,35 +986,33 @@ export type EmployeeScalarWhereInput = {
   AND?: Prisma.EmployeeScalarWhereInput | Prisma.EmployeeScalarWhereInput[]
   OR?: Prisma.EmployeeScalarWhereInput[]
   NOT?: Prisma.EmployeeScalarWhereInput | Prisma.EmployeeScalarWhereInput[]
-  id?: Prisma.StringFilter<"Employee"> | string
+  Employee_id?: Prisma.StringFilter<"Employee"> | string
   businessId?: Prisma.StringFilter<"Employee"> | string
   employeeCode?: Prisma.StringFilter<"Employee"> | string
-  name?: Prisma.StringFilter<"Employee"> | string
-  phone?: Prisma.StringFilter<"Employee"> | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.StringNullableFilter<"Employee"> | string | null
-  baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFilter<"Employee"> | string
+  Employee_phone?: Prisma.StringFilter<"Employee"> | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFilter<"Employee"> | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.StringNullableFilter<"Employee"> | string | null
+  Employee_baseSalary?: Prisma.DecimalFilter<"Employee"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   isActive?: Prisma.BoolFilter<"Employee"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Employee"> | Date | string
-  roleId?: Prisma.StringFilter<"Employee"> | string
   userId?: Prisma.UuidNullableFilter<"Employee"> | string | null
 }
 
 export type EmployeeCreateWithoutCart_creatorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1042,19 +1028,18 @@ export type EmployeeCreateWithoutCart_creatorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutCart_creatorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1085,18 +1070,17 @@ export type EmployeeUpdateToOneWithWhereWithoutCart_creatorInput = {
 }
 
 export type EmployeeUpdateWithoutCart_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1112,19 +1096,18 @@ export type EmployeeUpdateWithoutCart_creatorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutCart_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1139,18 +1122,17 @@ export type EmployeeUncheckedUpdateWithoutCart_creatorInput = {
 }
 
 export type EmployeeCreateWithoutCommissionSettlement_creatorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1166,19 +1148,18 @@ export type EmployeeCreateWithoutCommissionSettlement_creatorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutCommissionSettlement_creatorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1209,18 +1190,17 @@ export type EmployeeUpdateToOneWithWhereWithoutCommissionSettlement_creatorInput
 }
 
 export type EmployeeUpdateWithoutCommissionSettlement_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1236,19 +1216,18 @@ export type EmployeeUpdateWithoutCommissionSettlement_creatorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutCommissionSettlement_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1263,18 +1242,17 @@ export type EmployeeUncheckedUpdateWithoutCommissionSettlement_creatorInput = {
 }
 
 export type EmployeeCreateWithoutEmployeeBranch_employeeInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   stockMovement_actor?: Prisma.StockMovementCreateNestedManyWithoutActorInput
@@ -1290,19 +1268,18 @@ export type EmployeeCreateWithoutEmployeeBranch_employeeInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutEmployeeBranch_employeeInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
   cart_creator?: Prisma.CartUncheckedCreateNestedManyWithoutCreatorInput
@@ -1333,18 +1310,17 @@ export type EmployeeUpdateToOneWithWhereWithoutEmployeeBranch_employeeInput = {
 }
 
 export type EmployeeUpdateWithoutEmployeeBranch_employeeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   stockMovement_actor?: Prisma.StockMovementUpdateManyWithoutActorNestedInput
@@ -1360,19 +1336,18 @@ export type EmployeeUpdateWithoutEmployeeBranch_employeeInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutEmployeeBranch_employeeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
   cart_creator?: Prisma.CartUncheckedUpdateManyWithoutCreatorNestedInput
@@ -1387,18 +1362,17 @@ export type EmployeeUncheckedUpdateWithoutEmployeeBranch_employeeInput = {
 }
 
 export type EmployeeCreateWithoutExpense_employeeInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1414,19 +1388,18 @@ export type EmployeeCreateWithoutExpense_employeeInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutExpense_employeeInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1446,18 +1419,17 @@ export type EmployeeCreateOrConnectWithoutExpense_employeeInput = {
 }
 
 export type EmployeeCreateWithoutExpense_creatorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1473,19 +1445,18 @@ export type EmployeeCreateWithoutExpense_creatorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutExpense_creatorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1516,18 +1487,17 @@ export type EmployeeUpdateToOneWithWhereWithoutExpense_employeeInput = {
 }
 
 export type EmployeeUpdateWithoutExpense_employeeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1543,19 +1513,18 @@ export type EmployeeUpdateWithoutExpense_employeeInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutExpense_employeeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1581,18 +1550,17 @@ export type EmployeeUpdateToOneWithWhereWithoutExpense_creatorInput = {
 }
 
 export type EmployeeUpdateWithoutExpense_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1608,19 +1576,18 @@ export type EmployeeUpdateWithoutExpense_creatorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutExpense_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1635,18 +1602,17 @@ export type EmployeeUncheckedUpdateWithoutExpense_creatorInput = {
 }
 
 export type EmployeeCreateWithoutPayment_recorderInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1662,19 +1628,18 @@ export type EmployeeCreateWithoutPayment_recorderInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutPayment_recorderInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1705,18 +1670,17 @@ export type EmployeeUpdateToOneWithWhereWithoutPayment_recorderInput = {
 }
 
 export type EmployeeUpdateWithoutPayment_recorderInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1732,19 +1696,18 @@ export type EmployeeUpdateWithoutPayment_recorderInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutPayment_recorderInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1759,18 +1722,17 @@ export type EmployeeUncheckedUpdateWithoutPayment_recorderInput = {
 }
 
 export type EmployeeCreateWithoutPurchase_creatorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1786,19 +1748,18 @@ export type EmployeeCreateWithoutPurchase_creatorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutPurchase_creatorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1829,18 +1790,17 @@ export type EmployeeUpdateToOneWithWhereWithoutPurchase_creatorInput = {
 }
 
 export type EmployeeUpdateWithoutPurchase_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1856,19 +1816,18 @@ export type EmployeeUpdateWithoutPurchase_creatorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutPurchase_creatorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -1883,18 +1842,17 @@ export type EmployeeUncheckedUpdateWithoutPurchase_creatorInput = {
 }
 
 export type EmployeeCreateWithoutSale_cashierInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -1910,19 +1868,18 @@ export type EmployeeCreateWithoutSale_cashierInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutSale_cashierInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -1953,18 +1910,17 @@ export type EmployeeUpdateToOneWithWhereWithoutSale_cashierInput = {
 }
 
 export type EmployeeUpdateWithoutSale_cashierInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -1980,19 +1936,18 @@ export type EmployeeUpdateWithoutSale_cashierInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutSale_cashierInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -2007,18 +1962,17 @@ export type EmployeeUncheckedUpdateWithoutSale_cashierInput = {
 }
 
 export type EmployeeCreateWithoutSaleReturn_processorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -2034,19 +1988,18 @@ export type EmployeeCreateWithoutSaleReturn_processorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutSaleReturn_processorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -2077,18 +2030,17 @@ export type EmployeeUpdateToOneWithWhereWithoutSaleReturn_processorInput = {
 }
 
 export type EmployeeUpdateWithoutSaleReturn_processorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -2104,19 +2056,18 @@ export type EmployeeUpdateWithoutSaleReturn_processorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutSaleReturn_processorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -2131,18 +2082,17 @@ export type EmployeeUncheckedUpdateWithoutSaleReturn_processorInput = {
 }
 
 export type EmployeeCreateWithoutStockMovement_actorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -2158,19 +2108,18 @@ export type EmployeeCreateWithoutStockMovement_actorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutStockMovement_actorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   cart_creator?: Prisma.CartUncheckedCreateNestedManyWithoutCreatorInput
@@ -2201,18 +2150,17 @@ export type EmployeeUpdateToOneWithWhereWithoutStockMovement_actorInput = {
 }
 
 export type EmployeeUpdateWithoutStockMovement_actorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -2228,19 +2176,18 @@ export type EmployeeUpdateWithoutStockMovement_actorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutStockMovement_actorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   cart_creator?: Prisma.CartUncheckedUpdateManyWithoutCreatorNestedInput
@@ -2255,18 +2202,17 @@ export type EmployeeUncheckedUpdateWithoutStockMovement_actorInput = {
 }
 
 export type EmployeeCreateWithoutAuditLog_actorInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   user?: Prisma.UserCreateNestedOneWithoutEmployeesInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
@@ -2282,19 +2228,18 @@ export type EmployeeCreateWithoutAuditLog_actorInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutAuditLog_actorInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
@@ -2325,18 +2270,17 @@ export type EmployeeUpdateToOneWithWhereWithoutAuditLog_actorInput = {
 }
 
 export type EmployeeUpdateWithoutAuditLog_actorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
@@ -2352,19 +2296,18 @@ export type EmployeeUpdateWithoutAuditLog_actorInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutAuditLog_actorInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -2379,18 +2322,17 @@ export type EmployeeUncheckedUpdateWithoutAuditLog_actorInput = {
 }
 
 export type EmployeeCreateWithoutUserInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   business: Prisma.BusinessCreateNestedOneWithoutEmployee_businessInput
   employeeBranch_employee?: Prisma.EmployeeBranchCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementCreateNestedManyWithoutActorInput
@@ -2406,19 +2348,18 @@ export type EmployeeCreateWithoutUserInput = {
 }
 
 export type EmployeeUncheckedCreateWithoutUserInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedCreateNestedManyWithoutEmployeeInput
   stockMovement_actor?: Prisma.StockMovementUncheckedCreateNestedManyWithoutActorInput
   cart_creator?: Prisma.CartUncheckedCreateNestedManyWithoutCreatorInput
@@ -2459,34 +2400,32 @@ export type EmployeeUpdateManyWithWhereWithoutUserInput = {
 }
 
 export type EmployeeCreateManyBusinessInput = {
-  id?: string
+  Employee_id?: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
   userId?: string | null
 }
 
 export type EmployeeUpdateWithoutBusinessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneWithoutEmployeesNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUpdateManyWithoutActorNestedInput
@@ -2502,18 +2441,17 @@ export type EmployeeUpdateWithoutBusinessInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutBusinessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
@@ -2529,50 +2467,47 @@ export type EmployeeUncheckedUpdateWithoutBusinessInput = {
 }
 
 export type EmployeeUncheckedUpdateManyWithoutBusinessInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EmployeeCreateManyUserInput = {
-  id?: string
+  Employee_id?: string
   businessId: string
   employeeCode: string
-  name: string
-  phone: string
-  jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-  email?: string | null
-  baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name: string
+  Employee_phone: string
+  Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: string | null
+  Employee_baseSalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Date | string
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  roleId: string
 }
 
 export type EmployeeUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutEmployee_businessNestedInput
   employeeBranch_employee?: Prisma.EmployeeBranchUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUpdateManyWithoutActorNestedInput
@@ -2588,19 +2523,18 @@ export type EmployeeUpdateWithoutUserInput = {
 }
 
 export type EmployeeUncheckedUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeBranch_employee?: Prisma.EmployeeBranchUncheckedUpdateManyWithoutEmployeeNestedInput
   stockMovement_actor?: Prisma.StockMovementUncheckedUpdateManyWithoutActorNestedInput
   cart_creator?: Prisma.CartUncheckedUpdateManyWithoutCreatorNestedInput
@@ -2615,19 +2549,18 @@ export type EmployeeUncheckedUpdateWithoutUserInput = {
 }
 
 export type EmployeeUncheckedUpdateManyWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_id?: Prisma.StringFieldUpdateOperationsInput | string
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeCode?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  Employee_name?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_phone?: Prisma.StringFieldUpdateOperationsInput | string
+  Employee_jobTitle?: Prisma.EnumEMPLOYEE_JOB_TITLEFieldUpdateOperationsInput | $Enums.EMPLOYEE_JOB_TITLE
+  Employee_email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Employee_baseSalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -2752,19 +2685,18 @@ export type EmployeeCountOutputTypeCountAuditLog_actorArgs<ExtArgs extends runti
 
 
 export type EmployeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  Employee_id?: boolean
   businessId?: boolean
   employeeCode?: boolean
-  name?: boolean
-  phone?: boolean
-  jobTitle?: boolean
-  email?: boolean
-  baseSalary?: boolean
+  Employee_name?: boolean
+  Employee_phone?: boolean
+  Employee_jobTitle?: boolean
+  Employee_email?: boolean
+  Employee_baseSalary?: boolean
   joinedAt?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  roleId?: boolean
   userId?: boolean
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   user?: boolean | Prisma.Employee$userArgs<ExtArgs>
@@ -2783,61 +2715,58 @@ export type EmployeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 }, ExtArgs["result"]["employee"]>
 
 export type EmployeeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  Employee_id?: boolean
   businessId?: boolean
   employeeCode?: boolean
-  name?: boolean
-  phone?: boolean
-  jobTitle?: boolean
-  email?: boolean
-  baseSalary?: boolean
+  Employee_name?: boolean
+  Employee_phone?: boolean
+  Employee_jobTitle?: boolean
+  Employee_email?: boolean
+  Employee_baseSalary?: boolean
   joinedAt?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  roleId?: boolean
   userId?: boolean
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   user?: boolean | Prisma.Employee$userArgs<ExtArgs>
 }, ExtArgs["result"]["employee"]>
 
 export type EmployeeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  Employee_id?: boolean
   businessId?: boolean
   employeeCode?: boolean
-  name?: boolean
-  phone?: boolean
-  jobTitle?: boolean
-  email?: boolean
-  baseSalary?: boolean
+  Employee_name?: boolean
+  Employee_phone?: boolean
+  Employee_jobTitle?: boolean
+  Employee_email?: boolean
+  Employee_baseSalary?: boolean
   joinedAt?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  roleId?: boolean
   userId?: boolean
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   user?: boolean | Prisma.Employee$userArgs<ExtArgs>
 }, ExtArgs["result"]["employee"]>
 
 export type EmployeeSelectScalar = {
-  id?: boolean
+  Employee_id?: boolean
   businessId?: boolean
   employeeCode?: boolean
-  name?: boolean
-  phone?: boolean
-  jobTitle?: boolean
-  email?: boolean
-  baseSalary?: boolean
+  Employee_name?: boolean
+  Employee_phone?: boolean
+  Employee_jobTitle?: boolean
+  Employee_email?: boolean
+  Employee_baseSalary?: boolean
   joinedAt?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  roleId?: boolean
   userId?: boolean
 }
 
-export type EmployeeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "employeeCode" | "name" | "phone" | "jobTitle" | "email" | "baseSalary" | "joinedAt" | "isActive" | "createdAt" | "updatedAt" | "roleId" | "userId", ExtArgs["result"]["employee"]>
+export type EmployeeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"Employee_id" | "businessId" | "employeeCode" | "Employee_name" | "Employee_phone" | "Employee_jobTitle" | "Employee_email" | "Employee_baseSalary" | "joinedAt" | "isActive" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["employee"]>
 export type EmployeeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   user?: boolean | Prisma.Employee$userArgs<ExtArgs>
@@ -2881,19 +2810,18 @@ export type $EmployeePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     auditLog_actor: Prisma.$AuditLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: string
+    Employee_id: string
     businessId: string
     employeeCode: string
-    name: string
-    phone: string
-    jobTitle: $Enums.EMPLOYEE_JOB_TITLE
-    email: string | null
-    baseSalary: runtime.Decimal
+    Employee_name: string
+    Employee_phone: string
+    Employee_jobTitle: $Enums.EMPLOYEE_JOB_TITLE
+    Employee_email: string | null
+    Employee_baseSalary: runtime.Decimal
     joinedAt: Date
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    roleId: string
     userId: string | null
   }, ExtArgs["result"]["employee"]>
   composites: {}
@@ -2978,8 +2906,8 @@ export interface EmployeeDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * // Get first 10 Employees
    * const employees = await prisma.employee.findMany({ take: 10 })
    * 
-   * // Only select the `id`
-   * const employeeWithIdOnly = await prisma.employee.findMany({ select: { id: true } })
+   * // Only select the `Employee_id`
+   * const employeeWithEmployee_idOnly = await prisma.employee.findMany({ select: { Employee_id: true } })
    * 
    */
   findMany<T extends EmployeeFindManyArgs>(args?: Prisma.SelectSubset<T, EmployeeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3023,9 +2951,9 @@ export interface EmployeeDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   ]
    * })
    * 
-   * // Create many Employees and only return the `id`
-   * const employeeWithIdOnly = await prisma.employee.createManyAndReturn({
-   *   select: { id: true },
+   * // Create many Employees and only return the `Employee_id`
+   * const employeeWithEmployee_idOnly = await prisma.employee.createManyAndReturn({
+   *   select: { Employee_id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -3114,9 +3042,9 @@ export interface EmployeeDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   ]
    * })
    * 
-   * // Update zero or more Employees and only return the `id`
-   * const employeeWithIdOnly = await prisma.employee.updateManyAndReturn({
-   *   select: { id: true },
+   * // Update zero or more Employees and only return the `Employee_id`
+   * const employeeWithEmployee_idOnly = await prisma.employee.updateManyAndReturn({
+   *   select: { Employee_id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -3331,19 +3259,18 @@ export interface Prisma__EmployeeClient<T, Null = never, ExtArgs extends runtime
  * Fields of the Employee model
  */
 export interface EmployeeFieldRefs {
-  readonly id: Prisma.FieldRef<"Employee", 'String'>
+  readonly Employee_id: Prisma.FieldRef<"Employee", 'String'>
   readonly businessId: Prisma.FieldRef<"Employee", 'String'>
   readonly employeeCode: Prisma.FieldRef<"Employee", 'String'>
-  readonly name: Prisma.FieldRef<"Employee", 'String'>
-  readonly phone: Prisma.FieldRef<"Employee", 'String'>
-  readonly jobTitle: Prisma.FieldRef<"Employee", 'EMPLOYEE_JOB_TITLE'>
-  readonly email: Prisma.FieldRef<"Employee", 'String'>
-  readonly baseSalary: Prisma.FieldRef<"Employee", 'Decimal'>
+  readonly Employee_name: Prisma.FieldRef<"Employee", 'String'>
+  readonly Employee_phone: Prisma.FieldRef<"Employee", 'String'>
+  readonly Employee_jobTitle: Prisma.FieldRef<"Employee", 'EMPLOYEE_JOB_TITLE'>
+  readonly Employee_email: Prisma.FieldRef<"Employee", 'String'>
+  readonly Employee_baseSalary: Prisma.FieldRef<"Employee", 'Decimal'>
   readonly joinedAt: Prisma.FieldRef<"Employee", 'DateTime'>
   readonly isActive: Prisma.FieldRef<"Employee", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Employee", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Employee", 'DateTime'>
-  readonly roleId: Prisma.FieldRef<"Employee", 'String'>
   readonly userId: Prisma.FieldRef<"Employee", 'String'>
 }
     

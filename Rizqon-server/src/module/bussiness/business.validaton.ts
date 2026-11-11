@@ -3,7 +3,7 @@ import { z } from "zod";
 const optionalText = (maxLength: number) =>
   z.string().trim().max(maxLength).nullish();
 
- const createBusinessSchema = z
+const businessFieldsSchema = z
   .object({
     name: z
       .string()
@@ -47,7 +47,21 @@ const optionalText = (maxLength: number) =>
   .strict();
 
 
-const updateBusinessSchema = createBusinessSchema
+const employeeSchema = z.object({
+  Employee_email: z.string().trim().toLowerCase().max(254).pipe(z.email()),
+}).strict();
+
+const createBusinessSchema = z.object({
+  business: businessFieldsSchema.omit({ name: true, phone: true, email: true, address: true }).extend({
+    Business_name: businessFieldsSchema.shape.name,
+    Business_phone: businessFieldsSchema.shape.phone,
+    Business_email: z.string().trim().toLowerCase().max(254).pipe(z.email()).nullish(),
+    Business_Main_address: businessFieldsSchema.shape.address,
+  }),
+  employee: employeeSchema,
+}).strict();
+
+const updateBusinessSchema = businessFieldsSchema
   .partial()
   .extend({ currency: z.enum(["BDT", "USD", "EUR"]).optional() })
   .refine((payload) => Object.values(payload).some((value) => value !== undefined), {

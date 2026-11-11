@@ -548,26 +548,6 @@ export type CommissionSettlementUncheckedUpdateManyWithoutBusinessNestedInput = 
   deleteMany?: Prisma.CommissionSettlementScalarWhereInput | Prisma.CommissionSettlementScalarWhereInput[]
 }
 
-export type CommissionSettlementCreateNestedOneWithoutCommissionEntry_settlementInput = {
-  create?: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUncheckedCreateWithoutCommissionEntry_settlementInput>
-  connectOrCreate?: Prisma.CommissionSettlementCreateOrConnectWithoutCommissionEntry_settlementInput
-  connect?: Prisma.CommissionSettlementWhereUniqueInput
-}
-
-export type CommissionSettlementUpdateOneWithoutCommissionEntry_settlementNestedInput = {
-  create?: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUncheckedCreateWithoutCommissionEntry_settlementInput>
-  connectOrCreate?: Prisma.CommissionSettlementCreateOrConnectWithoutCommissionEntry_settlementInput
-  upsert?: Prisma.CommissionSettlementUpsertWithoutCommissionEntry_settlementInput
-  disconnect?: Prisma.CommissionSettlementWhereInput | boolean
-  delete?: Prisma.CommissionSettlementWhereInput | boolean
-  connect?: Prisma.CommissionSettlementWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CommissionSettlementUpdateToOneWithWhereWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUpdateWithoutCommissionEntry_settlementInput>, Prisma.CommissionSettlementUncheckedUpdateWithoutCommissionEntry_settlementInput>
-}
-
-export type EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput = {
-  set?: $Enums.COMMISSION_SETTLEMENT_STATUS
-}
-
 export type CommissionSettlementCreateNestedManyWithoutCreatorInput = {
   create?: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput> | Prisma.CommissionSettlementCreateWithoutCreatorInput[] | Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput[]
   connectOrCreate?: Prisma.CommissionSettlementCreateOrConnectWithoutCreatorInput | Prisma.CommissionSettlementCreateOrConnectWithoutCreatorInput[]
@@ -608,6 +588,26 @@ export type CommissionSettlementUncheckedUpdateManyWithoutCreatorNestedInput = {
   update?: Prisma.CommissionSettlementUpdateWithWhereUniqueWithoutCreatorInput | Prisma.CommissionSettlementUpdateWithWhereUniqueWithoutCreatorInput[]
   updateMany?: Prisma.CommissionSettlementUpdateManyWithWhereWithoutCreatorInput | Prisma.CommissionSettlementUpdateManyWithWhereWithoutCreatorInput[]
   deleteMany?: Prisma.CommissionSettlementScalarWhereInput | Prisma.CommissionSettlementScalarWhereInput[]
+}
+
+export type CommissionSettlementCreateNestedOneWithoutCommissionEntry_settlementInput = {
+  create?: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUncheckedCreateWithoutCommissionEntry_settlementInput>
+  connectOrCreate?: Prisma.CommissionSettlementCreateOrConnectWithoutCommissionEntry_settlementInput
+  connect?: Prisma.CommissionSettlementWhereUniqueInput
+}
+
+export type CommissionSettlementUpdateOneWithoutCommissionEntry_settlementNestedInput = {
+  create?: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUncheckedCreateWithoutCommissionEntry_settlementInput>
+  connectOrCreate?: Prisma.CommissionSettlementCreateOrConnectWithoutCommissionEntry_settlementInput
+  upsert?: Prisma.CommissionSettlementUpsertWithoutCommissionEntry_settlementInput
+  disconnect?: Prisma.CommissionSettlementWhereInput | boolean
+  delete?: Prisma.CommissionSettlementWhereInput | boolean
+  connect?: Prisma.CommissionSettlementWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CommissionSettlementUpdateToOneWithWhereWithoutCommissionEntry_settlementInput, Prisma.CommissionSettlementUpdateWithoutCommissionEntry_settlementInput>, Prisma.CommissionSettlementUncheckedUpdateWithoutCommissionEntry_settlementInput>
+}
+
+export type EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput = {
+  set?: $Enums.COMMISSION_SETTLEMENT_STATUS
 }
 
 export type CommissionSettlementCreateNestedManyWithoutPartnerInput = {
@@ -738,6 +738,59 @@ export type CommissionSettlementScalarWhereInput = {
   creatorId?: Prisma.StringFilter<"CommissionSettlement"> | string
 }
 
+export type CommissionSettlementCreateWithoutCreatorInput = {
+  id?: string
+  settlement_reference: string
+  settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  finalizedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
+  payment_settlement?: Prisma.PaymentCreateNestedManyWithoutSettlementInput
+  commissionEntry_settlement?: Prisma.CommissionEntryCreateNestedManyWithoutSettlementInput
+  partner: Prisma.PartnerCreateNestedOneWithoutCommissionSettlement_partnerInput
+}
+
+export type CommissionSettlementUncheckedCreateWithoutCreatorInput = {
+  id?: string
+  settlement_reference: string
+  settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  finalizedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partnerId: string
+  payment_settlement?: Prisma.PaymentUncheckedCreateNestedManyWithoutSettlementInput
+  commissionEntry_settlement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutSettlementInput
+}
+
+export type CommissionSettlementCreateOrConnectWithoutCreatorInput = {
+  where: Prisma.CommissionSettlementWhereUniqueInput
+  create: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput>
+}
+
+export type CommissionSettlementCreateManyCreatorInputEnvelope = {
+  data: Prisma.CommissionSettlementCreateManyCreatorInput | Prisma.CommissionSettlementCreateManyCreatorInput[]
+  skipDuplicates?: boolean
+}
+
+export type CommissionSettlementUpsertWithWhereUniqueWithoutCreatorInput = {
+  where: Prisma.CommissionSettlementWhereUniqueInput
+  update: Prisma.XOR<Prisma.CommissionSettlementUpdateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedUpdateWithoutCreatorInput>
+  create: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput>
+}
+
+export type CommissionSettlementUpdateWithWhereUniqueWithoutCreatorInput = {
+  where: Prisma.CommissionSettlementWhereUniqueInput
+  data: Prisma.XOR<Prisma.CommissionSettlementUpdateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedUpdateWithoutCreatorInput>
+}
+
+export type CommissionSettlementUpdateManyWithWhereWithoutCreatorInput = {
+  where: Prisma.CommissionSettlementScalarWhereInput
+  data: Prisma.XOR<Prisma.CommissionSettlementUpdateManyMutationInput, Prisma.CommissionSettlementUncheckedUpdateManyWithoutCreatorInput>
+}
+
 export type CommissionSettlementCreateWithoutCommissionEntry_settlementInput = {
   id?: string
   settlement_reference: string
@@ -808,59 +861,6 @@ export type CommissionSettlementUncheckedUpdateWithoutCommissionEntry_settlement
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   payment_settlement?: Prisma.PaymentUncheckedUpdateManyWithoutSettlementNestedInput
-}
-
-export type CommissionSettlementCreateWithoutCreatorInput = {
-  id?: string
-  settlement_reference: string
-  settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  finalizedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
-  payment_settlement?: Prisma.PaymentCreateNestedManyWithoutSettlementInput
-  commissionEntry_settlement?: Prisma.CommissionEntryCreateNestedManyWithoutSettlementInput
-  partner: Prisma.PartnerCreateNestedOneWithoutCommissionSettlement_partnerInput
-}
-
-export type CommissionSettlementUncheckedCreateWithoutCreatorInput = {
-  id?: string
-  settlement_reference: string
-  settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  finalizedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  partnerId: string
-  payment_settlement?: Prisma.PaymentUncheckedCreateNestedManyWithoutSettlementInput
-  commissionEntry_settlement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutSettlementInput
-}
-
-export type CommissionSettlementCreateOrConnectWithoutCreatorInput = {
-  where: Prisma.CommissionSettlementWhereUniqueInput
-  create: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput>
-}
-
-export type CommissionSettlementCreateManyCreatorInputEnvelope = {
-  data: Prisma.CommissionSettlementCreateManyCreatorInput | Prisma.CommissionSettlementCreateManyCreatorInput[]
-  skipDuplicates?: boolean
-}
-
-export type CommissionSettlementUpsertWithWhereUniqueWithoutCreatorInput = {
-  where: Prisma.CommissionSettlementWhereUniqueInput
-  update: Prisma.XOR<Prisma.CommissionSettlementUpdateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedUpdateWithoutCreatorInput>
-  create: Prisma.XOR<Prisma.CommissionSettlementCreateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedCreateWithoutCreatorInput>
-}
-
-export type CommissionSettlementUpdateWithWhereUniqueWithoutCreatorInput = {
-  where: Prisma.CommissionSettlementWhereUniqueInput
-  data: Prisma.XOR<Prisma.CommissionSettlementUpdateWithoutCreatorInput, Prisma.CommissionSettlementUncheckedUpdateWithoutCreatorInput>
-}
-
-export type CommissionSettlementUpdateManyWithWhereWithoutCreatorInput = {
-  where: Prisma.CommissionSettlementScalarWhereInput
-  data: Prisma.XOR<Prisma.CommissionSettlementUpdateManyMutationInput, Prisma.CommissionSettlementUncheckedUpdateManyWithoutCreatorInput>
 }
 
 export type CommissionSettlementCreateWithoutPartnerInput = {

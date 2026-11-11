@@ -11,7 +11,7 @@ model Cart {
   customerId    String?
   customer      Customer?  @relation("Cart_customer", fields: [businessId, customerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   creatorId     String
-  creator       Employee   @relation("Cart_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creator       Employee   @relation("Cart_creator", fields: [businessId, creatorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   cartItem_cart CartItem[] @relation("CartItem_cart")
   sale_cart     Sale?      @relation("Sale_cart")
 

@@ -1,18 +1,17 @@
 model Employee {
-  id                           String                 @id @default(cuid())
+  Employee_id                           String                 @id @default(cuid()) @map("id")
   businessId                   String
   employeeCode                 String
-  name                         String
-  phone                        String
-  jobTitle                     EMPLOYEE_JOB_TITLE
-  email                        String?
-  baseSalary                   Decimal                @default(0) @db.Decimal(18, 2)
+  Employee_name                         String @map("name")
+  Employee_phone                        String @map("phone")
+  Employee_jobTitle                     EMPLOYEE_JOB_TITLE @map("jobTitle")
+  Employee_email               String? @map("email")
+  Employee_baseSalary                   Decimal                @default(0) @db.Decimal(18, 2) @map("baseSalary")
   joinedAt                     DateTime               @default(now())
   isActive                     Boolean                @default(true)
   createdAt                    DateTime               @default(now())
   updatedAt                    DateTime               @updatedAt()
   business                     Business               @relation("Employee_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  roleId                       String
   userId                       String?                @db.Uuid
   user                         User?                  @relation("Employee_user", fields: [userId], references: [id], onDelete: Restrict, onUpdate: NoAction)
   employeeBranch_employee      EmployeeBranch[]       @relation("EmployeeBranch_employee")
@@ -27,11 +26,10 @@ model Employee {
   commissionSettlement_creator CommissionSettlement[] @relation("CommissionSettlement_creator")
   auditLog_actor               AuditLog[]             @relation("AuditLog_actor")
 
-  @@unique([businessId, id])
+  @@unique([businessId, Employee_id])
   @@unique([businessId, employeeCode])
   @@unique([businessId, userId])
   @@index([businessId])
-  @@index([businessId, roleId])
   @@index([userId])
   @@schema("commerce")
 }

@@ -28,6 +28,11 @@ export type Brand = Prisma.BrandModel
  */
 export type Business = Prisma.BusinessModel
 /**
+ * Model Employee
+ * 
+ */
+export type Employee = Prisma.EmployeeModel
+/**
  * Model Cart
  * 
  */
@@ -62,11 +67,6 @@ export type CommissionSettlement = Prisma.CommissionSettlementModel
  * 
  */
 export type Customer = Prisma.CustomerModel
-/**
- * Model Employee
- * 
- */
-export type Employee = Prisma.EmployeeModel
 /**
  * Model EmployeeBranch
  * 

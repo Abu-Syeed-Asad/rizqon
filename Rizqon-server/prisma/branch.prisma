@@ -1,10 +1,10 @@
 model Branch {
   id                    String           @id @default(cuid())
   businessId            String
-  name                  String
+  Brance_name                  String @map("name")
   branch_code           String  // Unique code for the branch within the business like "BR001", "BR002", etc.
-  address               String?
-  phone                 String?
+  Branch_address               String? @map("address")
+  Brannch_phone                 String? @map("phone")
   isActive              Boolean          @default(true)
   createdAt             DateTime         @default(now())
   updatedAt             DateTime         @updatedAt()

@@ -399,6 +399,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Brand: 'Brand',
   Business: 'Business',
+  Employee: 'Employee',
   Cart: 'Cart',
   CartItem: 'CartItem',
   Category: 'Category',
@@ -406,7 +407,6 @@ export const ModelName = {
   CommissionEntry: 'CommissionEntry',
   CommissionSettlement: 'CommissionSettlement',
   Customer: 'Customer',
-  Employee: 'Employee',
   EmployeeBranch: 'EmployeeBranch',
   Expense: 'Expense',
   Inventory: 'Inventory',
@@ -447,7 +447,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "brand" | "business" | "cart" | "cartItem" | "category" | "commissionAgreement" | "commissionEntry" | "commissionSettlement" | "customer" | "employee" | "employeeBranch" | "expense" | "inventory" | "notification" | "outboxEvent" | "partner" | "payment" | "paymentEvent" | "product" | "productVariant" | "purchase" | "purchaseItem" | "refund" | "returnItem" | "sale" | "saleItem" | "saleReturn" | "stockMovement" | "auditLog" | "jwks" | "user" | "session" | "account" | "verification" | "branch"
+    modelProps: "brand" | "business" | "employee" | "cart" | "cartItem" | "category" | "commissionAgreement" | "commissionEntry" | "commissionSettlement" | "customer" | "employeeBranch" | "expense" | "inventory" | "notification" | "outboxEvent" | "partner" | "payment" | "paymentEvent" | "product" | "productVariant" | "purchase" | "purchaseItem" | "refund" | "returnItem" | "sale" | "saleItem" | "saleReturn" | "stockMovement" | "auditLog" | "jwks" | "user" | "session" | "account" | "verification" | "branch"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -596,6 +596,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.BusinessCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.BusinessCountAggregateOutputType> | number
+        }
+      }
+    }
+    Employee: {
+      payload: Prisma.$EmployeePayload<ExtArgs>
+      fields: Prisma.EmployeeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmployeeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmployeeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        findFirst: {
+          args: Prisma.EmployeeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmployeeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        findMany: {
+          args: Prisma.EmployeeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
+        }
+        create: {
+          args: Prisma.EmployeeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        createMany: {
+          args: Prisma.EmployeeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EmployeeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
+        }
+        delete: {
+          args: Prisma.EmployeeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        update: {
+          args: Prisma.EmployeeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        deleteMany: {
+          args: Prisma.EmployeeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmployeeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EmployeeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
+        }
+        upsert: {
+          args: Prisma.EmployeeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
+        }
+        aggregate: {
+          args: Prisma.EmployeeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmployee>
+        }
+        groupBy: {
+          args: Prisma.EmployeeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmployeeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmployeeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmployeeCountAggregateOutputType> | number
         }
       }
     }
@@ -1114,80 +1188,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CustomerCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CustomerCountAggregateOutputType> | number
-        }
-      }
-    }
-    Employee: {
-      payload: Prisma.$EmployeePayload<ExtArgs>
-      fields: Prisma.EmployeeFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.EmployeeFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.EmployeeFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        findFirst: {
-          args: Prisma.EmployeeFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.EmployeeFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        findMany: {
-          args: Prisma.EmployeeFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
-        }
-        create: {
-          args: Prisma.EmployeeCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        createMany: {
-          args: Prisma.EmployeeCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.EmployeeCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
-        }
-        delete: {
-          args: Prisma.EmployeeDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        update: {
-          args: Prisma.EmployeeUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        deleteMany: {
-          args: Prisma.EmployeeDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.EmployeeUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.EmployeeUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>[]
-        }
-        upsert: {
-          args: Prisma.EmployeeUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmployeePayload>
-        }
-        aggregate: {
-          args: Prisma.EmployeeAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateEmployee>
-        }
-        groupBy: {
-          args: Prisma.EmployeeGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EmployeeGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.EmployeeCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EmployeeCountAggregateOutputType> | number
         }
       }
     }
@@ -3093,21 +3093,40 @@ export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof Br
 
 export const BusinessScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  Business_name: 'Business_name',
   business_slug: 'business_slug',
   legalName: 'legalName',
   registrationNumber: 'registrationNumber',
   taxIdentificationNumber: 'taxIdentificationNumber',
-  phone: 'phone',
-  email: 'email',
-  address: 'address',
+  Business_phone: 'Business_phone',
+  Business_email: 'Business_email',
+  Business_Main_address: 'Business_Main_address',
   currency: 'currency',
-  status: 'status',
+  Business_status: 'Business_status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type BusinessScalarFieldEnum = (typeof BusinessScalarFieldEnum)[keyof typeof BusinessScalarFieldEnum]
+
+
+export const EmployeeScalarFieldEnum = {
+  Employee_id: 'Employee_id',
+  businessId: 'businessId',
+  employeeCode: 'employeeCode',
+  Employee_name: 'Employee_name',
+  Employee_phone: 'Employee_phone',
+  Employee_jobTitle: 'Employee_jobTitle',
+  Employee_email: 'Employee_email',
+  Employee_baseSalary: 'Employee_baseSalary',
+  joinedAt: 'joinedAt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+} as const
+
+export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
 
 
 export const CartScalarFieldEnum = {
@@ -3217,26 +3236,6 @@ export const CustomerScalarFieldEnum = {
 } as const
 
 export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
-
-
-export const EmployeeScalarFieldEnum = {
-  id: 'id',
-  businessId: 'businessId',
-  employeeCode: 'employeeCode',
-  name: 'name',
-  phone: 'phone',
-  jobTitle: 'jobTitle',
-  email: 'email',
-  baseSalary: 'baseSalary',
-  joinedAt: 'joinedAt',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  roleId: 'roleId',
-  userId: 'userId'
-} as const
-
-export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
 
 
 export const EmployeeBranchScalarFieldEnum = {
@@ -3669,10 +3668,10 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 export const BranchScalarFieldEnum = {
   id: 'id',
   businessId: 'businessId',
-  name: 'name',
+  Brance_name: 'Brance_name',
   branch_code: 'branch_code',
-  address: 'address',
-  phone: 'phone',
+  Branch_address: 'Branch_address',
+  Brannch_phone: 'Brannch_phone',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -3778,16 +3777,16 @@ export type ListEnumBUSINESS_STATUSFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
- * Reference to a field of type 'CART_STATUS'
+ * Reference to a field of type 'EMPLOYEE_JOB_TITLE'
  */
-export type EnumCART_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CART_STATUS'>
+export type EnumEMPLOYEE_JOB_TITLEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EMPLOYEE_JOB_TITLE'>
     
 
 
 /**
- * Reference to a field of type 'CART_STATUS[]'
+ * Reference to a field of type 'EMPLOYEE_JOB_TITLE[]'
  */
-export type ListEnumCART_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CART_STATUS[]'>
+export type ListEnumEMPLOYEE_JOB_TITLEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EMPLOYEE_JOB_TITLE[]'>
     
 
 
@@ -3809,6 +3808,20 @@ export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMo
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'CART_STATUS'
+ */
+export type EnumCART_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CART_STATUS'>
+    
+
+
+/**
+ * Reference to a field of type 'CART_STATUS[]'
+ */
+export type ListEnumCART_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CART_STATUS[]'>
     
 
 
@@ -3837,20 +3850,6 @@ export type EnumCOMMISSION_SETTLEMENT_STATUSFieldRefInput<$PrismaModel> = FieldR
  * Reference to a field of type 'COMMISSION_SETTLEMENT_STATUS[]'
  */
 export type ListEnumCOMMISSION_SETTLEMENT_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'COMMISSION_SETTLEMENT_STATUS[]'>
-    
-
-
-/**
- * Reference to a field of type 'EMPLOYEE_JOB_TITLE'
- */
-export type EnumEMPLOYEE_JOB_TITLEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EMPLOYEE_JOB_TITLE'>
-    
-
-
-/**
- * Reference to a field of type 'EMPLOYEE_JOB_TITLE[]'
- */
-export type ListEnumEMPLOYEE_JOB_TITLEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EMPLOYEE_JOB_TITLE[]'>
     
 
 
@@ -4244,6 +4243,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   brand?: Prisma.BrandOmit
   business?: Prisma.BusinessOmit
+  employee?: Prisma.EmployeeOmit
   cart?: Prisma.CartOmit
   cartItem?: Prisma.CartItemOmit
   category?: Prisma.CategoryOmit
@@ -4251,7 +4251,6 @@ export type GlobalOmitConfig = {
   commissionEntry?: Prisma.CommissionEntryOmit
   commissionSettlement?: Prisma.CommissionSettlementOmit
   customer?: Prisma.CustomerOmit
-  employee?: Prisma.EmployeeOmit
   employeeBranch?: Prisma.EmployeeBranchOmit
   expense?: Prisma.ExpenseOmit
   inventory?: Prisma.InventoryOmit

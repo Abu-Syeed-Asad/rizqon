@@ -1,6 +1,5 @@
 import type {  Request, Response } from "express";
 import { catchAsync } from "../../utils/asyncHandlerOrsendResponse";
-import { AppError } from "../../errors/App.error";
 import { StatusCodes } from "http-status-codes";
 import { businessService } from "./business.service";
 
@@ -8,11 +7,7 @@ const createBusiness = catchAsync(async (
   req: Request,
   res: Response,
 ) => {
-    const user = res.locals.user
-    if (!user) {
-      throw new AppError(StatusCodes.UNAUTHORIZED, "Authentication required");
-    }
-    const result = await businessService.createBusiness(req.body,user);
+    const result = await businessService.createBusiness(req.body);
     res.status(201).json({
       success: true,
       statusCode: 201,

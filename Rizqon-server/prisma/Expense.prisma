@@ -16,9 +16,9 @@ model Expense {
   branchId        String?
   branch          Branch?         @relation("Expense_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   employeeId      String?
-  employee        Employee?       @relation("Expense_employee", fields: [businessId, employeeId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  employee        Employee?       @relation("Expense_employee", fields: [businessId, employeeId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   creatorId       String
-  creator         Employee        @relation("Expense_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creator         Employee        @relation("Expense_creator", fields: [businessId, creatorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
 
   @@unique([businessId, id])
   @@unique([businessId, employeeId, salaryPeriod])

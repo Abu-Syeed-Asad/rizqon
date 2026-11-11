@@ -505,10 +505,6 @@ export type CategoryUncheckedCreateNestedManyWithoutParentInput = {
   connect?: Prisma.CategoryWhereUniqueInput | Prisma.CategoryWhereUniqueInput[]
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type CategoryUpdateOneWithoutCategory_parentNestedInput = {
   create?: Prisma.XOR<Prisma.CategoryCreateWithoutCategory_parentInput, Prisma.CategoryUncheckedCreateWithoutCategory_parentInput>
   connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutCategory_parentInput

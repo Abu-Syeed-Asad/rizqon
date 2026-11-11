@@ -858,6 +858,48 @@ export type SaleUncheckedUpdateManyWithoutBusinessNestedInput = {
   deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
 }
 
+export type SaleCreateNestedManyWithoutCashierInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
+  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+}
+
+export type SaleUncheckedCreateNestedManyWithoutCashierInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
+  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+}
+
+export type SaleUpdateManyWithoutCashierNestedInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
+  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput | Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput[]
+  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
+  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  update?: Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput | Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput[]
+  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutCashierInput | Prisma.SaleUpdateManyWithWhereWithoutCashierInput[]
+  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
+}
+
+export type SaleUncheckedUpdateManyWithoutCashierNestedInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
+  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput | Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput[]
+  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
+  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  update?: Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput | Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput[]
+  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutCashierInput | Prisma.SaleUpdateManyWithWhereWithoutCashierInput[]
+  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
+}
+
 export type SaleCreateNestedOneWithoutCartInput = {
   create?: Prisma.XOR<Prisma.SaleCreateWithoutCartInput, Prisma.SaleUncheckedCreateWithoutCartInput>
   connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCartInput
@@ -929,48 +971,6 @@ export type SaleUncheckedUpdateManyWithoutCustomerNestedInput = {
   connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
   update?: Prisma.SaleUpdateWithWhereUniqueWithoutCustomerInput | Prisma.SaleUpdateWithWhereUniqueWithoutCustomerInput[]
   updateMany?: Prisma.SaleUpdateManyWithWhereWithoutCustomerInput | Prisma.SaleUpdateManyWithWhereWithoutCustomerInput[]
-  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
-}
-
-export type SaleCreateNestedManyWithoutCashierInput = {
-  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
-  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
-  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
-  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-}
-
-export type SaleUncheckedCreateNestedManyWithoutCashierInput = {
-  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
-  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
-  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
-  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-}
-
-export type SaleUpdateManyWithoutCashierNestedInput = {
-  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
-  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
-  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput | Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput[]
-  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
-  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  update?: Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput | Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput[]
-  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutCashierInput | Prisma.SaleUpdateManyWithWhereWithoutCashierInput[]
-  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
-}
-
-export type SaleUncheckedUpdateManyWithoutCashierNestedInput = {
-  create?: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput> | Prisma.SaleCreateWithoutCashierInput[] | Prisma.SaleUncheckedCreateWithoutCashierInput[]
-  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutCashierInput | Prisma.SaleCreateOrConnectWithoutCashierInput[]
-  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput | Prisma.SaleUpsertWithWhereUniqueWithoutCashierInput[]
-  createMany?: Prisma.SaleCreateManyCashierInputEnvelope
-  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
-  update?: Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput | Prisma.SaleUpdateWithWhereUniqueWithoutCashierInput[]
-  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutCashierInput | Prisma.SaleUpdateManyWithWhereWithoutCashierInput[]
   deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
 }
 
@@ -1172,6 +1172,85 @@ export type SaleScalarWhereInput = {
   cartId?: Prisma.StringNullableFilter<"Sale"> | string | null
 }
 
+export type SaleCreateWithoutCashierInput = {
+  id?: string
+  invoiceNumber: string
+  idempotencyKey: string
+  requestHash: string
+  status?: $Enums.SALE_STATUS
+  customerNameSnapshot?: string | null
+  customerAddressSnapshot?: string | null
+  sellerNameSnapshot: string
+  sellerAddressSnapshot?: string | null
+  currency?: string
+  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  business: Prisma.BusinessCreateNestedOneWithoutSale_businessInput
+  branch: Prisma.BranchCreateNestedOneWithoutSale_branchInput
+  customer?: Prisma.CustomerCreateNestedOneWithoutSale_customerInput
+  cart?: Prisma.CartCreateNestedOneWithoutSale_cartInput
+  saleItem_sale?: Prisma.SaleItemCreateNestedManyWithoutSaleInput
+  payment_sale?: Prisma.PaymentCreateNestedManyWithoutSaleInput
+  saleReturn_sale?: Prisma.SaleReturnCreateNestedManyWithoutSaleInput
+}
+
+export type SaleUncheckedCreateWithoutCashierInput = {
+  id?: string
+  invoiceNumber: string
+  idempotencyKey: string
+  requestHash: string
+  status?: $Enums.SALE_STATUS
+  customerNameSnapshot?: string | null
+  customerAddressSnapshot?: string | null
+  sellerNameSnapshot: string
+  sellerAddressSnapshot?: string | null
+  currency?: string
+  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branchId: string
+  customerId?: string | null
+  cartId?: string | null
+  saleItem_sale?: Prisma.SaleItemUncheckedCreateNestedManyWithoutSaleInput
+  payment_sale?: Prisma.PaymentUncheckedCreateNestedManyWithoutSaleInput
+  saleReturn_sale?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutSaleInput
+}
+
+export type SaleCreateOrConnectWithoutCashierInput = {
+  where: Prisma.SaleWhereUniqueInput
+  create: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput>
+}
+
+export type SaleCreateManyCashierInputEnvelope = {
+  data: Prisma.SaleCreateManyCashierInput | Prisma.SaleCreateManyCashierInput[]
+  skipDuplicates?: boolean
+}
+
+export type SaleUpsertWithWhereUniqueWithoutCashierInput = {
+  where: Prisma.SaleWhereUniqueInput
+  update: Prisma.XOR<Prisma.SaleUpdateWithoutCashierInput, Prisma.SaleUncheckedUpdateWithoutCashierInput>
+  create: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput>
+}
+
+export type SaleUpdateWithWhereUniqueWithoutCashierInput = {
+  where: Prisma.SaleWhereUniqueInput
+  data: Prisma.XOR<Prisma.SaleUpdateWithoutCashierInput, Prisma.SaleUncheckedUpdateWithoutCashierInput>
+}
+
+export type SaleUpdateManyWithWhereWithoutCashierInput = {
+  where: Prisma.SaleScalarWhereInput
+  data: Prisma.XOR<Prisma.SaleUpdateManyMutationInput, Prisma.SaleUncheckedUpdateManyWithoutCashierInput>
+}
+
 export type SaleCreateWithoutCartInput = {
   id?: string
   invoiceNumber: string
@@ -1371,85 +1450,6 @@ export type SaleUpdateWithWhereUniqueWithoutCustomerInput = {
 export type SaleUpdateManyWithWhereWithoutCustomerInput = {
   where: Prisma.SaleScalarWhereInput
   data: Prisma.XOR<Prisma.SaleUpdateManyMutationInput, Prisma.SaleUncheckedUpdateManyWithoutCustomerInput>
-}
-
-export type SaleCreateWithoutCashierInput = {
-  id?: string
-  invoiceNumber: string
-  idempotencyKey: string
-  requestHash: string
-  status?: $Enums.SALE_STATUS
-  customerNameSnapshot?: string | null
-  customerAddressSnapshot?: string | null
-  sellerNameSnapshot: string
-  sellerAddressSnapshot?: string | null
-  currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  business: Prisma.BusinessCreateNestedOneWithoutSale_businessInput
-  branch: Prisma.BranchCreateNestedOneWithoutSale_branchInput
-  customer?: Prisma.CustomerCreateNestedOneWithoutSale_customerInput
-  cart?: Prisma.CartCreateNestedOneWithoutSale_cartInput
-  saleItem_sale?: Prisma.SaleItemCreateNestedManyWithoutSaleInput
-  payment_sale?: Prisma.PaymentCreateNestedManyWithoutSaleInput
-  saleReturn_sale?: Prisma.SaleReturnCreateNestedManyWithoutSaleInput
-}
-
-export type SaleUncheckedCreateWithoutCashierInput = {
-  id?: string
-  invoiceNumber: string
-  idempotencyKey: string
-  requestHash: string
-  status?: $Enums.SALE_STATUS
-  customerNameSnapshot?: string | null
-  customerAddressSnapshot?: string | null
-  sellerNameSnapshot: string
-  sellerAddressSnapshot?: string | null
-  currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  branchId: string
-  customerId?: string | null
-  cartId?: string | null
-  saleItem_sale?: Prisma.SaleItemUncheckedCreateNestedManyWithoutSaleInput
-  payment_sale?: Prisma.PaymentUncheckedCreateNestedManyWithoutSaleInput
-  saleReturn_sale?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutSaleInput
-}
-
-export type SaleCreateOrConnectWithoutCashierInput = {
-  where: Prisma.SaleWhereUniqueInput
-  create: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput>
-}
-
-export type SaleCreateManyCashierInputEnvelope = {
-  data: Prisma.SaleCreateManyCashierInput | Prisma.SaleCreateManyCashierInput[]
-  skipDuplicates?: boolean
-}
-
-export type SaleUpsertWithWhereUniqueWithoutCashierInput = {
-  where: Prisma.SaleWhereUniqueInput
-  update: Prisma.XOR<Prisma.SaleUpdateWithoutCashierInput, Prisma.SaleUncheckedUpdateWithoutCashierInput>
-  create: Prisma.XOR<Prisma.SaleCreateWithoutCashierInput, Prisma.SaleUncheckedCreateWithoutCashierInput>
-}
-
-export type SaleUpdateWithWhereUniqueWithoutCashierInput = {
-  where: Prisma.SaleWhereUniqueInput
-  data: Prisma.XOR<Prisma.SaleUpdateWithoutCashierInput, Prisma.SaleUncheckedUpdateWithoutCashierInput>
-}
-
-export type SaleUpdateManyWithWhereWithoutCashierInput = {
-  where: Prisma.SaleScalarWhereInput
-  data: Prisma.XOR<Prisma.SaleUpdateManyMutationInput, Prisma.SaleUncheckedUpdateManyWithoutCashierInput>
 }
 
 export type SaleCreateWithoutPayment_saleInput = {
@@ -2005,105 +2005,6 @@ export type SaleUncheckedUpdateManyWithoutBusinessInput = {
   cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type SaleCreateManyCustomerInput = {
-  id?: string
-  invoiceNumber: string
-  idempotencyKey: string
-  requestHash: string
-  status?: $Enums.SALE_STATUS
-  customerNameSnapshot?: string | null
-  customerAddressSnapshot?: string | null
-  sellerNameSnapshot: string
-  sellerAddressSnapshot?: string | null
-  currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  branchId: string
-  cashierId: string
-  cartId?: string | null
-}
-
-export type SaleUpdateWithoutCustomerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
-  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
-  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  business?: Prisma.BusinessUpdateOneRequiredWithoutSale_businessNestedInput
-  branch?: Prisma.BranchUpdateOneRequiredWithoutSale_branchNestedInput
-  cashier?: Prisma.EmployeeUpdateOneRequiredWithoutSale_cashierNestedInput
-  cart?: Prisma.CartUpdateOneWithoutSale_cartNestedInput
-  saleItem_sale?: Prisma.SaleItemUpdateManyWithoutSaleNestedInput
-  payment_sale?: Prisma.PaymentUpdateManyWithoutSaleNestedInput
-  saleReturn_sale?: Prisma.SaleReturnUpdateManyWithoutSaleNestedInput
-}
-
-export type SaleUncheckedUpdateWithoutCustomerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
-  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
-  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  branchId?: Prisma.StringFieldUpdateOperationsInput | string
-  cashierId?: Prisma.StringFieldUpdateOperationsInput | string
-  cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saleItem_sale?: Prisma.SaleItemUncheckedUpdateManyWithoutSaleNestedInput
-  payment_sale?: Prisma.PaymentUncheckedUpdateManyWithoutSaleNestedInput
-  saleReturn_sale?: Prisma.SaleReturnUncheckedUpdateManyWithoutSaleNestedInput
-}
-
-export type SaleUncheckedUpdateManyWithoutCustomerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
-  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
-  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
-  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  branchId?: Prisma.StringFieldUpdateOperationsInput | string
-  cashierId?: Prisma.StringFieldUpdateOperationsInput | string
-  cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
 export type SaleCreateManyCashierInput = {
   id?: string
   invoiceNumber: string
@@ -2200,6 +2101,105 @@ export type SaleUncheckedUpdateManyWithoutCashierInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branchId?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type SaleCreateManyCustomerInput = {
+  id?: string
+  invoiceNumber: string
+  idempotencyKey: string
+  requestHash: string
+  status?: $Enums.SALE_STATUS
+  customerNameSnapshot?: string | null
+  customerAddressSnapshot?: string | null
+  sellerNameSnapshot: string
+  sellerAddressSnapshot?: string | null
+  currency?: string
+  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branchId: string
+  cashierId: string
+  cartId?: string | null
+}
+
+export type SaleUpdateWithoutCustomerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
+  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
+  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  business?: Prisma.BusinessUpdateOneRequiredWithoutSale_businessNestedInput
+  branch?: Prisma.BranchUpdateOneRequiredWithoutSale_branchNestedInput
+  cashier?: Prisma.EmployeeUpdateOneRequiredWithoutSale_cashierNestedInput
+  cart?: Prisma.CartUpdateOneWithoutSale_cartNestedInput
+  saleItem_sale?: Prisma.SaleItemUpdateManyWithoutSaleNestedInput
+  payment_sale?: Prisma.PaymentUpdateManyWithoutSaleNestedInput
+  saleReturn_sale?: Prisma.SaleReturnUpdateManyWithoutSaleNestedInput
+}
+
+export type SaleUncheckedUpdateWithoutCustomerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
+  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
+  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branchId?: Prisma.StringFieldUpdateOperationsInput | string
+  cashierId?: Prisma.StringFieldUpdateOperationsInput | string
+  cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  saleItem_sale?: Prisma.SaleItemUncheckedUpdateManyWithoutSaleNestedInput
+  payment_sale?: Prisma.PaymentUncheckedUpdateManyWithoutSaleNestedInput
+  saleReturn_sale?: Prisma.SaleReturnUncheckedUpdateManyWithoutSaleNestedInput
+}
+
+export type SaleUncheckedUpdateManyWithoutCustomerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  invoiceNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSALE_STATUSFieldUpdateOperationsInput | $Enums.SALE_STATUS
+  customerNameSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sellerNameSnapshot?: Prisma.StringFieldUpdateOperationsInput | string
+  sellerAddressSnapshot?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grandTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branchId?: Prisma.StringFieldUpdateOperationsInput | string
+  cashierId?: Prisma.StringFieldUpdateOperationsInput | string
   cartId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 

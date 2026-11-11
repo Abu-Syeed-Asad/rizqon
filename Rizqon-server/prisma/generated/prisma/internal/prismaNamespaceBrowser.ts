@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Brand: 'Brand',
   Business: 'Business',
+  Employee: 'Employee',
   Cart: 'Cart',
   CartItem: 'CartItem',
   Category: 'Category',
@@ -60,7 +61,6 @@ export const ModelName = {
   CommissionEntry: 'CommissionEntry',
   CommissionSettlement: 'CommissionSettlement',
   Customer: 'Customer',
-  Employee: 'Employee',
   EmployeeBranch: 'EmployeeBranch',
   Expense: 'Expense',
   Inventory: 'Inventory',
@@ -117,21 +117,40 @@ export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof Br
 
 export const BusinessScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  Business_name: 'Business_name',
   business_slug: 'business_slug',
   legalName: 'legalName',
   registrationNumber: 'registrationNumber',
   taxIdentificationNumber: 'taxIdentificationNumber',
-  phone: 'phone',
-  email: 'email',
-  address: 'address',
+  Business_phone: 'Business_phone',
+  Business_email: 'Business_email',
+  Business_Main_address: 'Business_Main_address',
   currency: 'currency',
-  status: 'status',
+  Business_status: 'Business_status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type BusinessScalarFieldEnum = (typeof BusinessScalarFieldEnum)[keyof typeof BusinessScalarFieldEnum]
+
+
+export const EmployeeScalarFieldEnum = {
+  Employee_id: 'Employee_id',
+  businessId: 'businessId',
+  employeeCode: 'employeeCode',
+  Employee_name: 'Employee_name',
+  Employee_phone: 'Employee_phone',
+  Employee_jobTitle: 'Employee_jobTitle',
+  Employee_email: 'Employee_email',
+  Employee_baseSalary: 'Employee_baseSalary',
+  joinedAt: 'joinedAt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+} as const
+
+export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
 
 
 export const CartScalarFieldEnum = {
@@ -241,26 +260,6 @@ export const CustomerScalarFieldEnum = {
 } as const
 
 export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
-
-
-export const EmployeeScalarFieldEnum = {
-  id: 'id',
-  businessId: 'businessId',
-  employeeCode: 'employeeCode',
-  name: 'name',
-  phone: 'phone',
-  jobTitle: 'jobTitle',
-  email: 'email',
-  baseSalary: 'baseSalary',
-  joinedAt: 'joinedAt',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  roleId: 'roleId',
-  userId: 'userId'
-} as const
-
-export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
 
 
 export const EmployeeBranchScalarFieldEnum = {
@@ -693,10 +692,10 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 export const BranchScalarFieldEnum = {
   id: 'id',
   businessId: 'businessId',
-  name: 'name',
+  Brance_name: 'Brance_name',
   branch_code: 'branch_code',
-  address: 'address',
-  phone: 'phone',
+  Branch_address: 'Branch_address',
+  Brannch_phone: 'Brannch_phone',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

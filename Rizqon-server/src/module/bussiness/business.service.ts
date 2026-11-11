@@ -1,71 +1,80 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StatusCodes } from "http-status-codes";
 import { AppError } from "../../errors/App.error";
 import { prisma } from "../../lib/prisma";
-import type { ICreateBusiness, IUpdateBusiness, ISearchBusiness } from "./business.validaton";
-import { Prisma, SYSTEM_USER_ROLE, type User } from "../../../prisma/generated/prisma/client";
+import {  type ICreateBusiness, type IUpdateBusiness, type ISearchBusiness } from "./business.validaton";
+import { EMPLOYEE_JOB_TITLE,  } from "../../../prisma/generated/prisma/client";
 
-const createBusiness = async (payload: ICreateBusiness, user:User) => {
-  if (!user) {
-    throw new AppError(StatusCodes.UNAUTHORIZED, "User not found");
+
+
+
+
+
+const createBusiness = async (payload: ICreateBusiness) => {
+    const checkBusinessinIntheSystem = await prisma.business.findFirst({
+      where: {
+        business_slug: payload.business.business_slug,
+      },
+    });
+    if (checkBusinessinIntheSystem) {
+      throw new AppError(
+        StatusCodes.CONFLICT,
+        "Already Exist Business in the System ",
+      );
   }
-
-  if (user.user_role !== SYSTEM_USER_ROLE.RIZQON_CEO) {
-    throw new AppError(StatusCodes.FORBIDDEN, "Only CEO system users can create a business");
-  }
-
-  const existingBusiness = await prisma.business.findUnique({
+  const checkSystemUser = await prisma.user.findUnique({
     where: {
-      business_slug: payload.business_slug,
+      email: payload.employee.Employee_email
     },
-    select: { id: true },
   });
-
-  if (existingBusiness) {
-    throw new AppError(
-      StatusCodes.CONFLICT,
-      "Business slug already exists. Choose another slug.",
-    );
+  if (!checkSystemUser) {
+  throw new AppError (StatusCodes.NOT_FOUND,"This Email User Not Exist in Our system ")
+  };
+  if (!checkSystemUser.phone) {
+    throw new AppError(StatusCodes.NOT_FOUND,"Here are Phone Number Require ")
   }
-  try {
-    const firstBusiness = await prisma.$transaction(async (tx) => {
-       const business = await tx.business.create({
-      data: payload
-       })
-      if (!business) {
-        throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, "business creation failde please try again ");
+  
+  return prisma.$transaction(async (tx) => {
+    const business = await tx.business.create({
+      data: payload.business
+    });
+    const branch = await tx.branch.create({
+      data: {
+        Brance_name: "Main Branch",
+        businessId: business.id,
+        branch_code: "BR00",
+
       }
-      const branch = await tx.branch.create({
-        data: {
-          businessId: business.id,
-          name: "Main Branch",
-          branch_code: "BR00",
-          address: business.address,
-          phone: business.phone,
-        },
-        include: {
-          business: true,
-        },
-      });
-      return {
-        branch
+    })
+    const businessOwner = await tx.employee.create({
+      data: {
+        businessId: business.id,
+        Employee_jobTitle: EMPLOYEE_JOB_TITLE.OWNER,
+        userId: checkSystemUser.id,
+        employeeCode: "EMP00",
+        Employee_name: checkSystemUser.name,
+        Employee_phone: checkSystemUser.phone as string,
+        Employee_email: checkSystemUser.email,
+        Employee_baseSalary:"0.00"
         
       }
-   
-    });
-    return firstBusiness
-    
-  } catch (error :any) {
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === "P2002"
-    ) {
-      throw new AppError(StatusCodes.CONFLICT, "Business slug already exists");
-    }
-
-    throw error;
+    })
+    const employeeBrannch = await tx.employeeBranch.create({
+      data: {
+        businessId: business.id,
+        employeeId: businessOwner.Employee_id,
+        branchId:branch.id
+      }
+    })
+    return {
+      business,
+      branch,
+      businessOwner,
+      employeeBrannch
   }
-};
+  })
+
+
+}
 
 const updateBusiness = async (id: string, payload: IUpdateBusiness) => {
   if (!id) {
@@ -83,7 +92,7 @@ const updateBusiness = async (id: string, payload: IUpdateBusiness) => {
     where: {
       id
     },
-    data:payload
+    data:(payload)
   })
   if (!updateBusiness) {
    throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR,"failed to update bussiness")
@@ -136,9 +145,9 @@ const searchBusiness = async (query: ISearchBusiness) => {
       OR: [
         { id: searchTerm },
         { business_slug: textMatch },
-        { name: textMatch },
-        { phone: textMatch },
-        { email: textMatch },
+        { Business_name: textMatch },
+        { Business_phone: textMatch },
+        { Business_email: textMatch },
         { legalName: textMatch },
         { registrationNumber: textMatch },
         { taxIdentificationNumber: textMatch },
@@ -157,4 +166,5 @@ export const businessService = {
   createBusiness,
   updateBusiness,
   deleteBusiness,
+  
 };

@@ -23,7 +23,7 @@ model Payment {
   settlementId         String?
   settlement           CommissionSettlement? @relation("Payment_settlement", fields: [businessId, settlementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   recorderId           String?
-  recorder             Employee?             @relation("Payment_recorder", fields: [businessId, recorderId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  recorder             Employee?             @relation("Payment_recorder", fields: [businessId, recorderId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   paymentEvent_payment PaymentEvent[]        @relation("PaymentEvent_payment")
   refund_payment       Refund[]              @relation("Refund_payment")
 

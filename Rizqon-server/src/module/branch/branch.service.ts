@@ -3,6 +3,11 @@ import { AppError } from "../../errors/App.error.js";
 import { prisma } from "../../lib/prisma.js";
 import { branchValidation, type BranchParams, type CreateBranchInput, type UpdateBranchInput } from "./branch.validation.js";
 
+function toBranchData<T extends CreateBranchInput | UpdateBranchInput>(payload: T) {
+  const { name, address, phone, ...rest } = payload;
+  return { ...rest, Brance_name: name, Branch_address: address, Brannch_phone: phone };
+}
+
 const createBranch = async (payload: CreateBranchInput) => {
   if (!payload) {
     throw new AppError(StatusCodes.BAD_REQUEST, "Branch data is required", true, "BRANCH_DATA_REQUIRED");
@@ -18,7 +23,7 @@ const createBranch = async (payload: CreateBranchInput) => {
   if (!existingBusiness) {
     throw new AppError(StatusCodes.NOT_FOUND, "Business not found", true, "BUSINESS_NOT_FOUND");
   }
-  return prisma.branch.create({ data });
+  return prisma.branch.create({ data: { ...toBranchData(data), Brance_name: data.name } });
 };
 
 const updateBranch = async (params: BranchParams, payload: UpdateBranchInput) => {
@@ -34,7 +39,7 @@ const updateBranch = async (params: BranchParams, payload: UpdateBranchInput) =>
   if (!existingBranch) {
     throw new AppError(StatusCodes.NOT_FOUND, "Branch not found", true, "BRANCH_NOT_FOUND");
   }
-  return prisma.branch.update({ where: { id }, data });
+  return prisma.branch.update({ where: { id }, data: toBranchData(data) });
 };
 
 const deleteBranch = async (params: BranchParams) => {

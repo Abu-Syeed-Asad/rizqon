@@ -13,7 +13,7 @@ model CommissionSettlement {
   partnerId                  String
   partner                    Partner           @relation("CommissionSettlement_partner", fields: [businessId, partnerId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   creatorId                  String
-  creator                    Employee          @relation("CommissionSettlement_creator", fields: [businessId, creatorId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  creator                    Employee          @relation("CommissionSettlement_creator", fields: [businessId, creatorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
 
   @@unique([businessId, id])
   @@unique([businessId, settlement_reference])

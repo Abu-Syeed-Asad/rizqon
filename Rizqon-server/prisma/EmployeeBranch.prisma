@@ -5,7 +5,7 @@ model EmployeeBranch {
   updatedAt  DateTime @updatedAt()
   business   Business @relation("EmployeeBranch_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
   employeeId String
-  employee   Employee @relation("EmployeeBranch_employee", fields: [businessId, employeeId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
+  employee   Employee @relation("EmployeeBranch_employee", fields: [businessId, employeeId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
   branchId   String
   branch     Branch   @relation("EmployeeBranch_branch", fields: [businessId, branchId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
 
