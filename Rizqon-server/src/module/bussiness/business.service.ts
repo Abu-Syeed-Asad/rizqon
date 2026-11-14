@@ -77,28 +77,65 @@ const createBusiness = async (payload: ICreateBusiness) => {
 }
 
 const updateBusiness = async (id: string, payload: IUpdateBusiness) => {
-  if (!id) {
-    throw new AppError(StatusCodes.NOT_FOUND, "required bisiness id ")
+  if (!id?.trim()) {
+    throw new AppError(StatusCodes.BAD_REQUEST, "Business id is required");
   }
-  const isExistBusiness = await prisma.business.findUnique({
-    where: {
-      id
-    }
-  })
-  if (!isExistBusiness) {
-    throw new AppError(StatusCodes.NOT_FOUND,"you business not found in the data base ")
-  }
-  const updateBusiness = await prisma.business.update({
-    where: {
-      id
-    },
-    data:(payload)
-  })
-  if (!updateBusiness) {
-   throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR,"failed to update bussiness")
-  }
-  return updateBusiness
+  const { owner, ...businessData } = payload;
 
+  return prisma.$transaction(async (tx) => {
+    const business = await tx.business.findUnique({ where: { id } });
+    if (!business) {
+      throw new AppError(StatusCodes.NOT_FOUND, "Business not found");
+    }
+
+    if (owner) {
+      const owners = await tx.employee.findMany({
+        where: { businessId: id, Employee_jobTitle: EMPLOYEE_JOB_TITLE.OWNER },
+        select: { Employee_id: true },
+        take: 2,
+      });
+      const existingOwner = owners[0];
+      if (!existingOwner) {
+        throw new AppError(StatusCodes.NOT_FOUND, "Owner not found for this business");
+      }
+      if (owners.length > 1) {
+        throw new AppError(StatusCodes.CONFLICT, "Multiple owners found for this business");
+      }
+      const employeeWhere = {
+        Employee_id: existingOwner.Employee_id,
+        businessId: id,
+        Employee_jobTitle: EMPLOYEE_JOB_TITLE.OWNER,
+      };
+      const checkSystemUser = await tx.user.findUnique({
+        where: { email: owner.Employee_email },
+      });
+      if (!checkSystemUser) {
+        throw new AppError(StatusCodes.NOT_FOUND, "This email user does not exist in our system");
+      }
+      if (!checkSystemUser.phone) {
+        throw new AppError(StatusCodes.BAD_REQUEST, "The system user must have a phone number");
+      }
+      const linkedEmployee = await tx.employee.findUnique({
+        where: { businessId_userId: { businessId: id, userId: checkSystemUser.id } },
+      });
+      if (linkedEmployee && linkedEmployee.Employee_id !== existingOwner.Employee_id) {
+        throw new AppError(StatusCodes.CONFLICT, "This user is already an employee of this business");
+      }
+      await tx.employee.update({
+        where: employeeWhere,
+        data: {
+          userId: checkSystemUser.id,
+          Employee_name: checkSystemUser.name,
+          Employee_phone: checkSystemUser.phone,
+          Employee_email: checkSystemUser.email,
+        },
+      });
+    }
+
+    return Object.values(businessData).some((value) => value !== undefined)
+      ? tx.business.update({ where: { id }, data: businessData })
+      : business;
+  });
 };
 
 const deleteBusiness = async (id: string) => {

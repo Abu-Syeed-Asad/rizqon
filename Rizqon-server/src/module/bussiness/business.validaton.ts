@@ -61,9 +61,12 @@ const createBusinessSchema = z.object({
   employee: employeeSchema,
 }).strict();
 
-const updateBusinessSchema = businessFieldsSchema
+const updateBusinessSchema = createBusinessSchema.shape.business
   .partial()
-  .extend({ currency: z.enum(["BDT", "USD", "EUR"]).optional() })
+  .extend({
+    currency: z.enum(["BDT", "USD", "EUR"]).optional(),
+    owner: employeeSchema.optional(),
+  })
   .refine((payload) => Object.values(payload).some((value) => value !== undefined), {
     message: "Provide at least one field to update",
   });
