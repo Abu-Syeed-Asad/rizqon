@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "commerce"."EMPLOYEE_JOB_TITLE" ADD VALUE 'CEO';
