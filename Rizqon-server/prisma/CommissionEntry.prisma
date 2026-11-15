@@ -3,7 +3,7 @@
 model CommissionEntry {
   id               String                @id @default(cuid())
   businessId       String
-  eventKey         String   @unique // dublecate  eranoro jonno use kora hobe, jate ekta sale item er jonno ekadhik commission entry create kora jay, jodi sale item er jonno ekadhik commission agreement thake. eventKey = saleItemId + agreementId
+  eventKey         String   @unique @default(ulid())  // dublecate  eranoro jonno use kora hobe, jate ekta sale item er jonno ekadhik commission entry create kora jay, jodi sale item er jonno ekadhik commission agreement thake. eventKey = saleItemId + agreementId
   eventType        COMMISSION_EVENT_TYPE  // SALE or RETURN
   grossBase        Decimal               @db.Decimal(18, 2)  //after discount, before tax
   commissionPercent Decimal               @db.Decimal(5, 2)

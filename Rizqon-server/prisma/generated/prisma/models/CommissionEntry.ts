@@ -400,7 +400,7 @@ export type CommissionEntryScalarWhereWithAggregatesInput = {
 
 export type CommissionEntryCreateInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -418,7 +418,7 @@ export type CommissionEntryCreateInput = {
 export type CommissionEntryUncheckedCreateInput = {
   id?: string
   businessId: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -469,7 +469,7 @@ export type CommissionEntryUncheckedUpdateInput = {
 export type CommissionEntryCreateManyInput = {
   id?: string
   businessId: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -813,7 +813,7 @@ export type CommissionEntryUncheckedUpdateManyWithoutSaleItemNestedInput = {
 
 export type CommissionEntryCreateWithoutBusinessInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -829,7 +829,7 @@ export type CommissionEntryCreateWithoutBusinessInput = {
 
 export type CommissionEntryUncheckedCreateWithoutBusinessInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -891,7 +891,7 @@ export type CommissionEntryScalarWhereInput = {
 
 export type CommissionEntryCreateWithoutAgreementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -907,7 +907,7 @@ export type CommissionEntryCreateWithoutAgreementInput = {
 
 export type CommissionEntryUncheckedCreateWithoutAgreementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -948,7 +948,7 @@ export type CommissionEntryUpdateManyWithWhereWithoutAgreementInput = {
 
 export type CommissionEntryCreateWithoutSettlementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -964,7 +964,7 @@ export type CommissionEntryCreateWithoutSettlementInput = {
 
 export type CommissionEntryUncheckedCreateWithoutSettlementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1005,7 +1005,7 @@ export type CommissionEntryUpdateManyWithWhereWithoutSettlementInput = {
 
 export type CommissionEntryCreateWithoutReturnItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1021,7 +1021,7 @@ export type CommissionEntryCreateWithoutReturnItemInput = {
 
 export type CommissionEntryUncheckedCreateWithoutReturnItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1062,7 +1062,7 @@ export type CommissionEntryUpdateManyWithWhereWithoutReturnItemInput = {
 
 export type CommissionEntryCreateWithoutSaleItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1078,7 +1078,7 @@ export type CommissionEntryCreateWithoutSaleItemInput = {
 
 export type CommissionEntryUncheckedCreateWithoutSaleItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1119,7 +1119,7 @@ export type CommissionEntryUpdateManyWithWhereWithoutSaleItemInput = {
 
 export type CommissionEntryCreateManyBusinessInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1183,7 +1183,7 @@ export type CommissionEntryUncheckedUpdateManyWithoutBusinessInput = {
 
 export type CommissionEntryCreateManyAgreementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1244,7 +1244,7 @@ export type CommissionEntryUncheckedUpdateManyWithoutAgreementInput = {
 
 export type CommissionEntryCreateManySettlementInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1305,7 +1305,7 @@ export type CommissionEntryUncheckedUpdateManyWithoutSettlementInput = {
 
 export type CommissionEntryCreateManyReturnItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1366,7 +1366,7 @@ export type CommissionEntryUncheckedUpdateManyWithoutReturnItemInput = {
 
 export type CommissionEntryCreateManySaleItemInput = {
   id?: string
-  eventKey: string
+  eventKey?: string
   eventType: $Enums.COMMISSION_EVENT_TYPE
   grossBase: runtime.Decimal | runtime.DecimalJsLike | number | string
   commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string

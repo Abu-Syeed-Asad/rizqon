@@ -37,6 +37,17 @@ const createBusiness = async (payload: ICreateBusiness) => {
     const business = await tx.business.create({
       data: payload.business
     });
+    const partner = await tx.partner.create({
+      data: {
+        businessId: business.id,
+        name: business.Business_name,
+        phone: business.Business_phone as string,
+        email: business.Business_email as string,
+        address: business.Business_Main_address as string,
+        kind: "SUPPLIER",
+        linkedBusinessId:business.id
+      }
+    })
     const branch = await tx.branch.create({
       data: {
         Brance_name: "Main Branch",
@@ -69,7 +80,8 @@ const createBusiness = async (payload: ICreateBusiness) => {
       business,
       branch,
       businessOwner,
-      employeeBrannch
+      employeeBrannch,
+      partner
   }
   })
 
