@@ -53,6 +53,16 @@ export type Category = Prisma.CategoryModel
  */
 export type CommissionAgreement = Prisma.CommissionAgreementModel
 /**
+ * Model CommissionAgreementVariant
+ * 
+ */
+export type CommissionAgreementVariant = Prisma.CommissionAgreementVariantModel
+/**
+ * Model CommissionAgreementActivation
+ * 
+ */
+export type CommissionAgreementActivation = Prisma.CommissionAgreementActivationModel
+/**
  * Model CommissionEntry
  * 
  */

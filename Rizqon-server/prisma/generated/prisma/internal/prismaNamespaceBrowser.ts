@@ -58,6 +58,8 @@ export const ModelName = {
   CartItem: 'CartItem',
   Category: 'Category',
   CommissionAgreement: 'CommissionAgreement',
+  CommissionAgreementVariant: 'CommissionAgreementVariant',
+  CommissionAgreementActivation: 'CommissionAgreementActivation',
   CommissionEntry: 'CommissionEntry',
   CommissionSettlement: 'CommissionSettlement',
   Customer: 'Customer',
@@ -204,12 +206,34 @@ export const CommissionAgreementScalarFieldEnum = {
   startsAt: 'startsAt',
   endsAt: 'endsAt',
   isActive: 'isActive',
+  firstActivatedAt: 'firstActivatedAt',
+  expiredAt: 'expiredAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   partnerId: 'partnerId'
 } as const
 
 export type CommissionAgreementScalarFieldEnum = (typeof CommissionAgreementScalarFieldEnum)[keyof typeof CommissionAgreementScalarFieldEnum]
+
+
+export const CommissionAgreementVariantScalarFieldEnum = {
+  businessId: 'businessId',
+  agreementId: 'agreementId',
+  variantId: 'variantId'
+} as const
+
+export type CommissionAgreementVariantScalarFieldEnum = (typeof CommissionAgreementVariantScalarFieldEnum)[keyof typeof CommissionAgreementVariantScalarFieldEnum]
+
+
+export const CommissionAgreementActivationScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  agreementId: 'agreementId',
+  startsAt: 'startsAt',
+  endsAt: 'endsAt'
+} as const
+
+export type CommissionAgreementActivationScalarFieldEnum = (typeof CommissionAgreementActivationScalarFieldEnum)[keyof typeof CommissionAgreementActivationScalarFieldEnum]
 
 
 export const CommissionEntryScalarFieldEnum = {
@@ -239,6 +263,9 @@ export const CommissionSettlementScalarFieldEnum = {
   settlement_status: 'settlement_status',
   amount: 'amount',
   finalizedAt: 'finalizedAt',
+  currency: 'currency',
+  idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   partnerId: 'partnerId',
@@ -370,6 +397,7 @@ export const PaymentScalarFieldEnum = {
   provider: 'provider',
   providerReference: 'providerReference',
   idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   paidAt: 'paidAt',
   note: 'note',
   createdAt: 'createdAt',
@@ -563,6 +591,7 @@ export const SaleReturnScalarFieldEnum = {
   businessId: 'businessId',
   returnNumber: 'returnNumber',
   idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   status: 'status',
   reason: 'reason',
   totalAmount: 'totalAmount',

@@ -42,6 +42,8 @@ export type CommissionAgreementMinAggregateOutputType = {
   startsAt: Date | null
   endsAt: Date | null
   isActive: boolean | null
+  firstActivatedAt: Date | null
+  expiredAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
   partnerId: string | null
@@ -55,6 +57,8 @@ export type CommissionAgreementMaxAggregateOutputType = {
   startsAt: Date | null
   endsAt: Date | null
   isActive: boolean | null
+  firstActivatedAt: Date | null
+  expiredAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
   partnerId: string | null
@@ -68,6 +72,8 @@ export type CommissionAgreementCountAggregateOutputType = {
   startsAt: number
   endsAt: number
   isActive: number
+  firstActivatedAt: number
+  expiredAt: number
   createdAt: number
   updatedAt: number
   partnerId: number
@@ -91,6 +97,8 @@ export type CommissionAgreementMinAggregateInputType = {
   startsAt?: true
   endsAt?: true
   isActive?: true
+  firstActivatedAt?: true
+  expiredAt?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -104,6 +112,8 @@ export type CommissionAgreementMaxAggregateInputType = {
   startsAt?: true
   endsAt?: true
   isActive?: true
+  firstActivatedAt?: true
+  expiredAt?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -117,6 +127,8 @@ export type CommissionAgreementCountAggregateInputType = {
   startsAt?: true
   endsAt?: true
   isActive?: true
+  firstActivatedAt?: true
+  expiredAt?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -217,6 +229,8 @@ export type CommissionAgreementGroupByOutputType = {
   startsAt: Date
   endsAt: Date | null
   isActive: boolean
+  firstActivatedAt: Date | null
+  expiredAt: Date | null
   createdAt: Date
   updatedAt: Date
   partnerId: string
@@ -253,9 +267,13 @@ export type CommissionAgreementWhereInput = {
   startsAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   endsAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   isActive?: Prisma.BoolFilter<"CommissionAgreement"> | boolean
+  firstActivatedAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
+  expiredAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionAgreement"> | string
+  assignments?: Prisma.CommissionAgreementVariantListRelationFilter
+  activations?: Prisma.CommissionAgreementActivationListRelationFilter
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   productVariant_agreement?: Prisma.ProductVariantListRelationFilter
   partner?: Prisma.XOR<Prisma.PartnerScalarRelationFilter, Prisma.PartnerWhereInput>
@@ -271,9 +289,13 @@ export type CommissionAgreementOrderByWithRelationInput = {
   startsAt?: Prisma.SortOrder
   endsAt?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  firstActivatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  expiredAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
+  assignments?: Prisma.CommissionAgreementVariantOrderByRelationAggregateInput
+  activations?: Prisma.CommissionAgreementActivationOrderByRelationAggregateInput
   business?: Prisma.BusinessOrderByWithRelationInput
   productVariant_agreement?: Prisma.ProductVariantOrderByRelationAggregateInput
   partner?: Prisma.PartnerOrderByWithRelationInput
@@ -293,9 +315,13 @@ export type CommissionAgreementWhereUniqueInput = Prisma.AtLeast<{
   startsAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   endsAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   isActive?: Prisma.BoolFilter<"CommissionAgreement"> | boolean
+  firstActivatedAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
+  expiredAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionAgreement"> | string
+  assignments?: Prisma.CommissionAgreementVariantListRelationFilter
+  activations?: Prisma.CommissionAgreementActivationListRelationFilter
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   productVariant_agreement?: Prisma.ProductVariantListRelationFilter
   partner?: Prisma.XOR<Prisma.PartnerScalarRelationFilter, Prisma.PartnerWhereInput>
@@ -311,6 +337,8 @@ export type CommissionAgreementOrderByWithAggregationInput = {
   startsAt?: Prisma.SortOrder
   endsAt?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  firstActivatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  expiredAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -332,6 +360,8 @@ export type CommissionAgreementScalarWhereWithAggregatesInput = {
   startsAt?: Prisma.DateTimeWithAggregatesFilter<"CommissionAgreement"> | Date | string
   endsAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CommissionAgreement"> | Date | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"CommissionAgreement"> | boolean
+  firstActivatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CommissionAgreement"> | Date | string | null
+  expiredAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CommissionAgreement"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CommissionAgreement"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CommissionAgreement"> | Date | string
   partnerId?: Prisma.StringWithAggregatesFilter<"CommissionAgreement"> | string
@@ -344,8 +374,12 @@ export type CommissionAgreementCreateInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
   productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
   partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
@@ -361,9 +395,13 @@ export type CommissionAgreementUncheckedCreateInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
@@ -376,8 +414,12 @@ export type CommissionAgreementUpdateInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
   productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
   partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
@@ -393,9 +435,13 @@ export type CommissionAgreementUncheckedUpdateInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
@@ -409,6 +455,8 @@ export type CommissionAgreementCreateManyInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -421,6 +469,8 @@ export type CommissionAgreementUpdateManyMutationInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -433,6 +483,8 @@ export type CommissionAgreementUncheckedUpdateManyInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -461,6 +513,8 @@ export type CommissionAgreementCountOrderByAggregateInput = {
   startsAt?: Prisma.SortOrder
   endsAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  firstActivatedAt?: Prisma.SortOrder
+  expiredAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -478,6 +532,8 @@ export type CommissionAgreementMaxOrderByAggregateInput = {
   startsAt?: Prisma.SortOrder
   endsAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  firstActivatedAt?: Prisma.SortOrder
+  expiredAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -491,6 +547,8 @@ export type CommissionAgreementMinOrderByAggregateInput = {
   startsAt?: Prisma.SortOrder
   endsAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  firstActivatedAt?: Prisma.SortOrder
+  expiredAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -550,6 +608,34 @@ export type CommissionAgreementUncheckedUpdateManyWithoutBusinessNestedInput = {
   update?: Prisma.CommissionAgreementUpdateWithWhereUniqueWithoutBusinessInput | Prisma.CommissionAgreementUpdateWithWhereUniqueWithoutBusinessInput[]
   updateMany?: Prisma.CommissionAgreementUpdateManyWithWhereWithoutBusinessInput | Prisma.CommissionAgreementUpdateManyWithWhereWithoutBusinessInput[]
   deleteMany?: Prisma.CommissionAgreementScalarWhereInput | Prisma.CommissionAgreementScalarWhereInput[]
+}
+
+export type CommissionAgreementCreateNestedOneWithoutAssignmentsInput = {
+  create?: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedCreateWithoutAssignmentsInput>
+  connectOrCreate?: Prisma.CommissionAgreementCreateOrConnectWithoutAssignmentsInput
+  connect?: Prisma.CommissionAgreementWhereUniqueInput
+}
+
+export type CommissionAgreementUpdateOneRequiredWithoutAssignmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedCreateWithoutAssignmentsInput>
+  connectOrCreate?: Prisma.CommissionAgreementCreateOrConnectWithoutAssignmentsInput
+  upsert?: Prisma.CommissionAgreementUpsertWithoutAssignmentsInput
+  connect?: Prisma.CommissionAgreementWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CommissionAgreementUpdateToOneWithWhereWithoutAssignmentsInput, Prisma.CommissionAgreementUpdateWithoutAssignmentsInput>, Prisma.CommissionAgreementUncheckedUpdateWithoutAssignmentsInput>
+}
+
+export type CommissionAgreementCreateNestedOneWithoutActivationsInput = {
+  create?: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedCreateWithoutActivationsInput>
+  connectOrCreate?: Prisma.CommissionAgreementCreateOrConnectWithoutActivationsInput
+  connect?: Prisma.CommissionAgreementWhereUniqueInput
+}
+
+export type CommissionAgreementUpdateOneRequiredWithoutActivationsNestedInput = {
+  create?: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedCreateWithoutActivationsInput>
+  connectOrCreate?: Prisma.CommissionAgreementCreateOrConnectWithoutActivationsInput
+  upsert?: Prisma.CommissionAgreementUpsertWithoutActivationsInput
+  connect?: Prisma.CommissionAgreementWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CommissionAgreementUpdateToOneWithWhereWithoutActivationsInput, Prisma.CommissionAgreementUpdateWithoutActivationsInput>, Prisma.CommissionAgreementUncheckedUpdateWithoutActivationsInput>
 }
 
 export type CommissionAgreementCreateNestedOneWithoutCommissionEntry_agreementInput = {
@@ -647,8 +733,12 @@ export type CommissionAgreementCreateWithoutBusinessInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
   partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
   saleItem_agreement?: Prisma.SaleItemCreateNestedManyWithoutAgreementInput
@@ -662,9 +752,13 @@ export type CommissionAgreementUncheckedCreateWithoutBusinessInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
@@ -707,9 +801,195 @@ export type CommissionAgreementScalarWhereInput = {
   startsAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   endsAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   isActive?: Prisma.BoolFilter<"CommissionAgreement"> | boolean
+  firstActivatedAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
+  expiredAt?: Prisma.DateTimeNullableFilter<"CommissionAgreement"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionAgreement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionAgreement"> | string
+}
+
+export type CommissionAgreementCreateWithoutAssignmentsInput = {
+  id?: string
+  business_name: string
+  commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Date | string
+  endsAt?: Date | string | null
+  isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
+  business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
+  productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
+  partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
+  saleItem_agreement?: Prisma.SaleItemCreateNestedManyWithoutAgreementInput
+  commissionEntry_agreement?: Prisma.CommissionEntryCreateNestedManyWithoutAgreementInput
+}
+
+export type CommissionAgreementUncheckedCreateWithoutAssignmentsInput = {
+  id?: string
+  businessId: string
+  business_name: string
+  commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Date | string
+  endsAt?: Date | string | null
+  isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partnerId: string
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
+  productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
+  saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
+}
+
+export type CommissionAgreementCreateOrConnectWithoutAssignmentsInput = {
+  where: Prisma.CommissionAgreementWhereUniqueInput
+  create: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedCreateWithoutAssignmentsInput>
+}
+
+export type CommissionAgreementUpsertWithoutAssignmentsInput = {
+  update: Prisma.XOR<Prisma.CommissionAgreementUpdateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedUpdateWithoutAssignmentsInput>
+  create: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedCreateWithoutAssignmentsInput>
+  where?: Prisma.CommissionAgreementWhereInput
+}
+
+export type CommissionAgreementUpdateToOneWithWhereWithoutAssignmentsInput = {
+  where?: Prisma.CommissionAgreementWhereInput
+  data: Prisma.XOR<Prisma.CommissionAgreementUpdateWithoutAssignmentsInput, Prisma.CommissionAgreementUncheckedUpdateWithoutAssignmentsInput>
+}
+
+export type CommissionAgreementUpdateWithoutAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  commissionPercent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
+  business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
+  productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
+  partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
+  saleItem_agreement?: Prisma.SaleItemUpdateManyWithoutAgreementNestedInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUpdateManyWithoutAgreementNestedInput
+}
+
+export type CommissionAgreementUncheckedUpdateWithoutAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  businessId?: Prisma.StringFieldUpdateOperationsInput | string
+  business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  commissionPercent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
+  productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
+}
+
+export type CommissionAgreementCreateWithoutActivationsInput = {
+  id?: string
+  business_name: string
+  commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Date | string
+  endsAt?: Date | string | null
+  isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
+  productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
+  partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
+  saleItem_agreement?: Prisma.SaleItemCreateNestedManyWithoutAgreementInput
+  commissionEntry_agreement?: Prisma.CommissionEntryCreateNestedManyWithoutAgreementInput
+}
+
+export type CommissionAgreementUncheckedCreateWithoutActivationsInput = {
+  id?: string
+  businessId: string
+  business_name: string
+  commissionPercent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Date | string
+  endsAt?: Date | string | null
+  isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
+  saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
+}
+
+export type CommissionAgreementCreateOrConnectWithoutActivationsInput = {
+  where: Prisma.CommissionAgreementWhereUniqueInput
+  create: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedCreateWithoutActivationsInput>
+}
+
+export type CommissionAgreementUpsertWithoutActivationsInput = {
+  update: Prisma.XOR<Prisma.CommissionAgreementUpdateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedUpdateWithoutActivationsInput>
+  create: Prisma.XOR<Prisma.CommissionAgreementCreateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedCreateWithoutActivationsInput>
+  where?: Prisma.CommissionAgreementWhereInput
+}
+
+export type CommissionAgreementUpdateToOneWithWhereWithoutActivationsInput = {
+  where?: Prisma.CommissionAgreementWhereInput
+  data: Prisma.XOR<Prisma.CommissionAgreementUpdateWithoutActivationsInput, Prisma.CommissionAgreementUncheckedUpdateWithoutActivationsInput>
+}
+
+export type CommissionAgreementUpdateWithoutActivationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  commissionPercent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
+  productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
+  partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
+  saleItem_agreement?: Prisma.SaleItemUpdateManyWithoutAgreementNestedInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUpdateManyWithoutAgreementNestedInput
+}
+
+export type CommissionAgreementUncheckedUpdateWithoutActivationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  businessId?: Prisma.StringFieldUpdateOperationsInput | string
+  business_name?: Prisma.StringFieldUpdateOperationsInput | string
+  commissionPercent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
+  commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
 }
 
 export type CommissionAgreementCreateWithoutCommissionEntry_agreementInput = {
@@ -719,8 +999,12 @@ export type CommissionAgreementCreateWithoutCommissionEntry_agreementInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
   productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
   partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
@@ -735,9 +1019,13 @@ export type CommissionAgreementUncheckedCreateWithoutCommissionEntry_agreementIn
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
 }
@@ -765,8 +1053,12 @@ export type CommissionAgreementUpdateWithoutCommissionEntry_agreementInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
   productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
   partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
@@ -781,9 +1073,13 @@ export type CommissionAgreementUncheckedUpdateWithoutCommissionEntry_agreementIn
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
 }
@@ -795,8 +1091,12 @@ export type CommissionAgreementCreateWithoutPartnerInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
   productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemCreateNestedManyWithoutAgreementInput
@@ -810,8 +1110,12 @@ export type CommissionAgreementUncheckedCreateWithoutPartnerInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
@@ -850,8 +1154,12 @@ export type CommissionAgreementCreateWithoutProductVariant_agreementInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
   partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
   saleItem_agreement?: Prisma.SaleItemCreateNestedManyWithoutAgreementInput
@@ -866,9 +1174,13 @@ export type CommissionAgreementUncheckedCreateWithoutProductVariant_agreementInp
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   saleItem_agreement?: Prisma.SaleItemUncheckedCreateNestedManyWithoutAgreementInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
 }
@@ -896,8 +1208,12 @@ export type CommissionAgreementUpdateWithoutProductVariant_agreementInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
   partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
   saleItem_agreement?: Prisma.SaleItemUpdateManyWithoutAgreementNestedInput
@@ -912,9 +1228,13 @@ export type CommissionAgreementUncheckedUpdateWithoutProductVariant_agreementInp
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
 }
@@ -926,8 +1246,12 @@ export type CommissionAgreementCreateWithoutSaleItem_agreementInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignments?: Prisma.CommissionAgreementVariantCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationCreateNestedManyWithoutAgreementInput
   business: Prisma.BusinessCreateNestedOneWithoutCommissionAgreement_businessInput
   productVariant_agreement?: Prisma.ProductVariantCreateNestedManyWithoutAgreementInput
   partner: Prisma.PartnerCreateNestedOneWithoutCommissionAgreement_partnerInput
@@ -942,9 +1266,13 @@ export type CommissionAgreementUncheckedCreateWithoutSaleItem_agreementInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedCreateNestedManyWithoutAgreementInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedCreateNestedManyWithoutAgreementInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutAgreementInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedCreateNestedManyWithoutAgreementInput
 }
@@ -972,8 +1300,12 @@ export type CommissionAgreementUpdateWithoutSaleItem_agreementInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
   productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
   partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
@@ -988,9 +1320,13 @@ export type CommissionAgreementUncheckedUpdateWithoutSaleItem_agreementInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
 }
@@ -1002,6 +1338,8 @@ export type CommissionAgreementCreateManyBusinessInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -1014,8 +1352,12 @@ export type CommissionAgreementUpdateWithoutBusinessInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
   partner?: Prisma.PartnerUpdateOneRequiredWithoutCommissionAgreement_partnerNestedInput
   saleItem_agreement?: Prisma.SaleItemUpdateManyWithoutAgreementNestedInput
@@ -1029,9 +1371,13 @@ export type CommissionAgreementUncheckedUpdateWithoutBusinessInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
@@ -1044,6 +1390,8 @@ export type CommissionAgreementUncheckedUpdateManyWithoutBusinessInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1056,6 +1404,8 @@ export type CommissionAgreementCreateManyPartnerInput = {
   startsAt?: Date | string
   endsAt?: Date | string | null
   isActive?: boolean
+  firstActivatedAt?: Date | string | null
+  expiredAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1067,8 +1417,12 @@ export type CommissionAgreementUpdateWithoutPartnerInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUpdateManyWithoutAgreementNestedInput
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionAgreement_businessNestedInput
   productVariant_agreement?: Prisma.ProductVariantUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUpdateManyWithoutAgreementNestedInput
@@ -1082,8 +1436,12 @@ export type CommissionAgreementUncheckedUpdateWithoutPartnerInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignments?: Prisma.CommissionAgreementVariantUncheckedUpdateManyWithoutAgreementNestedInput
+  activations?: Prisma.CommissionAgreementActivationUncheckedUpdateManyWithoutAgreementNestedInput
   productVariant_agreement?: Prisma.ProductVariantUncheckedUpdateManyWithoutAgreementNestedInput
   saleItem_agreement?: Prisma.SaleItemUncheckedUpdateManyWithoutAgreementNestedInput
   commissionEntry_agreement?: Prisma.CommissionEntryUncheckedUpdateManyWithoutAgreementNestedInput
@@ -1096,6 +1454,8 @@ export type CommissionAgreementUncheckedUpdateManyWithoutPartnerInput = {
   startsAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  firstActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  expiredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1106,12 +1466,16 @@ export type CommissionAgreementUncheckedUpdateManyWithoutPartnerInput = {
  */
 
 export type CommissionAgreementCountOutputType = {
+  assignments: number
+  activations: number
   productVariant_agreement: number
   saleItem_agreement: number
   commissionEntry_agreement: number
 }
 
 export type CommissionAgreementCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assignments?: boolean | CommissionAgreementCountOutputTypeCountAssignmentsArgs
+  activations?: boolean | CommissionAgreementCountOutputTypeCountActivationsArgs
   productVariant_agreement?: boolean | CommissionAgreementCountOutputTypeCountProductVariant_agreementArgs
   saleItem_agreement?: boolean | CommissionAgreementCountOutputTypeCountSaleItem_agreementArgs
   commissionEntry_agreement?: boolean | CommissionAgreementCountOutputTypeCountCommissionEntry_agreementArgs
@@ -1125,6 +1489,20 @@ export type CommissionAgreementCountOutputTypeDefaultArgs<ExtArgs extends runtim
    * Select specific fields to fetch from the CommissionAgreementCountOutputType
    */
   select?: Prisma.CommissionAgreementCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CommissionAgreementCountOutputType without action
+ */
+export type CommissionAgreementCountOutputTypeCountAssignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommissionAgreementVariantWhereInput
+}
+
+/**
+ * CommissionAgreementCountOutputType without action
+ */
+export type CommissionAgreementCountOutputTypeCountActivationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommissionAgreementActivationWhereInput
 }
 
 /**
@@ -1157,9 +1535,13 @@ export type CommissionAgreementSelect<ExtArgs extends runtime.Types.Extensions.I
   startsAt?: boolean
   endsAt?: boolean
   isActive?: boolean
+  firstActivatedAt?: boolean
+  expiredAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
+  assignments?: boolean | Prisma.CommissionAgreement$assignmentsArgs<ExtArgs>
+  activations?: boolean | Prisma.CommissionAgreement$activationsArgs<ExtArgs>
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   productVariant_agreement?: boolean | Prisma.CommissionAgreement$productVariant_agreementArgs<ExtArgs>
   partner?: boolean | Prisma.PartnerDefaultArgs<ExtArgs>
@@ -1176,6 +1558,8 @@ export type CommissionAgreementSelectCreateManyAndReturn<ExtArgs extends runtime
   startsAt?: boolean
   endsAt?: boolean
   isActive?: boolean
+  firstActivatedAt?: boolean
+  expiredAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
@@ -1191,6 +1575,8 @@ export type CommissionAgreementSelectUpdateManyAndReturn<ExtArgs extends runtime
   startsAt?: boolean
   endsAt?: boolean
   isActive?: boolean
+  firstActivatedAt?: boolean
+  expiredAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
@@ -1206,13 +1592,17 @@ export type CommissionAgreementSelectScalar = {
   startsAt?: boolean
   endsAt?: boolean
   isActive?: boolean
+  firstActivatedAt?: boolean
+  expiredAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
 }
 
-export type CommissionAgreementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "business_name" | "commissionPercent" | "startsAt" | "endsAt" | "isActive" | "createdAt" | "updatedAt" | "partnerId", ExtArgs["result"]["commissionAgreement"]>
+export type CommissionAgreementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "business_name" | "commissionPercent" | "startsAt" | "endsAt" | "isActive" | "firstActivatedAt" | "expiredAt" | "createdAt" | "updatedAt" | "partnerId", ExtArgs["result"]["commissionAgreement"]>
 export type CommissionAgreementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assignments?: boolean | Prisma.CommissionAgreement$assignmentsArgs<ExtArgs>
+  activations?: boolean | Prisma.CommissionAgreement$activationsArgs<ExtArgs>
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   productVariant_agreement?: boolean | Prisma.CommissionAgreement$productVariant_agreementArgs<ExtArgs>
   partner?: boolean | Prisma.PartnerDefaultArgs<ExtArgs>
@@ -1232,6 +1622,8 @@ export type CommissionAgreementIncludeUpdateManyAndReturn<ExtArgs extends runtim
 export type $CommissionAgreementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CommissionAgreement"
   objects: {
+    assignments: Prisma.$CommissionAgreementVariantPayload<ExtArgs>[]
+    activations: Prisma.$CommissionAgreementActivationPayload<ExtArgs>[]
     business: Prisma.$BusinessPayload<ExtArgs>
     productVariant_agreement: Prisma.$ProductVariantPayload<ExtArgs>[]
     partner: Prisma.$PartnerPayload<ExtArgs>
@@ -1246,6 +1638,8 @@ export type $CommissionAgreementPayload<ExtArgs extends runtime.Types.Extensions
     startsAt: Date
     endsAt: Date | null
     isActive: boolean
+    firstActivatedAt: Date | null
+    expiredAt: Date | null
     createdAt: Date
     updatedAt: Date
     partnerId: string
@@ -1643,6 +2037,8 @@ readonly fields: CommissionAgreementFieldRefs;
  */
 export interface Prisma__CommissionAgreementClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  assignments<T extends Prisma.CommissionAgreement$assignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CommissionAgreement$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommissionAgreementVariantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  activations<T extends Prisma.CommissionAgreement$activationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CommissionAgreement$activationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommissionAgreementActivationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   business<T extends Prisma.BusinessDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BusinessDefaultArgs<ExtArgs>>): Prisma.Prisma__BusinessClient<runtime.Types.Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   productVariant_agreement<T extends Prisma.CommissionAgreement$productVariant_agreementArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CommissionAgreement$productVariant_agreementArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   partner<T extends Prisma.PartnerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PartnerDefaultArgs<ExtArgs>>): Prisma.Prisma__PartnerClient<runtime.Types.Result.GetResult<Prisma.$PartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -1684,6 +2080,8 @@ export interface CommissionAgreementFieldRefs {
   readonly startsAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
   readonly endsAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
   readonly isActive: Prisma.FieldRef<"CommissionAgreement", 'Boolean'>
+  readonly firstActivatedAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
+  readonly expiredAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CommissionAgreement", 'DateTime'>
   readonly partnerId: Prisma.FieldRef<"CommissionAgreement", 'String'>
@@ -2085,6 +2483,54 @@ export type CommissionAgreementDeleteManyArgs<ExtArgs extends runtime.Types.Exte
    * Limit how many CommissionAgreements to delete.
    */
   limit?: number
+}
+
+/**
+ * CommissionAgreement.assignments
+ */
+export type CommissionAgreement$assignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommissionAgreementVariant
+   */
+  select?: Prisma.CommissionAgreementVariantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommissionAgreementVariant
+   */
+  omit?: Prisma.CommissionAgreementVariantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommissionAgreementVariantInclude<ExtArgs> | null
+  where?: Prisma.CommissionAgreementVariantWhereInput
+  orderBy?: Prisma.CommissionAgreementVariantOrderByWithRelationInput | Prisma.CommissionAgreementVariantOrderByWithRelationInput[]
+  cursor?: Prisma.CommissionAgreementVariantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommissionAgreementVariantScalarFieldEnum | Prisma.CommissionAgreementVariantScalarFieldEnum[]
+}
+
+/**
+ * CommissionAgreement.activations
+ */
+export type CommissionAgreement$activationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommissionAgreementActivation
+   */
+  select?: Prisma.CommissionAgreementActivationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommissionAgreementActivation
+   */
+  omit?: Prisma.CommissionAgreementActivationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommissionAgreementActivationInclude<ExtArgs> | null
+  where?: Prisma.CommissionAgreementActivationWhereInput
+  orderBy?: Prisma.CommissionAgreementActivationOrderByWithRelationInput | Prisma.CommissionAgreementActivationOrderByWithRelationInput[]
+  cursor?: Prisma.CommissionAgreementActivationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommissionAgreementActivationScalarFieldEnum | Prisma.CommissionAgreementActivationScalarFieldEnum[]
 }
 
 /**

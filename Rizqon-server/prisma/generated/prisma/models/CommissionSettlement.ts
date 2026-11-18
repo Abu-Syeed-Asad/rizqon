@@ -41,6 +41,9 @@ export type CommissionSettlementMinAggregateOutputType = {
   settlement_status: $Enums.COMMISSION_SETTLEMENT_STATUS | null
   amount: runtime.Decimal | null
   finalizedAt: Date | null
+  currency: string | null
+  idempotencyKey: string | null
+  requestHash: string | null
   createdAt: Date | null
   updatedAt: Date | null
   partnerId: string | null
@@ -54,6 +57,9 @@ export type CommissionSettlementMaxAggregateOutputType = {
   settlement_status: $Enums.COMMISSION_SETTLEMENT_STATUS | null
   amount: runtime.Decimal | null
   finalizedAt: Date | null
+  currency: string | null
+  idempotencyKey: string | null
+  requestHash: string | null
   createdAt: Date | null
   updatedAt: Date | null
   partnerId: string | null
@@ -67,6 +73,9 @@ export type CommissionSettlementCountAggregateOutputType = {
   settlement_status: number
   amount: number
   finalizedAt: number
+  currency: number
+  idempotencyKey: number
+  requestHash: number
   createdAt: number
   updatedAt: number
   partnerId: number
@@ -90,6 +99,9 @@ export type CommissionSettlementMinAggregateInputType = {
   settlement_status?: true
   amount?: true
   finalizedAt?: true
+  currency?: true
+  idempotencyKey?: true
+  requestHash?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -103,6 +115,9 @@ export type CommissionSettlementMaxAggregateInputType = {
   settlement_status?: true
   amount?: true
   finalizedAt?: true
+  currency?: true
+  idempotencyKey?: true
+  requestHash?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -116,6 +131,9 @@ export type CommissionSettlementCountAggregateInputType = {
   settlement_status?: true
   amount?: true
   finalizedAt?: true
+  currency?: true
+  idempotencyKey?: true
+  requestHash?: true
   createdAt?: true
   updatedAt?: true
   partnerId?: true
@@ -216,6 +234,9 @@ export type CommissionSettlementGroupByOutputType = {
   settlement_status: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal
   finalizedAt: Date | null
+  currency: string | null
+  idempotencyKey: string | null
+  requestHash: string | null
   createdAt: Date
   updatedAt: Date
   partnerId: string
@@ -252,6 +273,9 @@ export type CommissionSettlementWhereInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFilter<"CommissionSettlement"> | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFilter<"CommissionSettlement"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.DateTimeNullableFilter<"CommissionSettlement"> | Date | string | null
+  currency?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  idempotencyKey?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  requestHash?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionSettlement"> | string
@@ -270,6 +294,9 @@ export type CommissionSettlementOrderByWithRelationInput = {
   settlement_status?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   finalizedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrderInput | Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -285,6 +312,7 @@ export type CommissionSettlementWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   settlement_reference?: string
   businessId_id?: Prisma.CommissionSettlementBusinessIdIdCompoundUniqueInput
+  businessId_idempotencyKey?: Prisma.CommissionSettlementBusinessIdIdempotencyKeyCompoundUniqueInput
   businessId_settlement_reference?: Prisma.CommissionSettlementBusinessIdSettlement_referenceCompoundUniqueInput
   AND?: Prisma.CommissionSettlementWhereInput | Prisma.CommissionSettlementWhereInput[]
   OR?: Prisma.CommissionSettlementWhereInput[]
@@ -293,6 +321,9 @@ export type CommissionSettlementWhereUniqueInput = Prisma.AtLeast<{
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFilter<"CommissionSettlement"> | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFilter<"CommissionSettlement"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.DateTimeNullableFilter<"CommissionSettlement"> | Date | string | null
+  currency?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  idempotencyKey?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  requestHash?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionSettlement"> | string
@@ -302,7 +333,7 @@ export type CommissionSettlementWhereUniqueInput = Prisma.AtLeast<{
   commissionEntry_settlement?: Prisma.CommissionEntryListRelationFilter
   partner?: Prisma.XOR<Prisma.PartnerScalarRelationFilter, Prisma.PartnerWhereInput>
   creator?: Prisma.XOR<Prisma.EmployeeScalarRelationFilter, Prisma.EmployeeWhereInput>
-}, "id" | "settlement_reference" | "businessId_id" | "businessId_settlement_reference">
+}, "id" | "settlement_reference" | "businessId_id" | "businessId_idempotencyKey" | "businessId_settlement_reference">
 
 export type CommissionSettlementOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -311,6 +342,9 @@ export type CommissionSettlementOrderByWithAggregationInput = {
   settlement_status?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   finalizedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrderInput | Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -332,6 +366,9 @@ export type CommissionSettlementScalarWhereWithAggregatesInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSWithAggregatesFilter<"CommissionSettlement"> | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalWithAggregatesFilter<"CommissionSettlement"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CommissionSettlement"> | Date | string | null
+  currency?: Prisma.StringNullableWithAggregatesFilter<"CommissionSettlement"> | string | null
+  idempotencyKey?: Prisma.StringNullableWithAggregatesFilter<"CommissionSettlement"> | string | null
+  requestHash?: Prisma.StringNullableWithAggregatesFilter<"CommissionSettlement"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CommissionSettlement"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CommissionSettlement"> | Date | string
   partnerId?: Prisma.StringWithAggregatesFilter<"CommissionSettlement"> | string
@@ -344,6 +381,9 @@ export type CommissionSettlementCreateInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
@@ -360,6 +400,9 @@ export type CommissionSettlementUncheckedCreateInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -374,6 +417,9 @@ export type CommissionSettlementUpdateInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionSettlement_businessNestedInput
@@ -390,6 +436,9 @@ export type CommissionSettlementUncheckedUpdateInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -405,6 +454,9 @@ export type CommissionSettlementCreateManyInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -417,6 +469,9 @@ export type CommissionSettlementUpdateManyMutationInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -428,6 +483,9 @@ export type CommissionSettlementUncheckedUpdateManyInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -454,6 +512,11 @@ export type CommissionSettlementBusinessIdIdCompoundUniqueInput = {
   id: string
 }
 
+export type CommissionSettlementBusinessIdIdempotencyKeyCompoundUniqueInput = {
+  businessId: string
+  idempotencyKey: string
+}
+
 export type CommissionSettlementBusinessIdSettlement_referenceCompoundUniqueInput = {
   businessId: string
   settlement_reference: string
@@ -466,6 +529,9 @@ export type CommissionSettlementCountOrderByAggregateInput = {
   settlement_status?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   finalizedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -483,6 +549,9 @@ export type CommissionSettlementMaxOrderByAggregateInput = {
   settlement_status?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   finalizedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -496,6 +565,9 @@ export type CommissionSettlementMinOrderByAggregateInput = {
   settlement_status?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   finalizedAt?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partnerId?: Prisma.SortOrder
@@ -674,6 +746,9 @@ export type CommissionSettlementCreateWithoutBusinessInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment_settlement?: Prisma.PaymentCreateNestedManyWithoutSettlementInput
@@ -688,6 +763,9 @@ export type CommissionSettlementUncheckedCreateWithoutBusinessInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -732,6 +810,9 @@ export type CommissionSettlementScalarWhereInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFilter<"CommissionSettlement"> | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFilter<"CommissionSettlement"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.DateTimeNullableFilter<"CommissionSettlement"> | Date | string | null
+  currency?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  idempotencyKey?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
+  requestHash?: Prisma.StringNullableFilter<"CommissionSettlement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommissionSettlement"> | Date | string
   partnerId?: Prisma.StringFilter<"CommissionSettlement"> | string
@@ -744,6 +825,9 @@ export type CommissionSettlementCreateWithoutCreatorInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
@@ -758,6 +842,9 @@ export type CommissionSettlementUncheckedCreateWithoutCreatorInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -797,6 +884,9 @@ export type CommissionSettlementCreateWithoutCommissionEntry_settlementInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
@@ -812,6 +902,9 @@ export type CommissionSettlementUncheckedCreateWithoutCommissionEntry_settlement
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -841,6 +934,9 @@ export type CommissionSettlementUpdateWithoutCommissionEntry_settlementInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionSettlement_businessNestedInput
@@ -856,6 +952,9 @@ export type CommissionSettlementUncheckedUpdateWithoutCommissionEntry_settlement
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -869,6 +968,9 @@ export type CommissionSettlementCreateWithoutPartnerInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
@@ -883,6 +985,9 @@ export type CommissionSettlementUncheckedCreateWithoutPartnerInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   creatorId: string
@@ -922,6 +1027,9 @@ export type CommissionSettlementCreateWithoutPayment_settlementInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutCommissionSettlement_businessInput
@@ -937,6 +1045,9 @@ export type CommissionSettlementUncheckedCreateWithoutPayment_settlementInput = 
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -966,6 +1077,9 @@ export type CommissionSettlementUpdateWithoutPayment_settlementInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionSettlement_businessNestedInput
@@ -981,6 +1095,9 @@ export type CommissionSettlementUncheckedUpdateWithoutPayment_settlementInput = 
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -994,6 +1111,9 @@ export type CommissionSettlementCreateManyBusinessInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -1006,6 +1126,9 @@ export type CommissionSettlementUpdateWithoutBusinessInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment_settlement?: Prisma.PaymentUpdateManyWithoutSettlementNestedInput
@@ -1020,6 +1143,9 @@ export type CommissionSettlementUncheckedUpdateWithoutBusinessInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1034,6 +1160,9 @@ export type CommissionSettlementUncheckedUpdateManyWithoutBusinessInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1046,6 +1175,9 @@ export type CommissionSettlementCreateManyCreatorInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partnerId: string
@@ -1057,6 +1189,9 @@ export type CommissionSettlementUpdateWithoutCreatorInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionSettlement_businessNestedInput
@@ -1071,6 +1206,9 @@ export type CommissionSettlementUncheckedUpdateWithoutCreatorInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1084,6 +1222,9 @@ export type CommissionSettlementUncheckedUpdateManyWithoutCreatorInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partnerId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1095,6 +1236,9 @@ export type CommissionSettlementCreateManyPartnerInput = {
   settlement_status?: $Enums.COMMISSION_SETTLEMENT_STATUS
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Date | string | null
+  currency?: string | null
+  idempotencyKey?: string | null
+  requestHash?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   creatorId: string
@@ -1106,6 +1250,9 @@ export type CommissionSettlementUpdateWithoutPartnerInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutCommissionSettlement_businessNestedInput
@@ -1120,6 +1267,9 @@ export type CommissionSettlementUncheckedUpdateWithoutPartnerInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1133,6 +1283,9 @@ export type CommissionSettlementUncheckedUpdateManyWithoutPartnerInput = {
   settlement_status?: Prisma.EnumCOMMISSION_SETTLEMENT_STATUSFieldUpdateOperationsInput | $Enums.COMMISSION_SETTLEMENT_STATUS
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   finalizedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1185,6 +1338,9 @@ export type CommissionSettlementSelect<ExtArgs extends runtime.Types.Extensions.
   settlement_status?: boolean
   amount?: boolean
   finalizedAt?: boolean
+  currency?: boolean
+  idempotencyKey?: boolean
+  requestHash?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
@@ -1204,6 +1360,9 @@ export type CommissionSettlementSelectCreateManyAndReturn<ExtArgs extends runtim
   settlement_status?: boolean
   amount?: boolean
   finalizedAt?: boolean
+  currency?: boolean
+  idempotencyKey?: boolean
+  requestHash?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
@@ -1220,6 +1379,9 @@ export type CommissionSettlementSelectUpdateManyAndReturn<ExtArgs extends runtim
   settlement_status?: boolean
   amount?: boolean
   finalizedAt?: boolean
+  currency?: boolean
+  idempotencyKey?: boolean
+  requestHash?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
@@ -1236,13 +1398,16 @@ export type CommissionSettlementSelectScalar = {
   settlement_status?: boolean
   amount?: boolean
   finalizedAt?: boolean
+  currency?: boolean
+  idempotencyKey?: boolean
+  requestHash?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partnerId?: boolean
   creatorId?: boolean
 }
 
-export type CommissionSettlementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "settlement_reference" | "settlement_status" | "amount" | "finalizedAt" | "createdAt" | "updatedAt" | "partnerId" | "creatorId", ExtArgs["result"]["commissionSettlement"]>
+export type CommissionSettlementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "settlement_reference" | "settlement_status" | "amount" | "finalizedAt" | "currency" | "idempotencyKey" | "requestHash" | "createdAt" | "updatedAt" | "partnerId" | "creatorId", ExtArgs["result"]["commissionSettlement"]>
 export type CommissionSettlementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   payment_settlement?: boolean | Prisma.CommissionSettlement$payment_settlementArgs<ExtArgs>
@@ -1278,6 +1443,9 @@ export type $CommissionSettlementPayload<ExtArgs extends runtime.Types.Extension
     settlement_status: $Enums.COMMISSION_SETTLEMENT_STATUS
     amount: runtime.Decimal
     finalizedAt: Date | null
+    currency: string | null
+    idempotencyKey: string | null
+    requestHash: string | null
     createdAt: Date
     updatedAt: Date
     partnerId: string
@@ -1716,6 +1884,9 @@ export interface CommissionSettlementFieldRefs {
   readonly settlement_status: Prisma.FieldRef<"CommissionSettlement", 'COMMISSION_SETTLEMENT_STATUS'>
   readonly amount: Prisma.FieldRef<"CommissionSettlement", 'Decimal'>
   readonly finalizedAt: Prisma.FieldRef<"CommissionSettlement", 'DateTime'>
+  readonly currency: Prisma.FieldRef<"CommissionSettlement", 'String'>
+  readonly idempotencyKey: Prisma.FieldRef<"CommissionSettlement", 'String'>
+  readonly requestHash: Prisma.FieldRef<"CommissionSettlement", 'String'>
   readonly createdAt: Prisma.FieldRef<"CommissionSettlement", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CommissionSettlement", 'DateTime'>
   readonly partnerId: Prisma.FieldRef<"CommissionSettlement", 'String'>

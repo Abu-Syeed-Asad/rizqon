@@ -15,6 +15,7 @@ model ProductVariant {
   productId         String
   product           Product              @relation("ProductVariant_product", fields: [businessId, productId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   agreementId       String?
+  commissionAssignments CommissionAgreementVariant[]
   agreement         CommissionAgreement? @relation("ProductVariant_agreement", fields: [businessId, agreementId], references: [businessId, id], onDelete: Restrict, onUpdate: NoAction)
   inventory_variant Inventory[]          @relation("Inventory_variant")
   cartItem_variant  CartItem[]           @relation("CartItem_variant")

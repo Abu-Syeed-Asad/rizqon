@@ -14,6 +14,7 @@ const createEmployeeSchema = z.object({
 }).strict();
 
 const updateEmployeeSchema = z.object({
+  branchId: idSchema.optional(),
   name: z.string().trim().min(2).max(150).optional(),
   phone: z.string().trim().regex(/^\+?[0-9]{7,15}$/, "Invalid phone number").optional(),
   employeeCode: z.string().trim().min(1).max(50)

@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { commissionRoutes } from "./module/Commission/commission.route.js";
+import { productRoutes } from "./module/Product/product.route.js";
 import { authRouter } from "./module/auth/auth.route";
 import { businessRoutes } from "./module/bussiness/bussiness.route";
 import { brandRoutes } from "./module/Brand/brand.route.js";
@@ -8,6 +10,8 @@ import { employeeRoutes } from "./module/Employee/employee.route.js";
 import { partnerRoutes } from "./module/Partner/partner.route.js";
 
 const router = Router();
+router.use("/business/:businessId", commissionRoutes);
+router.use("/product", productRoutes);
 router.use("/auth", authRouter);
 router.use("/business",businessRoutes)
 router.use("/brand", brandRoutes);

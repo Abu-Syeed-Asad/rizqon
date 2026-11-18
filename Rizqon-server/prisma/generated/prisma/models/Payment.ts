@@ -45,6 +45,7 @@ export type PaymentMinAggregateOutputType = {
   provider: string | null
   providerReference: string | null
   idempotencyKey: string | null
+  requestHash: string | null
   paidAt: Date | null
   note: string | null
   createdAt: Date | null
@@ -67,6 +68,7 @@ export type PaymentMaxAggregateOutputType = {
   provider: string | null
   providerReference: string | null
   idempotencyKey: string | null
+  requestHash: string | null
   paidAt: Date | null
   note: string | null
   createdAt: Date | null
@@ -89,6 +91,7 @@ export type PaymentCountAggregateOutputType = {
   provider: number
   providerReference: number
   idempotencyKey: number
+  requestHash: number
   paidAt: number
   note: number
   createdAt: number
@@ -121,6 +124,7 @@ export type PaymentMinAggregateInputType = {
   provider?: true
   providerReference?: true
   idempotencyKey?: true
+  requestHash?: true
   paidAt?: true
   note?: true
   createdAt?: true
@@ -143,6 +147,7 @@ export type PaymentMaxAggregateInputType = {
   provider?: true
   providerReference?: true
   idempotencyKey?: true
+  requestHash?: true
   paidAt?: true
   note?: true
   createdAt?: true
@@ -165,6 +170,7 @@ export type PaymentCountAggregateInputType = {
   provider?: true
   providerReference?: true
   idempotencyKey?: true
+  requestHash?: true
   paidAt?: true
   note?: true
   createdAt?: true
@@ -274,6 +280,7 @@ export type PaymentGroupByOutputType = {
   provider: string | null
   providerReference: string | null
   idempotencyKey: string
+  requestHash: string | null
   paidAt: Date | null
   note: string | null
   createdAt: Date
@@ -319,6 +326,7 @@ export type PaymentWhereInput = {
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
+  requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Payment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Payment"> | Date | string
@@ -349,6 +357,7 @@ export type PaymentOrderByWithRelationInput = {
   provider?: Prisma.SortOrderInput | Prisma.SortOrder
   providerReference?: Prisma.SortOrderInput | Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -385,6 +394,7 @@ export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
+  requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Payment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Payment"> | Date | string
@@ -415,6 +425,7 @@ export type PaymentOrderByWithAggregationInput = {
   provider?: Prisma.SortOrderInput | Prisma.SortOrder
   providerReference?: Prisma.SortOrderInput | Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -445,6 +456,7 @@ export type PaymentScalarWhereWithAggregatesInput = {
   provider?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   idempotencyKey?: Prisma.StringWithAggregatesFilter<"Payment"> | string
+  requestHash?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Payment"> | Date | string
@@ -466,6 +478,7 @@ export type PaymentCreateInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -491,6 +504,7 @@ export type PaymentUncheckedCreateInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -514,6 +528,7 @@ export type PaymentUpdateInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -539,6 +554,7 @@ export type PaymentUncheckedUpdateInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -563,6 +579,7 @@ export type PaymentCreateManyInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -584,6 +601,7 @@ export type PaymentUpdateManyMutationInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -601,6 +619,7 @@ export type PaymentUncheckedUpdateManyInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -648,6 +667,7 @@ export type PaymentCountOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -674,6 +694,7 @@ export type PaymentMaxOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -696,6 +717,7 @@ export type PaymentMinOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -1025,6 +1047,7 @@ export type PaymentCreateWithoutBusinessInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1048,6 +1071,7 @@ export type PaymentUncheckedCreateWithoutBusinessInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1101,6 +1125,7 @@ export type PaymentScalarWhereInput = {
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
+  requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Payment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Payment"> | Date | string
@@ -1122,6 +1147,7 @@ export type PaymentCreateWithoutRecorderInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1145,6 +1171,7 @@ export type PaymentUncheckedCreateWithoutRecorderInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1193,6 +1220,7 @@ export type PaymentCreateWithoutSettlementInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1216,6 +1244,7 @@ export type PaymentUncheckedCreateWithoutSettlementInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1264,6 +1293,7 @@ export type PaymentCreateWithoutExpenseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1287,6 +1317,7 @@ export type PaymentUncheckedCreateWithoutExpenseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1335,6 +1366,7 @@ export type PaymentCreateWithoutPaymentEvent_paymentInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1359,6 +1391,7 @@ export type PaymentUncheckedCreateWithoutPaymentEvent_paymentInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1397,6 +1430,7 @@ export type PaymentUpdateWithoutPaymentEvent_paymentInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1421,6 +1455,7 @@ export type PaymentUncheckedUpdateWithoutPaymentEvent_paymentInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1443,6 +1478,7 @@ export type PaymentCreateWithoutPurchaseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1466,6 +1502,7 @@ export type PaymentUncheckedCreateWithoutPurchaseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1514,6 +1551,7 @@ export type PaymentCreateWithoutRefund_paymentInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1538,6 +1576,7 @@ export type PaymentUncheckedCreateWithoutRefund_paymentInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1576,6 +1615,7 @@ export type PaymentUpdateWithoutRefund_paymentInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1600,6 +1640,7 @@ export type PaymentUncheckedUpdateWithoutRefund_paymentInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1622,6 +1663,7 @@ export type PaymentCreateWithoutSaleInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1645,6 +1687,7 @@ export type PaymentUncheckedCreateWithoutSaleInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1693,6 +1736,7 @@ export type PaymentCreateManyBusinessInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1714,6 +1758,7 @@ export type PaymentUpdateWithoutBusinessInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1737,6 +1782,7 @@ export type PaymentUncheckedUpdateWithoutBusinessInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1760,6 +1806,7 @@ export type PaymentUncheckedUpdateManyWithoutBusinessInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1781,6 +1828,7 @@ export type PaymentCreateManyRecorderInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1801,6 +1849,7 @@ export type PaymentUpdateWithoutRecorderInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1824,6 +1873,7 @@ export type PaymentUncheckedUpdateWithoutRecorderInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1846,6 +1896,7 @@ export type PaymentUncheckedUpdateManyWithoutRecorderInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1866,6 +1917,7 @@ export type PaymentCreateManySettlementInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1886,6 +1938,7 @@ export type PaymentUpdateWithoutSettlementInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1909,6 +1962,7 @@ export type PaymentUncheckedUpdateWithoutSettlementInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1931,6 +1985,7 @@ export type PaymentUncheckedUpdateManyWithoutSettlementInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1951,6 +2006,7 @@ export type PaymentCreateManyExpenseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -1971,6 +2027,7 @@ export type PaymentUpdateWithoutExpenseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1994,6 +2051,7 @@ export type PaymentUncheckedUpdateWithoutExpenseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2016,6 +2074,7 @@ export type PaymentUncheckedUpdateManyWithoutExpenseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2036,6 +2095,7 @@ export type PaymentCreateManyPurchaseInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -2056,6 +2116,7 @@ export type PaymentUpdateWithoutPurchaseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2079,6 +2140,7 @@ export type PaymentUncheckedUpdateWithoutPurchaseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2101,6 +2163,7 @@ export type PaymentUncheckedUpdateManyWithoutPurchaseInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2121,6 +2184,7 @@ export type PaymentCreateManySaleInput = {
   provider?: string | null
   providerReference?: string | null
   idempotencyKey: string
+  requestHash?: string | null
   paidAt?: Date | string | null
   note?: string | null
   createdAt?: Date | string
@@ -2141,6 +2205,7 @@ export type PaymentUpdateWithoutSaleInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2164,6 +2229,7 @@ export type PaymentUncheckedUpdateWithoutSaleInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2186,6 +2252,7 @@ export type PaymentUncheckedUpdateManyWithoutSaleInput = {
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2247,6 +2314,7 @@ export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   provider?: boolean
   providerReference?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   paidAt?: boolean
   note?: boolean
   createdAt?: boolean
@@ -2278,6 +2346,7 @@ export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   provider?: boolean
   providerReference?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   paidAt?: boolean
   note?: boolean
   createdAt?: boolean
@@ -2306,6 +2375,7 @@ export type PaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   provider?: boolean
   providerReference?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   paidAt?: boolean
   note?: boolean
   createdAt?: boolean
@@ -2334,6 +2404,7 @@ export type PaymentSelectScalar = {
   provider?: boolean
   providerReference?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   paidAt?: boolean
   note?: boolean
   createdAt?: boolean
@@ -2345,7 +2416,7 @@ export type PaymentSelectScalar = {
   recorderId?: boolean
 }
 
-export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "direction" | "method" | "status" | "amount" | "currency" | "provider" | "providerReference" | "idempotencyKey" | "paidAt" | "note" | "createdAt" | "updatedAt" | "saleId" | "purchaseId" | "expenseId" | "settlementId" | "recorderId", ExtArgs["result"]["payment"]>
+export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "direction" | "method" | "status" | "amount" | "currency" | "provider" | "providerReference" | "idempotencyKey" | "requestHash" | "paidAt" | "note" | "createdAt" | "updatedAt" | "saleId" | "purchaseId" | "expenseId" | "settlementId" | "recorderId", ExtArgs["result"]["payment"]>
 export type PaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   sale?: boolean | Prisma.Payment$saleArgs<ExtArgs>
@@ -2397,6 +2468,7 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     provider: string | null
     providerReference: string | null
     idempotencyKey: string
+    requestHash: string | null
     paidAt: Date | null
     note: string | null
     createdAt: Date
@@ -2847,6 +2919,7 @@ export interface PaymentFieldRefs {
   readonly provider: Prisma.FieldRef<"Payment", 'String'>
   readonly providerReference: Prisma.FieldRef<"Payment", 'String'>
   readonly idempotencyKey: Prisma.FieldRef<"Payment", 'String'>
+  readonly requestHash: Prisma.FieldRef<"Payment", 'String'>
   readonly paidAt: Prisma.FieldRef<"Payment", 'DateTime'>
   readonly note: Prisma.FieldRef<"Payment", 'String'>
   readonly createdAt: Prisma.FieldRef<"Payment", 'DateTime'>

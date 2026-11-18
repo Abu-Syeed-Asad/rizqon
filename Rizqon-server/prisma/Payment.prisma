@@ -9,6 +9,7 @@ model Payment {
   provider             String?
   providerReference    String?
   idempotencyKey       String
+  requestHash          String?
   paidAt               DateTime?
   note                 String?
   createdAt            DateTime              @default(now())

@@ -3,6 +3,7 @@ model SaleReturn {
   businessId            String
   returnNumber          String
   idempotencyKey        String
+  requestHash           String?
   status                SALE_RETURN_STATUS @default(REQUESTED)
   reason                String
   totalAmount           Decimal      @db.Decimal(18, 2)

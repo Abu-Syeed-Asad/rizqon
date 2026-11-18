@@ -39,6 +39,7 @@ export type SaleReturnMinAggregateOutputType = {
   businessId: string | null
   returnNumber: string | null
   idempotencyKey: string | null
+  requestHash: string | null
   status: $Enums.SALE_RETURN_STATUS | null
   reason: string | null
   totalAmount: runtime.Decimal | null
@@ -54,6 +55,7 @@ export type SaleReturnMaxAggregateOutputType = {
   businessId: string | null
   returnNumber: string | null
   idempotencyKey: string | null
+  requestHash: string | null
   status: $Enums.SALE_RETURN_STATUS | null
   reason: string | null
   totalAmount: runtime.Decimal | null
@@ -69,6 +71,7 @@ export type SaleReturnCountAggregateOutputType = {
   businessId: number
   returnNumber: number
   idempotencyKey: number
+  requestHash: number
   status: number
   reason: number
   totalAmount: number
@@ -94,6 +97,7 @@ export type SaleReturnMinAggregateInputType = {
   businessId?: true
   returnNumber?: true
   idempotencyKey?: true
+  requestHash?: true
   status?: true
   reason?: true
   totalAmount?: true
@@ -109,6 +113,7 @@ export type SaleReturnMaxAggregateInputType = {
   businessId?: true
   returnNumber?: true
   idempotencyKey?: true
+  requestHash?: true
   status?: true
   reason?: true
   totalAmount?: true
@@ -124,6 +129,7 @@ export type SaleReturnCountAggregateInputType = {
   businessId?: true
   returnNumber?: true
   idempotencyKey?: true
+  requestHash?: true
   status?: true
   reason?: true
   totalAmount?: true
@@ -226,6 +232,7 @@ export type SaleReturnGroupByOutputType = {
   businessId: string
   returnNumber: string
   idempotencyKey: string
+  requestHash: string | null
   status: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal
@@ -264,6 +271,7 @@ export type SaleReturnWhereInput = {
   businessId?: Prisma.StringFilter<"SaleReturn"> | string
   returnNumber?: Prisma.StringFilter<"SaleReturn"> | string
   idempotencyKey?: Prisma.StringFilter<"SaleReturn"> | string
+  requestHash?: Prisma.StringNullableFilter<"SaleReturn"> | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFilter<"SaleReturn"> | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFilter<"SaleReturn"> | string
   totalAmount?: Prisma.DecimalFilter<"SaleReturn"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -284,6 +292,7 @@ export type SaleReturnOrderByWithRelationInput = {
   businessId?: Prisma.SortOrder
   returnNumber?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
@@ -310,6 +319,7 @@ export type SaleReturnWhereUniqueInput = Prisma.AtLeast<{
   businessId?: Prisma.StringFilter<"SaleReturn"> | string
   returnNumber?: Prisma.StringFilter<"SaleReturn"> | string
   idempotencyKey?: Prisma.StringFilter<"SaleReturn"> | string
+  requestHash?: Prisma.StringNullableFilter<"SaleReturn"> | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFilter<"SaleReturn"> | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFilter<"SaleReturn"> | string
   totalAmount?: Prisma.DecimalFilter<"SaleReturn"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -330,6 +340,7 @@ export type SaleReturnOrderByWithAggregationInput = {
   businessId?: Prisma.SortOrder
   returnNumber?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
@@ -353,6 +364,7 @@ export type SaleReturnScalarWhereWithAggregatesInput = {
   businessId?: Prisma.StringWithAggregatesFilter<"SaleReturn"> | string
   returnNumber?: Prisma.StringWithAggregatesFilter<"SaleReturn"> | string
   idempotencyKey?: Prisma.StringWithAggregatesFilter<"SaleReturn"> | string
+  requestHash?: Prisma.StringNullableWithAggregatesFilter<"SaleReturn"> | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSWithAggregatesFilter<"SaleReturn"> | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringWithAggregatesFilter<"SaleReturn"> | string
   totalAmount?: Prisma.DecimalWithAggregatesFilter<"SaleReturn"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -367,6 +379,7 @@ export type SaleReturnCreateInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -385,6 +398,7 @@ export type SaleReturnUncheckedCreateInput = {
   businessId: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -401,6 +415,7 @@ export type SaleReturnUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -419,6 +434,7 @@ export type SaleReturnUncheckedUpdateInput = {
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -436,6 +452,7 @@ export type SaleReturnCreateManyInput = {
   businessId: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -450,6 +467,7 @@ export type SaleReturnUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -463,6 +481,7 @@ export type SaleReturnUncheckedUpdateManyInput = {
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -508,6 +527,7 @@ export type SaleReturnCountOrderByAggregateInput = {
   businessId?: Prisma.SortOrder
   returnNumber?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
@@ -527,6 +547,7 @@ export type SaleReturnMaxOrderByAggregateInput = {
   businessId?: Prisma.SortOrder
   returnNumber?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
@@ -542,6 +563,7 @@ export type SaleReturnMinOrderByAggregateInput = {
   businessId?: Prisma.SortOrder
   returnNumber?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
+  requestHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
@@ -718,6 +740,7 @@ export type SaleReturnCreateWithoutBusinessInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -734,6 +757,7 @@ export type SaleReturnUncheckedCreateWithoutBusinessInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -780,6 +804,7 @@ export type SaleReturnScalarWhereInput = {
   businessId?: Prisma.StringFilter<"SaleReturn"> | string
   returnNumber?: Prisma.StringFilter<"SaleReturn"> | string
   idempotencyKey?: Prisma.StringFilter<"SaleReturn"> | string
+  requestHash?: Prisma.StringNullableFilter<"SaleReturn"> | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFilter<"SaleReturn"> | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFilter<"SaleReturn"> | string
   totalAmount?: Prisma.DecimalFilter<"SaleReturn"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -794,6 +819,7 @@ export type SaleReturnCreateWithoutProcessorInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -810,6 +836,7 @@ export type SaleReturnUncheckedCreateWithoutProcessorInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -851,6 +878,7 @@ export type SaleReturnCreateWithoutRefund_saleReturnInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -868,6 +896,7 @@ export type SaleReturnUncheckedCreateWithoutRefund_saleReturnInput = {
   businessId: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -899,6 +928,7 @@ export type SaleReturnUpdateWithoutRefund_saleReturnInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -916,6 +946,7 @@ export type SaleReturnUncheckedUpdateWithoutRefund_saleReturnInput = {
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -931,6 +962,7 @@ export type SaleReturnCreateWithoutReturnItem_saleReturnInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -948,6 +980,7 @@ export type SaleReturnUncheckedCreateWithoutReturnItem_saleReturnInput = {
   businessId: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -979,6 +1012,7 @@ export type SaleReturnUpdateWithoutReturnItem_saleReturnInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -996,6 +1030,7 @@ export type SaleReturnUncheckedUpdateWithoutReturnItem_saleReturnInput = {
   businessId?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1011,6 +1046,7 @@ export type SaleReturnCreateWithoutSaleInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1027,6 +1063,7 @@ export type SaleReturnUncheckedCreateWithoutSaleInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1068,6 +1105,7 @@ export type SaleReturnCreateManyBusinessInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1082,6 +1120,7 @@ export type SaleReturnUpdateWithoutBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1098,6 +1137,7 @@ export type SaleReturnUncheckedUpdateWithoutBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1114,6 +1154,7 @@ export type SaleReturnUncheckedUpdateManyWithoutBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1128,6 +1169,7 @@ export type SaleReturnCreateManyProcessorInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1141,6 +1183,7 @@ export type SaleReturnUpdateWithoutProcessorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1157,6 +1200,7 @@ export type SaleReturnUncheckedUpdateWithoutProcessorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1172,6 +1216,7 @@ export type SaleReturnUncheckedUpdateManyWithoutProcessorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1185,6 +1230,7 @@ export type SaleReturnCreateManySaleInput = {
   id?: string
   returnNumber: string
   idempotencyKey: string
+  requestHash?: string | null
   status?: $Enums.SALE_RETURN_STATUS
   reason: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1198,6 +1244,7 @@ export type SaleReturnUpdateWithoutSaleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1214,6 +1261,7 @@ export type SaleReturnUncheckedUpdateWithoutSaleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1229,6 +1277,7 @@ export type SaleReturnUncheckedUpdateManyWithoutSaleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   returnNumber?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumSALE_RETURN_STATUSFieldUpdateOperationsInput | $Enums.SALE_RETURN_STATUS
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1283,6 +1332,7 @@ export type SaleReturnSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   businessId?: boolean
   returnNumber?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   status?: boolean
   reason?: boolean
   totalAmount?: boolean
@@ -1304,6 +1354,7 @@ export type SaleReturnSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   businessId?: boolean
   returnNumber?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   status?: boolean
   reason?: boolean
   totalAmount?: boolean
@@ -1322,6 +1373,7 @@ export type SaleReturnSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   businessId?: boolean
   returnNumber?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   status?: boolean
   reason?: boolean
   totalAmount?: boolean
@@ -1340,6 +1392,7 @@ export type SaleReturnSelectScalar = {
   businessId?: boolean
   returnNumber?: boolean
   idempotencyKey?: boolean
+  requestHash?: boolean
   status?: boolean
   reason?: boolean
   totalAmount?: boolean
@@ -1350,7 +1403,7 @@ export type SaleReturnSelectScalar = {
   processorId?: boolean
 }
 
-export type SaleReturnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "returnNumber" | "idempotencyKey" | "status" | "reason" | "totalAmount" | "processedAt" | "createdAt" | "updatedAt" | "saleId" | "processorId", ExtArgs["result"]["saleReturn"]>
+export type SaleReturnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "returnNumber" | "idempotencyKey" | "requestHash" | "status" | "reason" | "totalAmount" | "processedAt" | "createdAt" | "updatedAt" | "saleId" | "processorId", ExtArgs["result"]["saleReturn"]>
 export type SaleReturnInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
@@ -1384,6 +1437,7 @@ export type $SaleReturnPayload<ExtArgs extends runtime.Types.Extensions.Internal
     businessId: string
     returnNumber: string
     idempotencyKey: string
+    requestHash: string | null
     status: $Enums.SALE_RETURN_STATUS
     reason: string
     totalAmount: runtime.Decimal
@@ -1824,6 +1878,7 @@ export interface SaleReturnFieldRefs {
   readonly businessId: Prisma.FieldRef<"SaleReturn", 'String'>
   readonly returnNumber: Prisma.FieldRef<"SaleReturn", 'String'>
   readonly idempotencyKey: Prisma.FieldRef<"SaleReturn", 'String'>
+  readonly requestHash: Prisma.FieldRef<"SaleReturn", 'String'>
   readonly status: Prisma.FieldRef<"SaleReturn", 'SALE_RETURN_STATUS'>
   readonly reason: Prisma.FieldRef<"SaleReturn", 'String'>
   readonly totalAmount: Prisma.FieldRef<"SaleReturn", 'Decimal'>

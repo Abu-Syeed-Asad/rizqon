@@ -1,0 +1,721 @@
+{
+  "info": {
+    "name": "Rizqon Partner Commission Management",
+    "description": "Request templates; choose appropriate transitions, do not run the entire collection as one sequence. Agreement draft edits precede activation. Deactivation/expiry, return rejection, settlement cancellation and failed payment reconciliation are alternative paths. Create a trusted draft sale separately. Manual reconciliation records independently verified evidence; no request executes an external transfer. Amounts are strings. All outstanding negative entries must be included in settlements.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "businessId",
+      "value": ""
+    },
+    {
+      "key": "partnerId",
+      "value": ""
+    },
+    {
+      "key": "variantId",
+      "value": ""
+    },
+    {
+      "key": "agreementId",
+      "value": ""
+    },
+    {
+      "key": "saleId",
+      "value": ""
+    },
+    {
+      "key": "saleItemId",
+      "value": ""
+    },
+    {
+      "key": "entryId",
+      "value": ""
+    },
+    {
+      "key": "returnId",
+      "value": ""
+    },
+    {
+      "key": "settlementId",
+      "value": ""
+    },
+    {
+      "key": "paymentId",
+      "value": ""
+    },
+    {
+      "key": "runKey",
+      "value": "20261118-001"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create agreement draft",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"partnerId\": \"{{partnerId}}\",\n  \"commissionPercent\": \"10.00\",\n  \"startsAt\": \"2026-11-18T00:00:00.000Z\",\n  \"endsAt\": null,\n  \"productVariantIds\": [\n    \"{{variantId}}\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Create agreement draft\",\n  \"data\": {\n    \"id\": \"agreement_001\",\n    \"isActive\": false,\n    \"firstActivatedAt\": null,\n    \"commissionPercent\": \"10\"\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code < 300) { const result = pm.response.json(); if (result.data?.id) pm.collectionVariables.set(\"agreementId\", result.data.id); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "List agreements",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements?partnerId={{partnerId}}&page=1&limit=25"
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"List agreements\",\n  \"data\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Agreement details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}"
+      }
+    },
+    {
+      "name": "Edit unused draft",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"commissionPercent\": \"12.50\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "activate agreement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}/activate",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "deactivate agreement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}/deactivate",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "expire agreement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}/expire",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Agreement history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-agreements/{{agreementId}}/history"
+      }
+    },
+    {
+      "name": "Complete trusted sale draft",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/sales/{{saleId}}/complete",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Complete trusted sale draft\",\n  \"data\": {\n    \"id\": \"sale_001\",\n    \"status\": \"COMPLETED\",\n    \"grandTotal\": \"1000\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "List unsettled entries",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-entries?partnerId={{partnerId}}&unsettled=true"
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"List unsettled entries\",\n  \"data\": [\n    {\n      \"id\": \"entry_001\",\n      \"eventType\": \"SALE\",\n      \"grossBase\": \"1000\",\n      \"commissionPercent\": \"10\",\n      \"commissionAmount\": \"100\",\n      \"partnerPayable\": \"900\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Entry details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-entries/{{entryId}}"
+      }
+    },
+    {
+      "name": "Request return",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/sale-returns",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"saleId\": \"{{saleId}}\",\n  \"idempotencyKey\": \"return-{{runKey}}\",\n  \"reason\": \"Customer return\",\n  \"items\": [\n    {\n      \"saleItemId\": \"{{saleItemId}}\",\n      \"quantity\": \"0.500\",\n      \"restock\": true\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Request return\",\n  \"data\": {\n    \"id\": \"return_001\",\n    \"status\": \"REQUESTED\"\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code < 300) { const result = pm.response.json(); if (result.data?.id) pm.collectionVariables.set(\"returnId\", result.data.id); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "approve return",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/sale-returns/{{returnId}}/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "reject return",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/sale-returns/{{returnId}}/reject",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "complete return",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/sale-returns/{{returnId}}/complete",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create settlement draft",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"partnerId\": \"{{partnerId}}\",\n  \"commissionEntryIds\": [\n    \"{{entryId}}\"\n  ],\n  \"idempotencyKey\": \"settlement-{{runKey}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Create settlement draft\",\n  \"data\": {\n    \"id\": \"settlement_001\",\n    \"settlement_status\": \"DRAFT\",\n    \"amount\": \"900\",\n    \"currency\": \"BDT\"\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code < 300) { const result = pm.response.json(); if (result.data?.id) pm.collectionVariables.set(\"settlementId\", result.data.id); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "List settlements",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements?partnerId={{partnerId}}"
+      }
+    },
+    {
+      "name": "Settlement details and balance",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}"
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Settlement details and balance\",\n  \"data\": {\n    \"id\": \"settlement_001\",\n    \"settlement_status\": \"FINALIZED\",\n    \"amount\": \"900\",\n    \"currency\": \"BDT\",\n    \"successfulPaidAmount\": \"300\",\n    \"remainingPayable\": \"600\",\n    \"reservedAmount\": \"0\",\n    \"availableToPay\": \"600\",\n    \"paymentStatus\": \"PARTIALLY_PAID\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Edit settlement draft",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"commissionEntryIds\": [\n    \"{{entryId}}\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "finalize settlement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/finalize",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cancel settlement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/cancel",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Record pending partial payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/payments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": \"300.00\",\n  \"method\": \"BANK_TRANSFER\",\n  \"idempotencyKey\": \"payment-{{runKey}}\",\n  \"note\": \"First installment\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Record pending partial payment\",\n  \"data\": {\n    \"id\": \"payment_001\",\n    \"direction\": \"OUT\",\n    \"status\": \"PENDING\",\n    \"amount\": \"300\",\n    \"paidAt\": null\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code < 300) { const result = pm.response.json(); if (result.data?.id) pm.collectionVariables.set(\"paymentId\", result.data.id); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reconcile independently verified payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/payments/{{paymentId}}/reconcile",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"SUCCEEDED\",\n  \"evidenceReference\": \"bank-confirmation-{{runKey}}\",\n  \"note\": \"Independently verified the bank confirmation and matched recipient, currency and amount\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Example success (illustrative)",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Reconcile independently verified payment\",\n  \"data\": {\n    \"id\": \"payment_001\",\n    \"status\": \"SUCCEEDED\",\n    \"amount\": \"300\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Record failed attempt (alternative terminal outcome)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/payments/{{paymentId}}/reconcile",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"FAILED\",\n  \"evidenceReference\": \"bank-rejection-{{runKey}}\",\n  \"note\": \"Verified this attempt was rejected\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Payment history and balance",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/business/{{businessId}}/commission-settlements/{{settlementId}}/payments"
+      }
+    }
+  ]
+}

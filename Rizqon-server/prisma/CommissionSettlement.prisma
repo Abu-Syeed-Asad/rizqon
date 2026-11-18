@@ -5,6 +5,9 @@ model CommissionSettlement {
   settlement_status          COMMISSION_SETTLEMENT_STATUS  @default(DRAFT)
   amount                     Decimal           @db.Decimal(18, 2)
   finalizedAt                DateTime?
+  currency                   String?
+  idempotencyKey             String?
+  requestHash                String?
   createdAt                  DateTime          @default(now())
   updatedAt                  DateTime          @updatedAt()
   business                   Business          @relation("CommissionSettlement_business", fields: [businessId], references: [id], onDelete: Restrict, onUpdate: NoAction)
@@ -16,6 +19,7 @@ model CommissionSettlement {
   creator                    Employee          @relation("CommissionSettlement_creator", fields: [businessId, creatorId], references: [businessId, Employee_id], onDelete: Restrict, onUpdate: NoAction)
 
   @@unique([businessId, id])
+  @@unique([businessId, idempotencyKey])
   @@unique([businessId, settlement_reference])
   @@index([businessId])
   @@index([businessId, partnerId])

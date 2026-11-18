@@ -404,6 +404,8 @@ export const ModelName = {
   CartItem: 'CartItem',
   Category: 'Category',
   CommissionAgreement: 'CommissionAgreement',
+  CommissionAgreementVariant: 'CommissionAgreementVariant',
+  CommissionAgreementActivation: 'CommissionAgreementActivation',
   CommissionEntry: 'CommissionEntry',
   CommissionSettlement: 'CommissionSettlement',
   Customer: 'Customer',
@@ -447,7 +449,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "brand" | "business" | "employee" | "cart" | "cartItem" | "category" | "commissionAgreement" | "commissionEntry" | "commissionSettlement" | "customer" | "employeeBranch" | "expense" | "inventory" | "notification" | "outboxEvent" | "partner" | "payment" | "paymentEvent" | "product" | "productVariant" | "purchase" | "purchaseItem" | "refund" | "returnItem" | "sale" | "saleItem" | "saleReturn" | "stockMovement" | "auditLog" | "jwks" | "user" | "session" | "account" | "verification" | "branch"
+    modelProps: "brand" | "business" | "employee" | "cart" | "cartItem" | "category" | "commissionAgreement" | "commissionAgreementVariant" | "commissionAgreementActivation" | "commissionEntry" | "commissionSettlement" | "customer" | "employeeBranch" | "expense" | "inventory" | "notification" | "outboxEvent" | "partner" | "payment" | "paymentEvent" | "product" | "productVariant" | "purchase" | "purchaseItem" | "refund" | "returnItem" | "sale" | "saleItem" | "saleReturn" | "stockMovement" | "auditLog" | "jwks" | "user" | "session" | "account" | "verification" | "branch"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -966,6 +968,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CommissionAgreementCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CommissionAgreementCountAggregateOutputType> | number
+        }
+      }
+    }
+    CommissionAgreementVariant: {
+      payload: Prisma.$CommissionAgreementVariantPayload<ExtArgs>
+      fields: Prisma.CommissionAgreementVariantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CommissionAgreementVariantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CommissionAgreementVariantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        findFirst: {
+          args: Prisma.CommissionAgreementVariantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CommissionAgreementVariantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        findMany: {
+          args: Prisma.CommissionAgreementVariantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>[]
+        }
+        create: {
+          args: Prisma.CommissionAgreementVariantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        createMany: {
+          args: Prisma.CommissionAgreementVariantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CommissionAgreementVariantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>[]
+        }
+        delete: {
+          args: Prisma.CommissionAgreementVariantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        update: {
+          args: Prisma.CommissionAgreementVariantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        deleteMany: {
+          args: Prisma.CommissionAgreementVariantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CommissionAgreementVariantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CommissionAgreementVariantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>[]
+        }
+        upsert: {
+          args: Prisma.CommissionAgreementVariantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementVariantPayload>
+        }
+        aggregate: {
+          args: Prisma.CommissionAgreementVariantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCommissionAgreementVariant>
+        }
+        groupBy: {
+          args: Prisma.CommissionAgreementVariantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommissionAgreementVariantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CommissionAgreementVariantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommissionAgreementVariantCountAggregateOutputType> | number
+        }
+      }
+    }
+    CommissionAgreementActivation: {
+      payload: Prisma.$CommissionAgreementActivationPayload<ExtArgs>
+      fields: Prisma.CommissionAgreementActivationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CommissionAgreementActivationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CommissionAgreementActivationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        findFirst: {
+          args: Prisma.CommissionAgreementActivationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CommissionAgreementActivationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        findMany: {
+          args: Prisma.CommissionAgreementActivationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>[]
+        }
+        create: {
+          args: Prisma.CommissionAgreementActivationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        createMany: {
+          args: Prisma.CommissionAgreementActivationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CommissionAgreementActivationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>[]
+        }
+        delete: {
+          args: Prisma.CommissionAgreementActivationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        update: {
+          args: Prisma.CommissionAgreementActivationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        deleteMany: {
+          args: Prisma.CommissionAgreementActivationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CommissionAgreementActivationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CommissionAgreementActivationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>[]
+        }
+        upsert: {
+          args: Prisma.CommissionAgreementActivationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CommissionAgreementActivationPayload>
+        }
+        aggregate: {
+          args: Prisma.CommissionAgreementActivationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCommissionAgreementActivation>
+        }
+        groupBy: {
+          args: Prisma.CommissionAgreementActivationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommissionAgreementActivationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CommissionAgreementActivationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommissionAgreementActivationCountAggregateOutputType> | number
         }
       }
     }
@@ -3180,12 +3330,34 @@ export const CommissionAgreementScalarFieldEnum = {
   startsAt: 'startsAt',
   endsAt: 'endsAt',
   isActive: 'isActive',
+  firstActivatedAt: 'firstActivatedAt',
+  expiredAt: 'expiredAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   partnerId: 'partnerId'
 } as const
 
 export type CommissionAgreementScalarFieldEnum = (typeof CommissionAgreementScalarFieldEnum)[keyof typeof CommissionAgreementScalarFieldEnum]
+
+
+export const CommissionAgreementVariantScalarFieldEnum = {
+  businessId: 'businessId',
+  agreementId: 'agreementId',
+  variantId: 'variantId'
+} as const
+
+export type CommissionAgreementVariantScalarFieldEnum = (typeof CommissionAgreementVariantScalarFieldEnum)[keyof typeof CommissionAgreementVariantScalarFieldEnum]
+
+
+export const CommissionAgreementActivationScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  agreementId: 'agreementId',
+  startsAt: 'startsAt',
+  endsAt: 'endsAt'
+} as const
+
+export type CommissionAgreementActivationScalarFieldEnum = (typeof CommissionAgreementActivationScalarFieldEnum)[keyof typeof CommissionAgreementActivationScalarFieldEnum]
 
 
 export const CommissionEntryScalarFieldEnum = {
@@ -3215,6 +3387,9 @@ export const CommissionSettlementScalarFieldEnum = {
   settlement_status: 'settlement_status',
   amount: 'amount',
   finalizedAt: 'finalizedAt',
+  currency: 'currency',
+  idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   partnerId: 'partnerId',
@@ -3346,6 +3521,7 @@ export const PaymentScalarFieldEnum = {
   provider: 'provider',
   providerReference: 'providerReference',
   idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   paidAt: 'paidAt',
   note: 'note',
   createdAt: 'createdAt',
@@ -3539,6 +3715,7 @@ export const SaleReturnScalarFieldEnum = {
   businessId: 'businessId',
   returnNumber: 'returnNumber',
   idempotencyKey: 'idempotencyKey',
+  requestHash: 'requestHash',
   status: 'status',
   reason: 'reason',
   totalAmount: 'totalAmount',
@@ -4248,6 +4425,8 @@ export type GlobalOmitConfig = {
   cartItem?: Prisma.CartItemOmit
   category?: Prisma.CategoryOmit
   commissionAgreement?: Prisma.CommissionAgreementOmit
+  commissionAgreementVariant?: Prisma.CommissionAgreementVariantOmit
+  commissionAgreementActivation?: Prisma.CommissionAgreementActivationOmit
   commissionEntry?: Prisma.CommissionEntryOmit
   commissionSettlement?: Prisma.CommissionSettlementOmit
   customer?: Prisma.CustomerOmit
