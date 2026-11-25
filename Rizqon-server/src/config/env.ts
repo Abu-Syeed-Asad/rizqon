@@ -27,6 +27,16 @@ const envSchema = z.object({
   FRONTEND_ORIGIN: z.string().url(),
   BETTER_AUTH_URL: z.string().url().optional(),
 
+  // Hosted payment gateways (optional until a provider is used).
+  PAYMENT_PUBLIC_BASE_URL: z.string().url().optional(),
+  PAYMENT_RETURN_URL: z.string().url().optional(),
+  PAYMENT_BUSINESS_IDS: z.string().optional(),
+  STRIPE_SECRET_KEY: z.string().min(1).optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
+  SSLCOMMERZ_STORE_ID: z.string().min(1).optional(),
+  SSLCOMMERZ_STORE_PASSWORD: z.string().min(1).optional(),
+  SSLCOMMERZ_SANDBOX: z.enum(["true", "false"]).default("true").transform(value => value === "true"),
+
   // Legacy integrations are optional; managed Neon Auth owns login and email.
   BETTER_AUTH_SECRET: z.string().min(32).optional(),
 

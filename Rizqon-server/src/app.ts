@@ -12,6 +12,7 @@ import { StatusCodes } from "http-status-codes";
 import { errorHandler } from "./middleware/errorhandler.js";
 
 import { index_router } from "./index.route.js";
+import { stripeWebhookRoute } from "./module/Payment/payment.route.js";
 
 export const app = express();
 
@@ -31,6 +32,7 @@ app.use(
 // Google returns its authorization code here; Better Auth verifies OAuth state.
 app.get("/api/v1/auth/callback/google", toNodeHandler(auth));
 
+app.use("/api/v1/payments", stripeWebhookRoute);
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false, limit: "1mb" }));

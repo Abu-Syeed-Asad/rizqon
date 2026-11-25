@@ -44,6 +44,10 @@ export type PaymentMinAggregateOutputType = {
   currency: string | null
   provider: string | null
   providerReference: string | null
+  gatewaySessionId: string | null
+  checkoutUrl: string | null
+  checkoutExpiresAt: Date | null
+  initializationStartedAt: Date | null
   idempotencyKey: string | null
   requestHash: string | null
   paidAt: Date | null
@@ -67,6 +71,10 @@ export type PaymentMaxAggregateOutputType = {
   currency: string | null
   provider: string | null
   providerReference: string | null
+  gatewaySessionId: string | null
+  checkoutUrl: string | null
+  checkoutExpiresAt: Date | null
+  initializationStartedAt: Date | null
   idempotencyKey: string | null
   requestHash: string | null
   paidAt: Date | null
@@ -90,6 +98,11 @@ export type PaymentCountAggregateOutputType = {
   currency: number
   provider: number
   providerReference: number
+  gatewaySessionId: number
+  checkoutUrl: number
+  checkoutExpiresAt: number
+  gatewayRequest: number
+  initializationStartedAt: number
   idempotencyKey: number
   requestHash: number
   paidAt: number
@@ -123,6 +136,10 @@ export type PaymentMinAggregateInputType = {
   currency?: true
   provider?: true
   providerReference?: true
+  gatewaySessionId?: true
+  checkoutUrl?: true
+  checkoutExpiresAt?: true
+  initializationStartedAt?: true
   idempotencyKey?: true
   requestHash?: true
   paidAt?: true
@@ -146,6 +163,10 @@ export type PaymentMaxAggregateInputType = {
   currency?: true
   provider?: true
   providerReference?: true
+  gatewaySessionId?: true
+  checkoutUrl?: true
+  checkoutExpiresAt?: true
+  initializationStartedAt?: true
   idempotencyKey?: true
   requestHash?: true
   paidAt?: true
@@ -169,6 +190,11 @@ export type PaymentCountAggregateInputType = {
   currency?: true
   provider?: true
   providerReference?: true
+  gatewaySessionId?: true
+  checkoutUrl?: true
+  checkoutExpiresAt?: true
+  gatewayRequest?: true
+  initializationStartedAt?: true
   idempotencyKey?: true
   requestHash?: true
   paidAt?: true
@@ -279,6 +305,11 @@ export type PaymentGroupByOutputType = {
   currency: string
   provider: string | null
   providerReference: string | null
+  gatewaySessionId: string | null
+  checkoutUrl: string | null
+  checkoutExpiresAt: Date | null
+  gatewayRequest: runtime.JsonValue | null
+  initializationStartedAt: Date | null
   idempotencyKey: string
   requestHash: string | null
   paidAt: Date | null
@@ -325,6 +356,11 @@ export type PaymentWhereInput = {
   currency?: Prisma.StringFilter<"Payment"> | string
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gatewaySessionId?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutUrl?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutExpiresAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
+  gatewayRequest?: Prisma.JsonNullableFilter<"Payment">
+  initializationStartedAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
   requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
@@ -356,6 +392,11 @@ export type PaymentOrderByWithRelationInput = {
   currency?: Prisma.SortOrder
   provider?: Prisma.SortOrderInput | Prisma.SortOrder
   providerReference?: Prisma.SortOrderInput | Prisma.SortOrder
+  gatewaySessionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkoutUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkoutExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  gatewayRequest?: Prisma.SortOrderInput | Prisma.SortOrder
+  initializationStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -393,6 +434,11 @@ export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   currency?: Prisma.StringFilter<"Payment"> | string
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gatewaySessionId?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutUrl?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutExpiresAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
+  gatewayRequest?: Prisma.JsonNullableFilter<"Payment">
+  initializationStartedAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
   requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
@@ -424,6 +470,11 @@ export type PaymentOrderByWithAggregationInput = {
   currency?: Prisma.SortOrder
   provider?: Prisma.SortOrderInput | Prisma.SortOrder
   providerReference?: Prisma.SortOrderInput | Prisma.SortOrder
+  gatewaySessionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkoutUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkoutExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  gatewayRequest?: Prisma.SortOrderInput | Prisma.SortOrder
+  initializationStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   requestHash?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -455,6 +506,11 @@ export type PaymentScalarWhereWithAggregatesInput = {
   currency?: Prisma.StringWithAggregatesFilter<"Payment"> | string
   provider?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
+  gatewaySessionId?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
+  checkoutUrl?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
+  checkoutExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
+  gatewayRequest?: Prisma.JsonNullableWithAggregatesFilter<"Payment">
+  initializationStartedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
   idempotencyKey?: Prisma.StringWithAggregatesFilter<"Payment"> | string
   requestHash?: Prisma.StringNullableWithAggregatesFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
@@ -477,6 +533,11 @@ export type PaymentCreateInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -503,6 +564,11 @@ export type PaymentUncheckedCreateInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -527,6 +593,11 @@ export type PaymentUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -553,6 +624,11 @@ export type PaymentUncheckedUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -578,6 +654,11 @@ export type PaymentCreateManyInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -600,6 +681,11 @@ export type PaymentUpdateManyMutationInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -618,6 +704,11 @@ export type PaymentUncheckedUpdateManyInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -666,6 +757,11 @@ export type PaymentCountOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
+  gatewaySessionId?: Prisma.SortOrder
+  checkoutUrl?: Prisma.SortOrder
+  checkoutExpiresAt?: Prisma.SortOrder
+  gatewayRequest?: Prisma.SortOrder
+  initializationStartedAt?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
@@ -693,6 +789,10 @@ export type PaymentMaxOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
+  gatewaySessionId?: Prisma.SortOrder
+  checkoutUrl?: Prisma.SortOrder
+  checkoutExpiresAt?: Prisma.SortOrder
+  initializationStartedAt?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
@@ -716,6 +816,10 @@ export type PaymentMinOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   provider?: Prisma.SortOrder
   providerReference?: Prisma.SortOrder
+  gatewaySessionId?: Prisma.SortOrder
+  checkoutUrl?: Prisma.SortOrder
+  checkoutExpiresAt?: Prisma.SortOrder
+  initializationStartedAt?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   requestHash?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
@@ -1046,6 +1150,11 @@ export type PaymentCreateWithoutBusinessInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1070,6 +1179,11 @@ export type PaymentUncheckedCreateWithoutBusinessInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1124,6 +1238,11 @@ export type PaymentScalarWhereInput = {
   currency?: Prisma.StringFilter<"Payment"> | string
   provider?: Prisma.StringNullableFilter<"Payment"> | string | null
   providerReference?: Prisma.StringNullableFilter<"Payment"> | string | null
+  gatewaySessionId?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutUrl?: Prisma.StringNullableFilter<"Payment"> | string | null
+  checkoutExpiresAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
+  gatewayRequest?: Prisma.JsonNullableFilter<"Payment">
+  initializationStartedAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
   idempotencyKey?: Prisma.StringFilter<"Payment"> | string
   requestHash?: Prisma.StringNullableFilter<"Payment"> | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"Payment"> | Date | string | null
@@ -1146,6 +1265,11 @@ export type PaymentCreateWithoutRecorderInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1170,6 +1294,11 @@ export type PaymentUncheckedCreateWithoutRecorderInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1219,6 +1348,11 @@ export type PaymentCreateWithoutSettlementInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1243,6 +1377,11 @@ export type PaymentUncheckedCreateWithoutSettlementInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1292,6 +1431,11 @@ export type PaymentCreateWithoutExpenseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1316,6 +1460,11 @@ export type PaymentUncheckedCreateWithoutExpenseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1365,6 +1514,11 @@ export type PaymentCreateWithoutPaymentEvent_paymentInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1390,6 +1544,11 @@ export type PaymentUncheckedCreateWithoutPaymentEvent_paymentInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1429,6 +1588,11 @@ export type PaymentUpdateWithoutPaymentEvent_paymentInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1454,6 +1618,11 @@ export type PaymentUncheckedUpdateWithoutPaymentEvent_paymentInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1477,6 +1646,11 @@ export type PaymentCreateWithoutPurchaseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1501,6 +1675,11 @@ export type PaymentUncheckedCreateWithoutPurchaseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1550,6 +1729,11 @@ export type PaymentCreateWithoutRefund_paymentInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1575,6 +1759,11 @@ export type PaymentUncheckedCreateWithoutRefund_paymentInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1614,6 +1803,11 @@ export type PaymentUpdateWithoutRefund_paymentInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1639,6 +1833,11 @@ export type PaymentUncheckedUpdateWithoutRefund_paymentInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1662,6 +1861,11 @@ export type PaymentCreateWithoutSaleInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1686,6 +1890,11 @@ export type PaymentUncheckedCreateWithoutSaleInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1735,6 +1944,11 @@ export type PaymentCreateManyBusinessInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1757,6 +1971,11 @@ export type PaymentUpdateWithoutBusinessInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1781,6 +2000,11 @@ export type PaymentUncheckedUpdateWithoutBusinessInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1805,6 +2029,11 @@ export type PaymentUncheckedUpdateManyWithoutBusinessInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1827,6 +2056,11 @@ export type PaymentCreateManyRecorderInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1848,6 +2082,11 @@ export type PaymentUpdateWithoutRecorderInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1872,6 +2111,11 @@ export type PaymentUncheckedUpdateWithoutRecorderInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1895,6 +2139,11 @@ export type PaymentUncheckedUpdateManyWithoutRecorderInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1916,6 +2165,11 @@ export type PaymentCreateManySettlementInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -1937,6 +2191,11 @@ export type PaymentUpdateWithoutSettlementInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1961,6 +2220,11 @@ export type PaymentUncheckedUpdateWithoutSettlementInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1984,6 +2248,11 @@ export type PaymentUncheckedUpdateManyWithoutSettlementInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2005,6 +2274,11 @@ export type PaymentCreateManyExpenseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -2026,6 +2300,11 @@ export type PaymentUpdateWithoutExpenseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2050,6 +2329,11 @@ export type PaymentUncheckedUpdateWithoutExpenseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2073,6 +2357,11 @@ export type PaymentUncheckedUpdateManyWithoutExpenseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2094,6 +2383,11 @@ export type PaymentCreateManyPurchaseInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -2115,6 +2409,11 @@ export type PaymentUpdateWithoutPurchaseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2139,6 +2438,11 @@ export type PaymentUncheckedUpdateWithoutPurchaseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2162,6 +2466,11 @@ export type PaymentUncheckedUpdateManyWithoutPurchaseInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2183,6 +2492,11 @@ export type PaymentCreateManySaleInput = {
   currency?: string
   provider?: string | null
   providerReference?: string | null
+  gatewaySessionId?: string | null
+  checkoutUrl?: string | null
+  checkoutExpiresAt?: Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Date | string | null
   idempotencyKey: string
   requestHash?: string | null
   paidAt?: Date | string | null
@@ -2204,6 +2518,11 @@ export type PaymentUpdateWithoutSaleInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2228,6 +2547,11 @@ export type PaymentUncheckedUpdateWithoutSaleInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2251,6 +2575,11 @@ export type PaymentUncheckedUpdateManyWithoutSaleInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   providerReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gatewaySessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checkoutExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gatewayRequest?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  initializationStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   requestHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2313,6 +2642,11 @@ export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   currency?: boolean
   provider?: boolean
   providerReference?: boolean
+  gatewaySessionId?: boolean
+  checkoutUrl?: boolean
+  checkoutExpiresAt?: boolean
+  gatewayRequest?: boolean
+  initializationStartedAt?: boolean
   idempotencyKey?: boolean
   requestHash?: boolean
   paidAt?: boolean
@@ -2345,6 +2679,11 @@ export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   currency?: boolean
   provider?: boolean
   providerReference?: boolean
+  gatewaySessionId?: boolean
+  checkoutUrl?: boolean
+  checkoutExpiresAt?: boolean
+  gatewayRequest?: boolean
+  initializationStartedAt?: boolean
   idempotencyKey?: boolean
   requestHash?: boolean
   paidAt?: boolean
@@ -2374,6 +2713,11 @@ export type PaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   currency?: boolean
   provider?: boolean
   providerReference?: boolean
+  gatewaySessionId?: boolean
+  checkoutUrl?: boolean
+  checkoutExpiresAt?: boolean
+  gatewayRequest?: boolean
+  initializationStartedAt?: boolean
   idempotencyKey?: boolean
   requestHash?: boolean
   paidAt?: boolean
@@ -2403,6 +2747,11 @@ export type PaymentSelectScalar = {
   currency?: boolean
   provider?: boolean
   providerReference?: boolean
+  gatewaySessionId?: boolean
+  checkoutUrl?: boolean
+  checkoutExpiresAt?: boolean
+  gatewayRequest?: boolean
+  initializationStartedAt?: boolean
   idempotencyKey?: boolean
   requestHash?: boolean
   paidAt?: boolean
@@ -2416,7 +2765,7 @@ export type PaymentSelectScalar = {
   recorderId?: boolean
 }
 
-export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "direction" | "method" | "status" | "amount" | "currency" | "provider" | "providerReference" | "idempotencyKey" | "requestHash" | "paidAt" | "note" | "createdAt" | "updatedAt" | "saleId" | "purchaseId" | "expenseId" | "settlementId" | "recorderId", ExtArgs["result"]["payment"]>
+export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "businessId" | "direction" | "method" | "status" | "amount" | "currency" | "provider" | "providerReference" | "gatewaySessionId" | "checkoutUrl" | "checkoutExpiresAt" | "gatewayRequest" | "initializationStartedAt" | "idempotencyKey" | "requestHash" | "paidAt" | "note" | "createdAt" | "updatedAt" | "saleId" | "purchaseId" | "expenseId" | "settlementId" | "recorderId", ExtArgs["result"]["payment"]>
 export type PaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   sale?: boolean | Prisma.Payment$saleArgs<ExtArgs>
@@ -2467,6 +2816,11 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     currency: string
     provider: string | null
     providerReference: string | null
+    gatewaySessionId: string | null
+    checkoutUrl: string | null
+    checkoutExpiresAt: Date | null
+    gatewayRequest: runtime.JsonValue | null
+    initializationStartedAt: Date | null
     idempotencyKey: string
     requestHash: string | null
     paidAt: Date | null
@@ -2918,6 +3272,11 @@ export interface PaymentFieldRefs {
   readonly currency: Prisma.FieldRef<"Payment", 'String'>
   readonly provider: Prisma.FieldRef<"Payment", 'String'>
   readonly providerReference: Prisma.FieldRef<"Payment", 'String'>
+  readonly gatewaySessionId: Prisma.FieldRef<"Payment", 'String'>
+  readonly checkoutUrl: Prisma.FieldRef<"Payment", 'String'>
+  readonly checkoutExpiresAt: Prisma.FieldRef<"Payment", 'DateTime'>
+  readonly gatewayRequest: Prisma.FieldRef<"Payment", 'Json'>
+  readonly initializationStartedAt: Prisma.FieldRef<"Payment", 'DateTime'>
   readonly idempotencyKey: Prisma.FieldRef<"Payment", 'String'>
   readonly requestHash: Prisma.FieldRef<"Payment", 'String'>
   readonly paidAt: Prisma.FieldRef<"Payment", 'DateTime'>

@@ -1,6 +1,7 @@
 ﻿# Rizqon server
 
 Express backend with Prisma/PostgreSQL and managed Neon Auth.
+Stripe and SSLCommerz sale payments: see [payment setup and API](docs/payments.md).
 See [NEON_SETUP.md](NEON_SETUP.md) for additional Neon provisioning and
 managed-auth notes.
 

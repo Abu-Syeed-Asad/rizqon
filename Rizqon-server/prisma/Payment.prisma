@@ -8,6 +8,11 @@ model Payment {
   currency             String                @default("BDT")
   provider             String?
   providerReference    String?
+  gatewaySessionId     String?
+  checkoutUrl          String?
+  checkoutExpiresAt    DateTime?
+  gatewayRequest       Json?
+  initializationStartedAt DateTime?
   idempotencyKey       String
   requestHash          String?
   paidAt               DateTime?

@@ -15,8 +15,9 @@ const action = process.argv[2];
 const args = action === "migrate" ? ["node_modules/prisma/build/index.js", "migrate", "deploy"]
   : action === "status" ? ["node_modules/prisma/build/index.js", "migrate", "status"]
   : action === "test" ? ["node_modules/tsx/dist/cli.mjs", "--test", "tests/commission.integration.test.ts"]
+  : action === "test-payments" ? ["node_modules/tsx/dist/cli.mjs", "--test", "tests/payment.integration.test.ts"]
   : action === "test-history" ? ["node_modules/tsx/dist/cli.mjs", "--test", "tests/commission-history.integration.test.ts"] : null;
-if (!args) throw new Error("Usage: node scripts/commission-db.mjs status|migrate|test|test-history");
+if (!args) throw new Error("Usage: node scripts/commission-db.mjs status|migrate|test|test-history|test-payments");
 const result = spawnSync(process.execPath, args, { stdio: "inherit", env: { ...process.env, DATABASE_URL: target, DATABASE_URL_UNPOOLED: target } });
 if (result.error) throw result.error;
 process.exitCode = result.status ?? 1;

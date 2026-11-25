@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { paymentRoutes, paymentCallbackRoutes } from "./module/Payment/payment.route.js";
 import { commissionRoutes } from "./module/Commission/commission.route.js";
 import { productRoutes } from "./module/Product/product.route.js";
 import { authRouter } from "./module/auth/auth.route";
@@ -10,6 +11,8 @@ import { employeeRoutes } from "./module/Employee/employee.route.js";
 import { partnerRoutes } from "./module/Partner/partner.route.js";
 
 const router = Router();
+router.use("/payments", paymentCallbackRoutes);
+router.use("/business/:businessId", paymentRoutes);
 router.use("/business/:businessId", commissionRoutes);
 router.use("/product", productRoutes);
 router.use("/auth", authRouter);
